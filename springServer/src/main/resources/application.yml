@@ -1,0 +1,28 @@
+#format for .properties
+#spring.datasource.url = jdbc:mysql://localhost:3306/login_demo?useSSL=false
+#spring.datasource.username = root
+#spring.datasource.password = 1q2w3e4r
+
+#format for .yml
+server:
+  port : 8080
+  error:
+    include-binding-errors: always
+    include-message: always
+
+spring:
+  datasource:
+    url: jdbc:mysql://localhost:3306/login_demo
+    username: root
+    password: 1q2w3e4r
+    driverClassName: com.mysql.cj.jdbc.Driver
+  jpa:
+    hibernate:
+       ddl-auto: update
+       #ddl-auto: create-drop
+       #this destroys the db everytime the app is run.
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.MySQL5InnoDBDialect
+        format_sql: true
+    show-sql: true
