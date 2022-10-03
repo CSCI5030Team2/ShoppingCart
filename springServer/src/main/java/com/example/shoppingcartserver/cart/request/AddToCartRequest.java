@@ -1,4 +1,4 @@
-package com.example.shoppingcartserver.item;
+package com.example.shoppingcartserver.cart.request;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -7,12 +7,11 @@ import lombok.ToString;
 /**
  * @author aiden
  */
-
-
 @AllArgsConstructor
-@Getter
 @ToString
-public class BuyItemRequest {
+@Getter
+public class AddToCartRequest {
+    private final String buyerEmail;
     private final String itemName;
     private final Integer quantity;
 }

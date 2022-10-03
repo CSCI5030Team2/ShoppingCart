@@ -1,6 +1,9 @@
 package com.example.shoppingcartserver.item;
 
 import com.alibaba.fastjson.JSON;
+import com.example.shoppingcartserver.item.request.AddItemRequest;
+import com.example.shoppingcartserver.item.request.BuyItemRequest;
+import com.example.shoppingcartserver.item.request.DeleteItemRequest;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 
@@ -44,7 +47,27 @@ public class ItemService {
         }
 
         itemRepository.save(item);
-        return "Saved " + item;
+        return "Saved " + item.getItemName();
     }
+
+    public String deleteItem(DeleteItemRequest request) {
+        Item item = new Item(
+                request.getItemName(),
+                0,
+                (float) 0
+        );
+        boolean itemExist = itemRepository.findByItemName(request.getItemName()).isPresent();
+        if(itemExist)
+        {
+            itemRepository.deleteItemByName(request.getItemName());
+            return "Deleted: " + request.getItemName();
+        }
+        else
+        {
+            return "Item Name: " + request.getItemName() + " not found";
+        }
+
+    }
+
 
 }
