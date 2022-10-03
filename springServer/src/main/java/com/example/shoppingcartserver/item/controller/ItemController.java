@@ -1,19 +1,19 @@
-package com.example.shoppingcartserver.item;
+package com.example.shoppingcartserver.item.controller;
 
+import com.example.shoppingcartserver.item.ItemService;
+import com.example.shoppingcartserver.item.request.BuyItemRequest;
 import lombok.AllArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 
 /**
  * @author aiden
  */
-
 @RestController
 @AllArgsConstructor
-@RequestMapping(path = "/user/item")
+@RequestMapping(path = "/item")
 public class ItemController {
 
     private ItemService itemService;
-
     /**
      * for looking up item
      * @return all items
@@ -23,6 +23,7 @@ public class ItemController {
     {
         return itemService.getItem();
     }
+
 
     /**
      * for making purchase
@@ -34,14 +35,5 @@ public class ItemController {
     {
         return itemService.buyItem(request);
     }
-
-    //TODO: security not implemented
-    @PostMapping(path = "/add")
-    public String addItem(@RequestBody AddItemRequest request)
-    {
-        return itemService.addItem(request);
-    }
-
-
-
 }
+

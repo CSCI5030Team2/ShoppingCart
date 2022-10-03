@@ -1,6 +1,5 @@
 package com.example.shoppingcartserver.item;
 
-
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
@@ -35,5 +34,13 @@ public interface ItemRepository extends JpaRepository<Item,Long>{
     )
     void updateItemByName(String itemName, Float price, Integer quantity);
 
+    /**
+     * delete item by name itemName
+     * @param itemName name of the product
+     */
+    @Transactional
+    @Modifying
+    @Query("delete from Item i where i.itemName=:itemName")
+    void deleteItemByName(String itemName);
 
 }
