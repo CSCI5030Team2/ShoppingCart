@@ -26,16 +26,209 @@
 					"raw": ""
 				},
 				"url": {
-					"raw": "http://localhost:3000/user/item/",
+					"raw": "http://localhost:8080/user/item/",
 					"protocol": "http",
 					"host": [
 						"localhost"
 					],
-					"port": "3000",
+					"port": "8080",
 					"path": [
 						"user",
 						"item",
 						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "getCart",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"buyerEmail\": \"zbh321412@gmail.com\"\n}"
+				},
+				"url": {
+					"raw": "http://localhost:8080/cart/",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"cart",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "registration",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"firstName\": \"NewUser\",\n    \"lastName\": \"Z\",\n    \"email\": \"zbh321412@gmail.com\",\n    \"password\": \"a123456\"\n}"
+				},
+				"url": {
+					"raw": "http://localhost:8080/user/registration",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"user",
+						"registration"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "registration confirm",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"email\": \"zbh321412@gmail.com\",\n    \"token\": \"c639aac4-df01-447e-bae9-e2479ccfc505\"\n}"
+				},
+				"url": {
+					"raw": "http://localhost:8080/user/confirm",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"user",
+						"confirm"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "addToCart",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"buyerEmail\": \"zbh321412@gmail.com\",\n    \"itemName\" : \"Cool pants\",\n    \"quantity\": 1\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/cart",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"cart"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "admin addItem",
+			"request": {
+				"auth": {
+					"type": "basic"
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"itemName\": \"Cool pants\",\n    \"quantity\": 11,\n    \"price\": 29.99\n}"
+				},
+				"url": {
+					"raw": "http://localhost:8080/admin/item",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"admin",
+						"item"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "admin deleteItem",
+			"request": {
+				"auth": {
+					"type": "basic"
+				},
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"itemName\": \"newShirt\"\n}"
+				},
+				"url": {
+					"raw": "http://localhost:8080/admin/item",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"admin",
+						"item"
 					]
 				}
 			},

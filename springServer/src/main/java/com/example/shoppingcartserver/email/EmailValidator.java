@@ -1,4 +1,4 @@
-package com.example.shoppingcartserver.registration;
+package com.example.shoppingcartserver.email;
 
 import org.springframework.stereotype.Service;
 
@@ -7,6 +7,7 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 /**
+ * Validates the email address
  * @author aiden
  */
 

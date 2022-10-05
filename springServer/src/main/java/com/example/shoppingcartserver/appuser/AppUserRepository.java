@@ -21,4 +21,5 @@ public interface AppUserRepository extends JpaRepository<AppUser, Long> {
      * @return list of AppUser with that email or none
      */
     Optional<AppUser> findByEmail(String email);
+
 }

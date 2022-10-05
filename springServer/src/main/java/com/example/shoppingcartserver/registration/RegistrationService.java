@@ -3,6 +3,7 @@ package com.example.shoppingcartserver.registration;
 import com.example.shoppingcartserver.appuser.AppUser;
 import com.example.shoppingcartserver.appuser.AppUserRole;
 import com.example.shoppingcartserver.appuser.AppUserServiceImpl;
+import com.example.shoppingcartserver.email.EmailValidator;
 import com.example.shoppingcartserver.registration.token.ConfirmationTokenService;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;

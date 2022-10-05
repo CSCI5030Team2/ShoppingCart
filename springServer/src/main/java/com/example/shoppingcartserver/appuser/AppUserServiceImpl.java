@@ -1,5 +1,6 @@
 package com.example.shoppingcartserver.appuser;
 
+import com.example.shoppingcartserver.email.EmailService;
 import com.example.shoppingcartserver.registration.token.ConfirmationToken;
 import com.example.shoppingcartserver.registration.token.ConfirmationTokenService;
 import lombok.AllArgsConstructor;
@@ -46,8 +47,6 @@ public class AppUserServiceImpl implements UserDetailsService {
 
         appUser.setPassword(encodedPassword);
 
-        // TODO: Send confirmation token
-
         //save user
         appUserRepository.save(appUser);
 
@@ -58,13 +57,15 @@ public class AppUserServiceImpl implements UserDetailsService {
         ConfirmationToken confirmationToken = new ConfirmationToken(
                 token,
                 LocalDateTime.now(),
-                LocalDateTime.now().plusMinutes(15),
+                LocalDateTime.now().plusDays(7),
                 appUser
                 );
 
         service.saveConfirmationToken(confirmationToken);
 
         // TODO: Send email to confirm
+        EmailService emailService = new EmailService();
+        emailService.send(appUser.getEmail(), "Confirm your account", token);
 
         return token;
     }
