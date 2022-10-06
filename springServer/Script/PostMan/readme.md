@@ -1,0 +1,1 @@
+import the json file to postman to test REST APIs 
