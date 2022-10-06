@@ -39,9 +39,7 @@ public class ConfirmationTokenService {
         return confirmationToken.getExpireTime().isBefore(LocalDateTime.now());
     }
 
-    public String confirm(ConfirmationRequest confirmationRequest) {
-        String token = confirmationRequest.getToken();
-        String email = confirmationRequest.getEmail();
+    public String confirm(String token) {
         ConfirmationToken confirmationToken;
         if(getToken(token).isPresent()) {
             confirmationToken = getToken(token).get();

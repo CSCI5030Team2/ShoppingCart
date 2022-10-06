@@ -1,12 +1,8 @@
 package com.example.shoppingcartserver.registration.token.controller;
 
 import com.example.shoppingcartserver.registration.token.ConfirmationTokenService;
-import com.example.shoppingcartserver.registration.token.request.ConfirmationRequest;
 import lombok.AllArgsConstructor;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 /**
  * @author aiden
@@ -18,9 +14,9 @@ public class ConfirmationController {
 
     private ConfirmationTokenService confirmationTokenService;
 
-    @PostMapping
-    public String confirm (@RequestBody ConfirmationRequest request)
+    @GetMapping
+    public String confirm (@RequestParam String token)
     {
-        return confirmationTokenService.confirm(request);
+        return confirmationTokenService.confirm(token);
     }
 }

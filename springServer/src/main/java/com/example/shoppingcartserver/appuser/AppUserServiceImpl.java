@@ -4,12 +4,17 @@ import com.example.shoppingcartserver.email.EmailService;
 import com.example.shoppingcartserver.registration.token.ConfirmationToken;
 import com.example.shoppingcartserver.registration.token.ConfirmationTokenService;
 import lombok.AllArgsConstructor;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.core.env.Environment;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
+import java.net.InetAddress;
+import java.net.UnknownHostException;
 import java.time.LocalDateTime;
 import java.util.UUID;
 
@@ -25,6 +30,9 @@ public class AppUserServiceImpl implements UserDetailsService {
     private final AppUserRepository appUserRepository;
     private final BCryptPasswordEncoder bCryptPasswordEncoder;
     private final ConfirmationTokenService service;
+    @Autowired
+    Environment environment;
+
 
     @Override
     public UserDetails loadUserByUsername(String email) throws UsernameNotFoundException {
@@ -65,7 +73,17 @@ public class AppUserServiceImpl implements UserDetailsService {
 
         // TODO: Send email to confirm
         EmailService emailService = new EmailService();
-        emailService.send(appUser.getEmail(), "Confirm your account", token);
+
+
+        try {
+            emailService.send(appUser.getEmail(),
+                    "Confirm your account",
+                    InetAddress.getLocalHost().getHostAddress()+":"+
+                            environment.getProperty("server.port")+"/user/confirm?token="+
+                            token);
+        } catch (UnknownHostException e) {
+            e.printStackTrace();
+        }
 
         return token;
     }
