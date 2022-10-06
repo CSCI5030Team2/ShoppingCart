@@ -38,20 +38,19 @@ export class register extends Component {
     });
   }
 
+
   submituserRegistrationForm(e) {
     e.preventDefault();
     if (this.validateForm()) {
       let fields = {};
-      fields["name"] = "";
+      fields["fname"] = "";
+      fields["lname"]="";
       fields["email"] = "";
-      fields["phone"] = "";
-      fields["otp"] = "";
       fields["password"] = "";
-      fields["otp"] = "";
       let user = {
-        name: this.state.fields.name,
+        fname: this.state.fields.fname,
+        lname: this.state.fields.lname,
         email: this.state.fields.email,
-        phone: this.state.fields.phone,
         password: this.state.fields.password
       };
       this.props.createUsers(user);
@@ -76,9 +75,9 @@ export class register extends Component {
     if (this.props.userVerify(user)) {
       this.submituserRegistrationForm();
       this.setState({
-        name: "",
+        fname: "",
+        lname: "",
         email: "",
-        phone: "",
         password: ""
       });
     }
@@ -89,15 +88,27 @@ export class register extends Component {
     let errors = {};
     let formIsValid = true;
 
-    if (!fields["name"]) {
+    if (!fields["fname"]) {
       formIsValid = false;
-      errors["name"] = "*Please enter your name.";
+      errors["fname"] = "*Please enter your First name.";
     }
 
-    if (typeof fields["name"] !== "undefined") {
-      if (!fields["name"].match(/^[a-zA-Z ]*$/)) {
+    if (typeof fields["fname"] !== "undefined") {
+      if (!fields["fname"].match(/^[a-zA-Z ]*$/)) {
         formIsValid = false;
-        errors["name"] = "*Please enter alphabet characters only.";
+        errors["fname"] = "*Please enter alphabet characters only.";
+      }
+    }
+
+    if (!fields["lname"]) {
+      formIsValid = false;
+      errors["lname"] = "*Please enter your Last name.";
+    }
+
+    if (typeof fields["lname"] !== "undefined") {
+      if (!fields["lname"].match(/^[a-zA-Z ]*$/)) {
+        formIsValid = false;
+        errors["lname"] = "*Please enter alphabet characters only.";
       }
     }
 
@@ -117,29 +128,6 @@ export class register extends Component {
       }
     }
 
-    if (!fields["phone"]) {
-      formIsValid = false;
-      errors["phone"] = "*Please enter your mobile no.";
-    }
-
-    if (typeof fields["phone"] !== "undefined") {
-      if (!fields["phone"].match(/^[0-9]{10}$/)) {
-        formIsValid = false;
-        errors["phone"] = "*Please enter valid mobile no.";
-      }
-    }
-
-    if (!fields["otp"]) {
-      formIsValid = false;
-      errors["otp"] = "*Please enter OTP";
-    }
-
-    if (typeof fields["otp"] !== "undefined") {
-      if (!fields["otp"].match(/^[0-9]{1,4}$/)) {
-        formIsValid = false;
-        errors["otp"] = "*Please enter valid OTP.";
-      }
-    }
 
     if (!fields["password"]) {
       formIsValid = false;
@@ -191,9 +179,19 @@ export class register extends Component {
                 {/* <br /> */}
                 <input
                   type="text"
-                  name="name"
-                  placeholder=" Enter Username"
-                  value={this.state.fields.name}
+                  name="fname"
+                  placeholder=" Enter First Name "
+                  value={this.state.fields.fname}
+                  onChange={this.handleChange}
+                />
+              </p>
+              <p>
+                {/* <br /> */}
+                <input
+                  type="text"
+                  name="lname"
+                  placeholder=" Enter Last Name "
+                  value={this.state.fields.lname}
                   onChange={this.handleChange}
                 />
               </p>
@@ -204,16 +202,6 @@ export class register extends Component {
                   name="email"
                   placeholder=" Enter Email-Id"
                   value={this.state.fields.email}
-                  onChange={this.handleChange}
-                />
-              </p>
-              <p>
-                <div className="errorMsg">{this.state.errors.email}</div>
-                <input
-                  type="text"
-                  name="phone"
-                  placeholder=" Enter Mobile No"
-                  value={this.state.fields.phone}
                   onChange={this.handleChange}
                 />
               </p>
@@ -240,30 +228,6 @@ export class register extends Component {
               <p>
                 <div className="errorMsg">{this.state.errors.confirm}</div>
               </p>
-
-              {this.state.show_otp_field === true ? (
-                <div>
-                  <input
-                    type="text"
-                    name="otp"
-                    placeholder="Enter OTP"
-                    value={this.state.fields.otp}
-                    onChange={this.handleChange}
-                  />
-                  <div className="errorMsg">{this.state.errors.otp}</div>
-                  <p>
-                    <button
-                      // style={{ width: 1 + "em" }}
-                      className="otp"
-                      style={{ marginTop: 2 + "em" }}
-                      onChange={this.handleChange}
-                      onClick={this.userVerify}
-                    >
-                      Verify
-                    </button>
-                  </p>
-                </div>
-              ) : (
                 <button
                   // style={{ width: 1 + "em" }}
                   className="otp"
@@ -273,7 +237,6 @@ export class register extends Component {
                 >
                   Register
                 </button>
-              )}
               <p>
                 {" "}
                 ALREADY HAVE AN ACCOUNT? <Link to="/login">LOGIN</Link>
