@@ -31,7 +31,7 @@ import {
   
   export const createUsers = users => dispatch => {
     axios
-      .post("http://localhost:7000/api/users/signup", users)
+      .post("http://localhost:8080/user/registration", users)
       .then(res => {
         dispatch({
           type: CREATE_USERS
