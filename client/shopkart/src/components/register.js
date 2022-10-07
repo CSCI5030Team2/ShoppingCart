@@ -4,160 +4,133 @@ import { Link } from "react-router-dom";
 import Navbar from "./Navbar";
 
 import {
-  getUsers,
   createUsers,
-  emailVerify,
-  userVerify
 } from "../actions/users";
 // import "../register.css";
 
+const initialState = {
+  firstName:"",
+  lastName:"",
+  email:"",
+  password:"",
+  confirmPassword:"",
+  firstNameError:"",
+  lastNameError:"",
+  emailError:"",
+  passwordError:"",
+  confirmPasswordError:""
+};
+
 export class register extends Component {
-  constructor() {
-    super();
-    this.state = {
-      fields: {},
-      errors: {}
-    };
-    this.onVerify = this.onVerify.bind(this);
-    this.userVerify = this.userVerify.bind(this);
-    this.handleChange = this.handleChange.bind(this);
-    this.submituserRegistrationForm = this.submituserRegistrationForm.bind(
-      this
-    );
+  constructor(props) {
+    super(props);
+    this.handleSubmit = this.handleSubmit.bind(this);
+    this.onRegister = this.onRegister.bind(this)
+  }
+  state={
+    initialState
+  };
+
+  OnChange = event => {
+    this.setState({ [event.target.name]: event.target.value });
+  };
+
+ validate = () => {
+  let firstNameError ="";
+  let lastNameError = "";
+  let emailError = "";
+  let passwordError = "";
+  let confirmPasswordError = "";
+  if(!this.state.firstName){
+    firstNameError="Please enter first name "
+  }
+  if(!this.state.lastName){
+    lastNameError = "Please Enter Last Name "
+  }
+  // eslint-disable-next-line eqeqeq
+  // if(this.state.password != this.state.confirmPassword){
+  //   confirmPasswordError="Passwords do not match"
+  // }
+  if (
+    !this.state.email ||
+    this.state.email.length <= 5 ||
+    !this.state.email.includes("@") ||
+    !this.state.email.includes(".")
+  ) {
+    emailError = "Email Field Incorrect";
+  }
+  if (!this.state.password || this.state.password.length <= 5) {
+    passwordError = "Enter Password Correctly";
   }
 
-  componentDidMount() {
-    this.props.getUsers();
+  if (emailError || passwordError) {
+    this.setState({confirmPasswordError:confirmPasswordError, firstNameError:firstNameError,lastNameError:lastNameError, emailError: emailError, passwordError: passwordError });
+
+    return false;
   }
+  return true;
+};
 
-  handleChange(e) {
-    let fields = this.state.fields;
-    fields[e.target.name] = e.target.value;
-    this.setState({
-      fields
-    });
+
+
+ handleSubmit = event => {
+  event.preventDefault();
+  const isValid = this.validate();
+  if(isValid){
+    console.log(this.state)
+    this.setState(initialState)
   }
+ }
 
 
-  submituserRegistrationForm(e) {
+  onRegister = e => {
     e.preventDefault();
-    if (this.validateForm()) {
-      let fields = {};
-      fields["fname"] = "";
-      fields["lname"]="";
-      fields["email"] = "";
-      fields["password"] = "";
+    const isValid = this.validate();
+    if(isValid){
       let user = {
-        fname: this.state.fields.fname,
-        lname: this.state.fields.lname,
-        email: this.state.fields.email,
-        password: this.state.fields.password
+        firstName: this.state.firstName,
+        lastName: this.state.lastName,
+        email: this.state.email,
+        password: this.state.password
       };
       this.props.createUsers(user);
-      alert("Form submitted");
-    }
-  }
-
-  onVerify() {
-    let user = {
-      email: this.state.fields.email
-    };
-    this.props.emailVerify(user);
-    this.setState({
-      show_otp_field: true
-    });
-  }
-
-  userVerify() {
-    let user = {
-      otp: this.state.fields.otp
-    };
-    if (this.props.userVerify(user)) {
-      this.submituserRegistrationForm();
       this.setState({
-        fname: "",
-        lname: "",
-        email: "",
-        password: ""
-      });
-    }
+        firstName:"",
+        lastName:"",
+        email:"",
+        password:""
+      })
+      alert("Form submitted");
   }
+}
 
-  validateForm() {
-    let fields = this.state.fields;
-    let errors = {};
-    let formIsValid = true;
+  // onVerify() {
+  //   let user = {
+  //     email: this.state.fields.email
+  //   };
+  //   this.props.emailVerify(user);
+  //   // this.setState({
+  //   //   show_otp_field: true
+  //   // });
+  // }
 
-    if (!fields["fname"]) {
-      formIsValid = false;
-      errors["fname"] = "*Please enter your First name.";
-    }
+  // userVerify() {
+  //   // let user = {
+  //   //   otp: this.state.fields.otp
+  //   // };
+  //   // if (this.props.userVerify(user)) {
+  //     this.submituserRegistrationForm();
+  //     this.setState({
+  //       firstName: "",
+  //       lastName: "",
+  //       email: "",
+  //       password: ""
+  //     });
+  //   }
 
-    if (typeof fields["fname"] !== "undefined") {
-      if (!fields["fname"].match(/^[a-zA-Z ]*$/)) {
-        formIsValid = false;
-        errors["fname"] = "*Please enter alphabet characters only.";
-      }
-    }
-
-    if (!fields["lname"]) {
-      formIsValid = false;
-      errors["lname"] = "*Please enter your Last name.";
-    }
-
-    if (typeof fields["lname"] !== "undefined") {
-      if (!fields["lname"].match(/^[a-zA-Z ]*$/)) {
-        formIsValid = false;
-        errors["lname"] = "*Please enter alphabet characters only.";
-      }
-    }
-
-    if (!fields["email"]) {
-      formIsValid = false;
-      errors["email"] = "*Please enter your email-ID.";
-    }
-
-    if (typeof fields["email"] !== "undefined") {
-      //regular expression for email validation
-      var pattern = new RegExp(
-        /^(("[\w-\s]+")|([\w-]+(?:\.[\w-]+)*)|("[\w-\s]+")([\w-]+(?:\.[\w-]+)*))(@((?:[\w-]+\.)*\w[\w-]{0,66})\.([a-z]{2,6}(?:\.[a-z]{2})?)$)|(@\[?((25[0-5]\.|2[0-4][0-9]\.|1[0-9]{2}\.|[0-9]{1,2}\.))((25[0-5]|2[0-4][0-9]|1[0-9]{2}|[0-9]{1,2})\.){2}(25[0-5]|2[0-4][0-9]|1[0-9]{2}|[0-9]{1,2})\]?$)/i
-      );
-      if (!pattern.test(fields["email"])) {
-        formIsValid = false;
-        errors["email"] = "*Please enter valid email-ID.";
-      }
-    }
-
-
-    if (!fields["password"]) {
-      formIsValid = false;
-      errors["password"] = "*Please enter your password.";
-    }
-
-    // if (fields["password"] != fields["confirm"]) {
-    //   formIsValid = false;
-    //   errors["confirm"] = "*Password don't match.";
-    // }
-
-    if (typeof fields["password"] !== "undefined") {
-      if (
-        !fields["password"].match(
-          /^.*(?=.{8,})(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[@#$%&]).*$/
-        )
-      ) {
-        formIsValid = false;
-        errors["password"] = "*Please enter secure and strong password.";
-      }
-    }
-
-    this.setState({
-      errors: errors
-    });
-    return formIsValid;
-  }
 
   render() {
-    // console.log(this.props.users);
+    console.log(this.props);
     return (
       <div>
         <Navbar />
@@ -179,61 +152,71 @@ export class register extends Component {
                 {/* <br /> */}
                 <input
                   type="text"
-                  name="fname"
+                  name="firstName"
                   placeholder=" Enter First Name "
-                  value={this.state.fields.fname}
-                  onChange={this.handleChange}
+                  value={this.state.firstName}
+                  onChange= {this.OnChange}
+                  required
                 />
               </p>
               <p>
                 {/* <br /> */}
                 <input
                   type="text"
-                  name="lname"
+                  name="lastName"
                   placeholder=" Enter Last Name "
-                  value={this.state.fields.lname}
-                  onChange={this.handleChange}
+                  value={this.state.lastName}
+                  onChange={this.OnChange}
+                  required
                 />
               </p>
-              <p>
-                <div className="errorMsg">{this.state.errors.name}</div>
+              <p>  
                 <input
                   type="text"
                   name="email"
                   placeholder=" Enter Email-Id"
-                  value={this.state.fields.email}
-                  onChange={this.handleChange}
+                  value={this.state.email}
+                  onChange={this.OnChange}
+                  required
                 />
               </p>
               <p>
-                <div className="errorMsg">{this.state.errors.phone}</div>
                 <input
-                  type="text"
+                  type="password"
                   name="password"
                   placeholder=" Enter Password"
-                  value={this.state.fields.password}
-                  onChange={this.handleChange}
+                  value={this.state.password}
+                  onChange={this.OnChange}
+                  required
                 />
               </p>
               <p>
-                <div className="errorMsg">{this.state.errors.password}</div>
                 <input
-                  type="text"
+                  type="password"
                   name="confirmpassword"
                   placeholder=" Re-Enter Password"
-                  value={this.state.fields.confirmpassword}
-                  onChange={this.handleChange}
+                  value={this.state.confirmpassword}
+                  onChange={this.OnChange}
+                  required
                 />
               </p>
               <p>
-                <div className="errorMsg">{this.state.errors.confirm}</div>
+              <div className="registererror" style={{ fontSize: 15, color: "red" }}>
+              {/* dispatch error from node -yash */}
+              {this.props.error ? (
+                <>
+                  <p>{this.props.error}</p>
+                </>
+              ) : (
+                <p>{this.state.confirmPasswordError||this.state.firstNameError||this.state.lastNameError||this.state.emailError || this.state.passwordError}</p>
+              )}
+            </div>
               </p>
                 <button
-                  // style={{ width: 1 + "em" }}
-                  className="otp"
+                  // style={{ width: 1 + "em"  className="otp"
                   style={{ marginTop: 2 + "em" }}
                   onChange={this.handleChange}
-                  onClick={this.onVerify}
+                  onClick={this.onRegister}
                 >
                   Register
                 </button>
@@ -250,10 +233,10 @@ export class register extends Component {
 }
 
 const mapStateToProps = state => ({
-  users: state.userreducer.users
+  users: state.userReducer.users
 });
 
 export default connect(
   mapStateToProps,
-  { getUsers, createUsers, emailVerify, userVerify }
+  {createUsers}
 )(register);
