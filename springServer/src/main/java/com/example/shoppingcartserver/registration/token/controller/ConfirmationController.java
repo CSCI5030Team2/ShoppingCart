@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.*;
  * @author aiden
  */
 @RestController
+@CrossOrigin
 @RequestMapping(path="/user/confirm")
 @AllArgsConstructor
 public class ConfirmationController {

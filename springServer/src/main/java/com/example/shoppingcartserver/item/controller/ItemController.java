@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.*;
  * @author aiden
  */
 @RestController
+@CrossOrigin
 @AllArgsConstructor
 @RequestMapping(path = "/item")
 public class ItemController {
