@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { getProducts, createProducts } from "../actions/products";
+import {createProducts } from "../actions/products";
 import { connect } from "react-redux";
 import AdminNavbar from "./AdminNavbar";
 import { Link } from "react-router-dom";
@@ -12,11 +12,9 @@ export class CreateProduct extends Component {
 
 
   state = {
-    name: "",
+    itemName: "",
+    quantity: "",
     price: "",
-    category: "",
-    description: "",
-    quantity: ""
   };
 
   onChange = event => {
@@ -25,23 +23,20 @@ export class CreateProduct extends Component {
 
   onCreate() {
     let product = {
-      name: this.state.name,
+      itemName: this.state.itemName,
+      quantity: this.state.quantity,
       price: this.state.price,
-      category: this.state.category,
-      description: this.state.description,
-      quantity: this.state.quantity
     };
     this.props.createProducts(product);
     this.setState({
-      name: "",
+      itemName: "",
+      quantity: "",
       price: "",
-      category: "",
-      description: "",
-      quantity: ""
     });
   }
 
   render() {
+    console.log(this.props)
     return (
       <div>
         <AdminNavbar />
@@ -55,54 +50,34 @@ export class CreateProduct extends Component {
           <p>
             <input
               type="text"
-              name="name"
-              placeholder=" Product Name"
+              name="itemName"
+              placeholder=" Enter Product Name"
               onChange={this.onChange}
-              value={this.state.name}
-            />
-          </p>
-          <p>
-            <input
-              type="text"
-              name="price"
-              placeholder=" Product Price"
-              onChange={this.onChange}
-              value={this.state.price}
-            />{" "}
-          </p>
-          <p>
-            <input
-              type="text"
-              name="category"
-              placeholder=" Product Category"
-              onChange={this.onChange}
-              value={this.state.category}
-            />
-          </p>
-          <p>
-            <input
-              type="text"
-              name="description"
-              placeholder=" Product Description"
-              onChange={this.onChange}
-              value={this.state.description}
+              value={this.state.itemName}
             />
           </p>
           <p>
             <input
               type="text"
               name="quantity"
-              placeholder=" Product Quantity"
+              placeholder="Enter Quantity"
               onChange={this.onChange}
               value={this.state.quantity}
+            />{" "}
+          </p>
+          <p>
+            <input
+              type="text"
+              name="price"
+              placeholder="Enter Price"
+              onChange={this.onChange}
+              value={this.state.price}
             />
           </p>
           <p>
-            <Link to="/displayproducts">
               <button onChange={this.onChange} onClick={this.onCreate}>
                 Create
               </button>
-            </Link>
           </p>
           {/* </form> */}
         </div>
@@ -117,5 +92,5 @@ const mapStateToProps = state => ({
 
 export default connect(
   mapStateToProps,
-  { getProducts, createProducts }
+  { createProducts }
 )(CreateProduct);
