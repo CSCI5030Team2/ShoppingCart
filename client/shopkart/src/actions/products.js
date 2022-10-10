@@ -27,7 +27,7 @@ import {
   
   export const createProducts = PRODUCTS => dispatch => {
     axios
-      .post("http://localhost:7000/api/products/new", PRODUCTS,
+      .post("http://localhost:8080/admin/item", PRODUCTS,
     //    {
     //     headers: { Authorization: `Bearer ${localStorage.getItem("token")}` }
     //   }
@@ -37,7 +37,7 @@ import {
           type: CREATE_PRODUCTS
         });
         alert("Added one product successfully");
-        dispatch(getProducts());
+        // dispatch(getProducts());
       })
       .catch(err => {
         console.log(err);
