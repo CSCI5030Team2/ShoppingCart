@@ -47,10 +47,10 @@ export class register extends Component {
   if(!this.state.lastName){
     lastNameError = "Please Enter Last Name "
   }
-  // eslint-disable-next-line eqeqeq
-  // if(this.state.password != this.state.confirmPassword){
-  //   confirmPasswordError="Passwords do not match"
-  // }
+
+  if(!this.state.password == !this.state.confirmPassword){
+    confirmPasswordError="Passwords do not match"
+  }
   if (
     !this.state.email ||
     this.state.email.length <= 5 ||
@@ -60,10 +60,10 @@ export class register extends Component {
     emailError = "Email Field Incorrect";
   }
   if (!this.state.password || this.state.password.length <= 5) {
-    passwordError = "Enter Password Correctly";
+    passwordError = "Password should be 5 characters long ";
   }
 
-  if (emailError || passwordError) {
+  if (emailError || passwordError || firstNameError || lastNameError || confirmPasswordError) {
     this.setState({confirmPasswordError:confirmPasswordError, firstNameError:firstNameError,lastNameError:lastNameError, emailError: emailError, passwordError: passwordError });
 
     return false;
@@ -98,7 +98,8 @@ export class register extends Component {
         firstName:"",
         lastName:"",
         email:"",
-        password:""
+        password:"",
+        confirmpassword:""
       })
       alert("Form submitted");
   }
