@@ -60,7 +60,7 @@ export class register extends Component {
     emailError = "Email Field Incorrect";
   }
   if (!this.state.password || this.state.password.length <= 5) {
-    passwordError = "Enter Password Correctly";
+    passwordError = "Your password must be atleast 6 characters";
   }
 
   if (emailError || passwordError) {
