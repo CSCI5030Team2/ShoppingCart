@@ -5,54 +5,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="c7f2fea6-a65f-4fe1-826d-5e8c306d44ca" name="Changes" comment="Add: Registration feature, post api for storing user info to database">
-      <change afterPath="$PROJECT_DIR$/../.vscode/settings.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../client/shopkart/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/../client/shopkart/package-lock.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../client/shopkart/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/../client/shopkart/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../client/shopkart/src/actions/users.js" beforeDir="false" afterPath="$PROJECT_DIR$/../client/shopkart/src/actions/users.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../client/shopkart/src/components/register.js" beforeDir="false" afterPath="$PROJECT_DIR$/../client/shopkart/src/components/register.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../client/shopkart/src/reducers/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/../client/shopkart/src/reducers/index.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/jpa-buddy.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/jpa-buddy.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/shoppingcartserver/registration/RegistrationController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/shoppingcartserver/registration/RegistrationController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/application.yml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/application.yml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/application.yml" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/application.yml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/example/shoppingcartserver/ShoppingCartServer.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/shoppingcartserver/ShoppingCartServer.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/example/shoppingcartserver/appuser/AppUser.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/shoppingcartserver/appuser/AppUser.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/example/shoppingcartserver/appuser/AppUserRepository.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/shoppingcartserver/appuser/AppUserRepository.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/example/shoppingcartserver/appuser/AppUserRole.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/shoppingcartserver/appuser/AppUserRole.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/example/shoppingcartserver/appuser/AppUserServiceImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/shoppingcartserver/appuser/AppUserServiceImpl.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/example/shoppingcartserver/cart/CartItem.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/shoppingcartserver/cart/CartItem.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/example/shoppingcartserver/cart/CartRepository.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/shoppingcartserver/cart/CartRepository.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/example/shoppingcartserver/cart/CartService.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/shoppingcartserver/cart/CartService.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/example/shoppingcartserver/cart/controller/CartController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/shoppingcartserver/cart/controller/CartController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/example/shoppingcartserver/cart/request/AddToCartRequest.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/shoppingcartserver/cart/request/AddToCartRequest.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/example/shoppingcartserver/cart/request/CheckoutCartRequest.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/shoppingcartserver/cart/request/CheckoutCartRequest.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/example/shoppingcartserver/cart/request/GetCartRequest.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/shoppingcartserver/cart/request/GetCartRequest.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/example/shoppingcartserver/cart/request/UpdateCartRequest.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/shoppingcartserver/cart/request/UpdateCartRequest.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/example/shoppingcartserver/email/EmailSender.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/shoppingcartserver/email/EmailSender.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/example/shoppingcartserver/email/EmailService.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/shoppingcartserver/email/EmailService.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/example/shoppingcartserver/email/EmailValidator.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/shoppingcartserver/email/EmailValidator.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/example/shoppingcartserver/item/Item.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/shoppingcartserver/item/Item.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/example/shoppingcartserver/item/ItemRepository.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/shoppingcartserver/item/ItemRepository.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/example/shoppingcartserver/item/ItemService.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/shoppingcartserver/item/ItemService.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/example/shoppingcartserver/item/controller/AdminItemController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/shoppingcartserver/item/controller/AdminItemController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/example/shoppingcartserver/item/controller/ItemController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/shoppingcartserver/item/controller/ItemController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/example/shoppingcartserver/item/controller/UserItemController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/shoppingcartserver/item/controller/UserItemController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/example/shoppingcartserver/item/request/AddItemRequest.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/shoppingcartserver/item/request/AddItemRequest.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/example/shoppingcartserver/item/request/BuyItemRequest.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/shoppingcartserver/item/request/BuyItemRequest.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/example/shoppingcartserver/item/request/DeleteItemRequest.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/shoppingcartserver/item/request/DeleteItemRequest.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/example/shoppingcartserver/registration/RegistrationController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/shoppingcartserver/registration/RegistrationController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/example/shoppingcartserver/registration/RegistrationRequest.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/shoppingcartserver/registration/RegistrationRequest.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/example/shoppingcartserver/registration/RegistrationService.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/shoppingcartserver/registration/RegistrationService.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/example/shoppingcartserver/registration/token/ConfirmationToken.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/shoppingcartserver/registration/token/ConfirmationToken.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/example/shoppingcartserver/registration/token/ConfirmationTokenRepository.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/shoppingcartserver/registration/token/ConfirmationTokenRepository.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/example/shoppingcartserver/registration/token/ConfirmationTokenService.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/shoppingcartserver/registration/token/ConfirmationTokenService.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/example/shoppingcartserver/registration/token/controller/ConfirmationController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/shoppingcartserver/registration/token/controller/ConfirmationController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/example/shoppingcartserver/registration/token/request/ConfirmationRequest.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/shoppingcartserver/registration/token/request/ConfirmationRequest.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/example/shoppingcartserver/security/PasswordEncoder.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/shoppingcartserver/security/PasswordEncoder.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/example/shoppingcartserver/security/config/WebSecurityConfig.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/shoppingcartserver/security/config/WebSecurityConfig.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/test-classes/com/example/shoppingcartserver/email/EmailServiceTest.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/test-classes/com/example/shoppingcartserver/email/EmailServiceTest.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/shoppingcartserver/ShoppingCartServer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/shoppingcartserver/ShoppingCartServer.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -74,10 +29,23 @@
     </option>
   </component>
   <component name="Git.Settings">
+    <excluded-from-favorite>
+      <branch-storage>
+        <map>
+          <entry type="REMOTE">
+            <value>
+              <list>
+                <branch-info repo="$PROJECT_DIR$/.." source="origin/master" />
+              </list>
+            </value>
+          </entry>
+        </map>
+      </branch-storage>
+    </excluded-from-favorite>
     <branch-grouping />
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
-        <entry key="$PROJECT_DIR$/.." value="Cart" />
+        <entry key="$PROJECT_DIR$/.." value="master" />
       </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
@@ -127,9 +95,15 @@
   </component>
   <component name="PropertiesComponent">{
   &quot;keyToString&quot;: {
+    &quot;RequestMappingsPanelOrder0&quot;: &quot;0&quot;,
+    &quot;RequestMappingsPanelOrder1&quot;: &quot;1&quot;,
+    &quot;RequestMappingsPanelWidth0&quot;: &quot;75&quot;,
+    &quot;RequestMappingsPanelWidth1&quot;: &quot;75&quot;,
     &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
     &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;last_opened_file_path&quot;: &quot;D:/shopping_app/springServer&quot;
+    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/vivek/OneDrive/Documents/softwaredevelopment/ShoppingCart/springServer&quot;,
+    &quot;spring.configuration.checksum&quot;: &quot;d534fea81fbc79d1d3d987028632688e&quot;
   }
 }</component>
   <component name="RecentsManager">
@@ -148,7 +122,14 @@
       <recent name="com.example.shoppingcartserver.cart.request" />
     </key>
   </component>
-  <component name="RunManager" selected="Application.ShoppingCartServer">
+  <component name="RunDashboard">
+    <option name="configurationTypes">
+      <set>
+        <option value="SpringBootApplicationConfigurationType" />
+      </set>
+    </option>
+  </component>
+  <component name="RunManager" selected="Spring Boot.ShoppingCartServer (1)">
     <configuration name="ShoppingCartServer" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="com.example.shoppingcartserver.ShoppingCartServer" />
       <module name="springServer" />
@@ -158,21 +139,6 @@
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="ShoppingCartServerTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="ShoppingCartServer" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="com.example.shoppingcartserver.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="com.example.shoppingcartserver" />
-      <option name="MAIN_CLASS_NAME" value="com.example.shoppingcartserver.ShoppingCartServerTest" />
-      <option name="TEST_OBJECT" value="class" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -235,10 +201,22 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <configuration name="ShoppingCartServer (1)" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" temporary="true" nameIsGenerated="true">
+      <module name="springServer" />
+      <option name="SPRING_BOOT_MAIN_CLASS" value="com.example.shoppingcartserver.ShoppingCartServer" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.example.shoppingcartserver.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <configuration name="ShoppingCartServer" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot">
       <module name="ShoppingCartServer" />
       <option name="SPRING_BOOT_MAIN_CLASS" value="com.example.shoppingcartserver.ShoppingCartServer" />
-      <option name="ALTERNATIVE_JRE_PATH" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -247,16 +225,17 @@
       <item itemvalue="Application.ShoppingCartServer" />
       <item itemvalue="JUnit.ShoppingCartServerTestsItem" />
       <item itemvalue="JUnit.ShoppingCartServerTestItem" />
-      <item itemvalue="JUnit.ShoppingCartServerTest" />
       <item itemvalue="JUnit.ShoppingCartServerTests" />
+      <item itemvalue="Spring Boot.ShoppingCartServer" />
+      <item itemvalue="Spring Boot.ShoppingCartServer (1)" />
     </list>
     <recent_temporary>
       <list>
+        <item itemvalue="Spring Boot.ShoppingCartServer (1)" />
         <item itemvalue="Application.ShoppingCartServer" />
         <item itemvalue="JUnit.ShoppingCartServerTestItem" />
         <item itemvalue="JUnit.ShoppingCartServerTestsItem" />
         <item itemvalue="JUnit.ShoppingCartServerTests" />
-        <item itemvalue="JUnit.ShoppingCartServerTest" />
       </list>
     </recent_temporary>
   </component>
@@ -269,6 +248,10 @@
       <option name="presentableId" value="Default" />
       <updated>1664449670518</updated>
       <workItem from="1664449673341" duration="21354000" />
+      <workItem from="1665432810449" duration="3539000" />
+      <workItem from="1665463329273" duration="214000" />
+      <workItem from="1665510008154" duration="1554000" />
+      <workItem from="1665513456984" duration="3311000" />
     </task>
     <task id="LOCAL-00001" summary="Add: Backend initial state setup">
       <created>1664453115889</created>
