@@ -118,6 +118,7 @@ The above interface provides the additional api for finding users with the same 
 
 @RestController
 @AllArgsConstructor
+@CrossOrigin
 @RequestMapping(path = "/user/item")
 public class ItemController {
 
@@ -127,7 +128,7 @@ public class ItemController {
 `@RestController` tells spring this is a rest controller
 `@AllArgsConstructor` provides convenient object init utils
 `@RequestMapping` given path, this class handles all requests(Post Get... ) from http://localhost:8080/user/item/
-
+`@CrossOrigin` allows the frontend to send request 
 
 then the addItem method will utilize repository to persistent data into the database
 
