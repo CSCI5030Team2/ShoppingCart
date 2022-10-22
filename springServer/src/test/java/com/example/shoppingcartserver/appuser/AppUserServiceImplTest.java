@@ -46,11 +46,10 @@ class AppUserServiceImplTest {
     void loadUserByUsername() {
         appUser = new AppUser();
         appUser.setId(12L);
-        appUser.setEmail("vponugoti2@slu.edu");
+        appUser.setEmail("viv@slu.edu");
 
         Mockito.when(appUserRepository.findByEmail(Mockito.anyString())).thenReturn(Optional.of(appUser));
-        UserDetails user = appUserServiceImpl.loadUserByUsername("vponugoti2@slu.edu");
-
+        UserDetails user = appUserServiceImpl.loadUserByUsername("viv@slu.edu");
         assertTrue(true);
     }
 
@@ -61,7 +60,24 @@ class AppUserServiceImplTest {
     }
 
     @Test
-    void signUpUser() {
+    void signupUser() {
+
+        // given
+
+        //when
+
+        //then
+
+//        Mockito.when(appUserRepository.findByEmail(Mockito.anyString())).thenReturn(Optional.of(appUser));
+//        UserDetails user = appUserServiceImpl.loadUserByUsername("vponugoti1@slu.edu");
+//        Mockito.when(appUserRepository.existsById(12L)).thenReturn(Boolean.TRUE);
+
+    }
+
+    @Test
+    void signUpUserExist() {
+
+
 
     }
 }
