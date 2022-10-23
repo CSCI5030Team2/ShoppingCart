@@ -79,8 +79,10 @@ export class CreateProduct extends Component {
                 Create
               </button>
           </p>
+         
           {/* </form> */}
         </div>
+        <button>Add Product</button>
       </div>
     );
   }
