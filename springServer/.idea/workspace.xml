@@ -5,12 +5,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="c7f2fea6-a65f-4fe1-826d-5e8c306d44ca" name="Changes" comment="Add: Registration feature, post api for storing user info to database">
-      <change beforePath="$PROJECT_DIR$/../client/shopkart/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/../client/shopkart/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../client/shopkart/src/actions/products.js" beforeDir="false" afterPath="$PROJECT_DIR$/../client/shopkart/src/actions/products.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../client/shopkart/src/components/Navigation.js" beforeDir="false" afterPath="$PROJECT_DIR$/../client/shopkart/src/components/Navigation.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../client/shopkart/src/reducers/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/../client/shopkart/src/reducers/index.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../client/shopkart/src/reducers/productReducer.js" beforeDir="false" afterPath="$PROJECT_DIR$/../client/shopkart/src/reducers/productReducer.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../client/shopkart/src/actions/tests/users.test.js" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
