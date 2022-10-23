@@ -154,7 +154,7 @@ export class register extends Component {
                 <input
                   type="text"
                   name="firstName"
-                  placeholder=" Enter First Name "
+                  placeholder="Enter First Name"
                   value={this.state.firstName}
                   onChange= {this.OnChange}
                   required
@@ -165,7 +165,7 @@ export class register extends Component {
                 <input
                   type="text"
                   name="lastName"
-                  placeholder=" Enter Last Name "
+                  placeholder="Enter Last Name"
                   value={this.state.lastName}
                   onChange={this.OnChange}
                   required
@@ -175,7 +175,7 @@ export class register extends Component {
                 <input
                   type="text"
                   name="email"
-                  placeholder=" Enter Email-Id"
+                  placeholder="Enter Email-Id"
                   value={this.state.email}
                   onChange={this.OnChange}
                   required
@@ -185,7 +185,7 @@ export class register extends Component {
                 <input
                   type="password"
                   name="password"
-                  placeholder=" Enter Password"
+                  placeholder="Enter Password"
                   value={this.state.password}
                   onChange={this.OnChange}
                   required
@@ -195,7 +195,7 @@ export class register extends Component {
                 <input
                   type="password"
                   name="confirmpassword"
-                  placeholder=" Re-Enter Password"
+                  placeholder="Re-Enter Password"
                   value={this.state.confirmpassword}
                   onChange={this.OnChange}
                   required
