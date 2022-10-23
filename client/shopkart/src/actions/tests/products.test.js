@@ -1,5 +1,5 @@
-import * as action from "../users";
-import { GET_USERS } from "../types";
+import * as action from "../products";
+import { GET_PRODUCTS } from "../types";
 import moxios from "moxios";
 import configureMockStore from "redux-mock-store";
 import thunk from "redux-thunk";
@@ -15,9 +15,9 @@ describe("Testing contacts actions", () => {
     moxios.uninstall();
   });
 
-  it("should create an action with type GET_USERS and the payload sgould be same as the API response when the response is 20*", () => {
+  it("should create an action with type GET_PRODUCTS and the payload should be same as the API response when the response is 20*", () => {
     const responseofAPI = [{}, {}, {}];
-    moxios.stubRequest("http://localhost:7000/api/users/users", {
+    moxios.stubRequest("http://localhost:8080/item", {
       status: 200,
       response: { data: responseofAPI }
     });
@@ -25,25 +25,25 @@ describe("Testing contacts actions", () => {
     const store = mockStore({});
     const expectedActions = [
       {
-        type: GET_USERS,
+        type: GET_PRODUCTS,
         payload: responseofAPI
       }
     ];
-    return store.dispatch(action.getUsers()).then(() => {
+    return store.dispatch(action.getProducts()).then(() => {
       expect(store.getActions()).toEqual(expectedActions);
     });
   });
 
-  it("should go into catch with type GET_USERS and the payload should be same as the API response when the response is 40*", () => {
+  it("should go into catch with type GET_PRODUCTS and the payload should be same as the API response when the response is 40*", () => {
     const responseofAPI = [{}, {}, {}];
-    moxios.stubRequest("http://localhost:7000/api/users/users", {
+    moxios.stubRequest("http://localhost:8080/items", {
       status: 400,
       response: { data: responseofAPI }
     });
 
     const store = mockStore({});
     const expectedActions = [];
-    return store.dispatch(action.getUsers()).then(() => {
+    return store.dispatch(action.getProducts()).then(() => {
       expect(store.getActions()).toEqual(expectedActions);
     });
   });
