@@ -26,14 +26,13 @@
 					"raw": ""
 				},
 				"url": {
-					"raw": "http://localhost:8080/user/item/",
+					"raw": "http://localhost:8080/item/",
 					"protocol": "http",
 					"host": [
 						"localhost"
 					],
 					"port": "8080",
 					"path": [
-						"user",
 						"item",
 						""
 					]
@@ -99,36 +98,6 @@
 					"path": [
 						"user",
 						"registration"
-					]
-				}
-			},
-			"response": []
-		},
-		{
-			"name": "registration confirm",
-			"request": {
-				"method": "POST",
-				"header": [
-					{
-						"key": "Content-Type",
-						"value": "application/json",
-						"type": "text"
-					}
-				],
-				"body": {
-					"mode": "raw",
-					"raw": "{\n    \"email\": \"zbh321412@gmail.com\",\n    \"token\": \"c639aac4-df01-447e-bae9-e2479ccfc505\"\n}"
-				},
-				"url": {
-					"raw": "http://localhost:8080/user/confirm",
-					"protocol": "http",
-					"host": [
-						"localhost"
-					],
-					"port": "8080",
-					"path": [
-						"user",
-						"confirm"
 					]
 				}
 			},
