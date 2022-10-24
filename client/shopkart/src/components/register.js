@@ -47,10 +47,10 @@ export class register extends Component {
   if(!this.state.lastName){
     lastNameError = "Please Enter Last Name "
   }
-  // eslint-disable-next-line eqeqeq
-  // if(this.state.password != this.state.confirmPassword){
-  //   confirmPasswordError="Passwords do not match"
-  // }
+
+  if(!this.state.password === !this.state.confirmPassword){
+    confirmPasswordError="Passwords do not match"
+  }
   if (
     !this.state.email ||
     this.state.email.length <= 5 ||
@@ -60,10 +60,10 @@ export class register extends Component {
     emailError = "Email Field Incorrect";
   }
   if (!this.state.password || this.state.password.length <= 5) {
-    passwordError = "Your password must be atleast 6 characters";
+    passwordError = "Password should be 5 characters long ";
   }
 
-  if (emailError || passwordError) {
+  if (emailError || passwordError || firstNameError || lastNameError || confirmPasswordError) {
     this.setState({confirmPasswordError:confirmPasswordError, firstNameError:firstNameError,lastNameError:lastNameError, emailError: emailError, passwordError: passwordError });
 
     return false;
@@ -98,7 +98,8 @@ export class register extends Component {
         firstName:"",
         lastName:"",
         email:"",
-        password:""
+        password:"",
+        confirmpassword:""
       })
       alert("Form submitted");
   }
@@ -153,7 +154,7 @@ export class register extends Component {
                 <input
                   type="text"
                   name="firstName"
-                  placeholder=" Enter First Name "
+                  placeholder="Enter First Name"
                   value={this.state.firstName}
                   onChange= {this.OnChange}
                   required
@@ -164,7 +165,7 @@ export class register extends Component {
                 <input
                   type="text"
                   name="lastName"
-                  placeholder=" Enter Last Name "
+                  placeholder="Enter Last Name"
                   value={this.state.lastName}
                   onChange={this.OnChange}
                   required
@@ -174,7 +175,7 @@ export class register extends Component {
                 <input
                   type="text"
                   name="email"
-                  placeholder=" Enter Email-Id"
+                  placeholder="Enter Email-Id"
                   value={this.state.email}
                   onChange={this.OnChange}
                   required
@@ -184,7 +185,7 @@ export class register extends Component {
                 <input
                   type="password"
                   name="password"
-                  placeholder=" Enter Password"
+                  placeholder="Enter Password"
                   value={this.state.password}
                   onChange={this.OnChange}
                   required
@@ -194,7 +195,7 @@ export class register extends Component {
                 <input
                   type="password"
                   name="confirmpassword"
-                  placeholder=" Re-Enter Password"
+                  placeholder="Re-Enter Password"
                   value={this.state.confirmpassword}
                   onChange={this.OnChange}
                   required

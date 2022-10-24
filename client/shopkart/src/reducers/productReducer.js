@@ -6,11 +6,9 @@ import {
   } from "../actions/types";
   
   const initialstate = {
-    products: [],
-    product: ""
+    products:[]
   };
   
-  // eslint-disable-next-line import/no-anonymous-default-export
   export default function(state = initialstate, action) {
     switch (action.type) {
       case GET_PRODUCTS:

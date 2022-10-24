@@ -26,6 +26,7 @@ export class CreateProduct extends Component {
       itemName: this.state.itemName,
       quantity: this.state.quantity,
       price: this.state.price,
+
     };
     this.props.createProducts(product);
     this.setState({
@@ -36,7 +37,6 @@ export class CreateProduct extends Component {
   }
 
   render() {
-    console.log(this.props)
     return (
       <div>
         <AdminNavbar />
@@ -51,7 +51,7 @@ export class CreateProduct extends Component {
             <input
               type="text"
               name="itemName"
-              placeholder=" Enter Product Name"
+              placeholder=" Product Name"
               onChange={this.onChange}
               value={this.state.itemName}
             />
@@ -69,12 +69,12 @@ export class CreateProduct extends Component {
             <input
               type="text"
               name="price"
-              placeholder="Enter Price"
+              placeholder=" Enter Price"
               onChange={this.onChange}
               value={this.state.price}
             />
           </p>
-          <p>
+          <p>          
               <button onChange={this.onChange} onClick={this.onCreate}>
                 Create
               </button>
@@ -92,5 +92,5 @@ const mapStateToProps = state => ({
 
 export default connect(
   mapStateToProps,
-  { createProducts }
+  {createProducts }
 )(CreateProduct);
