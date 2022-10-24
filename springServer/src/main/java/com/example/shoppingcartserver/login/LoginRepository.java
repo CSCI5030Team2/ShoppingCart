@@ -34,5 +34,5 @@ public interface LoginRepository extends JpaRepository<LoginToken,Long> {
     void updateExpireTime(String token, LocalDateTime newExpireTime);
 
 
-    Optional<LoginToken> findByApp_user_id(Long appUserId);
+    //Optional<LoginToken> findByAppUserId(Long appUserId);
 }

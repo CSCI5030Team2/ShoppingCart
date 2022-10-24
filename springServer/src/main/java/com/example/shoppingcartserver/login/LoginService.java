@@ -30,7 +30,8 @@ public class LoginService {
         {
             AppUser appUser = appUserRepository.findByEmail(loginRequest.getEmail()).get();
             if(passwordValid(loginRequest.getEmail(),loginRequest.getPassword())) {
-                Optional<LoginToken> oldToken = loginRepository.findByApp_user_id(appUser.getId());
+                Optional<LoginToken> oldToken = null;
+                //Optional<LoginToken> oldToken = loginRepository.findByAppUserId(appUser.getId());
                 if(oldToken.isPresent())
                 {
                     //update token
