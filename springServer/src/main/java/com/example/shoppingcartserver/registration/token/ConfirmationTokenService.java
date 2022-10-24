@@ -1,8 +1,6 @@
 package com.example.shoppingcartserver.registration.token;
 
-import com.example.shoppingcartserver.appuser.AppUser;
 import com.example.shoppingcartserver.appuser.AppUserRepository;
-import com.example.shoppingcartserver.registration.token.request.ConfirmationRequest;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 
