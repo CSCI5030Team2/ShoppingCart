@@ -33,4 +33,6 @@ public interface LoginRepository extends JpaRepository<LoginToken,Long> {
     @Query("UPDATE LoginToken t SET t.expireTime = ?2 WHERE t.token = ?1")
     void updateExpireTime(String token, LocalDateTime newExpireTime);
 
+
+    //Optional<LoginToken> findByAppUserId(Long appUserId);
 }
