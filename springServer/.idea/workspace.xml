@@ -5,7 +5,11 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="c7f2fea6-a65f-4fe1-826d-5e8c306d44ca" name="Changes" comment="Add: Registration feature, post api for storing user info to database">
+<<<<<<< HEAD
       <change beforePath="$PROJECT_DIR$/../client/shopkart/src/actions/tests/users.test.js" beforeDir="false" />
+=======
+      <change beforePath="$PROJECT_DIR$/../.circleci/config.yml" beforeDir="false" />
+>>>>>>> tests
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
