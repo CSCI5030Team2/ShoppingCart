@@ -28,9 +28,11 @@ jobs:
           name: compile
           command: mvn -f springServer/pom.xml compile
 
-      - run:
-          name: test
-          command: mvn -f springServer/pom.xml test
+      # skip tests for master branch 
+      #- run:
+      #    name: test
+      #    command: mvn -f springServer/pom.xml test
+      
 
 
 # Invoke jobs via workflows
