@@ -434,3 +434,19 @@ input[type="description"] {
 .container1 > button {
   marginwidth: 400px;
 }
+.AddProduct {
+  background-color : #7adbc3;
+  color: white;
+  padding: 10px 20px;
+  border-radius: 4px;
+  width: 120px;
+  border-color: #a4e3e3;
+}
+
+#mybutton {
+  position: fixed;
+  bottom: -4px;
+  right: 10px;
+}
+
+
