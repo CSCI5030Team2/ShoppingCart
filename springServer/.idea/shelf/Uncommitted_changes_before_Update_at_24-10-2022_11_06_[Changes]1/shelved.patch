@@ -1,0 +1,424 @@
+Index: src/test/java/com/example/shoppingcartserver/appuser/AppUserServiceImplTest.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/test/java/com/example/shoppingcartserver/appuser/AppUserServiceImplTest.java b/src/test/java/com/example/shoppingcartserver/appuser/AppUserServiceImplTest.java
+--- a/src/test/java/com/example/shoppingcartserver/appuser/AppUserServiceImplTest.java	
++++ b/src/test/java/com/example/shoppingcartserver/appuser/AppUserServiceImplTest.java	
+@@ -10,6 +10,7 @@
+ import org.mockito.Mockito;
+ import org.mockito.junit.jupiter.MockitoExtension;
+ import org.springframework.core.env.Environment;
++import org.springframework.data.jpa.repository.JpaRepository;
+ import org.springframework.security.core.userdetails.UserDetails;
+ import org.springframework.security.core.userdetails.UserDetailsService;
+ import org.springframework.security.core.userdetails.UsernameNotFoundException;
+@@ -26,6 +27,8 @@
+ @ExtendWith(MockitoExtension.class)
+ class AppUserServiceImplTest {
+ 
++
++
+     @InjectMocks
+     AppUserServiceImpl appUserServiceImpl;
+ 
+Index: src/test/java/com/example/shoppingcartserver/appuser/AppUserRepositoryTest.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/test/java/com/example/shoppingcartserver/appuser/AppUserRepositoryTest.java b/src/test/java/com/example/shoppingcartserver/appuser/AppUserRepositoryTest.java
+--- a/src/test/java/com/example/shoppingcartserver/appuser/AppUserRepositoryTest.java	
++++ b/src/test/java/com/example/shoppingcartserver/appuser/AppUserRepositoryTest.java	
+@@ -2,8 +2,10 @@
+ 
+ import org.junit.jupiter.api.BeforeEach;
+ import org.junit.jupiter.api.Test;
++import org.mockito.InjectMocks;
+ import org.springframework.beans.factory.annotation.Autowired;
+ import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
++import org.springframework.data.jpa.repository.JpaRepository;
+ 
+ import java.util.Optional;
+ 
+@@ -12,9 +14,10 @@
+ @DataJpaTest
+ class AppUserRepositoryTest {
+ 
++    @InjectMocks
++    private JpaRepository jpaRepository;
+     @Autowired
+     private AppUserRepository appUserRepository;
+-
+     @BeforeEach
+     void setUp() {
+ 
+@@ -26,7 +29,7 @@
+         String email = "vponugoti1@slu.edu";
+         AppUser appUser = new AppUser(
+                 "vivek",
+-                "Reddy",
++                "reddy",
+                 email
+         );
+         appUserRepository.save(appUser);
+Index: ShoppingCartServer.iml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/ShoppingCartServer.iml b/ShoppingCartServer.iml
+--- a/ShoppingCartServer.iml	
++++ b/ShoppingCartServer.iml	
+@@ -7,6 +7,7 @@
+       <sourceFolder url="file://$MODULE_DIR$/src/main/java" isTestSource="false" />
+       <sourceFolder url="file://$MODULE_DIR$/src/main/resources" type="java-resource" />
+       <sourceFolder url="file://$MODULE_DIR$/src/test/java" isTestSource="true" />
++      <sourceFolder url="file://$MODULE_DIR$/src/test/resources" type="java-test-resource" />
+       <excludeFolder url="file://$MODULE_DIR$/target" />
+     </content>
+     <orderEntry type="inheritedJdk" />
+@@ -21,7 +22,6 @@
+     <orderEntry type="library" name="Maven: jakarta.persistence:jakarta.persistence-api:2.2.3" level="project" />
+     <orderEntry type="library" name="Maven: org.hibernate:hibernate-core:5.6.9.Final" level="project" />
+     <orderEntry type="library" name="Maven: org.jboss.logging:jboss-logging:3.4.3.Final" level="project" />
+-    <orderEntry type="library" name="Maven: net.bytebuddy:byte-buddy:1.12.10" level="project" />
+     <orderEntry type="library" name="Maven: antlr:antlr:2.7.7" level="project" />
+     <orderEntry type="library" name="Maven: org.jboss:jandex:2.4.2.Final" level="project" />
+     <orderEntry type="library" name="Maven: com.fasterxml:classmate:1.5.1" level="project" />
+@@ -84,14 +84,20 @@
+     <orderEntry type="library" name="Maven: com.alibaba.fastjson2:fastjson2-extension:2.0.14" level="project" />
+     <orderEntry type="library" name="Maven: com.alibaba.fastjson2:fastjson2:2.0.14" level="project" />
+     <orderEntry type="library" scope="TEST" name="Maven: com.h2database:h2:2.1.212" level="project" />
+-    <orderEntry type="library" scope="TEST" name="Maven: org.junit.jupiter:junit-jupiter:5.8.2" level="project" />
+-    <orderEntry type="library" scope="TEST" name="Maven: org.junit.jupiter:junit-jupiter-api:5.8.2" level="project" />
+-    <orderEntry type="library" scope="TEST" name="Maven: org.opentest4j:opentest4j:1.2.0" level="project" />
+-    <orderEntry type="library" scope="TEST" name="Maven: org.junit.platform:junit-platform-commons:1.8.2" level="project" />
+-    <orderEntry type="library" scope="TEST" name="Maven: org.apiguardian:apiguardian-api:1.1.2" level="project" />
+-    <orderEntry type="library" scope="TEST" name="Maven: org.junit.jupiter:junit-jupiter-params:5.8.2" level="project" />
+-    <orderEntry type="library" scope="TEST" name="Maven: org.junit.jupiter:junit-jupiter-engine:5.8.2" level="project" />
+-    <orderEntry type="library" scope="TEST" name="Maven: org.junit.platform:junit-platform-engine:1.8.2" level="project" />
++    <orderEntry type="library" name="Maven: org.junit.jupiter:junit-jupiter:5.8.2" level="project" />
++    <orderEntry type="library" name="Maven: org.junit.jupiter:junit-jupiter-api:5.8.2" level="project" />
++    <orderEntry type="library" name="Maven: org.opentest4j:opentest4j:1.2.0" level="project" />
++    <orderEntry type="library" name="Maven: org.junit.platform:junit-platform-commons:1.8.2" level="project" />
++    <orderEntry type="library" name="Maven: org.apiguardian:apiguardian-api:1.1.2" level="project" />
++    <orderEntry type="library" name="Maven: org.junit.jupiter:junit-jupiter-params:5.8.2" level="project" />
++    <orderEntry type="library" scope="RUNTIME" name="Maven: org.junit.jupiter:junit-jupiter-engine:5.8.2" level="project" />
++    <orderEntry type="library" scope="RUNTIME" name="Maven: org.junit.platform:junit-platform-engine:1.8.2" level="project" />
++    <orderEntry type="library" name="Maven: org.assertj:assertj-core:3.22.0" level="project" />
++    <orderEntry type="library" name="Maven: org.hamcrest:hamcrest:2.2" level="project" />
++    <orderEntry type="library" name="Maven: org.mockito:mockito-core:4.5.1" level="project" />
++    <orderEntry type="library" name="Maven: net.bytebuddy:byte-buddy:1.12.10" level="project" />
++    <orderEntry type="library" name="Maven: net.bytebuddy:byte-buddy-agent:1.12.10" level="project" />
++    <orderEntry type="library" scope="RUNTIME" name="Maven: org.objenesis:objenesis:3.2" level="project" />
+     <orderEntry type="library" scope="TEST" name="Maven: org.springframework.boot:spring-boot-starter-test:2.7.0" level="project" />
+     <orderEntry type="library" scope="TEST" name="Maven: org.springframework.boot:spring-boot-test:2.7.0" level="project" />
+     <orderEntry type="library" scope="TEST" name="Maven: org.springframework.boot:spring-boot-test-autoconfigure:2.7.0" level="project" />
+@@ -101,11 +107,6 @@
+     <orderEntry type="library" scope="TEST" name="Maven: org.ow2.asm:asm:9.1" level="project" />
+     <orderEntry type="library" name="Maven: jakarta.xml.bind:jakarta.xml.bind-api:2.3.3" level="project" />
+     <orderEntry type="library" name="Maven: jakarta.activation:jakarta.activation-api:1.2.2" level="project" />
+-    <orderEntry type="library" scope="TEST" name="Maven: org.assertj:assertj-core:3.22.0" level="project" />
+-    <orderEntry type="library" scope="TEST" name="Maven: org.hamcrest:hamcrest:2.2" level="project" />
+-    <orderEntry type="library" scope="TEST" name="Maven: org.mockito:mockito-core:4.5.1" level="project" />
+-    <orderEntry type="library" scope="TEST" name="Maven: net.bytebuddy:byte-buddy-agent:1.12.10" level="project" />
+-    <orderEntry type="library" scope="TEST" name="Maven: org.objenesis:objenesis:3.2" level="project" />
+     <orderEntry type="library" scope="TEST" name="Maven: org.mockito:mockito-junit-jupiter:4.5.1" level="project" />
+     <orderEntry type="library" scope="TEST" name="Maven: org.skyscreamer:jsonassert:1.5.0" level="project" />
+     <orderEntry type="library" scope="TEST" name="Maven: com.vaadin.external.google:android-json:0.0.20131108.vaadin1" level="project" />
+Index: ../.idea/modules.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/../.idea/modules.xml b/../.idea/modules.xml
+--- a/../.idea/modules.xml	
++++ b/../.idea/modules.xml	
+@@ -3,6 +3,7 @@
+   <component name="ProjectModuleManager">
+     <modules>
+       <module fileurl="file://$PROJECT_DIR$/.idea/ShoppingCart.iml" filepath="$PROJECT_DIR$/.idea/ShoppingCart.iml" />
++      <module fileurl="file://$PROJECT_DIR$/springServer/ShoppingCartServer.iml" filepath="$PROJECT_DIR$/springServer/ShoppingCartServer.iml" />
+     </modules>
+   </component>
+ </project>
+\ No newline at end of file
+Index: pom.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/pom.xml b/pom.xml
+--- a/pom.xml	
++++ b/pom.xml	
+@@ -69,7 +69,25 @@
+         <dependency>
+             <groupId>org.junit.jupiter</groupId>
+             <artifactId>junit-jupiter</artifactId>
+-            <scope>test</scope>
++            <scope>compile</scope>
++        </dependency>
++        <dependency>
++            <groupId>org.assertj</groupId>
++            <artifactId>assertj-core</artifactId>
++            <version>3.22.0</version>
++            <scope>compile</scope>
++        </dependency>
++        <dependency>
++            <groupId>org.hamcrest</groupId>
++            <artifactId>hamcrest</artifactId>
++            <version>2.2</version>
++            <scope>compile</scope>
++        </dependency>
++        <dependency>
++            <groupId>org.mockito</groupId>
++            <artifactId>mockito-core</artifactId>
++            <version>4.5.1</version>
++            <scope>compile</scope>
+         </dependency>
+         <dependency>
+             <groupId>org.springframework.boot</groupId>
+Index: src/main/java/com/example/shoppingcartserver/registration/RegistrationService.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/main/java/com/example/shoppingcartserver/registration/RegistrationService.java b/src/main/java/com/example/shoppingcartserver/registration/RegistrationService.java
+--- a/src/main/java/com/example/shoppingcartserver/registration/RegistrationService.java	
++++ b/src/main/java/com/example/shoppingcartserver/registration/RegistrationService.java	
+@@ -1,7 +1,6 @@
+ package com.example.shoppingcartserver.registration;
+ 
+ import com.example.shoppingcartserver.appuser.AppUser;
+-import com.example.shoppingcartserver.appuser.AppUserRole;
+ import com.example.shoppingcartserver.appuser.AppUserServiceImpl;
+ import com.example.shoppingcartserver.email.EmailValidator;
+ import com.example.shoppingcartserver.registration.token.ConfirmationTokenService;
+@@ -34,9 +33,7 @@
+                 new AppUser(
+                         request.getFirstName(),
+                         request.getLastName(),
+-                        request.getEmail(),
+-                        request.getPassword(),
+-                        AppUserRole.USER
++                        request.getEmail()
+                 )
+         );
+     }
+Index: ../.idea/workspace.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/../.idea/workspace.xml b/../.idea/workspace.xml
+--- a/../.idea/workspace.xml	
++++ b/../.idea/workspace.xml	
+@@ -1,39 +1,179 @@
+ <?xml version="1.0" encoding="UTF-8"?>
+ <project version="4">
++  <component name="AutoImportSettings">
++    <option name="autoReloadType" value="SELECTIVE" />
++  </component>
+   <component name="ChangeListManager">
+     <list default="true" id="561a9c22-b853-4ccb-8765-60cb644d1571" name="Changes" comment="">
++      <change beforePath="$PROJECT_DIR$/.idea/jpa-buddy.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/jpa-buddy.xml" afterDir="false" />
+       <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/springServer/ShoppingCartServer.iml" beforeDir="false" afterPath="$PROJECT_DIR$/springServer/ShoppingCartServer.iml" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/springServer/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/springServer/pom.xml" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/springServer/src/main/java/com/example/shoppingcartserver/appuser/AppUser.java" beforeDir="false" afterPath="$PROJECT_DIR$/springServer/src/main/java/com/example/shoppingcartserver/appuser/AppUser.java" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/springServer/src/main/java/com/example/shoppingcartserver/registration/RegistrationService.java" beforeDir="false" afterPath="$PROJECT_DIR$/springServer/src/main/java/com/example/shoppingcartserver/registration/RegistrationService.java" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/springServer/src/test/java/com/example/shoppingcartserver/appuser/AppUserRepositoryTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/springServer/src/test/java/com/example/shoppingcartserver/appuser/AppUserRepositoryTest.java" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/springServer/src/test/java/com/example/shoppingcartserver/appuser/AppUserServiceImplTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/springServer/src/test/java/com/example/shoppingcartserver/appuser/AppUserServiceImplTest.java" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/springServer/src/test/resources/application.yml" beforeDir="false" afterPath="$PROJECT_DIR$/springServer/src/test/resources/application.yml" afterDir="false" />
+     </list>
+     <option name="SHOW_DIALOG" value="false" />
+     <option name="HIGHLIGHT_CONFLICTS" value="true" />
+     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+     <option name="LAST_RESOLUTION" value="IGNORE" />
++  </component>
++  <component name="FileTemplateManagerImpl">
++    <option name="RECENT_TEMPLATES">
++      <list>
++        <option value="JUnit5 Test Class" />
++      </list>
++    </option>
+   </component>
+   <component name="Git.Settings">
++    <option name="RECENT_BRANCH_BY_REPOSITORY">
++      <map>
++        <entry key="$PROJECT_DIR$" value="master" />
++      </map>
++    </option>
+     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+   </component>
+   <component name="MarkdownSettingsMigration">
+     <option name="stateVersion" value="1" />
++  </component>
++  <component name="MavenImportPreferences">
++    <option name="generalSettings">
++      <MavenGeneralSettings>
++        <option name="useMavenConfig" value="true" />
++      </MavenGeneralSettings>
++    </option>
++  </component>
++  <component name="ProblemsViewState">
++    <option name="selectedTabId" value="CurrentFile" />
+   </component>
+   <component name="ProjectId" id="2FxStIOxptFadyPC7Q7Z0KzzZNO" />
+   <component name="ProjectViewState">
+     <option name="hideEmptyMiddlePackages" value="true" />
+     <option name="showLibraryContents" value="true" />
+   </component>
+-  <component name="PropertiesComponent"><![CDATA[{
+-  "keyToString": {
+-    "RunOnceActivity.OpenProjectViewOnStart": "true",
+-    "RunOnceActivity.ShowReadmeOnStart": "true",
+-    "WebServerToolWindowFactoryState": "false",
+-    "last_opened_file_path": "C:/Users/vivek/OneDrive/Documents/softwaredevelopment/ShoppingCart",
+-    "node.js.detected.package.eslint": "true",
+-    "node.js.selected.package.eslint": "(autodetect)",
+-    "project.structure.last.edited": "Global Libraries",
+-    "project.structure.proportion": "0.15",
+-    "project.structure.side.proportion": "0.2",
+-    "settings.editor.selected.configurable": "preferences.pluginManager"
++  <component name="PropertiesComponent">{
++  &quot;keyToString&quot;: {
++    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
++    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
++    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
++    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
++    &quot;com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrary&quot;: &quot;JUnit5&quot;,
++    &quot;com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.JUnit5&quot;: &quot;&quot;,
++    &quot;last_opened_file_path&quot;: &quot;C:/Users/vivek/OneDrive/Documents/test/ShoppingCart&quot;,
++    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
++    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
++    &quot;project.structure.last.edited&quot;: &quot;Global Libraries&quot;,
++    &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
++    &quot;project.structure.side.proportion&quot;: &quot;0.2&quot;,
++    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.pluginManager&quot;
+   }
+-}]]></component>
++}</component>
++  <component name="RecentsManager">
++    <key name="CopyFile.RECENT_KEYS">
++      <recent name="C:\Users\vivek\OneDrive\Documents\test\ShoppingCart\springServer\src\test\java\com\example\shoppingcartserver" />
++    </key>
++    <key name="CreateTestDialog.Recents.Supers">
++      <recent name="" />
++    </key>
++    <key name="MoveFile.RECENT_KEYS">
++      <recent name="C:\Users\vivek\OneDrive\Documents\test\ShoppingCart\springServer\src\test\resources" />
++    </key>
++    <key name="CreateTestDialog.RecentsKey">
++      <recent name="com.example.shoppingcartserver.appuser" />
++    </key>
++  </component>
++  <component name="RunManager" selected="JUnit.AppUserRepositoryTest.itShouldFindByEmail">
++    <configuration name="AppUserRepositoryTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
++      <module name="ShoppingCartServer" />
++      <extension name="coverage">
++        <pattern>
++          <option name="PATTERN" value="com.example.shoppingcartserver.appuser.*" />
++          <option name="ENABLED" value="true" />
++        </pattern>
++      </extension>
++      <option name="PACKAGE_NAME" value="com.example.shoppingcartserver.appuser" />
++      <option name="MAIN_CLASS_NAME" value="com.example.shoppingcartserver.appuser.AppUserRepositoryTest" />
++      <option name="TEST_OBJECT" value="class" />
++      <method v="2">
++        <option name="Make" enabled="true" />
++      </method>
++    </configuration>
++    <configuration name="AppUserRepositoryTest.itShouldFindByEmail" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
++      <module name="ShoppingCartServer" />
++      <extension name="coverage">
++        <pattern>
++          <option name="PATTERN" value="com.example.shoppingcartserver.appuser.*" />
++          <option name="ENABLED" value="true" />
++        </pattern>
++      </extension>
++      <option name="PACKAGE_NAME" value="com.example.shoppingcartserver.appuser" />
++      <option name="MAIN_CLASS_NAME" value="com.example.shoppingcartserver.appuser.AppUserRepositoryTest" />
++      <option name="METHOD_NAME" value="itShouldFindByEmail" />
++      <option name="TEST_OBJECT" value="method" />
++      <method v="2">
++        <option name="Make" enabled="true" />
++      </method>
++    </configuration>
++    <configuration name="AppUserServiceImplTest.signupUser" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
++      <module name="ShoppingCartServer" />
++      <extension name="coverage">
++        <pattern>
++          <option name="PATTERN" value="com.example.shoppingcartserver.appuser.*" />
++          <option name="ENABLED" value="true" />
++        </pattern>
++      </extension>
++      <option name="PACKAGE_NAME" value="com.example.shoppingcartserver.appuser" />
++      <option name="MAIN_CLASS_NAME" value="com.example.shoppingcartserver.appuser.AppUserServiceImplTest" />
++      <option name="METHOD_NAME" value="signupUser" />
++      <option name="TEST_OBJECT" value="method" />
++      <method v="2">
++        <option name="Make" enabled="true" />
++      </method>
++    </configuration>
++    <configuration name="AppUserTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
++      <module name="ShoppingCartServer" />
++      <extension name="coverage">
++        <pattern>
++          <option name="PATTERN" value="com.example.shoppingcartserver.appuser.*" />
++          <option name="ENABLED" value="true" />
++        </pattern>
++      </extension>
++      <option name="PACKAGE_NAME" value="com.example.shoppingcartserver.appuser" />
++      <option name="MAIN_CLASS_NAME" value="com.example.shoppingcartserver.appuser.AppUserTest" />
++      <option name="TEST_OBJECT" value="class" />
++      <method v="2">
++        <option name="Make" enabled="true" />
++      </method>
++    </configuration>
++    <configuration name="ConfirmationTokenRepositoryTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
++      <module name="ShoppingCartServer" />
++      <extension name="coverage">
++        <pattern>
++          <option name="PATTERN" value="com.example.shoppingcartserver.registration.token.*" />
++          <option name="ENABLED" value="true" />
++        </pattern>
++      </extension>
++      <option name="PACKAGE_NAME" value="com.example.shoppingcartserver.registration.token" />
++      <option name="MAIN_CLASS_NAME" value="com.example.shoppingcartserver.registration.token.ConfirmationTokenRepositoryTest" />
++      <option name="TEST_OBJECT" value="class" />
++      <method v="2">
++        <option name="Make" enabled="true" />
++      </method>
++    </configuration>
++    <recent_temporary>
++      <list>
++        <item itemvalue="JUnit.AppUserRepositoryTest.itShouldFindByEmail" />
++        <item itemvalue="JUnit.AppUserRepositoryTest" />
++        <item itemvalue="JUnit.AppUserServiceImplTest.signupUser" />
++        <item itemvalue="JUnit.ConfirmationTokenRepositoryTest" />
++        <item itemvalue="JUnit.AppUserTest" />
++      </list>
++    </recent_temporary>
++  </component>
+   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+   <component name="TaskManager">
+     <task active="true" id="Default" summary="Default task">
+@@ -60,4 +200,12 @@
+       </map>
+     </option>
+   </component>
++  <component name="com.intellij.coverage.CoverageDataManagerImpl">
++    <SUITE FILE_PATH="coverage/ShoppingCart$AppUserServiceImplTest.ic" NAME="AppUserServiceImplTest Coverage Results" MODIFIED="1666378699024" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
++      <FILTER>com.example.shoppingcartserver.appuser.*</FILTER>
++    </SUITE>
++    <SUITE FILE_PATH="coverage/ShoppingCart$AppUserRepositoryTest.ic" NAME="AppUserRepositoryTest Coverage Results" MODIFIED="1666419332910" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
++      <FILTER>com.example.shoppingcartserver.appuser.*</FILTER>
++    </SUITE>
++  </component>
+ </project>
+\ No newline at end of file

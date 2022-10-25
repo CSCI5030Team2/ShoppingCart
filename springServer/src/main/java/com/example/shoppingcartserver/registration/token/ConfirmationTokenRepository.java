@@ -29,7 +29,7 @@ public interface ConfirmationTokenRepository extends JpaRepository<ConfirmationT
             "SET c.confirmTime = ?2 " +
             "WHERE c.token = ?1")
     int updateConfirmedAt(String token,
-                          LocalDateTime comfirmTime);
+                          LocalDateTime confirmTime);
 
 
 }

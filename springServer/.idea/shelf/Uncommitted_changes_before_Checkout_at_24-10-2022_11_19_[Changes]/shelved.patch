@@ -1,0 +1,127 @@
+Index: src/test/java/com/example/shoppingcartserver/appuser/AppUserServiceImplTest.java
+===================================================================
+diff --git a/src/test/java/com/example/shoppingcartserver/appuser/AppUserServiceImplTest.java b/src/test/java/com/example/shoppingcartserver/appuser/AppUserServiceImplTest.java
+--- a/src/test/java/com/example/shoppingcartserver/appuser/AppUserServiceImplTest.java	
++++ b/src/test/java/com/example/shoppingcartserver/appuser/AppUserServiceImplTest.java	
+@@ -9,7 +9,10 @@
+ import org.mockito.Mock;
+ import org.mockito.Mockito;
+ import org.mockito.junit.jupiter.MockitoExtension;
++import org.springframework.boot.test.autoconfigure.jdbc.AutoConfigureTestDatabase;
++import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
+ import org.springframework.core.env.Environment;
++import org.springframework.data.jpa.repository.JpaRepository;
+ import org.springframework.security.core.userdetails.UserDetails;
+ import org.springframework.security.core.userdetails.UserDetailsService;
+ import org.springframework.security.core.userdetails.UsernameNotFoundException;
+@@ -24,6 +27,11 @@
+  */
+ 
+ @ExtendWith(MockitoExtension.class)
++
++@DataJpaTest
++//the jpa instance
++@AutoConfigureTestDatabase(replace= AutoConfigureTestDatabase.Replace.NONE)
++//test class access to the database
+ class AppUserServiceImplTest {
+ 
+     @InjectMocks
+Index: src/test/java/com/example/shoppingcartserver/appuser/AppUserRepositoryTest.java
+===================================================================
+diff --git a/src/test/java/com/example/shoppingcartserver/appuser/AppUserRepositoryTest.java b/src/test/java/com/example/shoppingcartserver/appuser/AppUserRepositoryTest.java
+--- a/src/test/java/com/example/shoppingcartserver/appuser/AppUserRepositoryTest.java	
++++ b/src/test/java/com/example/shoppingcartserver/appuser/AppUserRepositoryTest.java	
+@@ -2,8 +2,10 @@
+ 
+ import org.junit.jupiter.api.BeforeEach;
+ import org.junit.jupiter.api.Test;
++import org.mockito.InjectMocks;
+ import org.springframework.beans.factory.annotation.Autowired;
+ import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
++import org.springframework.data.jpa.repository.JpaRepository;
+ 
+ import java.util.Optional;
+ 
+@@ -12,9 +14,10 @@
+ @DataJpaTest
+ class AppUserRepositoryTest {
+ 
++    @InjectMocks
++    private JpaRepository jpaRepository;
+     @Autowired
+     private AppUserRepository appUserRepository;
+-
+     @BeforeEach
+     void setUp() {
+ 
+@@ -26,7 +29,7 @@
+         String email = "vponugoti1@slu.edu";
+         AppUser appUser = new AppUser(
+                 "vivek",
+-                "Reddy",
++                "reddy",
+                 email
+         );
+         appUserRepository.save(appUser);
+Index: ShoppingCartServer.iml
+===================================================================
+diff --git a/ShoppingCartServer.iml b/ShoppingCartServer.iml
+--- a/ShoppingCartServer.iml	
++++ b/ShoppingCartServer.iml	
+@@ -7,6 +7,7 @@
+       <sourceFolder url="file://$MODULE_DIR$/src/main/java" isTestSource="false" />
+       <sourceFolder url="file://$MODULE_DIR$/src/main/resources" type="java-resource" />
+       <sourceFolder url="file://$MODULE_DIR$/src/test/java" isTestSource="true" />
++      <sourceFolder url="file://$MODULE_DIR$/src/test/resources" type="java-test-resource" />
+       <excludeFolder url="file://$MODULE_DIR$/target" />
+     </content>
+     <orderEntry type="inheritedJdk" />
+@@ -21,7 +22,6 @@
+     <orderEntry type="library" name="Maven: jakarta.persistence:jakarta.persistence-api:2.2.3" level="project" />
+     <orderEntry type="library" name="Maven: org.hibernate:hibernate-core:5.6.9.Final" level="project" />
+     <orderEntry type="library" name="Maven: org.jboss.logging:jboss-logging:3.4.3.Final" level="project" />
+-    <orderEntry type="library" name="Maven: net.bytebuddy:byte-buddy:1.12.10" level="project" />
+     <orderEntry type="library" name="Maven: antlr:antlr:2.7.7" level="project" />
+     <orderEntry type="library" name="Maven: org.jboss:jandex:2.4.2.Final" level="project" />
+     <orderEntry type="library" name="Maven: com.fasterxml:classmate:1.5.1" level="project" />
+@@ -84,14 +84,20 @@
+     <orderEntry type="library" name="Maven: com.alibaba.fastjson2:fastjson2-extension:2.0.14" level="project" />
+     <orderEntry type="library" name="Maven: com.alibaba.fastjson2:fastjson2:2.0.14" level="project" />
+     <orderEntry type="library" scope="TEST" name="Maven: com.h2database:h2:2.1.212" level="project" />
+-    <orderEntry type="library" scope="TEST" name="Maven: org.junit.jupiter:junit-jupiter:5.8.2" level="project" />
+-    <orderEntry type="library" scope="TEST" name="Maven: org.junit.jupiter:junit-jupiter-api:5.8.2" level="project" />
+-    <orderEntry type="library" scope="TEST" name="Maven: org.opentest4j:opentest4j:1.2.0" level="project" />
+-    <orderEntry type="library" scope="TEST" name="Maven: org.junit.platform:junit-platform-commons:1.8.2" level="project" />
+-    <orderEntry type="library" scope="TEST" name="Maven: org.apiguardian:apiguardian-api:1.1.2" level="project" />
+-    <orderEntry type="library" scope="TEST" name="Maven: org.junit.jupiter:junit-jupiter-params:5.8.2" level="project" />
+-    <orderEntry type="library" scope="TEST" name="Maven: org.junit.jupiter:junit-jupiter-engine:5.8.2" level="project" />
+-    <orderEntry type="library" scope="TEST" name="Maven: org.junit.platform:junit-platform-engine:1.8.2" level="project" />
++    <orderEntry type="library" name="Maven: org.junit.jupiter:junit-jupiter:5.8.2" level="project" />
++    <orderEntry type="library" name="Maven: org.junit.jupiter:junit-jupiter-api:5.8.2" level="project" />
++    <orderEntry type="library" name="Maven: org.opentest4j:opentest4j:1.2.0" level="project" />
++    <orderEntry type="library" name="Maven: org.junit.platform:junit-platform-commons:1.8.2" level="project" />
++    <orderEntry type="library" name="Maven: org.apiguardian:apiguardian-api:1.1.2" level="project" />
++    <orderEntry type="library" name="Maven: org.junit.jupiter:junit-jupiter-params:5.8.2" level="project" />
++    <orderEntry type="library" scope="RUNTIME" name="Maven: org.junit.jupiter:junit-jupiter-engine:5.8.2" level="project" />
++    <orderEntry type="library" scope="RUNTIME" name="Maven: org.junit.platform:junit-platform-engine:1.8.2" level="project" />
++    <orderEntry type="library" name="Maven: org.assertj:assertj-core:3.22.0" level="project" />
++    <orderEntry type="library" name="Maven: org.hamcrest:hamcrest:2.2" level="project" />
++    <orderEntry type="library" name="Maven: org.mockito:mockito-core:4.5.1" level="project" />
++    <orderEntry type="library" name="Maven: net.bytebuddy:byte-buddy:1.12.10" level="project" />
++    <orderEntry type="library" name="Maven: net.bytebuddy:byte-buddy-agent:1.12.10" level="project" />
++    <orderEntry type="library" scope="RUNTIME" name="Maven: org.objenesis:objenesis:3.2" level="project" />
+     <orderEntry type="library" scope="TEST" name="Maven: org.springframework.boot:spring-boot-starter-test:2.7.0" level="project" />
+     <orderEntry type="library" scope="TEST" name="Maven: org.springframework.boot:spring-boot-test:2.7.0" level="project" />
+     <orderEntry type="library" scope="TEST" name="Maven: org.springframework.boot:spring-boot-test-autoconfigure:2.7.0" level="project" />
+@@ -101,11 +107,6 @@
+     <orderEntry type="library" scope="TEST" name="Maven: org.ow2.asm:asm:9.1" level="project" />
+     <orderEntry type="library" name="Maven: jakarta.xml.bind:jakarta.xml.bind-api:2.3.3" level="project" />
+     <orderEntry type="library" name="Maven: jakarta.activation:jakarta.activation-api:1.2.2" level="project" />
+-    <orderEntry type="library" scope="TEST" name="Maven: org.assertj:assertj-core:3.22.0" level="project" />
+-    <orderEntry type="library" scope="TEST" name="Maven: org.hamcrest:hamcrest:2.2" level="project" />
+-    <orderEntry type="library" scope="TEST" name="Maven: org.mockito:mockito-core:4.5.1" level="project" />
+-    <orderEntry type="library" scope="TEST" name="Maven: net.bytebuddy:byte-buddy-agent:1.12.10" level="project" />
+-    <orderEntry type="library" scope="TEST" name="Maven: org.objenesis:objenesis:3.2" level="project" />
+     <orderEntry type="library" scope="TEST" name="Maven: org.mockito:mockito-junit-jupiter:4.5.1" level="project" />
+     <orderEntry type="library" scope="TEST" name="Maven: org.skyscreamer:jsonassert:1.5.0" level="project" />
+     <orderEntry type="library" scope="TEST" name="Maven: com.vaadin.external.google:android-json:0.0.20131108.vaadin1" level="project" />

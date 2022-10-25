@@ -1,0 +1,14 @@
+Index: springServer/src/test/java/com/example/shoppingcartserver/appuser/AppUserServiceImplTest.java
+===================================================================
+diff --git a/springServer/src/test/java/com/example/shoppingcartserver/appuser/AppUserServiceImplTest.java b/springServer/src/test/java/com/example/shoppingcartserver/appuser/AppUserServiceImplTest.java
+--- a/springServer/src/test/java/com/example/shoppingcartserver/appuser/AppUserServiceImplTest.java	
++++ b/springServer/src/test/java/com/example/shoppingcartserver/appuser/AppUserServiceImplTest.java	
+@@ -57,7 +57,7 @@
+     @Test
+     void userNameNotFound() {
+         Mockito.when(appUserRepository.findByEmail(Mockito.anyString())).thenReturn(Optional.empty());
+-        assertThrows(UsernameNotFoundException.class, ()-> appUserServiceImpl.loadUserByUsername("vponugoti2@slu.edu") ) ;
++        assertThrows(UsernameNotFoundException.class, ()-> appUserServiceImpl.loadUserByUsername("vponugoti3@slu.edu") ) ;
+     }
+ 
+     @Test
