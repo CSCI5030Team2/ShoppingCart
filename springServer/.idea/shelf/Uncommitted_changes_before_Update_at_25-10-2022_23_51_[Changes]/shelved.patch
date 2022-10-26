@@ -1,0 +1,103 @@
+Index: target/maven-status/maven-compiler-plugin/compile/default-compile/createdFiles.lst
+===================================================================
+diff --git a/target/maven-status/maven-compiler-plugin/compile/default-compile/createdFiles.lst b/target/maven-status/maven-compiler-plugin/compile/default-compile/createdFiles.lst
+--- a/target/maven-status/maven-compiler-plugin/compile/default-compile/createdFiles.lst	
++++ b/target/maven-status/maven-compiler-plugin/compile/default-compile/createdFiles.lst	
+@@ -1,0 +1,35 @@
++com\example\shoppingcartserver\registration\token\request\ConfirmationRequest.class
++com\example\shoppingcartserver\appuser\AppUser.class
++com\example\shoppingcartserver\cart\request\UpdateCartRequest.class
++com\example\shoppingcartserver\registration\token\controller\ConfirmationController.class
++com\example\shoppingcartserver\cart\request\GetCartRequest.class
++com\example\shoppingcartserver\item\controller\UserItemController.class
++com\example\shoppingcartserver\registration\RegistrationService.class
++com\example\shoppingcartserver\cart\CartRepository.class
++com\example\shoppingcartserver\appuser\AppUserRepository.class
++com\example\shoppingcartserver\cart\CartItem.class
++com\example\shoppingcartserver\item\ItemService.class
++com\example\shoppingcartserver\registration\RegistrationController.class
++com\example\shoppingcartserver\item\controller\ItemController.class
++com\example\shoppingcartserver\cart\request\CheckoutCartRequest.class
++com\example\shoppingcartserver\email\EmailService.class
++com\example\shoppingcartserver\appuser\AppUserRole.class
++com\example\shoppingcartserver\item\request\AddItemRequest.class
++com\example\shoppingcartserver\ShoppingCartServer.class
++com\example\shoppingcartserver\email\EmailSender.class
++com\example\shoppingcartserver\security\config\WebSecurityConfig.class
++com\example\shoppingcartserver\cart\request\AddToCartRequest.class
++com\example\shoppingcartserver\registration\token\ConfirmationTokenService.class
++com\example\shoppingcartserver\appuser\AppUserServiceImpl.class
++com\example\shoppingcartserver\item\request\DeleteItemRequest.class
++com\example\shoppingcartserver\cart\controller\CartController.class
++com\example\shoppingcartserver\email\EmailValidator.class
++com\example\shoppingcartserver\item\Item.class
++com\example\shoppingcartserver\registration\token\ConfirmationTokenRepository.class
++com\example\shoppingcartserver\item\controller\AdminItemController.class
++com\example\shoppingcartserver\registration\token\ConfirmationToken.class
++com\example\shoppingcartserver\item\request\BuyItemRequest.class
++com\example\shoppingcartserver\registration\RegistrationRequest.class
++com\example\shoppingcartserver\cart\CartService.class
++com\example\shoppingcartserver\security\PasswordEncoder.class
++com\example\shoppingcartserver\item\ItemRepository.class
+Index: target/maven-status/maven-compiler-plugin/compile/default-compile/inputFiles.lst
+===================================================================
+diff --git a/target/maven-status/maven-compiler-plugin/compile/default-compile/inputFiles.lst b/target/maven-status/maven-compiler-plugin/compile/default-compile/inputFiles.lst
+--- a/target/maven-status/maven-compiler-plugin/compile/default-compile/inputFiles.lst	
++++ b/target/maven-status/maven-compiler-plugin/compile/default-compile/inputFiles.lst	
+@@ -1,20 +1,36 @@
+-/Users/aiden/Project/SLU/SftEng/Team2_ShoppingCart/springServer/src/main/java/com/example/shoppingcartserver/security/PasswordEncoder.java
+-/Users/aiden/Project/SLU/SftEng/Team2_ShoppingCart/springServer/src/main/java/com/example/shoppingcartserver/ShoppingCartServer.java
+-/Users/aiden/Project/SLU/SftEng/Team2_ShoppingCart/springServer/src/main/java/com/example/shoppingcartserver/registration/RegistrationController.java
+-/Users/aiden/Project/SLU/SftEng/Team2_ShoppingCart/springServer/src/main/java/com/example/shoppingcartserver/registration/token/ConfirmationTokenService.java
+-/Users/aiden/Project/SLU/SftEng/Team2_ShoppingCart/springServer/src/main/java/com/example/shoppingcartserver/item/ItemRepository.java
+-/Users/aiden/Project/SLU/SftEng/Team2_ShoppingCart/springServer/src/main/java/com/example/shoppingcartserver/registration/RegistrationRequest.java
+-/Users/aiden/Project/SLU/SftEng/Team2_ShoppingCart/springServer/src/main/java/com/example/shoppingcartserver/registration/RegistrationService.java
+-/Users/aiden/Project/SLU/SftEng/Team2_ShoppingCart/springServer/src/main/java/com/example/shoppingcartserver/registration/EmailValidator.java
+-/Users/aiden/Project/SLU/SftEng/Team2_ShoppingCart/springServer/src/main/java/com/example/shoppingcartserver/appuser/AppUser.java
+-/Users/aiden/Project/SLU/SftEng/Team2_ShoppingCart/springServer/src/main/java/com/example/shoppingcartserver/item/Item.java
+-/Users/aiden/Project/SLU/SftEng/Team2_ShoppingCart/springServer/src/main/java/com/example/shoppingcartserver/item/AddItemRequest.java
+-/Users/aiden/Project/SLU/SftEng/Team2_ShoppingCart/springServer/src/main/java/com/example/shoppingcartserver/registration/token/ConfirmationTokenRepository.java
+-/Users/aiden/Project/SLU/SftEng/Team2_ShoppingCart/springServer/src/main/java/com/example/shoppingcartserver/security/config/WebSecurityConfig.java
+-/Users/aiden/Project/SLU/SftEng/Team2_ShoppingCart/springServer/src/main/java/com/example/shoppingcartserver/item/ItemController.java
+-/Users/aiden/Project/SLU/SftEng/Team2_ShoppingCart/springServer/src/main/java/com/example/shoppingcartserver/item/ItemService.java
+-/Users/aiden/Project/SLU/SftEng/Team2_ShoppingCart/springServer/src/main/java/com/example/shoppingcartserver/appuser/AppUserRole.java
+-/Users/aiden/Project/SLU/SftEng/Team2_ShoppingCart/springServer/src/main/java/com/example/shoppingcartserver/appuser/AppUserRepository.java
+-/Users/aiden/Project/SLU/SftEng/Team2_ShoppingCart/springServer/src/main/java/com/example/shoppingcartserver/appuser/AppUserServiceImpl.java
+-/Users/aiden/Project/SLU/SftEng/Team2_ShoppingCart/springServer/src/main/java/com/example/shoppingcartserver/item/BuyItemRequest.java
+-/Users/aiden/Project/SLU/SftEng/Team2_ShoppingCart/springServer/src/main/java/com/example/shoppingcartserver/registration/token/ConfirmationToken.java
++C:\Users\AMMULU\OneDrive\Documents\Github\ShoppingCart\springServer\src\main\java\com\example\shoppingcartserver\cart\CartItem.java
++C:\Users\AMMULU\OneDrive\Documents\Github\ShoppingCart\springServer\src\main\java\com\example\shoppingcartserver\item\ItemService.java
++C:\Users\AMMULU\OneDrive\Documents\Github\ShoppingCart\springServer\src\main\java\com\example\shoppingcartserver\item\request\BuyItemRequest.java
++C:\Users\AMMULU\OneDrive\Documents\Github\ShoppingCart\springServer\src\main\java\com\example\shoppingcartserver\email\EmailSender.java
++C:\Users\AMMULU\OneDrive\Documents\Github\ShoppingCart\springServer\src\main\java\com\example\shoppingcartserver\security\config\WebSecurityConfig.java
++C:\Users\AMMULU\OneDrive\Documents\Github\ShoppingCart\springServer\src\main\java\com\example\shoppingcartserver\cart\request\CheckoutCartRequest.java
++C:\Users\AMMULU\OneDrive\Documents\Github\ShoppingCart\springServer\src\main\java\com\example\shoppingcartserver\registration\RegistrationController.java
++C:\Users\AMMULU\OneDrive\Documents\Github\ShoppingCart\springServer\src\main\java\com\example\shoppingcartserver\security\PasswordEncoder.java
++C:\Users\AMMULU\OneDrive\Documents\Github\ShoppingCart\springServer\src\main\java\com\example\shoppingcartserver\ShoppingCartServer.java
++C:\Users\AMMULU\OneDrive\Documents\Github\ShoppingCart\springServer\src\main\java\com\example\shoppingcartserver\registration\token\ConfirmationTokenRepository.java
++C:\Users\AMMULU\OneDrive\Documents\Github\ShoppingCart\springServer\src\main\java\com\example\shoppingcartserver\cart\request\AddToCartRequest.java
++C:\Users\AMMULU\OneDrive\Documents\Github\ShoppingCart\springServer\src\main\java\com\example\shoppingcartserver\appuser\AppUserRepository.java
++C:\Users\AMMULU\OneDrive\Documents\Github\ShoppingCart\springServer\src\main\java\com\example\shoppingcartserver\appuser\AppUser.java
++C:\Users\AMMULU\OneDrive\Documents\Github\ShoppingCart\springServer\src\main\java\com\example\shoppingcartserver\item\controller\UserItemController.java
++C:\Users\AMMULU\OneDrive\Documents\Github\ShoppingCart\springServer\src\main\java\com\example\shoppingcartserver\registration\token\ConfirmationToken.java
++C:\Users\AMMULU\OneDrive\Documents\Github\ShoppingCart\springServer\src\main\java\com\example\shoppingcartserver\cart\CartRepository.java
++C:\Users\AMMULU\OneDrive\Documents\Github\ShoppingCart\springServer\src\main\java\com\example\shoppingcartserver\appuser\AppUserServiceImpl.java
++C:\Users\AMMULU\OneDrive\Documents\Github\ShoppingCart\springServer\src\main\java\com\example\shoppingcartserver\email\EmailService.java
++C:\Users\AMMULU\OneDrive\Documents\Github\ShoppingCart\springServer\src\main\java\com\example\shoppingcartserver\item\controller\AdminItemController.java
++C:\Users\AMMULU\OneDrive\Documents\Github\ShoppingCart\springServer\src\main\java\com\example\shoppingcartserver\item\ItemRepository.java
++C:\Users\AMMULU\OneDrive\Documents\Github\ShoppingCart\springServer\src\main\java\com\example\shoppingcartserver\item\request\AddItemRequest.java
++C:\Users\AMMULU\OneDrive\Documents\Github\ShoppingCart\springServer\src\main\java\com\example\shoppingcartserver\registration\RegistrationService.java
++C:\Users\AMMULU\OneDrive\Documents\Github\ShoppingCart\springServer\src\main\java\com\example\shoppingcartserver\registration\RegistrationRequest.java
++C:\Users\AMMULU\OneDrive\Documents\Github\ShoppingCart\springServer\src\main\java\com\example\shoppingcartserver\cart\controller\CartController.java
++C:\Users\AMMULU\OneDrive\Documents\Github\ShoppingCart\springServer\src\main\java\com\example\shoppingcartserver\item\controller\ItemController.java
++C:\Users\AMMULU\OneDrive\Documents\Github\ShoppingCart\springServer\src\main\java\com\example\shoppingcartserver\cart\CartService.java
++C:\Users\AMMULU\OneDrive\Documents\Github\ShoppingCart\springServer\src\main\java\com\example\shoppingcartserver\item\Item.java
++C:\Users\AMMULU\OneDrive\Documents\Github\ShoppingCart\springServer\src\main\java\com\example\shoppingcartserver\registration\token\request\ConfirmationRequest.java
++C:\Users\AMMULU\OneDrive\Documents\Github\ShoppingCart\springServer\src\main\java\com\example\shoppingcartserver\email\EmailValidator.java
++C:\Users\AMMULU\OneDrive\Documents\Github\ShoppingCart\springServer\src\main\java\com\example\shoppingcartserver\appuser\AppUserRole.java
++C:\Users\AMMULU\OneDrive\Documents\Github\ShoppingCart\springServer\src\main\java\com\example\shoppingcartserver\item\request\DeleteItemRequest.java
++C:\Users\AMMULU\OneDrive\Documents\Github\ShoppingCart\springServer\src\main\java\com\example\shoppingcartserver\registration\token\ConfirmationService.java
++C:\Users\AMMULU\OneDrive\Documents\Github\ShoppingCart\springServer\src\main\java\com\example\shoppingcartserver\cart\request\UpdateCartRequest.java
++C:\Users\AMMULU\OneDrive\Documents\Github\ShoppingCart\springServer\src\main\java\com\example\shoppingcartserver\cart\request\GetCartRequest.java
++C:\Users\AMMULU\OneDrive\Documents\Github\ShoppingCart\springServer\src\main\java\com\example\shoppingcartserver\registration\token\ConfirmationTokenService.java
++C:\Users\AMMULU\OneDrive\Documents\Github\ShoppingCart\springServer\src\main\java\com\example\shoppingcartserver\registration\token\controller\ConfirmationController.java

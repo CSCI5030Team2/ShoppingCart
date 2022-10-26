@@ -5,12 +5,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="c7f2fea6-a65f-4fe1-826d-5e8c306d44ca" name="Changes" comment="Add: Registration feature, post api for storing user info to database">
-      <change beforePath="$PROJECT_DIR$/../client/shopkart/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/../client/shopkart/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../client/shopkart/src/actions/products.js" beforeDir="false" afterPath="$PROJECT_DIR$/../client/shopkart/src/actions/products.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../client/shopkart/src/components/Navigation.js" beforeDir="false" afterPath="$PROJECT_DIR$/../client/shopkart/src/components/Navigation.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../client/shopkart/src/reducers/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/../client/shopkart/src/reducers/index.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../client/shopkart/src/reducers/productReducer.js" beforeDir="false" afterPath="$PROJECT_DIR$/../client/shopkart/src/reducers/productReducer.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/java/com/example/shoppingcartserver/item/ItemRepositoryTest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/java/com/example/shoppingcartserver/item/ItemServiceTest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/java/com/example/shoppingcartserver/item/ItemTest.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -28,6 +25,7 @@
       <list>
         <option value="Interface" />
         <option value="Class" />
+        <option value="JUnit5 Test Class" />
       </list>
     </option>
   </component>
@@ -96,19 +94,21 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;RequestMappingsPanelOrder0&quot;: &quot;0&quot;,
-    &quot;RequestMappingsPanelOrder1&quot;: &quot;1&quot;,
-    &quot;RequestMappingsPanelWidth0&quot;: &quot;75&quot;,
-    &quot;RequestMappingsPanelWidth1&quot;: &quot;75&quot;,
-    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
-    &quot;last_opened_file_path&quot;: &quot;C:/Users/vivek/OneDrive/Documents/softwaredevelopment/ShoppingCart/springServer&quot;,
-    &quot;spring.configuration.checksum&quot;: &quot;d534fea81fbc79d1d3d987028632688e&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "RequestMappingsPanelOrder0": "0",
+    "RequestMappingsPanelOrder1": "1",
+    "RequestMappingsPanelWidth0": "75",
+    "RequestMappingsPanelWidth1": "75",
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "WebServerToolWindowFactoryState": "false",
+    "com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrary": "JUnit5",
+    "com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.JUnit5": "",
+    "last_opened_file_path": "C:/Users/vivek/OneDrive/Documents/softwaredevelopment/ShoppingCart/springServer",
+    "spring.configuration.checksum": "d534fea81fbc79d1d3d987028632688e"
   }
-}</component>
+}]]></component>
   <component name="RecentsManager">
     <key name="CreateClassDialog.RecentsKey">
       <recent name="com.example.shoppingcartserver.item.request" />
@@ -118,11 +118,17 @@
       <recent name="$PROJECT_DIR$/Script/PostMan" />
       <recent name="$PROJECT_DIR$/Script/MySQL" />
     </key>
+    <key name="CreateTestDialog.Recents.Supers">
+      <recent name="" />
+    </key>
     <key name="MoveClassesOrPackagesDialog.RECENTS_KEY">
       <recent name="com.example.shoppingcartserver.item.controller" />
       <recent name="com.example.shoppingcartserver.item.request" />
       <recent name="com.example.shoppingcartserver.cart.controller" />
       <recent name="com.example.shoppingcartserver.cart.request" />
+    </key>
+    <key name="CreateTestDialog.RecentsKey">
+      <recent name="com.example.shoppingcartserver.item" />
     </key>
   </component>
   <component name="RunDashboard">
