@@ -5,8 +5,16 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="c7f2fea6-a65f-4fe1-826d-5e8c306d44ca" name="Changes" comment="Add: Registration feature, post api for storing user info to database">
+<<<<<<< HEAD
       <change beforePath="$PROJECT_DIR$/../client/shopkart/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/../client/shopkart/package-lock.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+=======
+<<<<<<< HEAD
+      <change beforePath="$PROJECT_DIR$/../client/shopkart/src/actions/tests/users.test.js" beforeDir="false" />
+=======
+      <change beforePath="$PROJECT_DIR$/../.circleci/config.yml" beforeDir="false" />
+>>>>>>> tests
+>>>>>>> 064ee87186ee9cc370ce39ce376f6e2f4ca0c158
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -128,7 +136,7 @@
       </set>
     </option>
   </component>
-  <component name="RunManager" selected="Spring Boot.ShoppingCartServer (1)">
+  <component name="RunManager" selected="Application.ShoppingCartServer">
     <configuration name="ShoppingCartServer" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="com.example.shoppingcartserver.ShoppingCartServer" />
       <module name="springServer" />
@@ -225,12 +233,9 @@
       <item itemvalue="JUnit.ShoppingCartServerTestsItem" />
       <item itemvalue="JUnit.ShoppingCartServerTestItem" />
       <item itemvalue="JUnit.ShoppingCartServerTests" />
-      <item itemvalue="Spring Boot.ShoppingCartServer" />
-      <item itemvalue="Spring Boot.ShoppingCartServer (1)" />
     </list>
     <recent_temporary>
       <list>
-        <item itemvalue="Spring Boot.ShoppingCartServer (1)" />
         <item itemvalue="Application.ShoppingCartServer" />
         <item itemvalue="JUnit.ShoppingCartServerTestItem" />
         <item itemvalue="JUnit.ShoppingCartServerTestsItem" />

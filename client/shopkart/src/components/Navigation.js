@@ -12,6 +12,7 @@ export class Navigation extends Component {
   }
 
   render() {
+    console.log(this.props.getProducts())
     return (
       <div>
         <div>
@@ -20,20 +21,23 @@ export class Navigation extends Component {
         <h2 style={{ textAlign: "center", marginTop: 2 + "em" }}>Products</h2>
         <div id="outerDiv">
           {this.props.products.map(product => (
-            <div id="outerDiv">
+            <div>
               <div
                 className="AdminProductsdisplay"
                 style={{ width: 15 + "em" }}
               >
                 <p>
-                  <b>{product.name}</b>
+                  <b>Product Name : </b> {product.itemName}
                 </p>
                 <p>
-                  <b> Category : </b> {product.category}
+                  <b> Quantity : </b> {product.quantity}
+                </p>
+                <p>
+                  <b>Price : </b> ${product.price}
                 </p>
                 <button
                   onClick={() => {
-                    this.props.history.push("/productdetail/" + product._id, {
+                    this.props.history.push("/productdetail/" + product.id, {
                       product
                     });
                   }}
@@ -47,7 +51,7 @@ export class Navigation extends Component {
         </div>
         <div id="mybutton">
          <button class="AddProduct">
-         <a href="CreateProducts">Addproduct</a></button>
+         <a href="CreateProducts">Add product</a></button>
         </div>
       </div>
     );

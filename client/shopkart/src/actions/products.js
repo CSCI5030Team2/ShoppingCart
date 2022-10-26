@@ -8,15 +8,12 @@ import {
   import axios from "axios";
   
   export const getProducts = () => dispatch => {
-    console.log(localStorage.getItem("token"));
     return axios
-      .get("http://localhost:7000/api/products/all", {
-        headers: { Authorization: `Bearer ${localStorage.getItem("token")}` }
-      })
+      .get("http://localhost:8080/item")
       .then(res => {
         dispatch({
           type: GET_PRODUCTS,
-          payload: res.data.data
+          payload: res.data
         });
         console.log(res.data);
       })
