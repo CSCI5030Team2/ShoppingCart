@@ -1,6 +1,7 @@
 package com.example.shoppingcartserver.login.token;
 
 
+import com.example.shoppingcartserver.appuser.AppUser;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -20,6 +21,10 @@ public class LoginToken {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+
+    @ManyToOne
+    @JoinColumn( nullable = false)
+    private AppUser appUser;
 
     /**
      * token used to verity user identity

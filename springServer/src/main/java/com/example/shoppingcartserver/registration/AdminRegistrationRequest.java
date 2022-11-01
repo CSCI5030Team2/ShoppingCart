@@ -11,7 +11,7 @@ import lombok.ToString;
 @AllArgsConstructor
 @Getter
 @ToString
-public class RegistrationRequest {
+public class AdminRegistrationRequest {
 
     /*
      * request body
@@ -22,4 +22,6 @@ public class RegistrationRequest {
     private final String lastName;
     private final String password;
     private final String email;
+    private final String referEmail;
+    private final String token;
 }
