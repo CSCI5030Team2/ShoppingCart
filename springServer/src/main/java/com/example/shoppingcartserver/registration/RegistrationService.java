@@ -82,7 +82,7 @@ public class RegistrationService {
         boolean referIsAdmin = referAdmin.getAppUserRole().equals(AppUserRole.ADMIN);
         boolean emailMatches = email.equals(referAdmin.getEmail());
         boolean tokenMatches = referAdminLoginToken.getToken().equals(token);
-        boolean notExpired = referAdminLoginToken.getExpireTime().isBefore(LocalDateTime.now());
+        boolean notExpired = referAdminLoginToken.getExpireTime().isAfter(LocalDateTime.now());
 
         return referIsAdmin && emailMatches && tokenMatches && notExpired;
 
