@@ -74,7 +74,7 @@
 			"response": []
 		},
 		{
-			"name": "registration",
+			"name": "user registration",
 			"request": {
 				"method": "POST",
 				"header": [
@@ -86,7 +86,7 @@
 				],
 				"body": {
 					"mode": "raw",
-					"raw": "{\n    \"firstName\": \"NewUser\",\n    \"lastName\": \"Z\",\n    \"email\": \"zbh321412@gmail.com\",\n    \"password\": \"a123456\"\n}"
+					"raw": "{\n    \"firstName\": \"NewUser\",\n    \"lastName\": \"Z\",\n    \"email\": \"bohan.zhang.1@slu.edu\",\n    \"password\": \"a123456\"\n}"
 				},
 				"url": {
 					"raw": "http://localhost:8080/user/registration",
@@ -98,6 +98,95 @@
 					"path": [
 						"user",
 						"registration"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "admin registration",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"firstName\": \"NewUser\",\n    \"lastName\": \"Z\",\n    \"email\": \"zbh321412@gmail.com\",\n    \"password\": \"a123456\",\n    \"referEmail\": \"admin@shoppingcart.com\",\n    \"token\": \"78e23e23-5bf9-4bb4-8e15-306b35cb5d28\"\n}"
+				},
+				"url": {
+					"raw": "http://localhost:8080/admin/registration",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"admin",
+						"registration"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "user login",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"email\": \"bohan.zhang.1@slu.edu\",\n    \"password\": \"a123456\"\n}"
+				},
+				"url": {
+					"raw": "http://localhost:8080/login",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"login"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "admin login",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"email\": \"admin@shoppingcart.com\",\n    \"password\": \"a123456\"\n}"
+				},
+				"url": {
+					"raw": "http://localhost:8080/admin/login",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"admin",
+						"login"
 					]
 				}
 			},
@@ -116,7 +205,7 @@
 				],
 				"body": {
 					"mode": "raw",
-					"raw": "{\n    \"buyerEmail\": \"zbh321412@gmail.com\",\n    \"itemName\" : \"Cool pants\",\n    \"quantity\": 1\n}",
+					"raw": "{\n    \"buyerEmail\": \"zbh321412@gmail.com\",\n    \"token\": \"\",\n    \"itemName\" : \"Cool pants\",\n    \"quantity\": 1\n}",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -153,7 +242,7 @@
 				],
 				"body": {
 					"mode": "raw",
-					"raw": "{\n    \"itemName\": \"Cool pants\",\n    \"quantity\": 11,\n    \"price\": 29.99\n}"
+					"raw": "{\n    \"itemName\": \"Long pants\",\n    \"quantity\": 20,\n    \"price\": 29.99,\n    \"email\": \"\",\n    \"token\": \"\"\n}"
 				},
 				"url": {
 					"raw": "http://localhost:8080/admin/item",
@@ -186,7 +275,7 @@
 				],
 				"body": {
 					"mode": "raw",
-					"raw": "{\n    \"itemName\": \"newShirt\"\n}"
+					"raw": "{\n    \"itemName\": \"newShirt\",\n    \"email\" : \"\",\n    \"token\": \"\"\n}"
 				},
 				"url": {
 					"raw": "http://localhost:8080/admin/item",
