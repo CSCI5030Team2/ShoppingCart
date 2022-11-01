@@ -31,7 +31,7 @@ jobs:
         #mysql image from circleCI docker hub
           #mysql image from circleCI docker hub
 
-      - image: circleci/mysql:latest
+      - image: circleci/mysql:5.7
         environment:
           MYSQL_ALLOW_EMPTY_PASSWORD: yes
           MYSQL_ROOT_PASSWORD: ''
@@ -54,7 +54,7 @@ jobs:
             name: Wait for db
             command: dockerize -wait tcp://localhost:3306 -timeout 1m
 
-      - run: sudo apt install -y mysql-client
+     # - run: sudo apt install -y mysql-client
 
       - run: mysql -h 127.0.0.1 -u root -e "create database shopping_cart"
 
