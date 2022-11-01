@@ -29,11 +29,12 @@ jobs:
     docker:
       - image: cimg/openjdk:17.0
         #mysql image from circleCI docker hub
-      - image: circleci/mysql:5.7
+          #mysql image from circleCI docker hub
+
+      - image: circleci/mysql:latest
         environment:
-          MYSQL_ROOT_PASSWORD: '1q2w3e4r'
-          #MYSQL_ALLOW_EMPTY_PASSWORD: yes
-          #MYSQL_ROOT_PASSWORD: '1q2w3e4r'
+          MYSQL_ALLOW_EMPTY_PASSWORD: yes
+          MYSQL_ROOT_PASSWORD: ''
     # Add steps to the job
     # See: https://circleci.com/docs/2.0/configuration-reference/#steps
     steps:
