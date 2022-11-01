@@ -6,11 +6,13 @@
 //import org.mockito.InjectMocks;
 //import org.mockito.junit.jupiter.MockitoExtension;
 //
+
 //@ExtendWith(MockitoExtension.class)
 //class RegistrationServiceTest {
 //
 //    @InjectMocks
 //    RegistrationService registrationService;
+//    RegistrationRequest request;
 //    @BeforeEach
 //    void setup()
 //    {
@@ -49,6 +51,7 @@
 //
 //    void buildRequest()
 //    {
+//        request = new RegistrationRequest("","","","");
 //        request = new UserRegistrationRequest("","","","");
 //    }
 //

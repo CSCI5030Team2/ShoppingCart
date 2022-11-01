@@ -7,6 +7,7 @@ import lombok.AllArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.core.env.Environment;
+import org.springframework.security.core.parameters.P;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
@@ -16,6 +17,7 @@ import org.springframework.stereotype.Service;
 import java.net.InetAddress;
 import java.net.UnknownHostException;
 import java.time.LocalDateTime;
+import java.util.Optional;
 import java.util.UUID;
 
 /**
@@ -24,20 +26,27 @@ import java.util.UUID;
 
 @Service
 @AllArgsConstructor
-public class AppUserServiceImpl implements UserDetailsService {
+public class AppUserServiceImpl {
 
     private final static String USER_NOT_FOUND_MSG = "User with email %s not found";
     private final AppUserRepository appUserRepository;
     private final BCryptPasswordEncoder bCryptPasswordEncoder;
     private final ConfirmationTokenService service;
+
     @Autowired
     Environment environment;
 
 
-    @Override
-    public UserDetails loadUserByUsername(String email) throws UsernameNotFoundException {
-        return appUserRepository.findByEmail(email).orElseThrow(() ->
-                new UsernameNotFoundException(String.format(USER_NOT_FOUND_MSG,email)));
+    public AppUser loadUserByUsername(String email) throws UsernameNotFoundException {
+        Optional<AppUser> appUser = appUserRepository.findByEmail(email);
+        if(appUser.isPresent())
+        {
+            return appUser.get();
+        }
+        else
+        {
+            throw new UsernameNotFoundException(String.format(USER_NOT_FOUND_MSG,email));
+        }
     }
 
     public String signUpUser(AppUser appUser)
@@ -71,10 +80,7 @@ public class AppUserServiceImpl implements UserDetailsService {
 
         service.saveConfirmationToken(confirmationToken);
 
-        // TODO: Send email to confirm
         EmailService emailService = new EmailService();
-
-
         try {
             emailService.send(appUser.getEmail(),
                     "Confirm your account",
