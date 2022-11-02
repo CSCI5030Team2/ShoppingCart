@@ -3,10 +3,7 @@ package com.example.shoppingcartserver.registration.token;
 import com.example.shoppingcartserver.appuser.AppUser;
 import com.example.shoppingcartserver.appuser.AppUserRepository;
 import com.example.shoppingcartserver.appuser.AppUserRole;
-import org.junit.jupiter.api.AfterEach;
-import org.junit.jupiter.api.Assertions;
-import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.jdbc.AutoConfigureTestDatabase;
 import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
@@ -92,6 +89,8 @@ class ConfirmationTokenRepositoryTest {
         this.appUser.setFirstName("TEST_FIRST_NAME");
         this.appUser.setLastName("TEST_LAST_NAME");
         this.appUser.setEmail("testestest@test.com");
+        this.appUser.setEnable(true);
+        this.appUser.setLocked(false);
         this.appUser.setPassword(bCryptPasswordEncoder.encode("CLEARTEXT_PASSWORD"));
     }
 

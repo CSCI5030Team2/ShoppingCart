@@ -6,7 +6,7 @@ import org.junit.jupiter.api.Test;
 class EmailServiceTest {
 
     @Test
-    @Disabled
+    @Disabled("This sends email to me, don't enable")
     void testSend() {
         EmailService emailService = new EmailService();
 
