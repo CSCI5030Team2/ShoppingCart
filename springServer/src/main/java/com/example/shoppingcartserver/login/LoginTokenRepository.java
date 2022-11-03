@@ -1,5 +1,6 @@
 package com.example.shoppingcartserver.login;
 
+import com.example.shoppingcartserver.appuser.AppUser;
 import com.example.shoppingcartserver.login.token.LoginToken;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Modifying;
@@ -14,7 +15,7 @@ import java.util.Optional;
  * @author aiden
  */
 @Repository
-public interface LoginRepository extends JpaRepository<LoginToken,Long> {
+public interface LoginTokenRepository extends JpaRepository<LoginToken,Long> {
 
 
     /**
@@ -34,5 +35,8 @@ public interface LoginRepository extends JpaRepository<LoginToken,Long> {
     void updateExpireTime(String token, LocalDateTime newExpireTime);
 
 
-    //Optional<LoginToken> findByAppUserId(Long appUserId);
+    Optional<LoginToken> findByAppUser(AppUser appUser);
+
+    @Modifying
+    void delete(LoginToken loginToken);
 }

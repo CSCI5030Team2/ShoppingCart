@@ -6,10 +6,15 @@
   <component name="ChangeListManager">
     <list default="true" id="c7f2fea6-a65f-4fe1-826d-5e8c306d44ca" name="Changes" comment="Add: Registration feature, post api for storing user info to database">
 <<<<<<< HEAD
+      <change beforePath="$PROJECT_DIR$/../client/shopkart/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/../client/shopkart/package-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+=======
+<<<<<<< HEAD
       <change beforePath="$PROJECT_DIR$/../client/shopkart/src/actions/tests/users.test.js" beforeDir="false" />
 =======
       <change beforePath="$PROJECT_DIR$/../.circleci/config.yml" beforeDir="false" />
 >>>>>>> tests
+>>>>>>> 064ee87186ee9cc370ce39ce376f6e2f4ca0c158
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -104,7 +109,7 @@
     &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
     &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
     &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
-    &quot;last_opened_file_path&quot;: &quot;C:/Users/vivek/OneDrive/Documents/softwaredevelopment/ShoppingCart/springServer&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/sonal/OneDrive/Desktop/project/ShoppingCart/springServer&quot;,
     &quot;spring.configuration.checksum&quot;: &quot;d534fea81fbc79d1d3d987028632688e&quot;
   }
 }</component>
@@ -251,6 +256,8 @@
       <workItem from="1665463329273" duration="214000" />
       <workItem from="1665510008154" duration="1554000" />
       <workItem from="1665513456984" duration="3311000" />
+      <workItem from="1665562691064" duration="182000" />
+      <workItem from="1665562892057" duration="555000" />
     </task>
     <task id="LOCAL-00001" summary="Add: Backend initial state setup">
       <created>1664453115889</created>

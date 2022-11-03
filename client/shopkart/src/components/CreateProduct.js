@@ -82,7 +82,6 @@ export class CreateProduct extends Component {
          
           {/* </form> */}
         </div>
-        <button>Add Product</button>
       </div>
     );
   }

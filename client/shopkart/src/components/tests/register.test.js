@@ -73,4 +73,41 @@ describe("Test Register Component", () => {
         .props().placeholder
     ).toBe("Re-Enter Password");
   });
+
+  it("cd")
+});
+
+describe("Test Add Product Component", () => {
+  it("should render the component", () => {
+    expect(wrapper).toMatchSnapshot();
+  });
+
+  it("should have Enter Product Name placeholder on Name input field", () =>{
+    expect(
+      wrapper
+        .find("input")
+        .at(0)
+        .props().placeholder
+    ).toBe("Product Name");
+  });
+
+  it("should have Enter Quantity of product placeholder on Quantity input field", () => {
+    expect(
+      wrapper
+        .find("input")
+        .at(1)
+        .props().placeholder
+    ).toBe("Enter Quantity");
+  });
+
+  it("should have Enter Price of the product placeholder on Price input field", () => {
+    expect(
+      wrapper
+        .find("input")
+        .at(3)
+        .props().placeholder
+    ).toBe("Enter Price");
+  });
+
+  it("cd")
 });

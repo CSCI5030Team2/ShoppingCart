@@ -1,0 +1,75 @@
+package com.example.shoppingcartserver;
+
+import com.example.shoppingcartserver.appuser.AppUser;
+import com.example.shoppingcartserver.appuser.AppUserRepository;
+import com.example.shoppingcartserver.appuser.AppUserRole;
+import com.example.shoppingcartserver.item.Item;
+import com.example.shoppingcartserver.item.ItemRepository;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.CommandLineRunner;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.stereotype.Component;
+
+/**
+ * create default db items after server reboot
+ * @author aiden
+ */
+@Component
+public class CommandLineAppStartupRunner implements CommandLineRunner {
+    @Autowired
+    AppUserRepository appUserRepository;
+
+    @Autowired
+    ItemRepository itemRepository;
+
+    @Override
+    public void run(String... args)  {
+        try {
+            createAdmin();
+            createItems();
+        } catch (Exception e) {
+            System.err.println("Failed inserting default database items");
+            e.printStackTrace();
+        }
+    }
+
+    private void createAdmin()
+    {
+        String fakeEmail = "admin@shoppingcart.com";
+        if(appUserRepository.findByEmail(fakeEmail).isPresent())
+        {
+            return;
+        }
+        AppUser admin = new AppUser();
+        admin.setLocked(false);
+        admin.setEnable(true);
+        admin.setEmail(fakeEmail);
+        admin.setPassword(new BCryptPasswordEncoder().encode("a123456"));
+        admin.setFirstName("MASTER");
+        admin.setLastName("ADMIN");
+        admin.setAppUserRole(AppUserRole.ADMIN);
+        appUserRepository.save(admin);
+    }
+
+    private void createItems()
+    {
+        String itemName = "iPhone 14 pro max red 1TB deluxe edition unlocked";
+        Item item = new Item();
+        item.setItemName(itemName);
+        item.setPrice(1299.99f);
+        item.setQuantity(1);
+        if(itemRepository.findByItemName(itemName).isEmpty())
+        {
+            itemRepository.save(item);
+        }
+        item = new Item();
+        itemName = "iPhone 14 pro";
+        item.setItemName(itemName);
+        item.setPrice(999f);
+        item.setQuantity(99);
+        if(itemRepository.findByItemName(itemName).isEmpty())
+        {
+            itemRepository.save(item);
+        }
+    }
+}

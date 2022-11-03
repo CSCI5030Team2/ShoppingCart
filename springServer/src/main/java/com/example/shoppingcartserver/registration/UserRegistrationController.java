@@ -12,13 +12,13 @@ import org.springframework.web.bind.annotation.*;
 @CrossOrigin
 @RequestMapping(path = "/user/registration")
 @AllArgsConstructor
-public class RegistrationController {
+public class UserRegistrationController {
 
     private RegistrationService registrationService;
 
     @PostMapping
-    public String register(@RequestBody RegistrationRequest request)
+    public String register(@RequestBody UserRegistrationRequest request)
     {
-        return registrationService.register(request);
+        return registrationService.registerUser(request);
     }
 }

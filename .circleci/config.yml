@@ -28,12 +28,38 @@ jobs:
     working_directory: ~/springServer/
     docker:
       - image: cimg/openjdk:17.0
+        #mysql image from circleCI docker hub
+          #mysql image from circleCI docker hub
+
+      - image: circleci/mysql:5.7
+        environment:
+          MYSQL_ALLOW_EMPTY_PASSWORD: yes
+          MYSQL_ROOT_PASSWORD: '1q2w3e4r'
     # Add steps to the job
     # See: https://circleci.com/docs/2.0/configuration-reference/#steps
     steps:
       # Checkout the code as the first step.
       - checkout
       # Use mvn clean and package as the standard maven build phase
+
+      # Tool to prevent race condition
+      - run:
+            name: install dockerize
+            command: wget https://github.com/jwilder/dockerize/releases/download/$DOCKERIZE_VERSION/dockerize-linux-amd64-$DOCKERIZE_VERSION.tar.gz && sudo tar -C /usr/local/bin -xzvf dockerize-linux-amd64-$DOCKERIZE_VERSION.tar.gz && rm dockerize-linux-amd64-$DOCKERIZE_VERSION.tar.gz
+            environment:
+              DOCKERIZE_VERSION: v0.6.1
+
+      # See if db is ready
+      - run:
+            name: Wait for db
+            command: dockerize -wait tcp://localhost:3306 -timeout 1m
+
+     # - run: sudo apt install -y mysql-client
+      - run: sudo apt-get update
+      - run: sudo apt-get install mysql-client
+
+      - run: mysql -h 127.0.0.1 -u root -p1q2w3e4r -e "create database shopping_cart"
+
       - run:
           name: Build
           command: mvn -B -DskipTests -f springServer/pom.xml clean package
@@ -43,9 +69,9 @@ jobs:
           command: mvn -f springServer/pom.xml compile
 
       # skip tests for master branch 
-      #- run:
-      #    name: test
-      #    command: mvn -f springServer/pom.xml test
+      - run:
+          name: test
+          command: mvn -f springServer/pom.xml test
       
 
 

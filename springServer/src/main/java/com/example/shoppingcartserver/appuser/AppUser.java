@@ -18,23 +18,36 @@ import java.util.Collections;
 @Setter
 @NoArgsConstructor
 @Entity
-public class AppUser implements UserDetails {
+public class AppUser{
     //imp UserDetail because we need the security
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+
+    @Column(nullable = false)
     private String firstName;
+
+    @Column(nullable = false)
     private String lastName;
+
+    @Column(unique=true)
     private String email;
+
+    @Column(nullable = false)
     private String password;
+
+    @Column(nullable = false)
     @Enumerated(EnumType.STRING)
     private AppUserRole appUserRole;
+
+    @Column(nullable = false)
     private Boolean locked;
 
     /**
      * Enable once email confirmed
      */
+    @Column(nullable = false)
     private Boolean enable;
 
     public AppUser(String firstName,
@@ -52,41 +65,4 @@ public class AppUser implements UserDetails {
         this.enable = false;
     }
 
-    @Override
-    public Collection<? extends GrantedAuthority> getAuthorities() {
-        //determine if the user is an admin or a reg user
-        SimpleGrantedAuthority authority
-                = new SimpleGrantedAuthority(appUserRole.name());
-        return Collections.singleton(authority);
-    }
-
-    @Override
-    public String getPassword() {
-        return password;
-    }
-
-    @Override
-    public String getUsername() {
-        return lastName;
-    }
-
-    @Override
-    public boolean isAccountNonExpired() {
-        return true;
-    }
-
-    @Override
-    public boolean isAccountNonLocked() {
-        return !locked;
-    }
-
-    @Override
-    public boolean isCredentialsNonExpired() {
-        return true;
-    }
-
-    @Override
-    public boolean isEnabled() {
-        return enable;
-    }
 }

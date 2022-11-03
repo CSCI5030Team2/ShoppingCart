@@ -49,6 +49,10 @@ export class Navigation extends Component {
             </div>
           ))}
         </div>
+        <div id="mybutton">
+         <button class="AddProduct">
+         <a href="CreateProducts">Add product</a></button>
+        </div>
       </div>
     );
   }
