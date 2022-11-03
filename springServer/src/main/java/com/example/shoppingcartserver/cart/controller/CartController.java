@@ -30,4 +30,8 @@ public class CartController {
         return cartService.addToCart(request);
     }
 
+    //todo  Delete from cart
+
+
+    //todo put checkout
 }

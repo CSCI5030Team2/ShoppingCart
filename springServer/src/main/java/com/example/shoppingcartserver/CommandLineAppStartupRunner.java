@@ -71,5 +71,15 @@ public class CommandLineAppStartupRunner implements CommandLineRunner {
         {
             itemRepository.save(item);
         }
+
+        item = new Item();
+        itemName = "iPhone 16 pro";
+        item.setItemName(itemName);
+        item.setPrice(999f);
+        item.setQuantity(0);
+        if(itemRepository.findByItemName(itemName).isEmpty())
+        {
+            itemRepository.save(item);
+        }
     }
 }

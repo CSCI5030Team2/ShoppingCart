@@ -3,6 +3,7 @@ package com.example.shoppingcartserver.item.controller;
 
 import com.example.shoppingcartserver.item.ItemService;
 import com.example.shoppingcartserver.item.request.AddItemRequest;
+import com.example.shoppingcartserver.item.request.AdminAddItemRequest;
 import com.example.shoppingcartserver.item.request.DeleteItemRequest;
 import lombok.AllArgsConstructor;
 import org.springframework.web.bind.annotation.*;
@@ -19,7 +20,7 @@ public class AdminItemController {
 
     //TODO: security not implemented
     @PostMapping
-    public String addItem(@RequestBody AddItemRequest request)
+    public String addItem(@RequestBody AdminAddItemRequest request)
     {
         return itemService.addItem(request);
     }

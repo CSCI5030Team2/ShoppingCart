@@ -32,7 +32,7 @@ public class ConfirmationToken {
 
     private LocalDateTime confirmTime;
 
-    @ManyToOne
+    @OneToOne
     @JoinColumn( nullable = false, name = "app_user_id")
     private AppUser appUser;
 

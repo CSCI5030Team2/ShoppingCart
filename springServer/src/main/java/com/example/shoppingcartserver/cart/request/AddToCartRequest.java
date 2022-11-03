@@ -12,6 +12,7 @@ import lombok.ToString;
 @Getter
 public class AddToCartRequest {
     private final String buyerEmail;
+    private final String token;
     private final String itemName;
     private final Integer quantity;
 }

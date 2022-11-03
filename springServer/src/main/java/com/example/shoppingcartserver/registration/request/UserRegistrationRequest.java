@@ -1,4 +1,4 @@
-package com.example.shoppingcartserver.registration;
+package com.example.shoppingcartserver.registration.request;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
