@@ -13,7 +13,11 @@ jobs:
   build:
 
     runs-on: ubuntu-latest
-    working-directory: client/shopkart
+
+    defaults:
+      run:
+        shell: bash
+        working-directory: client/shopkart
     steps:
       - uses: actions/checkout@v3
       - name: Use Node.js 14.20.0
