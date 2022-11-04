@@ -53,6 +53,14 @@ public class CartService {
 
     public String addToCart(AddToCartRequest request) {
 
+        //todo
+        // find that person and get an AppUser instance
+
+        request.getBuyerEmail();
+        //1 check this person exist
+        request.getToken();
+        //2 check if login exist and not expired
+
         //find item id by name
         Optional<Item> item = itemRepository.findByItemName(request.getItemName());
         if(item.isPresent())
@@ -65,7 +73,7 @@ public class CartService {
                     itemId,
                     request.getQuantity()
             );
-
+            //todo if item alreayd exist, just incrse the number
             cartRepository.save(cartItem);
             return "Saved " + cartItem.getBuyerEmail() + " -- " + itemName;
 
@@ -79,4 +87,5 @@ public class CartService {
 
 
     }
+    //todo Public String DeleteFromCart
 }

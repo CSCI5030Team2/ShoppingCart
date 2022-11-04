@@ -2,6 +2,7 @@ package com.example.shoppingcartserver.item;
 
 import com.alibaba.fastjson.JSON;
 import com.example.shoppingcartserver.item.request.AddItemRequest;
+import com.example.shoppingcartserver.item.request.AdminAddItemRequest;
 import com.example.shoppingcartserver.item.request.BuyItemRequest;
 import com.example.shoppingcartserver.item.request.DeleteItemRequest;
 import lombok.AllArgsConstructor;
@@ -32,7 +33,19 @@ public class ItemService {
     }
 
 
-    public String addItem(AddItemRequest request) {
+    public String addItem(AdminAddItemRequest request) {
+
+        //todo verify the email and token
+
+
+        //1 check if admin exist
+
+        //2 check if that admin is logged in
+            //1 not expired
+            //user refernece correct
+
+
+
         Item item = new Item(
                 request.getItemName(),
                 request.getQuantity(),

@@ -22,7 +22,7 @@ public class LoginToken {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @ManyToOne
+    @OneToOne
     @JoinColumn( nullable = false)
     private AppUser appUser;
 

@@ -1,5 +1,7 @@
-package com.example.shoppingcartserver.registration;
+package com.example.shoppingcartserver.registration.controller;
 
+import com.example.shoppingcartserver.registration.RegistrationService;
+import com.example.shoppingcartserver.registration.request.UserRegistrationRequest;
 import lombok.AllArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 
@@ -17,7 +19,7 @@ public class UserRegistrationController {
     private RegistrationService registrationService;
 
     @PostMapping
-    public String register(@RequestBody UserRegistrationRequest request)
+    public String registerUser(@RequestBody UserRegistrationRequest request)
     {
         return registrationService.registerUser(request);
     }

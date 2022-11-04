@@ -3,6 +3,8 @@ package com.example.shoppingcartserver.login;
 import com.alibaba.fastjson.JSON;
 import com.example.shoppingcartserver.appuser.AppUser;
 import com.example.shoppingcartserver.appuser.AppUserRepository;
+import com.example.shoppingcartserver.email.EmailValidator;
+import com.example.shoppingcartserver.login.request.CheckStateRequest;
 import com.example.shoppingcartserver.login.request.LoginRequest;
 import com.example.shoppingcartserver.login.token.LoginToken;
 import lombok.AllArgsConstructor;
@@ -30,6 +32,7 @@ public class LoginService {
     public String login(LoginRequest loginRequest) {
         if(userExist(loginRequest.getEmail()))
         {
+            ArrayList<String> jsonString = new ArrayList<>();
             Optional<AppUser> appUserOptional = appUserRepository.findByEmail(loginRequest.getEmail());
             if(appUserOptional.isEmpty()) {
                 throw new UsernameNotFoundException("User do not exist");
@@ -45,7 +48,9 @@ public class LoginService {
                     oldToken.get().setExpireTime(LocalDateTime.now().plusMinutes(60));
                     oldToken.get().setToken(UUID.randomUUID().toString());
                     loginTokenRepository.save(oldToken.get());
-                    return oldToken.get().getToken();
+                    jsonString.add(oldToken.get().getToken());
+                    jsonString.add(appUser.getAppUserRole().toString());
+                    return JSON.toJSONString(jsonString);
                 }
                 else {
                     //create new token
@@ -55,7 +60,6 @@ public class LoginService {
                     loginToken.setExpireTime(LocalDateTime.now().plusMinutes(60));
                     loginToken.setAppUser(appUser);
                     loginTokenRepository.save(loginToken);
-                    ArrayList<String> jsonString = new ArrayList<>();
                     jsonString.add(loginToken.getToken());
                     jsonString.add(appUser.getAppUserRole().toString());
                     return JSON.toJSONString(jsonString);
@@ -104,4 +108,31 @@ public class LoginService {
             throw new UsernameNotFoundException("User do not exist");
         }
     }
+
+    @SuppressWarnings("OptionalGetWithoutIsPresent")
+    public String checkState(CheckStateRequest checkStateRequest) {
+        String email = checkStateRequest.getEmail();
+        EmailValidator emailValidator= new EmailValidator();
+        if(!emailValidator.test(email))
+        {
+            return "Invalid email";
+        }
+        if(userExist(email)) {
+            AppUser appUser = appUserRepository.findByEmail(email).get();
+            Optional<LoginToken> loginToken = loginTokenRepository.findByAppUser(appUser);
+            if (loginToken.isPresent()) {
+                if (loginToken.get().getExpireTime().isAfter(LocalDateTime.now())) {
+                    return "OK";
+                } else {
+                    return "Session Expired";
+                }
+            }
+
+        }
+        else {
+            return ("Login session do not exist");
+        }
+        throw new RuntimeException("Your email so bad, the server wend down ");
+    }
+
 }
