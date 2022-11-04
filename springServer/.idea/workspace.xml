@@ -4,17 +4,12 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="c7f2fea6-a65f-4fe1-826d-5e8c306d44ca" name="Changes" comment="Add: Registration feature, post api for storing user info to database">
-<<<<<<< HEAD
-      <change beforePath="$PROJECT_DIR$/../client/shopkart/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/../client/shopkart/package-lock.json" afterDir="false" />
+    <list default="true" id="97907469-1950-40b7-8c8c-9dde80a96538" name="Changes" comment="Add: Registration feature, post api for storing user info to database">
+      <change beforePath="$PROJECT_DIR$/../client/shopkart/src/App.js" beforeDir="false" afterPath="$PROJECT_DIR$/../client/shopkart/src/App.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../client/shopkart/src/actions/users.js" beforeDir="false" afterPath="$PROJECT_DIR$/../client/shopkart/src/actions/users.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-=======
-<<<<<<< HEAD
-      <change beforePath="$PROJECT_DIR$/../client/shopkart/src/actions/tests/users.test.js" beforeDir="false" />
-=======
-      <change beforePath="$PROJECT_DIR$/../.circleci/config.yml" beforeDir="false" />
->>>>>>> tests
->>>>>>> 064ee87186ee9cc370ce39ce376f6e2f4ca0c158
+      <change beforePath="$PROJECT_DIR$/src/main/resources/application.yml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/application.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/example/shoppingcartserver/registration/RegistrationController.class" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -78,7 +73,7 @@
       <map>
         <entry key="com.haulmont.jpb.jpaInspector" value="false" />
         <entry key="com.haulmont.jpb.jpaPalette" value="false" />
-        <entry key="com.haulmont.jpb.jpaStructure" value="false" />
+        <entry key="com.haulmont.jpb.jpaStructure" value="true" />
       </map>
     </option>
   </component>

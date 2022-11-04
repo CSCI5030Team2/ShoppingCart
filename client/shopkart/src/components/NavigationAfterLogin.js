@@ -4,9 +4,9 @@ import { Link } from "react-router-dom";
 import { getProducts } from "../actions/products";
 import { connect } from "react-redux";
 // import logo from "../logo.PNG";
-import Navbar from "./Navbar";
+import LoginNavbar from "./loginNavbar";
 
-export class Navigation extends Component {
+export class NavigationAfterLogin extends Component {
   componentWillMount() {
     this.props.getProducts();
   }
@@ -16,7 +16,7 @@ export class Navigation extends Component {
     return (
       <div>
         <div>
-          <Navbar />
+          <LoginNavbar />
         </div>
         <h2 style={{ textAlign: "center", marginTop: 2 + "em" }}>Products</h2>
         <div id="outerDiv">
@@ -35,20 +35,24 @@ export class Navigation extends Component {
                 <p>
                   <b>Price : </b> ${product.price}
                 </p>
-                {/* <button
+                <button
                   onClick={() => {
-                    this.props.history.push("/productdetail/" + product.id, {
+                    this.props.history.push("/cart" + product.id, {
                       product
                     });
                   }}
                   id="editBtn"
                 >
-                  View
-                </button> */}
+                  Add To Cart 
+                </button>
               </div>
             </div>
           ))}
         </div>
+        {/* <div id="mybutton">
+         <button class="AddCart">
+         <a href="/cart">Add to Cart </a>{alert="Product Added to Cart"}</button>
+        </div> */}
       </div>
     );
   }
@@ -61,4 +65,4 @@ const mapStateToProps = state => ({
 export default connect(
   mapStateToProps,
   { getProducts }
-)(Navigation);
+)(NavigationAfterLogin);
