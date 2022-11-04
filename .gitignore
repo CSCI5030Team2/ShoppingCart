@@ -1,3 +1,27 @@
-/springServer/target/
+# According to https://intellij-support.jetbrains.com/hc/en-us/articles/206544839-How-to-manage-projects-under-Version-Control-Systems
+# dont share :
+ #workspace.xml
+ #usage.statistics.xml
+ #shelf directory
+# .iml files and .idea/modules.xml file for the Gradle or Maven based projects since these files will be generated on import
+# gradle.xml file, see this discussion
+# user dictionaries folder (to avoid conflicts if other developer has the same name)
+# XML files under .idea/libraries in case they are generated from Gradle or Maven project
+
+
 /springServer/.idea/workspace.xml
-/.idea/workspace.xml
+.idea/workspace.xml
+.idea/modules.xml
+
+#outdated thing dont need
+.idea/shopkart.iml
+
+# these are auto generated
+.idea/libraries/*.xml
+springServer/.idea/libraries/*.xml
+
+#these are your uncommited things, dont share
+.idea/shelf
+springServer/.idea/shelf
+
+/springServer/target/
