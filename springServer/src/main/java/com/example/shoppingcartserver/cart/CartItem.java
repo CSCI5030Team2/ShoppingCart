@@ -25,9 +25,8 @@ public class CartItem {
 
     private String buyerEmail;
 
-    /**
-     * item table main key
-     */
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long itemId;
 
     private Integer quantity;

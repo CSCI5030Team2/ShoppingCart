@@ -36,7 +36,6 @@ public class AppUser implements UserDetails {
      * Enable once email confirmed
      */
     private Boolean enable;
-
     public AppUser(String firstName,
                    String lastName,
                    String email,

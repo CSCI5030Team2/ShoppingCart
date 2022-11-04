@@ -4,14 +4,35 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="561a9c22-b853-4ccb-8765-60cb644d1571" name="Changes" comment="Cart request module:">
+    <list default="true" id="561a9c22-b853-4ccb-8765-60cb644d1571" name="Changes" comment="App user unit and integration tests using Junit5">
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_jetbrains_annotations_23_0_0.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/uiDesigner.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/springServer/src/main/java/com/example/shoppingcartserver/cart/request/DeleteFromCartRequest.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/springServer/src/main/resources/application.yml" beforeDir="false" afterPath="$PROJECT_DIR$/springServer/src/main/resources/application.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/springServer/ShoppingCartServer.iml" beforeDir="false" afterPath="$PROJECT_DIR$/springServer/ShoppingCartServer.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/springServer/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/springServer/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/springServer/src/main/java/com/example/shoppingcartserver/appuser/AppUser.java" beforeDir="false" afterPath="$PROJECT_DIR$/springServer/src/main/java/com/example/shoppingcartserver/appuser/AppUser.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/springServer/src/main/java/com/example/shoppingcartserver/cart/CartItem.java" beforeDir="false" afterPath="$PROJECT_DIR$/springServer/src/main/java/com/example/shoppingcartserver/cart/CartItem.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/springServer/src/main/java/com/example/shoppingcartserver/cart/CartRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/springServer/src/main/java/com/example/shoppingcartserver/cart/CartRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/springServer/src/main/java/com/example/shoppingcartserver/cart/CartService.java" beforeDir="false" afterPath="$PROJECT_DIR$/springServer/src/main/java/com/example/shoppingcartserver/cart/CartService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/springServer/src/main/java/com/example/shoppingcartserver/cart/controller/CartController.java" beforeDir="false" afterPath="$PROJECT_DIR$/springServer/src/main/java/com/example/shoppingcartserver/cart/controller/CartController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/springServer/src/main/java/com/example/shoppingcartserver/cart/request/AddToCartRequest.java" beforeDir="false" afterPath="$PROJECT_DIR$/springServer/src/main/java/com/example/shoppingcartserver/cart/request/AddToCartRequest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/springServer/src/main/java/com/example/shoppingcartserver/cart/request/CheckoutCartRequest.java" beforeDir="false" afterPath="$PROJECT_DIR$/springServer/src/main/java/com/example/shoppingcartserver/cart/request/CheckoutCartRequest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/springServer/src/main/java/com/example/shoppingcartserver/cart/request/GetCartRequest.java" beforeDir="false" afterPath="$PROJECT_DIR$/springServer/src/main/java/com/example/shoppingcartserver/cart/request/GetCartRequest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/springServer/src/main/java/com/example/shoppingcartserver/cart/request/UpdateCartRequest.java" beforeDir="false" afterPath="$PROJECT_DIR$/springServer/src/main/java/com/example/shoppingcartserver/cart/request/UpdateCartRequest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/springServer/src/test/java/com/example/shoppingcartserver/appuser/AppUserRoleTest.java" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Class" />
+      </list>
+    </option>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_BRANCH_BY_REPOSITORY">
@@ -60,11 +81,18 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;Git.Branch.Popup.ShowAllRemotes&quot;: &quot;true&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "Git.Branch.Popup.ShowAllRemotes": "true",
+    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
+    "last_opened_file_path": "C:/Users/vivek/OneDrive/Desktop/ShoppingCart/ShoppingCart"
   }
-}</component>
+}]]></component>
+  <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\vivek\OneDrive\Desktop\ShoppingCart\ShoppingCart\springServer\src\test\java\com\example\shoppingcartserver" />
+    </key>
+  </component>
   <component name="RunManager" selected="JUnit.AppUserRepositoryTest">
     <configuration name="ShoppingCartServer" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="com.example.shoppingcartserver.ShoppingCartServer" />
@@ -132,7 +160,14 @@
       <option name="project" value="LOCAL" />
       <updated>1667402170313</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="App user unit and integration tests using Junit5">
+      <created>1667413350630</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1667413350630</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -163,6 +198,7 @@
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="Cart request module:" />
-    <option name="LAST_COMMIT_MESSAGE" value="Cart request module:" />
+    <MESSAGE value="App user unit and integration tests using Junit5" />
+    <option name="LAST_COMMIT_MESSAGE" value="App user unit and integration tests using Junit5" />
   </component>
 </project>
