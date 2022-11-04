@@ -22,5 +22,5 @@ jobs:
         java-version: '17'
         distribution: 'temurin'
         cache: maven
-    - name: Build with Maven 
-      run: mvn -B package --file springServer/pom.xml
+    - name: Maven compile
+      run: mvn -f springServer/pom.xml compile
