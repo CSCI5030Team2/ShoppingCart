@@ -13,13 +13,9 @@ jobs:
   build:
 
     runs-on: ubuntu-latest
-
-
-        # See supported Node.js release schedule at https://nodejs.org/en/about/releases/
-
+    working-directory: client/shopkart
     steps:
       - uses: actions/checkout@v3
-      - run: cd client/shopkart
       - name: Use Node.js 14.20.0
         uses: actions/setup-node@v3
         with:
