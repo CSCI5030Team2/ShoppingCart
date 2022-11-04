@@ -1,8 +1,7 @@
 package com.example.shoppingcartserver.cart.request;
 
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.ToString;
+import lombok.*;
+import org.springframework.web.bind.annotation.RequestMapping;
 
 /**
  * @author vivek
@@ -10,9 +9,10 @@ import lombok.ToString;
 @AllArgsConstructor
 @ToString
 @Getter
+@Setter
 public class AddToCartRequest {
-    private final String buyerEmail;
-    private final String token;
-    private final String itemName;
-    private final Integer quantity;
+    private String buyerEmail;
+    private String token;
+    private String itemName;
+    private Integer quantity;
 }
