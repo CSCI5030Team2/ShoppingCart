@@ -4,23 +4,17 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="561a9c22-b853-4ccb-8765-60cb644d1571" name="Changes" comment="App user unit and integration tests using Junit5">
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_jetbrains_annotations_23_0_0.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/uiDesigner.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/springServer/src/main/java/com/example/shoppingcartserver/cart/request/DeleteFromCartRequest.java" afterDir="false" />
+    <list default="true" id="561a9c22-b853-4ccb-8765-60cb644d1571" name="Changes" comment="Implementing CartItem module: Working on Controller, Service(Requests), Repository, Entity">
+      <change afterPath="$PROJECT_DIR$/springServer/src/main/java/com/example/shoppingcartserver/cart/request/UpdateQuantityRequest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/springServer/src/test/java/com/example/shoppingcartserver/cart/CartRepositoryTest.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/springServer/ShoppingCartServer.iml" beforeDir="false" afterPath="$PROJECT_DIR$/springServer/ShoppingCartServer.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/springServer/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/springServer/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/springServer/src/main/java/com/example/shoppingcartserver/appuser/AppUser.java" beforeDir="false" afterPath="$PROJECT_DIR$/springServer/src/main/java/com/example/shoppingcartserver/appuser/AppUser.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/springServer/src/main/java/com/example/shoppingcartserver/cart/CartItem.java" beforeDir="false" afterPath="$PROJECT_DIR$/springServer/src/main/java/com/example/shoppingcartserver/cart/CartItem.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/springServer/src/main/java/com/example/shoppingcartserver/cart/CartRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/springServer/src/main/java/com/example/shoppingcartserver/cart/CartRepository.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/springServer/src/main/java/com/example/shoppingcartserver/cart/CartService.java" beforeDir="false" afterPath="$PROJECT_DIR$/springServer/src/main/java/com/example/shoppingcartserver/cart/CartService.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/springServer/src/main/java/com/example/shoppingcartserver/cart/controller/CartController.java" beforeDir="false" afterPath="$PROJECT_DIR$/springServer/src/main/java/com/example/shoppingcartserver/cart/controller/CartController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/springServer/src/main/java/com/example/shoppingcartserver/cart/request/AddToCartRequest.java" beforeDir="false" afterPath="$PROJECT_DIR$/springServer/src/main/java/com/example/shoppingcartserver/cart/request/AddToCartRequest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/springServer/src/main/java/com/example/shoppingcartserver/cart/request/CheckoutCartRequest.java" beforeDir="false" afterPath="$PROJECT_DIR$/springServer/src/main/java/com/example/shoppingcartserver/cart/request/CheckoutCartRequest.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/springServer/src/main/java/com/example/shoppingcartserver/cart/request/GetCartRequest.java" beforeDir="false" afterPath="$PROJECT_DIR$/springServer/src/main/java/com/example/shoppingcartserver/cart/request/GetCartRequest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/springServer/src/main/java/com/example/shoppingcartserver/cart/request/UpdateCartRequest.java" beforeDir="false" afterPath="$PROJECT_DIR$/springServer/src/main/java/com/example/shoppingcartserver/cart/request/UpdateCartRequest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/springServer/src/test/java/com/example/shoppingcartserver/appuser/AppUserRoleTest.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/springServer/src/main/java/com/example/shoppingcartserver/cart/request/UpdateCartRequest.java" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -30,6 +24,7 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
+        <option value="JUnit5 Test Class" />
         <option value="Class" />
       </list>
     </option>
@@ -85,6 +80,8 @@
   "keyToString": {
     "Git.Branch.Popup.ShowAllRemotes": "true",
     "SHARE_PROJECT_CONFIGURATION_FILES": "true",
+    "com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrary": "JUnit5",
+    "com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.JUnit5": "",
     "last_opened_file_path": "C:/Users/vivek/OneDrive/Desktop/ShoppingCart/ShoppingCart"
   }
 }]]></component>
@@ -92,8 +89,14 @@
     <key name="MoveFile.RECENT_KEYS">
       <recent name="C:\Users\vivek\OneDrive\Desktop\ShoppingCart\ShoppingCart\springServer\src\test\java\com\example\shoppingcartserver" />
     </key>
+    <key name="CreateTestDialog.Recents.Supers">
+      <recent name="" />
+    </key>
+    <key name="CreateTestDialog.RecentsKey">
+      <recent name="com.example.shoppingcartserver.cart" />
+    </key>
   </component>
-  <component name="RunManager" selected="JUnit.AppUserRepositoryTest">
+  <component name="RunManager" selected="JUnit.CartRepositoryTest.testAddCartItem">
     <configuration name="ShoppingCartServer" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="com.example.shoppingcartserver.ShoppingCartServer" />
       <module name="ShoppingCartServer" />
@@ -122,6 +125,22 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <configuration name="CartRepositoryTest.testAddCartItem" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="ShoppingCartServer" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.example.shoppingcartserver.cart.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="com.example.shoppingcartserver.cart" />
+      <option name="MAIN_CLASS_NAME" value="com.example.shoppingcartserver.cart.CartRepositoryTest" />
+      <option name="METHOD_NAME" value="testAddCartItem" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <configuration name="ShoppingCartServer" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" temporary="true" nameIsGenerated="true">
       <module name="ShoppingCartServer" />
       <extension name="coverage">
@@ -137,6 +156,7 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="JUnit.CartRepositoryTest.testAddCartItem" />
         <item itemvalue="JUnit.AppUserRepositoryTest" />
         <item itemvalue="Application.ShoppingCartServer" />
       </list>
@@ -167,7 +187,14 @@
       <option name="project" value="LOCAL" />
       <updated>1667413350630</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="Implementing CartItem module: Working on Controller, Service(Requests), Repository, Entity">
+      <created>1667523571075</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1667523571075</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -199,6 +226,12 @@
   <component name="VcsManagerConfiguration">
     <MESSAGE value="Cart request module:" />
     <MESSAGE value="App user unit and integration tests using Junit5" />
-    <option name="LAST_COMMIT_MESSAGE" value="App user unit and integration tests using Junit5" />
+    <MESSAGE value="Implementing CartItem module: Working on Controller, Service(Requests), Repository, Entity" />
+    <option name="LAST_COMMIT_MESSAGE" value="Implementing CartItem module: Working on Controller, Service(Requests), Repository, Entity" />
+  </component>
+  <component name="com.intellij.coverage.CoverageDataManagerImpl">
+    <SUITE FILE_PATH="coverage/ShoppingCart$CartRepositoryTest_testAddCartItem.ic" NAME="CartRepositoryTest.testAddCartItem Coverage Results" MODIFIED="1667605038324" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
+      <FILTER>com.example.shoppingcartserver.cart.*</FILTER>
+    </SUITE>
   </component>
 </project>

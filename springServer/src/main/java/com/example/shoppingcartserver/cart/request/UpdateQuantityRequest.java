@@ -7,7 +7,9 @@ import lombok.ToString;
 @AllArgsConstructor
 @ToString
 @Getter
-public class GetCartRequest {
+public class UpdateQuantityRequest {
+    private final Long id;
+    private final Long Quantity;
+    private final String buyerEmail;
     private final String itemName;
-    private final String userEmail;
 }
