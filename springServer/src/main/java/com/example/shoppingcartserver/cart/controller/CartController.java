@@ -1,12 +1,11 @@
 package com.example.shoppingcartserver.cart.controller;
 
 
+import com.example.shoppingcartserver.appuser.AppUserServiceImpl;
 import com.example.shoppingcartserver.cart.CartService;
-import com.example.shoppingcartserver.cart.request.AddToCartRequest;
-import com.example.shoppingcartserver.cart.request.CheckoutCartRequest;
-import com.example.shoppingcartserver.cart.request.DeleteFromCartRequest;
-import com.example.shoppingcartserver.cart.request.GetCartRequest;
+import com.example.shoppingcartserver.cart.request.*;
 import lombok.AllArgsConstructor;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import javax.persistence.PostRemove;
@@ -20,7 +19,11 @@ import javax.persistence.PostRemove;
 @RequestMapping(path = "/cart")
 public class CartController {
 
+    @Autowired
     private CartService cartService;
+
+    @Autowired
+    private AppUserServiceImpl appUserService;
 
     @GetMapping
     public String getCart(@RequestBody GetCartRequest request)
@@ -35,12 +38,12 @@ public class CartController {
     }
 
     @PostMapping
-    public String checkOutCartRequest(@RequestBody CheckoutCartRequest request)
+    public String checkOutCart(@RequestBody CheckoutCartRequest request)
     {
         return cartService.checkout(request);
     }
 
-    @PostRemove
+    @DeleteMapping
     public String deleteFromCart(@RequestBody DeleteFromCartRequest request)
     {
         return cartService.deleteFromCart(request);

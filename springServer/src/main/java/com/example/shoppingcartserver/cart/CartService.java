@@ -1,28 +1,27 @@
 package com.example.shoppingcartserver.cart;
 
 import com.alibaba.fastjson.JSON;
-import com.example.shoppingcartserver.cart.request.AddToCartRequest;
-import com.example.shoppingcartserver.cart.request.CheckoutCartRequest;
-import com.example.shoppingcartserver.cart.request.DeleteFromCartRequest;
-import com.example.shoppingcartserver.cart.request.GetCartRequest;
+import com.example.shoppingcartserver.cart.request.*;
 import com.example.shoppingcartserver.item.Item;
 import com.example.shoppingcartserver.item.ItemRepository;
 import lombok.AllArgsConstructor;
-import org.jetbrains.annotations.NotNull;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.Optional;
 
 /**
- * @author aiden
+ * @author aiden, vivek
  */
 @Service
 @AllArgsConstructor
 public class CartService {
 
+    @Autowired
     private final CartRepository cartRepository;
 
+    @Autowired
     private final ItemRepository itemRepository;
 
     /**
@@ -74,16 +73,23 @@ public class CartService {
             return request.getItemName() + " do not exist anymore";
         }
     }
+
+    public void updateQuantity(UpdateQuantityRequest request) {
+
+        Optional<Item> item = itemRepository.findByItemName(request.getItemName());
+
+    }
+
     public String deleteFromCart(DeleteFromCartRequest request) {
-        //find item id by name
+        //find cartItem id by name
         Optional<CartItem> cartItem = cartRepository.findByItemName(request.getItemName());
-        if (cartItem.isPresent()) {
-            cartRepository.deleteItemByName(request.getItemName());
-            return "Deleted: " + request.getItemName();
+        if(cartItem.isPresent()) {
+            Long itemId = cartItem.get().getId();
+        cartRepository.deleteItemByName(request.getItemName());
+        return "Deleted: " + request.getItemName();
         }
-        else
-        {
-            return "Item Name: " + request.getItemName() + " not found";
+        else{
+            return request.getItemName() + "do not exist in your cart";
         }
     }
 }
