@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 import { getProducts } from "../actions/products";
 import { connect } from "react-redux";
 // import logo from "../logo.PNG";
-import LoginNavbar from "./loginNavbar";
+import LoginNavbar from "./LoginNavbar";
 
 export class NavigationAfterLogin extends Component {
   componentWillMount() {
