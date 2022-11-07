@@ -13,7 +13,7 @@ jobs:
        - checkout
        - run:
            name: install dependencies
-           command: npm install
+           command: rm package-lock.json && npm install
       
        - run:
            name: run tests
