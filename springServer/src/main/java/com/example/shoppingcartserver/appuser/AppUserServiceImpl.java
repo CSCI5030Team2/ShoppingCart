@@ -87,5 +87,4 @@ public class AppUserServiceImpl implements UserDetailsService {
 
         return token;
     }
-
 }

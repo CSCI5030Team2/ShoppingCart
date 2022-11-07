@@ -65,10 +65,12 @@ public class CartService {
     }
 
     public String addToCart(AddToCartRequest request) {
-        //verify the token of
         AppUser appUser = appUserRepository.findByEmail("someone@something.com").get();
         Optional<LoginToken> optionalLoginToken = loginRepository.findByAppUser(appUser);
-        if(optionalLoginToken.isPresent()){
+        Optional<Item> item = itemRepository.findByItemName(request.getItemName());
+        Optional<CartItem> optionalCartItem = cartRepository.findByItemName(request.getItemName());
+        // Verify the token of buyer:
+        if(optionalLoginToken.isPresent()) {
             LoginToken token = optionalLoginToken.get();
             try {
                 token.getExpireTime().isBefore(LocalDateTime.now());
@@ -76,9 +78,12 @@ public class CartService {
                 e.printStackTrace();
                 return "Session Expired";
             }
-        }
-        else {
-            Optional<Item> item = itemRepository.findByItemName(request.getItemName());
+            if (optionalCartItem.isPresent()) {
+                List<CartItem> cartItemList = optionalCartItem.stream().toList();
+                CartItem cartItem = optionalCartItem.get();
+                cartItem.setQuantity(cartItem.getQuantity()+1);
+                return "quantity added";
+            }
             if (item.isPresent()) {
                 Long itemId = item.get().getId();
                 String itemName = item.get().getItemName();
@@ -88,28 +93,35 @@ public class CartService {
                         itemId,
                         request.getQuantity()
                 );
-
                 cartRepository.save(cartItem);
                 return cartItem.getBuyerEmail() + " -- " + itemName + "Saved to cart ";
-
-            }
-            else {
+            } else {
                 return request.getItemName() + " is out of stock.";
             }
         }
         return "User not found";
-    }
+        }
+
 
     public String deleteFromCart(DeleteFromCartRequest request) {
-        //find cartItem id by name
+        AppUser appuser = appUserRepository.findByEmail("someone@something.com").get();
+        Optional<LoginToken> optionalLoginToken = loginRepository.findByAppUser(appuser);
         Optional<CartItem> cartItem = cartRepository.findByItemName(request.getItemName());
+        if(optionalLoginToken.isPresent() || cartItem.isPresent()){
+            LoginToken loginToken = optionalLoginToken.get();
+        }
+        else{
+
         if(cartItem.isPresent()) {
             Long itemId = cartItem.get().getId();
         cartRepository.deleteItemByName(request.getItemName());
         return "Deleted: " + request.getItemName();
         }
-        else{
+        else {
             return request.getItemName() + "do not exist in your cart";
         }
     }
+        return "Needs return statement";
+
+}
 }
