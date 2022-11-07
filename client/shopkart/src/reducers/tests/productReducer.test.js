@@ -11,7 +11,7 @@ describe("Testing Product Reducers", () => {
     expect(returnedState).toEqual({ products: action.payload });
   });
 
-  it("should return a state object with PRODUCTS array equal to the payload in the action when the action type is GET_USERS (when the returned state is not an initial state", () => {
+  it("should return a state object with PRODUCTS array equal to the payload in the action when the action type is GET_Products (when the returned state is not an initial state", () => {
     const initialState = {
       products: [1, 2, 3, 4, 5]
     };

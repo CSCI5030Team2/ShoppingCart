@@ -1,15 +1,15 @@
 import React from "react";
 import { mount } from "enzyme";
-import Navigation from "../Navigation";
+import AdminNavbar from "../AdminNavbar";
 import { Provider } from "react-redux";
 import store from "../../store";
 import { BrowserRouter } from "react-router-dom";
 
-const navigation = jest.fn();
+const adminnavbar = jest.fn();
 const wrapper = mount(
   <Provider store={store}>
   <BrowserRouter>
-    <Navigation navigation={navigation} />
+    <AdminNavbar adminnavbar={adminnavbar} />
     </BrowserRouter>
   </Provider>
 );
@@ -19,15 +19,15 @@ describe("Test Navigation Component", () => {
     expect(wrapper).toMatchSnapshot();
   });
 
-  it("should have exactly two b tags", () => {
-    expect(wrapper.find("b").length).toBe(2);
+  it("should have exactly one div tag", () => {
+    expect(wrapper.find("div").length).toBe(1);
   });
 
-  it("should have exactly one h2 tag", () => {
-    expect(wrapper.find("h2").length).toBe(1);
+  it("should have exactly four Link tags", () => {
+    expect(wrapper.find("Link").length).toBe(4);
   });
 
-  it("should have exactly four div tags", () => {
-    expect(wrapper.find("div").length).toBe(5);
+  it("should have exactly four li tags", () => {
+    expect(wrapper.find("li").length).toBe(4);
   });
 });
