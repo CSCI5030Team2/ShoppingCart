@@ -18,7 +18,6 @@ import org.springframework.web.bind.annotation.*;
 public class AdminItemController {
     private ItemService itemService;
 
-    //TODO: security not implemented
     @PostMapping
     public String addItem(@RequestBody AdminAddItemRequest request)
     {
@@ -31,5 +30,9 @@ public class AdminItemController {
         return itemService.deleteItem(request);
     }
 
+    @PutMapping
+    public String updateItem(@RequestBody AdminAddItemRequest request){
+        return itemService.updateItem(request);
+    }
 
 }
