@@ -1,13 +1,19 @@
 package com.example.shoppingcartserver.cart;
 
 import com.alibaba.fastjson.JSON;
+import com.example.shoppingcartserver.appuser.AppUser;
 import com.example.shoppingcartserver.cart.request.*;
 import com.example.shoppingcartserver.item.Item;
 import com.example.shoppingcartserver.item.ItemRepository;
+import com.example.shoppingcartserver.appuser.AppUserRepository;
+import com.example.shoppingcartserver.login.LoginRepository;
+import com.example.shoppingcartserver.login.token.LoginToken;
+
 import lombok.AllArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.time.LocalDateTime;
 import java.util.List;
 import java.util.Optional;
 
@@ -23,6 +29,12 @@ public class CartService {
 
     @Autowired
     private final ItemRepository itemRepository;
+
+    @Autowired
+    private final AppUserRepository appUserRepository;
+
+    @Autowired
+    private final LoginRepository loginRepository;
 
     /**
      * Get all item associated with buyEmail
@@ -53,39 +65,39 @@ public class CartService {
     }
 
     public String addToCart(AddToCartRequest request) {
-
-        //todo
-        // find that person and get an AppUser instance
-
-        request.getBuyerEmail();
-        //1 check this person exist
-        request.getToken();
-        //2 check if login exist and not expired
-
-        //find item id by name
-        Optional<Item> item = itemRepository.findByItemName(request.getItemName());
-        if (item.isPresent()) {
-            Long itemId = item.get().getId();
-            String itemName = item.get().getItemName();
-            //add to cart
-            CartItem cartItem = new CartItem(
-                    request.getBuyerEmail(),
-                    itemId,
-                    request.getQuantity()
-            );
-            //todo if item alreayd exist, just incrse the number
-            cartRepository.save(cartItem);
-            return "Saved " + cartItem.getBuyerEmail() + " -- " + itemName;
-
-        } else {
-            return request.getItemName() + " do not exist anymore";
+        //verify the token of
+        AppUser appUser = appUserRepository.findByEmail("someone@something.com").get();
+        Optional<LoginToken> optionalLoginToken = loginRepository.findByAppUser(appUser);
+        if(optionalLoginToken.isPresent()){
+            LoginToken token = optionalLoginToken.get();
+            try {
+                token.getExpireTime().isBefore(LocalDateTime.now());
+            } catch (Exception e) {
+                e.printStackTrace();
+                return "Session Expired";
+            }
         }
-    }
+        else {
+            Optional<Item> item = itemRepository.findByItemName(request.getItemName());
+            if (item.isPresent()) {
+                Long itemId = item.get().getId();
+                String itemName = item.get().getItemName();
+                //add to cart
+                CartItem cartItem = new CartItem(
+                        request.getBuyerEmail(),
+                        itemId,
+                        request.getQuantity()
+                );
 
-    public void updateQuantity(UpdateQuantityRequest request) {
+                cartRepository.save(cartItem);
+                return cartItem.getBuyerEmail() + " -- " + itemName + "Saved to cart ";
 
-        Optional<Item> item = itemRepository.findByItemName(request.getItemName());
-
+            }
+            else {
+                return request.getItemName() + " is out of stock.";
+            }
+        }
+        return "User not found";
     }
 
     public String deleteFromCart(DeleteFromCartRequest request) {
@@ -100,5 +112,4 @@ public class CartService {
             return request.getItemName() + "do not exist in your cart";
         }
     }
-    //todo Public String DeleteFromCart
 }

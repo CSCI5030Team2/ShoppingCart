@@ -38,6 +38,4 @@ public class LoginToken {
     @Column(nullable = false)
     private LocalDateTime expireTime;
 
-
-
 }
