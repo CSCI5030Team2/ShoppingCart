@@ -4,15 +4,15 @@ import { Link } from "react-router-dom";
 import { getProducts } from "../actions/products";
 import { connect } from "react-redux";
 // import logo from "../logo.PNG";
-import Navbar from "./Navbar";
+import LoginNavbar from "./LoginNavbar";
 
 export class Navigation extends Component {
   componentWillMount() {
-    this.props.getProducts();
+    this.props.getCarts();
   }
 
   render() {
-    console.log(this.props.getProducts())
+    console.log(this.props.getCarts())
     return (
       <div>
         <div>
@@ -35,7 +35,7 @@ export class Navigation extends Component {
                 <p>
                   <b>Price : </b> ${product.price}
                 </p>
-                {/* <button
+                <button
                   onClick={() => {
                     this.props.history.push("/productdetail/" + product.id, {
                       product
@@ -44,7 +44,7 @@ export class Navigation extends Component {
                   id="editBtn"
                 >
                   View
-                </button> */}
+                </button>
               </div>
             </div>
           ))}

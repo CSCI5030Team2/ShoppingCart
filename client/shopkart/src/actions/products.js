@@ -2,7 +2,9 @@ import {
     GET_PRODUCTS,
     CREATE_PRODUCTS,
     UPDATE_PRODUCTS,
-    DELETE_PRODUCTS
+    DELETE_PRODUCTS,
+    CART_PRODUCTS,
+    GET_CARTS
   } from "./types";
   
   import axios from "axios";
@@ -79,4 +81,38 @@ import {
         console.log(err);
       });
   };
+
+  export const AddtoCart = PRODUCTS => dispatch => {
+    axios
+      .post("http://localhost:8080/cart", PRODUCTS,
+       {
+        headers: { Authorization: `Bearer ${localStorage.getItem("token")}` }
+      }
+      )
+      .then(res => {
+        dispatch({
+          type: CREATE_PRODUCTS
+        });
+        alert("Product Added to Cart");
+        // dispatch(getProducts());
+      })
+      .catch(err => {
+        console.log(err);
+        alert("Try Again");
+      });
+  };
   
+  export const getCarts = () => dispatch => {
+    return axios
+      .get("http://localhost:8080/getcarts")
+      .then(res => {
+        dispatch({
+          type: GET_CARTS,
+          payload: res.data
+        });
+        console.log(res.data);
+      })
+      .catch(err => {
+        console.log(err);
+      });
+  };
