@@ -1,5 +1,6 @@
 package com.example.shoppingcartserver.login;
 
+import com.example.shoppingcartserver.appuser.AppUser;
 import com.example.shoppingcartserver.login.token.LoginToken;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Modifying;
@@ -32,6 +33,8 @@ public interface LoginRepository extends JpaRepository<LoginToken,Long> {
     @Modifying
     @Query("UPDATE LoginToken t SET t.expireTime = ?2 WHERE t.token = ?1")
     void updateExpireTime(String token, LocalDateTime newExpireTime);
+
+    Optional<LoginToken> findByAppUser(AppUser appUser);
 
 
     //Optional<LoginToken> findByAppUserId(Long appUserId);
