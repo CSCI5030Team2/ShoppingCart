@@ -7,6 +7,7 @@ import lombok.AllArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 
 import javax.security.auth.login.CredentialException;
+import javax.security.auth.login.CredentialExpiredException;
 
 /**
  * @author aiden
@@ -34,7 +35,7 @@ public class LoginController {
      * @return status message
      */
     @GetMapping
-    public String checkState(@RequestBody CheckStateRequest checkStateRequest){
+    public String checkState(@RequestBody CheckStateRequest checkStateRequest) throws CredentialExpiredException {
         return loginService.checkState(checkStateRequest);
     }
 

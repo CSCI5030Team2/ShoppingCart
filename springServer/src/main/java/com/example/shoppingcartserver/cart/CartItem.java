@@ -1,14 +1,14 @@
 package com.example.shoppingcartserver.cart;
 
 
+import com.example.shoppingcartserver.appuser.AppUser;
+import com.example.shoppingcartserver.item.Item;
+import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 
 /**
  * @author aiden
@@ -25,18 +25,11 @@ public class CartItem {
 
     private String buyerEmail;
 
-    /**
-     * item table main key
-     */
-    private Long itemId;
+    @ManyToOne
+    @JoinColumn( nullable = false)
+    private Item item;
 
     private Integer quantity;
 
-
-    public CartItem(String buyerEmail, Long itemId, Integer quantity) {
-        this.buyerEmail = buyerEmail;
-        this.itemId = itemId;
-        this.quantity = quantity;
-    }
 }
 
