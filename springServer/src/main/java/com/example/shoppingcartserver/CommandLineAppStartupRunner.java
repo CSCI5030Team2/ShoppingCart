@@ -24,6 +24,11 @@ public class CommandLineAppStartupRunner implements CommandLineRunner {
 
     @Override
     public void run(String... args)  {
+        if(appUserRepository == null || itemRepository == null)
+        {
+            System.err.println("Repo init failed");
+            return;
+        }
         try {
             createAdmin();
             createItems();

@@ -9,6 +9,10 @@ import java.util.UUID;
 
 import static org.junit.jupiter.api.Assertions.*;
 
+/**
+ * ConfirmationToken instance test
+ * @author aiden
+ */
 class ConfirmationTokenTest {
 
     ConfirmationToken confirmationToken;
