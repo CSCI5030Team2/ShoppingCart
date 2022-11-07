@@ -6,7 +6,7 @@ version: 2.1
 # See: https://circleci.com/docs/2.0/configuration-reference/#jobs
 jobs:
   build-and-test-javascript:
-    working_directory: ~/client
+    working_directory: ~/client/
     docker:
        - image: cimg/node:14.20.0
     steps:
