@@ -88,7 +88,7 @@ public class ItemService {
 
             if(itemExist) {
                 itemRepository.updateItemByName(request.getItemName(),request.getPrice(),request.getQuantity());
-                return request.getItemName() + " already exist, did nothing";
+                return request.getItemName() + " already exist, updated " + request.getItemName();
             }
             return "Item do not exist";
         }
@@ -137,7 +137,7 @@ public class ItemService {
      * @param item
      * @param quantity
      */
-    public void deleteByItem(Item item, Integer quantity) {
+    public void deleteByItem(Item item, Integer quantity) throws Exception {
 
         Optional<Item> optionalItem = itemRepository.findByItemName(item.getItemName());
         if(optionalItem.isPresent()) {
@@ -146,7 +146,7 @@ public class ItemService {
             if(dbItem.getQuantity() < quantity)
             {
                 //dont checkout
-                return;
+                throw new Exception("out of stock");
             }
 
             itemRepository.updateItemByName(item.getItemName(),

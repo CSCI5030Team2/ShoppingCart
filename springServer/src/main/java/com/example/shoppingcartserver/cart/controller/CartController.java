@@ -41,7 +41,7 @@ public class CartController {
 
 
     @PutMapping
-    public String checkoutCart(@RequestBody GetCartRequest request) throws CredentialException { return cartService.checkout(request);}
+    public String checkoutCart(@RequestBody GetCartRequest request) throws Exception { return cartService.checkout(request);}
 
 
 }

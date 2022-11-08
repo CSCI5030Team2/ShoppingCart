@@ -49,7 +49,7 @@ public class CartService {
      * @param request buyerEmail
      * @return msg String
      */
-    public String checkout(GetCartRequest request) throws CredentialException {
+    public String checkout(GetCartRequest request) throws Exception {
         if(validToken(request.getToken())) {
             Optional<CartItem> optionalCartItems = cartRepository.findByBuyerEmail(request.getBuyerEmail());
             if (optionalCartItems.isPresent()) {
