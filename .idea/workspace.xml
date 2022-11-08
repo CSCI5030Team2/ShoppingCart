@@ -4,10 +4,16 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="561a9c22-b853-4ccb-8765-60cb644d1571" name="Changes" comment="SHOP-10: Update to Cart Service module. Verifying user's token to add item to cart.">
+    <list default="true" id="561a9c22-b853-4ccb-8765-60cb644d1571" name="Changes" comment="SHOP-10: Update to Cart service(Add item request)">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/springServer/src/main/java/com/example/shoppingcartserver/cart/CartRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/springServer/src/main/java/com/example/shoppingcartserver/cart/CartRepository.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/springServer/src/main/java/com/example/shoppingcartserver/cart/CartService.java" beforeDir="false" afterPath="$PROJECT_DIR$/springServer/src/main/java/com/example/shoppingcartserver/cart/CartService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/springServer/src/main/java/com/example/shoppingcartserver/cart/controller/CartController.java" beforeDir="false" afterPath="$PROJECT_DIR$/springServer/src/main/java/com/example/shoppingcartserver/cart/controller/CartController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/springServer/src/main/java/com/example/shoppingcartserver/cart/request/AddToCartRequest.java" beforeDir="false" afterPath="$PROJECT_DIR$/springServer/src/main/java/com/example/shoppingcartserver/cart/request/AddToCartRequest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/springServer/src/main/java/com/example/shoppingcartserver/cart/request/CheckoutCartRequest.java" beforeDir="false" afterPath="$PROJECT_DIR$/springServer/src/main/java/com/example/shoppingcartserver/cart/request/CheckoutCartRequest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/springServer/src/main/java/com/example/shoppingcartserver/cart/request/DeleteFromCartRequest.java" beforeDir="false" afterPath="$PROJECT_DIR$/springServer/src/main/java/com/example/shoppingcartserver/cart/request/DeleteFromCartRequest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/springServer/src/main/java/com/example/shoppingcartserver/cart/request/GetCartRequest.java" beforeDir="false" afterPath="$PROJECT_DIR$/springServer/src/main/java/com/example/shoppingcartserver/cart/request/GetCartRequest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/springServer/src/main/java/com/example/shoppingcartserver/item/ItemRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/springServer/src/main/java/com/example/shoppingcartserver/item/ItemRepository.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -208,7 +214,14 @@
       <option name="project" value="LOCAL" />
       <updated>1667861298430</updated>
     </task>
-    <option name="localTasksCounter" value="7" />
+    <task id="LOCAL-00007" summary="SHOP-10: Update to Cart service(Add item request)">
+      <created>1667868607990</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1667868607990</updated>
+    </task>
+    <option name="localTasksCounter" value="8" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -253,7 +266,8 @@
     <MESSAGE value="Implementing CartItem module: Working on Controller, Service(Requests), Repository, Entity" />
     <MESSAGE value="SHOP-10: Progress in Cart module(not a working copy)" />
     <MESSAGE value="SHOP-10: Update to Cart Service module. Verifying user's token to add item to cart." />
-    <option name="LAST_COMMIT_MESSAGE" value="SHOP-10: Update to Cart Service module. Verifying user's token to add item to cart." />
+    <MESSAGE value="SHOP-10: Update to Cart service(Add item request)" />
+    <option name="LAST_COMMIT_MESSAGE" value="SHOP-10: Update to Cart service(Add item request)" />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
     <SUITE FILE_PATH="coverage/ShoppingCart$CartRepositoryTest_testAddCartItem.ic" NAME="CartRepositoryTest.testAddCartItem Coverage Results" MODIFIED="1667605038324" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">

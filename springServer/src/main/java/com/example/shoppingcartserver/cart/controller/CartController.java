@@ -37,7 +37,7 @@ public class CartController {
         return cartService.addToCart(request);
     }
 
-    @PostMapping
+    @PutMapping
     public String checkOutCart(@RequestBody CheckoutCartRequest request)
     {
         return cartService.checkout(request);

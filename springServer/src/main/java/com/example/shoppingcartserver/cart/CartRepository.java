@@ -24,11 +24,11 @@ public interface CartRepository extends JpaRepository<CartItem,Long> {
 
     @Transactional
     @Modifying
-    @Query("delete from CartItem i where i.buyerEmail=buyerEmail")
+    @Query("delete from CartItem i WHERE i.buyerEmail=buyerEmail")
     void deleteAllByBuyerEmail(String buyerEmail);
 
     @Transactional
     @Modifying
-    @Query("delete Item i from cart where i.itemName=itemName")
+    @Query("delete from CartItem i WHERE i.itemName=itemName")
     Optional<CartItem> deleteItemByName(String itemName);
 }

@@ -69,20 +69,19 @@ public class CartService {
         Optional<LoginToken> optionalLoginToken = loginRepository.findByAppUser(appUser);
         Optional<Item> item = itemRepository.findByItemName(request.getItemName());
         Optional<CartItem> optionalCartItem = cartRepository.findByItemName(request.getItemName());
-        // Verify the token of buyer:
-        if(optionalLoginToken.isPresent()) {
+        // Verifying token of user:
+        if (optionalLoginToken.isPresent()) {
             LoginToken token = optionalLoginToken.get();
             try {
                 token.getExpireTime().isBefore(LocalDateTime.now());
             } catch (Exception e) {
                 e.printStackTrace();
-                return "Session Expired";
+                return "Session Expired. Login again to continue";
             }
             if (optionalCartItem.isPresent()) {
                 List<CartItem> cartItemList = optionalCartItem.stream().toList();
-                for(CartItem cartItem : cartItemList)
-                {
-                    if(cartItem.getItemId().equals(request.getItemId()));
+                for (CartItem cartItem : cartItemList) {
+                    if (cartItem.getItemId().equals(request.getItemId())) ;
                     {
                         cartItem.setQuantity(cartItem.getQuantity() + request.getQuantity());
                         cartRepository.save(cartItem);
@@ -106,28 +105,35 @@ public class CartService {
             }
         }
         return "User not found";
-        }
+    }
 
 
     public String deleteFromCart(DeleteFromCartRequest request) {
         AppUser appuser = appUserRepository.findByEmail("someone@something.com").get();
         Optional<LoginToken> optionalLoginToken = loginRepository.findByAppUser(appuser);
-        Optional<CartItem> cartItem = cartRepository.findByItemName(request.getItemName());
-        if(optionalLoginToken.isPresent() || cartItem.isPresent()){
-            LoginToken loginToken = optionalLoginToken.get();
+        Optional<Item> optionalItem = itemRepository.findByItemName(request.getItemName());
+        Optional<CartItem> optionalCartItem = cartRepository.findByItemName(request.getItemName());
+        // Verifying token of user:
+        if (optionalLoginToken.isPresent()) {
+            LoginToken token = optionalLoginToken.get();
+            try {
+                token.getExpireTime().isBefore(LocalDateTime.now());
+            } catch (Exception e) {
+                e.printStackTrace();
+                return "Session expired. Login again to continue";
+            }
+            if (optionalCartItem.isPresent()) {
+                List<CartItem> cartItemList = optionalCartItem.stream().toList();
+                for (CartItem cartItem : cartItemList) {
+                    if (cartItem.getItemId().equals(request.getItemId())) ;
+                    {
+                        cartItem.setQuantity(cartItem.getQuantity() - request.getQuantity());
+                        cartRepository.delete(cartItem);
+                        return "Item Deleted";
+                    }
+                }
+            }
         }
-        else{
-
-        if(cartItem.isPresent()) {
-            Long itemId = cartItem.get().getId();
-        cartRepository.deleteItemByName(request.getItemName());
-        return "Deleted: " + request.getItemName();
-        }
-        else {
-            return request.getItemName() + "do not exist in your cart";
+            return "User not found";
         }
     }
-        return "Needs return statement";
-
-}
-}
