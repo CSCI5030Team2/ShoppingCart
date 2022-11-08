@@ -120,5 +120,4 @@ public class AppUserServiceImpl {
             throw new UsernameNotFoundException("Could not find " + email);
         }
     }
-
 }

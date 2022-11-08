@@ -9,7 +9,7 @@ import org.springframework.transaction.annotation.Transactional;
 import java.util.Optional;
 
 /**
- * @author aiden
+ * @author aiden, vivek
  */
 @Repository
 public interface CartRepository extends JpaRepository<CartItem,Long> {
@@ -20,9 +20,15 @@ public interface CartRepository extends JpaRepository<CartItem,Long> {
      */
     Optional<CartItem> findByBuyerEmail(String buyerEmail);
 
+    Optional <CartItem> findByItemName(String itemName);
+
     @Transactional
     @Modifying
-    @Query("delete from CartItem i where i.buyerEmail=:buyerEmail")
+    @Query("delete from CartItem i WHERE i.buyerEmail=buyerEmail")
     void deleteAllByBuyerEmail(String buyerEmail);
 
+    @Transactional
+    @Modifying
+    @Query("delete from CartItem i WHERE i.itemName=itemName")
+    Optional<CartItem> deleteItemByName(String itemName);
 }
