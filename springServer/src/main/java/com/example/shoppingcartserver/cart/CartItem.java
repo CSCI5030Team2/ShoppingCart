@@ -1,9 +1,7 @@
 package com.example.shoppingcartserver.cart;
 
 
-import com.example.shoppingcartserver.appuser.AppUser;
 import com.example.shoppingcartserver.item.Item;
-import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;

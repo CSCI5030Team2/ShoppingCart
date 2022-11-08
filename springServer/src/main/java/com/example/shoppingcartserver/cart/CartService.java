@@ -41,7 +41,7 @@ public class CartService {
     {
         Optional<CartItem> cartItemList = cartRepository.findByBuyerEmail(request.getBuyerEmail());
         List<CartItem> cartItemListObj = cartItemList.stream().toList();
-        return JSON.toJSONString(cartItemList);
+        return JSON.toJSONString(cartItemListObj);
     }
 
     /**
@@ -74,6 +74,10 @@ public class CartService {
     public String addToCart(AddToCartRequest request) throws Exception {
         AppUser appUser = appUserService.getAppUserByEmail(request.getBuyerEmail());
         Item item = itemService.findItemByName(request.getItemName());
+        if(item.getQuantity() <1)
+        {
+            return "Out of stock";
+        }
 
         String itemName = item.getItemName();
 
@@ -103,6 +107,7 @@ public class CartService {
     }
 
     public String deleteFromCart(DeleteFromCartRequest request) throws Exception {
+        //delete one
         AppUser appUser = appUserService.getAppUserByEmail(request.getBuyerEmail());
         Item item = itemService.findItemByName(request.getItemName());
         String itemName = item.getItemName();
@@ -114,8 +119,19 @@ public class CartService {
             {
                 if(cartItem.getItem().getItemName().equals(request.getItemName()))
                 {
-                    cartRepository.delete(cartItem);
-                    return "Deleted " + cartItem.getItem().getItemName()+ " for " + request.getBuyerEmail();
+                    cartItem.setQuantity(cartItem.getQuantity() - request.getQuantity());
+                    if(cartItem.getQuantity()<=0) {
+                        cartRepository.delete(cartItem);
+                        return "Deleted all " +
+                                cartItem.getItem().getItemName() +
+                                " for " + request.getBuyerEmail();
+                    }
+                    else {
+                        cartRepository.save(cartItem);
+                        return "Deleted " + request.getQuantity() + " " +
+                                cartItem.getItem().getItemName() +
+                                " for " + request.getBuyerEmail();
+                    }
                 }
             }
 
