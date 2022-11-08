@@ -5,6 +5,8 @@ import com.example.shoppingcartserver.registration.RegistrationService;
 import lombok.AllArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 
+import javax.security.auth.login.CredentialExpiredException;
+
 /**
  * @author aiden
  *
@@ -19,8 +21,7 @@ public class AdminRegistrationController {
     private RegistrationService registrationService;
 
     @PostMapping
-    public String registerAdmin(@RequestBody AdminRegistrationRequest request)
-    {
+    public String registerAdmin(@RequestBody AdminRegistrationRequest request) throws CredentialExpiredException {
         return registrationService.registerAdmin(request);
     }
 }

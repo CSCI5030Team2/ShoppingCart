@@ -2,138 +2,141 @@ package com.example.shoppingcartserver.cart;
 
 import com.alibaba.fastjson.JSON;
 import com.example.shoppingcartserver.appuser.AppUser;
-import com.example.shoppingcartserver.cart.request.*;
+import com.example.shoppingcartserver.appuser.AppUserServiceImpl;
+import com.example.shoppingcartserver.cart.request.AddToCartRequest;
+import com.example.shoppingcartserver.cart.request.DeleteFromCartRequest;
+import com.example.shoppingcartserver.cart.request.GetCartRequest;
 import com.example.shoppingcartserver.item.Item;
-import com.example.shoppingcartserver.item.ItemRepository;
-import com.example.shoppingcartserver.appuser.AppUserRepository;
-import com.example.shoppingcartserver.login.LoginRepository;
+import com.example.shoppingcartserver.item.ItemService;
+import com.example.shoppingcartserver.login.LoginService;
 import com.example.shoppingcartserver.login.token.LoginToken;
-
 import lombok.AllArgsConstructor;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import javax.security.auth.login.CredentialException;
+import javax.security.auth.login.CredentialExpiredException;
 import java.time.LocalDateTime;
 import java.util.List;
 import java.util.Optional;
 
 /**
- * @author aiden, vivek
+ * @author aiden
  */
 @Service
 @AllArgsConstructor
 public class CartService {
 
-    @Autowired
     private final CartRepository cartRepository;
 
-    @Autowired
-    private final ItemRepository itemRepository;
-
-    @Autowired
-    private final AppUserRepository appUserRepository;
-
-    @Autowired
-    private final LoginRepository loginRepository;
+    private AppUserServiceImpl appUserService;
+    private LoginService loginService;
+    private ItemService itemService;
 
     /**
      * Get all item associated with buyEmail
-     *
      * @param request buyerEmail
      * @return JSON containing item
      */
-    public String getCart(GetCartRequest request) {
-        Optional<CartItem> cartItemList = cartRepository.findByBuyerEmail(request.getUserEmail());
+    public String getCart(GetCartRequest request)
+    {
+        Optional<CartItem> cartItemList = cartRepository.findByBuyerEmail(request.getBuyerEmail());
         List<CartItem> cartItemListObj = cartItemList.stream().toList();
         return JSON.toJSONString(cartItemListObj);
     }
 
     /**
      * For simplicity, clears all items with given buyerEmail
-     *
      * @param request buyerEmail
      * @return msg String
      */
-    public String checkout(CheckoutCartRequest request) {
-        try {
-            cartRepository.deleteAllByBuyerEmail(request.getBuyerEmail());
-        } catch (Exception e) {
-            e.printStackTrace();
-            return "Failed Checkout";
+    public String checkout(GetCartRequest request) throws Exception {
+        if(validToken(request.getToken())) {
+            Optional<CartItem> optionalCartItems = cartRepository.findByBuyerEmail(request.getBuyerEmail());
+            if (optionalCartItems.isPresent()) {
+                List<CartItem> cartItemList = optionalCartItems.stream().toList();
+                for(CartItem cartItem : cartItemList)
+                {
+                    itemService.deleteByItem(cartItem.getItem() , cartItem.getQuantity());
+                }
+                cartRepository.deleteAll(cartItemList);
+            }
+            return "Checkout success";
         }
-        return "Checkout Successful";
+        throw new CredentialExpiredException("Token expired");
     }
 
-    public String addToCart(AddToCartRequest request) {
-        AppUser appUser = appUserRepository.findByEmail("someone@something.com").get();
-        Optional<LoginToken> optionalLoginToken = loginRepository.findByAppUser(appUser);
-        Optional<Item> item = itemRepository.findByItemName(request.getItemName());
-        Optional<CartItem> optionalCartItem = cartRepository.findByItemName(request.getItemName());
-        // Verifying token of user:
-        if (optionalLoginToken.isPresent()) {
-            LoginToken token = optionalLoginToken.get();
-            try {
-                token.getExpireTime().isBefore(LocalDateTime.now());
-            } catch (Exception e) {
-                e.printStackTrace();
-                return "Session Expired. Login again to continue";
-            }
-            if (optionalCartItem.isPresent()) {
-                List<CartItem> cartItemList = optionalCartItem.stream().toList();
-                for (CartItem cartItem : cartItemList) {
-                    if (cartItem.getItemId().equals(request.getItemId())) ;
-                    {
-                        cartItem.setQuantity(cartItem.getQuantity() + request.getQuantity());
-                        cartRepository.save(cartItem);
-                        return "Quantity Updated";
-                    }
+    private boolean validToken(String token) throws CredentialException {
+        LoginToken loginToken = loginService.findTokenByTokenString(token);
+        return loginToken.getExpireTime().isAfter(LocalDateTime.now());
+
+    }
+
+    public String addToCart(AddToCartRequest request) throws Exception {
+        AppUser appUser = appUserService.getAppUserByEmail(request.getBuyerEmail());
+        Item item = itemService.findItemByName(request.getItemName());
+        if(item.getQuantity() <1)
+        {
+            return "Out of stock";
+        }
+
+        String itemName = item.getItemName();
+
+        Optional<CartItem> optionalCartItems = cartRepository.findByBuyerEmail(request.getBuyerEmail());
+        if(optionalCartItems.isPresent())
+        {
+            List<CartItem> cartItemList = optionalCartItems.stream().toList();
+            for(CartItem cartItem : cartItemList)
+            {
+                if(cartItem.getItem().getItemName().equals(request.getItemName()))
+                {
+                    //increase number and save
+                    cartItem.setQuantity(cartItem.getQuantity() + request.getQuantity());
+                    cartRepository.save(cartItem);
+                    return "Increased number of " + cartItem.getItem().getItemName()+ " for " + request.getBuyerEmail();
                 }
             }
-            if (item.isPresent()) {
-                Long itemId = item.get().getId();
-                String itemName = item.get().getItemName();
-                //add to cart
-                CartItem cartItem = new CartItem(
-                        request.getBuyerEmail(),
-                        itemId,
-                        request.getQuantity()
-                );
-                cartRepository.save(cartItem);
-                return cartItem.getBuyerEmail() + " -- " + itemName + "Saved to cart ";
-            } else {
-                return request.getItemName() + " is out of stock.";
-            }
+
         }
-        return "User not found";
+        CartItem cartItem = new CartItem();
+        cartItem.setItem(item);
+        cartItem.setBuyerEmail(appUser.getEmail());
+        cartItem.setQuantity(request.getQuantity());
+        cartRepository.save(cartItem);
+        return "Saved " + cartItem.getBuyerEmail() + " -- " + itemName;
+
     }
 
-
-    public String deleteFromCart(DeleteFromCartRequest request) {
-        AppUser appuser = appUserRepository.findByEmail("someone@something.com").get();
-        Optional<LoginToken> optionalLoginToken = loginRepository.findByAppUser(appuser);
-        Optional<Item> optionalItem = itemRepository.findByItemName(request.getItemName());
-        Optional<CartItem> optionalCartItem = cartRepository.findByItemName(request.getItemName());
-        // Verifying token of user:
-        if (optionalLoginToken.isPresent()) {
-            LoginToken token = optionalLoginToken.get();
-            try {
-                token.getExpireTime().isBefore(LocalDateTime.now());
-            } catch (Exception e) {
-                e.printStackTrace();
-                return "Session expired. Login again to continue";
-            }
-            if (optionalCartItem.isPresent()) {
-                List<CartItem> cartItemList = optionalCartItem.stream().toList();
-                for (CartItem cartItem : cartItemList) {
-                    if (cartItem.getItemId().equals(request.getItemId())) ;
-                    {
-                        cartItem.setQuantity(cartItem.getQuantity() - request.getQuantity());
+    public String deleteFromCart(DeleteFromCartRequest request) throws Exception {
+        //delete one
+        AppUser appUser = appUserService.getAppUserByEmail(request.getBuyerEmail());
+        Item item = itemService.findItemByName(request.getItemName());
+        String itemName = item.getItemName();
+        Optional<CartItem> optionalCartItems = cartRepository.findByBuyerEmail(request.getBuyerEmail());
+        if(optionalCartItems.isPresent())
+        {
+            List<CartItem> cartItemList = optionalCartItems.stream().toList();
+            for(CartItem cartItem : cartItemList)
+            {
+                if(cartItem.getItem().getItemName().equals(request.getItemName()))
+                {
+                    cartItem.setQuantity(cartItem.getQuantity() - request.getQuantity());
+                    if(cartItem.getQuantity()<=0) {
                         cartRepository.delete(cartItem);
-                        return "Item Deleted";
+                        return "Deleted all " +
+                                cartItem.getItem().getItemName() +
+                                " for " + request.getBuyerEmail();
+                    }
+                    else {
+                        cartRepository.save(cartItem);
+                        return "Deleted " + request.getQuantity() + " " +
+                                cartItem.getItem().getItemName() +
+                                " for " + request.getBuyerEmail();
                     }
                 }
             }
+
         }
-            return "User not found";
-        }
+
+       return "Item " + request.getItemName() + " not found in " + request.getBuyerEmail() + " cart";
     }
+}

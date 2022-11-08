@@ -13,6 +13,7 @@ import org.springframework.boot.test.autoconfigure.jdbc.AutoConfigureTestDatabas
 import org.springframework.boot.test.context.SpringBootTest;
 
 import javax.security.auth.login.CredentialException;
+import javax.security.auth.login.CredentialExpiredException;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -57,8 +58,7 @@ class LoginServiceTest {
     }
 
     @Test
-    public void successLoginTest()
-    {
+    public void successLoginTest() throws CredentialExpiredException {
         LoginRequest loginRequest = new LoginRequest(
                 EMAIL,
                 "a123456");
@@ -70,8 +70,7 @@ class LoginServiceTest {
 
     @SuppressWarnings("OptionalGetWithoutIsPresent")
     @Test
-    public void successLogoutTest()
-    {
+    public void successLogoutTest() throws CredentialExpiredException {
         LoginRequest loginRequest = new LoginRequest(
                 EMAIL,
                 "a123456");

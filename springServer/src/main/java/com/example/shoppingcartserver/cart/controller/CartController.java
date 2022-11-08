@@ -1,14 +1,14 @@
 package com.example.shoppingcartserver.cart.controller;
 
 
-import com.example.shoppingcartserver.appuser.AppUserServiceImpl;
 import com.example.shoppingcartserver.cart.CartService;
-import com.example.shoppingcartserver.cart.request.*;
+import com.example.shoppingcartserver.cart.request.AddToCartRequest;
+import com.example.shoppingcartserver.cart.request.DeleteFromCartRequest;
+import com.example.shoppingcartserver.cart.request.GetCartRequest;
 import lombok.AllArgsConstructor;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
-import javax.persistence.PostRemove;
+import javax.security.auth.login.CredentialException;
 
 /**
  * @author aiden
@@ -19,11 +19,7 @@ import javax.persistence.PostRemove;
 @RequestMapping(path = "/cart")
 public class CartController {
 
-    @Autowired
     private CartService cartService;
-
-    @Autowired
-    private AppUserServiceImpl appUserService;
 
     @GetMapping
     public String getCart(@RequestBody GetCartRequest request)
@@ -32,21 +28,20 @@ public class CartController {
     }
 
     @PostMapping
-    public String addToCart(@RequestBody AddToCartRequest request)
-    {
+    public String addToCart(@RequestBody AddToCartRequest request) throws Exception {
         return cartService.addToCart(request);
     }
 
-    @PutMapping
-    public String checkOutCart(@RequestBody CheckoutCartRequest request)
-    {
-        return cartService.checkout(request);
-    }
+
 
     @DeleteMapping
-    public String deleteFromCart(@RequestBody DeleteFromCartRequest request)
-    {
+    public String deleteFromCart(@RequestBody DeleteFromCartRequest request) throws Exception {
         return cartService.deleteFromCart(request);
     }
+
+
+    @PutMapping
+    public String checkoutCart(@RequestBody GetCartRequest request) throws Exception { return cartService.checkout(request);}
+
 
 }
