@@ -22,6 +22,8 @@ public interface ItemRepository extends JpaRepository<Item,Long>{
      */
     Optional<Item> findByItemName(String itemName);
 
+    //Optional<Item> setQuantity(String quantity);
+
     /**
      * update item with the name itemName
      * @param itemName name of the product
