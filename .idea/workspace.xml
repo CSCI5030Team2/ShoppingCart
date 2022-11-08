@@ -6,12 +6,8 @@
   <component name="ChangeListManager">
     <list default="true" id="561a9c22-b853-4ccb-8765-60cb644d1571" name="Changes" comment="SHOP-10: Update to Cart Service module. Verifying user's token to add item to cart.">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/springServer/src/main/java/com/example/shoppingcartserver/appuser/AppUserServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/springServer/src/main/java/com/example/shoppingcartserver/appuser/AppUserServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/springServer/src/main/java/com/example/shoppingcartserver/cart/CartRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/springServer/src/main/java/com/example/shoppingcartserver/cart/CartRepository.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/springServer/src/main/java/com/example/shoppingcartserver/cart/CartService.java" beforeDir="false" afterPath="$PROJECT_DIR$/springServer/src/main/java/com/example/shoppingcartserver/cart/CartService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/springServer/src/main/java/com/example/shoppingcartserver/cart/request/CheckoutCartRequest.java" beforeDir="false" afterPath="$PROJECT_DIR$/springServer/src/main/java/com/example/shoppingcartserver/cart/request/CheckoutCartRequest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/springServer/src/main/java/com/example/shoppingcartserver/cart/request/UpdateQuantityRequest.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/springServer/target/classes/com/example/shoppingcartserver/registration/RegistrationController.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/springServer/src/main/java/com/example/shoppingcartserver/cart/request/AddToCartRequest.java" beforeDir="false" afterPath="$PROJECT_DIR$/springServer/src/main/java/com/example/shoppingcartserver/cart/request/AddToCartRequest.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -205,7 +201,14 @@
       <option name="project" value="LOCAL" />
       <updated>1667843675599</updated>
     </task>
-    <option name="localTasksCounter" value="6" />
+    <task id="LOCAL-00006" summary="SHOP-10: Update to Cart Service module. Verifying user's token to add item to cart.">
+      <created>1667861298430</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1667861298430</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">

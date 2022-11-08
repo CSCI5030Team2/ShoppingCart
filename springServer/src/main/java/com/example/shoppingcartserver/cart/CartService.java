@@ -80,9 +80,15 @@ public class CartService {
             }
             if (optionalCartItem.isPresent()) {
                 List<CartItem> cartItemList = optionalCartItem.stream().toList();
-                CartItem cartItem = optionalCartItem.get();
-                cartItem.setQuantity(cartItem.getQuantity()+1);
-                return "quantity added";
+                for(CartItem cartItem : cartItemList)
+                {
+                    if(cartItem.getItemId().equals(request.getItemId()));
+                    {
+                        cartItem.setQuantity(cartItem.getQuantity() + request.getQuantity());
+                        cartRepository.save(cartItem);
+                        return "Quantity Updated";
+                    }
+                }
             }
             if (item.isPresent()) {
                 Long itemId = item.get().getId();
