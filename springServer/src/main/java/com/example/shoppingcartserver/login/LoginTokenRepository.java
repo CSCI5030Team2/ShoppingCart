@@ -36,9 +36,6 @@ public interface LoginTokenRepository extends JpaRepository<LoginToken,Long> {
 
     Optional<LoginToken> findByAppUser(AppUser appUser);
 
-
-    Optional<LoginToken> findByAppUser(AppUser appUser);
-
     @Modifying
     void delete(LoginToken loginToken);
 }

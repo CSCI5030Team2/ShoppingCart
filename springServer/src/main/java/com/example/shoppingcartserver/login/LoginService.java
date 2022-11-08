@@ -8,7 +8,6 @@ import com.example.shoppingcartserver.login.request.LoginRequest;
 import com.example.shoppingcartserver.login.request.LogoutRequest;
 import com.example.shoppingcartserver.login.token.LoginToken;
 import lombok.AllArgsConstructor;
-import lombok.extern.java.Log;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 

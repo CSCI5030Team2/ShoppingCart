@@ -20,15 +20,15 @@ public interface CartRepository extends JpaRepository<CartItem,Long> {
      */
     Optional<CartItem> findByBuyerEmail(String buyerEmail);
 
-    Optional <CartItem> findByItemName(String itemName);
+    //Optional <CartItem> findByItemName(String itemName);
 
-    @Transactional
-    @Modifying
-    @Query("delete from CartItem i WHERE i.buyerEmail=buyerEmail")
-    void deleteAllByBuyerEmail(String buyerEmail);
-
-    @Transactional
-    @Modifying
-    @Query("delete from CartItem i WHERE i.itemName=itemName")
-    Optional<CartItem> deleteItemByName(String itemName);
+//    @Transactional
+//    @Modifying
+//    @Query("delete from CartItem i WHERE i.buyerEmail=buyerEmail")
+//    void deleteAllByBuyerEmail(String buyerEmail);
+//
+//    @Transactional
+//    @Modifying
+//    @Query("delete from CartItem i WHERE i.itemName=itemName")
+//    Optional<CartItem> deleteItemByName(String itemName);
 }
