@@ -8,6 +8,7 @@ import lombok.ToString;
 @ToString
 @Getter
 public class GetCartRequest {
+    private String token;
     private final String itemName;
     private final String userEmail;
 }

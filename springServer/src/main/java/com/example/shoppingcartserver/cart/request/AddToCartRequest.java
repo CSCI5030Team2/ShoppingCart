@@ -11,9 +11,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @Getter
 @Setter
 public class AddToCartRequest {
-    private String itemId;
-    private String buyerEmail;
+    private final String itemId;
+    private final String buyerEmail;
+    private final String itemName;
+    private final Integer quantity;
     private String token;
-    private String itemName;
-    private Integer quantity;
 }
