@@ -25,3 +25,6 @@ springServer/.idea/libraries/*.xml
 springServer/.idea/shelf
 
 /springServer/target/
+/.idea/uiDesigner.xml
+/.idea/dataSources/*
+/.idea/dataSources*

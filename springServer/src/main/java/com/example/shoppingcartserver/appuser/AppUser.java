@@ -31,7 +31,7 @@ public class AppUser{
     @Column(nullable = false)
     private String lastName;
 
-    @Column(unique=true)
+    @Column(unique=true,nullable = false)
     private String email;
 
     @Column(nullable = false)

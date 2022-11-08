@@ -7,6 +7,7 @@ import org.junit.jupiter.api.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.jdbc.AutoConfigureTestDatabase;
 import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
+import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.dao.InvalidDataAccessApiUsageException;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
@@ -15,13 +16,11 @@ import java.time.LocalDateTime;
 
 
 /**
- * Confirmation Token Repository layer Test
+ * Confirmation Token Repo. layer Test
  * @author aiden
  */
-@DataJpaTest
-//this starts the jpa instance
+@SpringBootTest
 @AutoConfigureTestDatabase(replace= AutoConfigureTestDatabase.Replace.NONE)
-//this gives test class access to the database
 class ConfirmationTokenRepositoryTest {
     @Autowired
     private ConfirmationTokenRepository confirmationTokenRepository;

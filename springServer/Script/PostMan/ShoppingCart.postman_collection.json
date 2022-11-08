@@ -163,6 +163,39 @@
 			"response": []
 		},
 		{
+			"name": "get login state",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "string",
+						"type": "text",
+						"disabled": true
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "admin@shoppingcart.com"
+				},
+				"url": {
+					"raw": "http://localhost:8080/login",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"login"
+					]
+				}
+			},
+			"response": []
+		},
+		{
 			"name": "admin login",
 			"request": {
 				"method": "POST",
@@ -187,6 +220,35 @@
 					"path": [
 						"admin",
 						"login"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "reset password",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"email\": \"admin@shoppingcart.com\",\n    \"oldPassword\": \"1q2w3e4r\",\n    \"newPassword\": \"a12345\"\n}"
+				},
+				"url": {
+					"raw": "http://localhost:8080/reset-password",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"reset-password"
 					]
 				}
 			},
