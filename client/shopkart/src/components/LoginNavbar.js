@@ -27,7 +27,7 @@ export class LoginNavbar extends Component {
                 <img src={logo} style={{ height: 4 + "em" }} />
               </li>
             </Link>
-            <Link to="/login">
+            <Link to="/">
               <li
                 style={{
                   float: "right",
