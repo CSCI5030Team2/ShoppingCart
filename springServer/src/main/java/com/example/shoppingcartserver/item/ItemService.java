@@ -36,7 +36,28 @@ public class ItemService {
 
     public String buyItem(BuyItemRequest request)
     {
-        return "You bought: " + request.getQuantity() +" of \""+ request.getItemName()+ "\" ";
+        Optional<Item> optionalItem = itemRepository.findByItemName(request.getItemName());
+        if(optionalItem.isPresent()) {
+            Item item = optionalItem.get();
+
+            if(item.getQuantity() >= request.getQuantity())
+            {
+                item.setQuantity(item.getQuantity() - request.getQuantity());
+                itemRepository.save(item);
+                return "You bought: " + request.getQuantity() +" of \""+ request.getItemName()+ "\" ";
+            }
+            else
+            {
+                if(item.getQuantity() > 0) {
+                    return "Only " + item.getQuantity() + " left";
+                }
+                else
+                {
+                    return "Out of stock";
+                }
+            }
+        }
+        return "item do not exist";
     }
 
 
@@ -133,9 +154,9 @@ public class ItemService {
 
 
     /**
-     * for cart checkout
-     * @param item
-     * @param quantity
+     * Only for cart checkout
+     * @param item item instance
+     * @param quantity integer, number of item to delete
      */
     public void deleteByItem(Item item, Integer quantity) throws Exception {
 
