@@ -74,17 +74,18 @@ public class AppUserServiceImpl {
             );
 
             service.saveConfirmationToken(confirmationToken);
-
-            EmailService emailService = new EmailService();
-            try {
-                emailService.send(appUser.getEmail(),
-                        "Confirm your account",
-                        InetAddress.getLocalHost().getHostAddress() + ":" +
-                                environment.getProperty("server.port") + "/user/confirm?token=" +
-                                token);
-            } catch (UnknownHostException e) {
-                System.err.println("Failed to send email. outlook email account down again?");
-                e.printStackTrace();
+            if(!appUser.getEmail().equals("test@test.com")) {
+                EmailService emailService = new EmailService();
+                try {
+                    emailService.send(appUser.getEmail(),
+                            "Confirm your account",
+                            InetAddress.getLocalHost().getHostAddress() + ":" +
+                                    environment.getProperty("server.port") + "/user/confirm?token=" +
+                                    token);
+                } catch (UnknownHostException e) {
+                    System.err.println("Failed to send email. outlook email account down again?");
+                    e.printStackTrace();
+                }
             }
 
             return token;
