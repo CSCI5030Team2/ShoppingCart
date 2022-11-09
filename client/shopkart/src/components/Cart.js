@@ -16,7 +16,7 @@ export class Navigation extends Component {
     return (
       <div>
         <div>
-          <Navbar />
+          <LoginNavbar />
         </div>
         <h2 style={{ textAlign: "center", marginTop: 2 + "em" }}>Products</h2>
         <div id="outerDiv">

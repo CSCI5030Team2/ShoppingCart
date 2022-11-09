@@ -5,8 +5,6 @@ import {
     RESET_PASSWORD,
     UPDATE_USERS,
     DELETE_USERS,
-    EMAIL_VERIFICATION,
-    OTP_VERIFICATION,
     LOGIN
   } from "./types";
   

@@ -35,11 +35,7 @@ export class AdminNavbar extends Component {
                   marginLeft: 2 + "em"
                 }}
               >
-<<<<<<< HEAD
-                <a onClick={this.removeToken} >Logout</a>
-=======
                 <a onClick={this.removeToken} href="/">Logout</a>
->>>>>>> 2b935c251365c1de6e50010f1f1e7f66b2209227
               </li>
             </Link>
             <Link to="/displayusers">
