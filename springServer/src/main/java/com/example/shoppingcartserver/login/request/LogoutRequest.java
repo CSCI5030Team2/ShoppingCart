@@ -1,5 +1,4 @@
-package com.example.shoppingcartserver.cart.request;
-
+package com.example.shoppingcartserver.login.request;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -9,9 +8,9 @@ import lombok.ToString;
  * @author aiden
  */
 @AllArgsConstructor
-@Getter
 @ToString
-public class GetCartRequest {
-    private final String buyerEmail;
+@Getter
+public class LogoutRequest {
+    private final String email;
     private final String token;
 }

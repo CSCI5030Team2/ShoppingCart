@@ -6,6 +6,9 @@ import com.example.shoppingcartserver.login.request.LoginRequest;
 import lombok.AllArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 
+import javax.security.auth.login.CredentialException;
+import javax.security.auth.login.CredentialExpiredException;
+
 /**
  * @author aiden
  */
@@ -22,8 +25,7 @@ public class LoginController {
      * @return login token, user role
      */
     @PostMapping
-    public String login(@RequestBody LoginRequest loginRequest)
-    {
+    public String login(@RequestBody LoginRequest loginRequest) throws CredentialException {
         return loginService.login(loginRequest);
     }
 
@@ -33,7 +35,7 @@ public class LoginController {
      * @return status message
      */
     @GetMapping
-    public String login(@RequestBody CheckStateRequest checkStateRequest){
+    public String checkState(@RequestBody CheckStateRequest checkStateRequest) throws CredentialExpiredException {
         return loginService.checkState(checkStateRequest);
     }
 

@@ -13,6 +13,7 @@ import lombok.AllArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import javax.security.auth.login.CredentialExpiredException;
 import java.time.LocalDateTime;
 
 /**
@@ -49,8 +50,7 @@ public class RegistrationService {
         );
     }
 
-    public String registerAdmin(AdminRegistrationRequest request)
-    {
+    public String registerAdmin(AdminRegistrationRequest request) throws CredentialExpiredException {
 
         //check email valid
         boolean isValidEmail = emailValidator.test(request.getEmail());
@@ -77,7 +77,7 @@ public class RegistrationService {
 
     }
 
-    private boolean referValid(String email, String token) {
+    private boolean referValid(String email, String token) throws CredentialExpiredException {
         AppUser referAdmin = appUserService.loadUserByUsername(email);
         LoginToken referAdminLoginToken = loginService.loadTokenByEmail(email);
 

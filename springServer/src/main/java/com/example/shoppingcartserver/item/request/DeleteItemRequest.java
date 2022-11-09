@@ -13,4 +13,5 @@ import lombok.ToString;
 @Getter
 public class DeleteItemRequest {
     private String itemName;
+    private String token;
 }
