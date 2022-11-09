@@ -39,7 +39,7 @@ public class CartService {
      */
     public String getCart(GetCartRequest request)
     {
-        Optional<CartItem> cartItemList = cartRepository.findByBuyerEmail(request.getBuyerEmail());
+        List<CartItem> cartItemList  = cartRepository.findAllByBuyerEmail(request.getBuyerEmail());
         List<CartItem> cartItemListObj = cartItemList.stream().toList();
         return JSON.toJSONString(cartItemListObj);
     }
@@ -51,9 +51,8 @@ public class CartService {
      */
     public String checkout(GetCartRequest request) throws Exception {
         if(validToken(request.getToken())) {
-            Optional<CartItem> optionalCartItems = cartRepository.findByBuyerEmail(request.getBuyerEmail());
-            if (optionalCartItems.isPresent()) {
-                List<CartItem> cartItemList = optionalCartItems.stream().toList();
+            List<CartItem> cartItemList = cartRepository.findAllByBuyerEmail(request.getBuyerEmail());
+            if (!cartItemList.isEmpty()) {
                 for(CartItem cartItem : cartItemList)
                 {
                     itemService.deleteByItem(cartItem.getItem() , cartItem.getQuantity());
@@ -81,11 +80,10 @@ public class CartService {
 
         String itemName = item.getItemName();
 
-        Optional<CartItem> optionalCartItems = cartRepository.findByBuyerEmail(request.getBuyerEmail());
-        if(optionalCartItems.isPresent())
+        List<CartItem> cartItems = cartRepository.findAllByBuyerEmail(request.getBuyerEmail());
+        if(!cartItems.isEmpty())
         {
-            List<CartItem> cartItemList = optionalCartItems.stream().toList();
-            for(CartItem cartItem : cartItemList)
+            for(CartItem cartItem : cartItems)
             {
                 if(cartItem.getItem().getItemName().equals(request.getItemName()))
                 {
@@ -111,11 +109,10 @@ public class CartService {
         AppUser appUser = appUserService.getAppUserByEmail(request.getBuyerEmail());
         Item item = itemService.findItemByName(request.getItemName());
         String itemName = item.getItemName();
-        Optional<CartItem> optionalCartItems = cartRepository.findByBuyerEmail(request.getBuyerEmail());
-        if(optionalCartItems.isPresent())
+        List<CartItem> cartItems = cartRepository.findAllByBuyerEmail(request.getBuyerEmail());
+        if(!cartItems.isEmpty())
         {
-            List<CartItem> cartItemList = optionalCartItems.stream().toList();
-            for(CartItem cartItem : cartItemList)
+            for(CartItem cartItem : cartItems)
             {
                 if(cartItem.getItem().getItemName().equals(request.getItemName()))
                 {
