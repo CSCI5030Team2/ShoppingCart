@@ -21,12 +21,14 @@ public class CartItem {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+    @Column(nullable = false)
     private String buyerEmail;
 
     @ManyToOne
     @JoinColumn( nullable = false)
     private Item item;
 
+    @Column(nullable = false)
     private Integer quantity;
 
 }

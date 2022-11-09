@@ -31,11 +31,29 @@ public class CommandLineAppStartupRunner implements CommandLineRunner {
         }
         try {
             createAdmin();
+            createTestUser();
             createItems();
         } catch (Exception e) {
             System.err.println("Failed inserting default database items");
             e.printStackTrace();
         }
+    }
+
+    private void createTestUser() {
+        String fakeEmail = "user@shoppingcart.com";
+        if(appUserRepository.findByEmail(fakeEmail).isPresent())
+        {
+            return;
+        }
+        AppUser user = new AppUser();
+        user.setLocked(false);
+        user.setEnable(true);
+        user.setEmail(fakeEmail);
+        user.setPassword(new BCryptPasswordEncoder().encode("a123456"));
+        user.setFirstName("TEST");
+        user.setLastName("USER");
+        user.setAppUserRole(AppUserRole.USER);
+        appUserRepository.save(user);
     }
 
     private void createAdmin()

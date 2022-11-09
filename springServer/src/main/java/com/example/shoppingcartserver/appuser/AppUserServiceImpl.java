@@ -48,11 +48,9 @@ public class AppUserServiceImpl {
     public String signUpUser(AppUser appUser)
     {
 
-        boolean userExist = appUserRepository
-                .findByEmail(appUser.getEmail())
-                .isPresent();
+        Optional<AppUser> optionalAppUser = appUserRepository.findByEmail(appUser.getEmail());
 
-        if(userExist) {
+        if(optionalAppUser.isPresent()) {
             return "email already taken";
         }
 

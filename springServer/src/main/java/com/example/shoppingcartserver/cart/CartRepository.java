@@ -28,12 +28,13 @@ public interface CartRepository extends JpaRepository<CartItem,Long> {
     List<CartItem> findAllByBuyerEmail(String buyerEmail);
 
 
+
     //Optional <CartItem> findByItemName(String itemName);
 
-//    @Transactional
-//    @Modifying
-//    @Query("delete from CartItem i WHERE i.buyerEmail=buyerEmail")
-//    void deleteAllByBuyerEmail(String buyerEmail);
+    @Transactional
+    @Modifying
+    @Query("delete from CartItem i WHERE i.buyerEmail=?1")
+    void deleteAllByBuyerEmail(String buyerEmail);
 //
 //    @Transactional
 //    @Modifying
