@@ -3,7 +3,7 @@ import { resetPassword, getUsers } from "../actions/users";
 import { Link } from "react-router-dom";
 import { connect } from "react-redux";
 import Navbar from "./Navbar";
-
+//
 export class ResetPassword extends Component {
   constructor(props) {
     super(props);

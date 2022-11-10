@@ -7,7 +7,7 @@ import Register from "./components/register"
 import Login from "./components/Login"
 import Cart from "./components/Cart";
 import ResetPassword from "./components/ResetPassword";
-
+//
 function App() {
   return (
     <Router>
