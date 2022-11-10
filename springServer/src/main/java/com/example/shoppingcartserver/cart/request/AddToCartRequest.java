@@ -8,8 +8,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
  */
 @AllArgsConstructor
 @ToString
-@Getter
-@Setter
+@Data
 public class AddToCartRequest {
     private final String buyerEmail;
     private final String itemName;

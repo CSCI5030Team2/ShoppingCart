@@ -1,6 +1,7 @@
 package com.example.shoppingcartserver.cart.request;
 
 import lombok.AllArgsConstructor;
+import lombok.Data;
 import lombok.Getter;
 import lombok.ToString;
 
@@ -9,7 +10,7 @@ import lombok.ToString;
  */
 @AllArgsConstructor
 @ToString
-@Getter
+@Data
 public class CheckoutCartRequest {
     private final String itemName;
     private final String itemId;

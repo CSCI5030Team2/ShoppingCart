@@ -8,10 +8,8 @@ import com.example.shoppingcartserver.cart.request.GetCartRequest;
 import lombok.AllArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 
-import javax.security.auth.login.CredentialException;
-
 /**
- * @author aiden
+ * @author aiden, vivek
  */
 @RestController
 @CrossOrigin
@@ -32,16 +30,11 @@ public class CartController {
         return cartService.addToCart(request);
     }
 
-
-
     @DeleteMapping
     public String deleteFromCart(@RequestBody DeleteFromCartRequest request) throws Exception {
         return cartService.deleteFromCart(request);
     }
 
-
     @PutMapping
     public String checkoutCart(@RequestBody GetCartRequest request) throws Exception { return cartService.checkout(request);}
-
-
 }
