@@ -50,18 +50,22 @@ public class CartService {
      * @return msg String
      */
     public String checkout(GetCartRequest request) throws Exception {
-        if(validToken(request.getToken())) {
-            List<CartItem> cartItemList = cartRepository.findAllByBuyerEmail(request.getBuyerEmail());
-            if (!cartItemList.isEmpty()) {
-                for(CartItem cartItem : cartItemList)
-                {
-                    itemService.deleteByItem(cartItem.getItem() , cartItem.getQuantity());
-                }
-                cartRepository.deleteAll(cartItemList);
-            }
-            return "Checkout success";
+        AppUser appUser = appUserService.getAppUserByEmail(request.getBuyerEmail());
+
+        if(!loginService.tokenValid(request.getToken(),appUser))
+        {
+            throw new CredentialException("Invalid token");
         }
-        throw new CredentialExpiredException("Token expired");
+
+        List<CartItem> cartItemList = cartRepository.findAllByBuyerEmail(request.getBuyerEmail());
+        if (!cartItemList.isEmpty()) {
+            for(CartItem cartItem : cartItemList)
+            {
+                itemService.deleteByItem(cartItem.getItem() , cartItem.getQuantity());
+            }
+            cartRepository.deleteAll(cartItemList);
+        }
+        return "Checkout success";
     }
 
     private boolean validToken(String token) throws CredentialException {
@@ -72,6 +76,13 @@ public class CartService {
 
     public String addToCart(AddToCartRequest request) throws Exception {
         AppUser appUser = appUserService.getAppUserByEmail(request.getBuyerEmail());
+
+        if(!loginService.tokenValid(request.getToken(),appUser))
+        {
+            throw new CredentialException("Invalid token");
+        }
+
+
         Item item = itemService.findItemByName(request.getItemName());
         if(item.getQuantity() <1)
         {
@@ -107,6 +118,13 @@ public class CartService {
     public String deleteFromCart(DeleteFromCartRequest request) throws Exception {
         //delete one
         AppUser appUser = appUserService.getAppUserByEmail(request.getBuyerEmail());
+
+        if(!loginService.tokenValid(request.getToken(),appUser))
+        {
+            throw new CredentialException("Invalid token");
+        }
+
+
         Item item = itemService.findItemByName(request.getItemName());
         String itemName = item.getItemName();
         List<CartItem> cartItems = cartRepository.findAllByBuyerEmail(request.getBuyerEmail());

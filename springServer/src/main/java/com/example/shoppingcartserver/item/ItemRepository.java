@@ -42,7 +42,7 @@ public interface ItemRepository extends JpaRepository<Item,Long>{
      */
     @Transactional
     @Modifying
-    @Query("delete from Item i where i.itemName=:itemName")
+    @Query("delete from Item i where i.itemName = ?1")
     void deleteItemByName(String itemName);
 
 }

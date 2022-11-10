@@ -3,6 +3,7 @@ package com.example.shoppingcartserver.login.controller;
 import com.example.shoppingcartserver.login.LoginService;
 import com.example.shoppingcartserver.login.request.CheckStateRequest;
 import com.example.shoppingcartserver.login.request.LoginRequest;
+import com.example.shoppingcartserver.login.request.LogoutRequest;
 import lombok.AllArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 
@@ -37,6 +38,11 @@ public class LoginController {
     @GetMapping
     public String checkState(@RequestBody CheckStateRequest checkStateRequest) throws CredentialExpiredException {
         return loginService.checkState(checkStateRequest);
+    }
+
+    @DeleteMapping
+    public String logout(@RequestBody LogoutRequest logoutRequest) throws CredentialException {
+        return loginService.logout(logoutRequest);
     }
 
 }

@@ -37,12 +37,12 @@ class CartTest {
         String pw = "a123456";
         String itemName = "iPhone 14 pro";
 
-        if(!cartRepository.findAllByBuyerEmail(email).isEmpty());
+        if(!cartRepository.findAllByBuyerEmail(email).isEmpty())
         {
             assertDoesNotThrow(()->cartRepository.deleteAllByBuyerEmail(email));
         }
         JSONArray array = JSON.parseArray(loginController.login(new LoginRequest(email,pw)));
-        String token = (String) array.get(1);
+        String token = (String) array.get(0);
 
 
         AddToCartRequest addToCartRequest = new AddToCartRequest(

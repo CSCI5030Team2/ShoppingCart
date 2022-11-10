@@ -108,12 +108,23 @@ public class LoginService {
             }
     }
 
-    public String logout(LogoutRequest logoutRequest) throws CredentialExpiredException {
+    public String logout(LogoutRequest logoutRequest) throws CredentialException {
 
         AppUser appUser = appUserService.getAppUserByEmail(logoutRequest.getEmail());
-        LoginToken loginToken =findTokenByAppUer(appUser);
-        loginTokenRepository.delete(loginToken);
+        Optional<LoginToken> optionalLoginToken = loginTokenRepository.findByAppUser(appUser);
+        if(optionalLoginToken.isPresent())
+        {
+            LoginToken loginToken = optionalLoginToken.get();
+            if(loginToken.getToken().equals(logoutRequest.getToken())) {
+                loginTokenRepository.delete(loginToken);
+            }
+            else
+            {
+                throw new CredentialException("Invalid Token");
+            }
+        }
         return "Logout Success";
+
     }
 
     public LoginToken findTokenByAppUer(AppUser appUser) throws CredentialExpiredException {
