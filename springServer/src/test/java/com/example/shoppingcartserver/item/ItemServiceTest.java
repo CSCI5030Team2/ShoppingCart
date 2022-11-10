@@ -57,7 +57,6 @@ class ItemServiceTest {
                 newItemName,
                 10,
                 1.1f,
-                email,
                 token
         )));
 
@@ -73,7 +72,6 @@ class ItemServiceTest {
                 newItemName,
                 100,
                 1000.00f,
-                email,
                 token
         )));
 

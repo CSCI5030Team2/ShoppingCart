@@ -10,7 +10,7 @@ public class AdminAddItemRequest {
     private final String itemName;
     private final Integer quantity;
     private final Float price;
-    private final String email;
+    //private final String email;
     private final String token;
 
     //"email": "admin@shoppingcart.com",
