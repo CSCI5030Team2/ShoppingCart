@@ -81,28 +81,30 @@ public class CommandLineAppStartupRunner implements CommandLineRunner {
         item.setItemName(itemName);
         item.setPrice(1299.99f);
         item.setQuantity(1);
-        if(itemRepository.findByItemName(itemName).isEmpty())
+        if(itemRepository.findByItemName(itemName).isPresent())
         {
-            itemRepository.save(item);
+            itemRepository.deleteItemByName(itemName);
         }
+        itemRepository.save(item);
         item = new Item();
         itemName = "iPhone 14 pro";
         item.setItemName(itemName);
         item.setPrice(999f);
         item.setQuantity(99);
-        if(itemRepository.findByItemName(itemName).isEmpty())
+        if(itemRepository.findByItemName(itemName).isPresent())
         {
-            itemRepository.save(item);
+            itemRepository.deleteItemByName(itemName);
         }
-
+        itemRepository.save(item);
         item = new Item();
         itemName = "iPhone 16 pro";
         item.setItemName(itemName);
         item.setPrice(999f);
         item.setQuantity(0);
-        if(itemRepository.findByItemName(itemName).isEmpty())
+        if(itemRepository.findByItemName(itemName).isPresent())
         {
-            itemRepository.save(item);
+            itemRepository.deleteItemByName(itemName);
         }
+        itemRepository.save(item);
     }
 }
