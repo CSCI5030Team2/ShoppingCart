@@ -5,6 +5,7 @@ import { getProducts } from "../actions/products";
 import { connect } from "react-redux";
 // import logo from "../logo.PNG";
 import LoginNavbar from "./LoginNavbar";
+import Navbar from "./Navbar";
 
 export class Navigation extends Component {
   componentWillMount() {

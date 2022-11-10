@@ -6,6 +6,7 @@ import CreateProducts from "./components/CreateProduct";
 import Register from "./components/register"
 import Login from "./components/Login"
 import Cart from "./components/Cart";
+import ResetPassword from "./components/ResetPassword";
 
 function App() {
   return (
@@ -16,6 +17,7 @@ function App() {
         <Route exact path="/register" component={Register}></Route>
         <Route exact path="/login" component={Login}></Route>
         <Route exact path="/cart" component={Cart}></Route>
+        <Route exact path="/reset" component={ResetPassword}></Route>
       </div>
     </Router>
   );
