@@ -6,14 +6,14 @@ import lombok.Getter;
 import lombok.ToString;
 
 /**
- * @author aiden
+ * @author aiden, vivek
  */
 @AllArgsConstructor
 @ToString
 @Data
 public class DeleteFromCartRequest {
     private final String buyerEmail;
-    private final String token;
+    private String token;
     private final String itemName;
     private final Integer quantity;
 }

@@ -6,7 +6,7 @@ import lombok.Getter;
 import lombok.ToString;
 
 /**
- * @author vivek
+ * @author aiden, vivek
  */
 @AllArgsConstructor
 @ToString

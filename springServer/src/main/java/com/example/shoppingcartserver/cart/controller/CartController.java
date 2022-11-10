@@ -26,15 +26,20 @@ public class CartController {
     }
 
     @PostMapping
-    public String addToCart(@RequestBody AddToCartRequest request) throws Exception {
+    public String addToCart(@RequestBody AddToCartRequest request) throws Exception
+    {
         return cartService.addToCart(request);
     }
 
     @DeleteMapping
-    public String deleteFromCart(@RequestBody DeleteFromCartRequest request) throws Exception {
+    public String deleteFromCart(@RequestBody DeleteFromCartRequest request) throws Exception
+    {
         return cartService.deleteFromCart(request);
     }
 
     @PutMapping
-    public String checkoutCart(@RequestBody GetCartRequest request) throws Exception { return cartService.checkout(request);}
+    public String checkoutCart(@RequestBody GetCartRequest request) throws Exception
+    {
+        return cartService.checkout(request);
+    }
 }

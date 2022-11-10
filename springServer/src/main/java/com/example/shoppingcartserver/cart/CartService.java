@@ -20,7 +20,7 @@ import java.util.List;
 import java.util.Optional;
 
 /**
- * @author aiden
+ * @author aiden, vivek
  */
 @Service
 @AllArgsConstructor
@@ -68,11 +68,23 @@ public class CartService {
         return "Checkout success";
     }
 
+    /**
+     * validates the user token expiry, based on time
+     * @param token
+     * @return boolean based on token expiry
+     */
+
     private boolean validToken(String token) throws CredentialException {
         LoginToken loginToken = loginService.findTokenByTokenString(token);
         return loginToken.getExpireTime().isAfter(LocalDateTime.now());
 
     }
+
+    /**
+     * Add available items to cart
+     * @param request buyerEmail, itemName, quantity
+     * @return msg String
+     */
 
     public String addToCart(AddToCartRequest request) throws Exception {
         AppUser appUser = appUserService.getAppUserByEmail(request.getBuyerEmail());
@@ -114,6 +126,12 @@ public class CartService {
         return "Saved " + cartItem.getBuyerEmail() + " -- " + itemName;
 
     }
+
+    /**
+     * Delete cart items
+     * @param request buyerEmail, itemName, quantity
+     * @return msg String
+     */
 
     public String deleteFromCart(DeleteFromCartRequest request) throws Exception {
         //delete one
