@@ -9,6 +9,7 @@ import {
   import axios from "axios";
   
   export const getProducts = () => dispatch => {
+    console.log(localStorage.getItem("token"));
     return axios
       .get("http://localhost:8080/item")
       .then(res => {
@@ -26,9 +27,9 @@ import {
   export const createProducts = PRODUCTS => dispatch => {
     axios
       .post("http://localhost:8080/admin/item", PRODUCTS,
-    //    {
-    //     headers: { Authorization: `Bearer ${localStorage.getItem("token")}` }
-    //   }
+       {
+        headers: { Authorization: `Bearer ${localStorage.getItem("token")}` }
+      }
       )
       .then(res => {
         dispatch({
@@ -102,6 +103,7 @@ import {
   };
   
   export const getCarts = () => dispatch => {
+    console.log(localStorage.getItem("token"));
     return axios
       .get("http://localhost:8080/cart")
       .then(res => {
