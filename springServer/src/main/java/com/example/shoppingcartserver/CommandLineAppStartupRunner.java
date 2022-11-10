@@ -31,11 +31,29 @@ public class CommandLineAppStartupRunner implements CommandLineRunner {
         }
         try {
             createAdmin();
+            createTestUser();
             createItems();
         } catch (Exception e) {
             System.err.println("Failed inserting default database items");
             e.printStackTrace();
         }
+    }
+
+    private void createTestUser() {
+        String fakeEmail = "user@shoppingcart.com";
+        if(appUserRepository.findByEmail(fakeEmail).isPresent())
+        {
+            return;
+        }
+        AppUser user = new AppUser();
+        user.setLocked(false);
+        user.setEnable(true);
+        user.setEmail(fakeEmail);
+        user.setPassword(new BCryptPasswordEncoder().encode("a123456"));
+        user.setFirstName("TEST");
+        user.setLastName("USER");
+        user.setAppUserRole(AppUserRole.USER);
+        appUserRepository.save(user);
     }
 
     private void createAdmin()
@@ -63,28 +81,30 @@ public class CommandLineAppStartupRunner implements CommandLineRunner {
         item.setItemName(itemName);
         item.setPrice(1299.99f);
         item.setQuantity(1);
-        if(itemRepository.findByItemName(itemName).isEmpty())
+        if(itemRepository.findByItemName(itemName).isPresent())
         {
-            itemRepository.save(item);
+            itemRepository.deleteItemByName(itemName);
         }
+        itemRepository.save(item);
         item = new Item();
         itemName = "iPhone 14 pro";
         item.setItemName(itemName);
         item.setPrice(999f);
         item.setQuantity(99);
-        if(itemRepository.findByItemName(itemName).isEmpty())
+        if(itemRepository.findByItemName(itemName).isPresent())
         {
-            itemRepository.save(item);
+            itemRepository.deleteItemByName(itemName);
         }
-
+        itemRepository.save(item);
         item = new Item();
         itemName = "iPhone 16 pro";
         item.setItemName(itemName);
         item.setPrice(999f);
         item.setQuantity(0);
-        if(itemRepository.findByItemName(itemName).isEmpty())
+        if(itemRepository.findByItemName(itemName).isPresent())
         {
-            itemRepository.save(item);
+            itemRepository.deleteItemByName(itemName);
         }
+        itemRepository.save(item);
     }
 }

@@ -7,6 +7,8 @@ import com.example.shoppingcartserver.login.request.CheckStateRequest;
 import com.example.shoppingcartserver.login.request.LoginRequest;
 import com.example.shoppingcartserver.login.request.LogoutRequest;
 import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.BeforeAll;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.jdbc.AutoConfigureTestDatabase;
@@ -44,13 +46,15 @@ class LoginServiceTest {
 
     private final String EMAIL = "admin@shoppingcart.com";
 
-    @Test
-    public void contextLoads() {
+    @BeforeEach
+    void checkDB()
+    {
         Assertions.assertNotNull(loginController);
+        assertTrue(appUserRepository.findByEmail(EMAIL).isPresent());
     }
 
     @Test
-    public void wrongPassword()  {
+    void wrongPassword()  {
         LoginRequest loginRequest = new LoginRequest(
                 EMAIL,
                 "wrongPassword");
@@ -58,7 +62,7 @@ class LoginServiceTest {
     }
 
     @Test
-    public void successLoginTest() throws CredentialExpiredException {
+    void successLoginTest() throws CredentialExpiredException {
         LoginRequest loginRequest = new LoginRequest(
                 EMAIL,
                 "a123456");
@@ -70,7 +74,7 @@ class LoginServiceTest {
 
     @SuppressWarnings("OptionalGetWithoutIsPresent")
     @Test
-    public void successLogoutTest() throws CredentialExpiredException {
+    void successLogoutTest() throws CredentialExpiredException {
         LoginRequest loginRequest = new LoginRequest(
                 EMAIL,
                 "a123456");

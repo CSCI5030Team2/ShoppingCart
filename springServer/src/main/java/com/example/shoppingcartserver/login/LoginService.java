@@ -139,11 +139,11 @@ public class LoginService {
             return false;
         }
         LoginToken loginToken = optionalLoginToken.get();
-        if(loginToken.getAppUser() != appUser)
-        {
-            //something wrong, prob hacker
-            return false;
-        }
+//        if(loginToken.getAppUser().getEmail().equals(appUser.getEmail()))
+//        {
+//            //something wrong, prob hacker
+//            return false;
+//        }
         return loginToken.getExpireTime().isAfter(LocalDateTime.now());
     }
 
