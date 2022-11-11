@@ -4,6 +4,7 @@ import { Link } from "react-router-dom";
 import { connect } from "react-redux";
 import Navbar from "./Navbar";
 //
+
 export class ResetPassword extends Component {
   constructor(props) {
     super(props);
@@ -11,24 +12,46 @@ export class ResetPassword extends Component {
   }
   state = {
     email: "",
-    password: ""
+    password: "",
+    confirmpassword:"",
+    emailError:"",
+    passwordError:"",
+    confirmpasswordError:""
   };
 
   OnChange = event => {
     this.setState({ [event.target.name]: event.target.value });
   };
 
-  // onLogin() {
-  //   let user = {
-  //     email: this.state.email,
-  //     password: this.state.password
-  //   };
-  //   this.props.login(user, this.props.history);
-  //   this.setState({
-  //     email: "",
-  //     password: ""
-  //   });
-  // }
+  validate = () => {
+    let emailError = "";
+    let passwordError = "";
+    let confirmpasswordError = "";
+    if(!this.state.password === !this.state.confirmpassword){
+      confirmpasswordError="Passwords do not match"
+    }
+    if (
+      !this.state.email ||
+      this.state.email.length <= 5 ||
+      !this.state.email.includes("@") ||
+      !this.state.email.includes(".")
+    ) {
+      emailError = "Email Field Incorrect";
+    }
+    if (!this.state.password || this.state.password.length <= 5) {
+      passwordError = "Password should be 5 characters long ";
+    }
+  
+    if (emailError || passwordError || confirmpasswordError) {
+      this.setState({confirmpasswordError:confirmpasswordError, emailError: emailError, passwordError: passwordError });
+  
+      return false;
+    }
+    return true;
+  };
+  
+
+  
   onReset() {
     let user = {
       email: this.state.email,
@@ -68,6 +91,16 @@ export class ResetPassword extends Component {
             name="password"
             onChange={this.OnChange}
             value={this.state.password}
+            required
+          />
+          <br />
+          <br />
+          <input
+            placeholder=" Re-Enter New Password"
+            type="password"
+            name="confirmpassword"
+            onChange={this.OnChange}
+            value={this.state.confirmpassword}
             required
           />
           <br />
