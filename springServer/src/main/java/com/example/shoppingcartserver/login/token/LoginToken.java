@@ -23,13 +23,13 @@ public class LoginToken {
     private Long id;
 
     @OneToOne
-    @JoinColumn( nullable = false)
+    @JoinColumn( nullable = false, unique = true)
     private AppUser appUser;
 
     /**
      * token used to verity user identity
      */
-    @Column(nullable = false)
+    @Column(nullable = false,unique = true)
     private String token;
 
     @Column(nullable = false)
@@ -37,7 +37,5 @@ public class LoginToken {
 
     @Column(nullable = false)
     private LocalDateTime expireTime;
-
-
 
 }

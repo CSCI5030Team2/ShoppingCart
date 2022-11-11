@@ -5,11 +5,7 @@ import com.example.shoppingcartserver.registration.token.ConfirmationToken;
 import com.example.shoppingcartserver.registration.token.ConfirmationTokenService;
 import lombok.AllArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Value;
 import org.springframework.core.env.Environment;
-import org.springframework.security.core.parameters.P;
-import org.springframework.security.core.userdetails.UserDetails;
-import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
@@ -52,12 +48,10 @@ public class AppUserServiceImpl {
     public String signUpUser(AppUser appUser)
     {
 
-        boolean userExist = appUserRepository
-                .findByEmail(appUser.getEmail())
-                .isPresent();
+        Optional<AppUser> optionalAppUser = appUserRepository.findByEmail(appUser.getEmail());
 
-        if(userExist) {
-            throw new IllegalStateException("email already taken");
+        if(optionalAppUser.isPresent()) {
+            return "email already taken";
         }
 
         String encodedPassword = bCryptPasswordEncoder.encode(appUser.getPassword());
@@ -68,30 +62,61 @@ public class AppUserServiceImpl {
         appUserRepository.save(appUser);
 
 
-        // send confirm token
-        // create a token then save use the repo
-        String token = UUID.randomUUID().toString();
-        ConfirmationToken confirmationToken = new ConfirmationToken(
-                token,
-                LocalDateTime.now(),
-                LocalDateTime.now().plusDays(7),
-                appUser
-                );
+        if(!appUser.getEnable()) {
+            // send confirm token
+            // create a token then save use the repo
+            String token = UUID.randomUUID().toString();
+            ConfirmationToken confirmationToken = new ConfirmationToken(
+                    token,
+                    LocalDateTime.now(),
+                    LocalDateTime.now().plusDays(7),
+                    appUser
+            );
 
-        service.saveConfirmationToken(confirmationToken);
+            service.saveConfirmationToken(confirmationToken);
+            if(!appUser.getEmail().equals("test@test.com")) {
+                EmailService emailService = new EmailService();
+                try {
+                    emailService.send(appUser.getEmail(),
+                            "Confirm your account",
+                            InetAddress.getLocalHost().getHostAddress() + ":" +
+                                    environment.getProperty("server.port") + "/user/confirm?token=" +
+                                    token);
+                } catch (UnknownHostException e) {
+                    System.err.println("Failed to send email. outlook email account down again?");
+                    e.printStackTrace();
+                }
+            }
 
-        EmailService emailService = new EmailService();
-        try {
-            emailService.send(appUser.getEmail(),
-                    "Confirm your account",
-                    InetAddress.getLocalHost().getHostAddress()+":"+
-                            environment.getProperty("server.port")+"/user/confirm?token="+
-                            token);
-        } catch (UnknownHostException e) {
-            e.printStackTrace();
+            return token;
         }
-
-        return token;
+        return "Already enabled";
     }
 
+    public boolean isAdmin(String email) {
+        Optional<AppUser> optionalAppUser = appUserRepository.findByEmail(email);
+        if(optionalAppUser.isPresent())
+        {
+            return optionalAppUser.get().getAppUserRole() == AppUserRole.ADMIN;
+        }
+        throw new UsernameNotFoundException(email+ " not found");
+
+    }
+
+    public boolean userDoNotExist(String email)
+    {
+        return appUserRepository.findByEmail(email).isEmpty();
+    }
+
+    public AppUser getAppUserByEmail(String email)
+    {
+        Optional<AppUser> optionalAppUser = appUserRepository.findByEmail(email);
+        if(optionalAppUser.isPresent())
+        {
+            return optionalAppUser.get();
+        }else
+        {
+            throw new UsernameNotFoundException("Could not find " + email);
+        }
+    }
 }

@@ -284,8 +284,6 @@ li a:hover:not(.active) {
   text-overflow: ellipsis;
 }
 
-#outerDiv {
-}
 
 .insideDiv {
   width: 16em;
@@ -431,9 +429,6 @@ input[type="description"] {
   height: 200px;
 }
 
-.container1 > button {
-  marginwidth: 400px;
-}
 .AddProduct {
   background-color : #7adbc3;
   color: white;

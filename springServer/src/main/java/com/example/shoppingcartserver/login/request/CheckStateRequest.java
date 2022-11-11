@@ -2,6 +2,7 @@ package com.example.shoppingcartserver.login.request;
 
 import lombok.Getter;
 import lombok.NoArgsConstructor;
+import lombok.Setter;
 import lombok.ToString;
 
 /**
@@ -10,6 +11,7 @@ import lombok.ToString;
  */
 @NoArgsConstructor
 @ToString
+@Setter
 @Getter
 public class CheckStateRequest {
     private String email;

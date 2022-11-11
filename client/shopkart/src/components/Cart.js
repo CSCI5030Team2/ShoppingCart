@@ -1,8 +1,8 @@
 import React, { Component } from "react";
-import { Link } from "react-router-dom";
 // import DisplayProducts from "./DisplayProducts";
-import { getProducts } from "../actions/products";
+import { getProducts,getCarts } from "../actions/products";
 import { connect } from "react-redux";
+import {Link} from "react-router-dom";
 // import logo from "../logo.PNG";
 import LoginNavbar from "./LoginNavbar";
 import Navbar from "./Navbar";
@@ -12,12 +12,25 @@ export class Navigation extends Component {
     this.props.getCarts();
   }
 
+  OnChange = event => {
+    this.setState({ [event.target.name]: event.target.value });
+  };
+
+  onPayment() {
+    let product = {
+      itemName: this.props.location.state.itemName,
+      quantity: this.props.location.state.quantity,
+      price:this.props.location.state.price
+    };
+    this.props.cart(product, this.props.history);
+  }
+
   render() {
     console.log(this.props.getCarts())
     return (
       <div>
         <div>
-          <Navbar />
+          <LoginNavbar />
         </div>
         <h2 style={{ textAlign: "center", marginTop: 2 + "em" }}>Products</h2>
         <div id="outerDiv">
@@ -37,14 +50,12 @@ export class Navigation extends Component {
                   <b>Price : </b> ${product.price}
                 </p>
                 <button
-                  onClick={() => {
-                    this.props.history.push("/productdetail/" + product.id, {
-                      product
-                    });
-                  }}
+                  onClick={this.onPayment()}
                   id="editBtn"
                 >
+                <Link to = "/payment">
                   View
+                  </Link>
                 </button>
               </div>
             </div>
@@ -61,5 +72,5 @@ const mapStateToProps = state => ({
 
 export default connect(
   mapStateToProps,
-  { getProducts }
+  { getProducts,getCarts }
 )(Navigation);
