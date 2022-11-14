@@ -2,17 +2,18 @@ package com.example.shoppingcartserver.login;
 
 import com.example.shoppingcartserver.appuser.AppUserRepository;
 import com.example.shoppingcartserver.login.controller.LoginController;
-import com.example.shoppingcartserver.login.controller.LogoutController;
 import com.example.shoppingcartserver.login.request.CheckStateRequest;
 import com.example.shoppingcartserver.login.request.LoginRequest;
 import com.example.shoppingcartserver.login.request.LogoutRequest;
 import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.jdbc.AutoConfigureTestDatabase;
 import org.springframework.boot.test.context.SpringBootTest;
 
 import javax.security.auth.login.CredentialException;
+import javax.security.auth.login.CredentialExpiredException;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -33,9 +34,6 @@ class LoginServiceTest {
     LoginController loginController;
 
     @Autowired
-    LogoutController logoutController;
-
-    @Autowired
     LoginTokenRepository loginTokenRepository;
 
     @Autowired
@@ -43,13 +41,15 @@ class LoginServiceTest {
 
     private final String EMAIL = "admin@shoppingcart.com";
 
-    @Test
-    public void contextLoads() {
+    @BeforeEach
+    void checkDB()
+    {
         Assertions.assertNotNull(loginController);
+        assertTrue(appUserRepository.findByEmail(EMAIL).isPresent());
     }
 
     @Test
-    public void wrongPassword()  {
+    void wrongPassword()  {
         LoginRequest loginRequest = new LoginRequest(
                 EMAIL,
                 "wrongPassword");
@@ -57,8 +57,7 @@ class LoginServiceTest {
     }
 
     @Test
-    public void successLoginTest()
-    {
+    void successLoginTest() throws CredentialExpiredException {
         LoginRequest loginRequest = new LoginRequest(
                 EMAIL,
                 "a123456");
@@ -70,8 +69,7 @@ class LoginServiceTest {
 
     @SuppressWarnings("OptionalGetWithoutIsPresent")
     @Test
-    public void successLogoutTest()
-    {
+    void successLogoutTest() throws CredentialException {
         LoginRequest loginRequest = new LoginRequest(
                 EMAIL,
                 "a123456");
@@ -86,7 +84,7 @@ class LoginServiceTest {
                         appUserRepository.findByEmail(EMAIL).get()
                 ).get().getToken()
         );
-        assertEquals("Logout Success" , logoutController.logout(logoutRequest));
+        assertEquals("Logout Success" , loginController.logout(logoutRequest));
 
     }
 

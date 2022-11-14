@@ -21,7 +21,7 @@ public class ConfirmationToken {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column(nullable = false)
+    @Column(nullable = false, unique = true)
     private String token;
 
     @Column(nullable = false)
@@ -33,7 +33,7 @@ public class ConfirmationToken {
     private LocalDateTime confirmTime;
 
     @OneToOne
-    @JoinColumn( nullable = false, name = "app_user_id")
+    @JoinColumn( nullable = false, unique = true)
     private AppUser appUser;
 
     public ConfirmationToken(String token, LocalDateTime createTime, LocalDateTime expireTime, AppUser appUser) {

@@ -28,3 +28,4 @@ springServer/.idea/shelf
 /.idea/uiDesigner.xml
 /.idea/dataSources/*
 /.idea/dataSources*
+/springServer/src/main/resources/application.yml

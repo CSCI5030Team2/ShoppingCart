@@ -49,7 +49,6 @@ public class AppUser{
      */
     @Column(nullable = false)
     private Boolean enable;
-
     public AppUser(String firstName,
                    String lastName,
                    String email,

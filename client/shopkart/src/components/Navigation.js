@@ -35,7 +35,7 @@ export class Navigation extends Component {
                 <p>
                   <b>Price : </b> ${product.price}
                 </p>
-                <button
+                {/* <button
                   onClick={() => {
                     this.props.history.push("/productdetail/" + product.id, {
                       product
@@ -44,14 +44,10 @@ export class Navigation extends Component {
                   id="editBtn"
                 >
                   View
-                </button>
+                </button> */}
               </div>
             </div>
           ))}
-        </div>
-        <div id="mybutton">
-         <button class="AddProduct">
-         <a href="CreateProducts">Add product</a></button>
         </div>
       </div>
     );
