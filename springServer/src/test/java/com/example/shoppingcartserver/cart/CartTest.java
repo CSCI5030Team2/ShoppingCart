@@ -97,19 +97,11 @@ class CartTest {
         assertDoesNotThrow(()->controller.addToCart(addToCartRequest));
         assertFalse(cartRepository.findAllByBuyerEmail(email).isEmpty());
 
-        AddToCartRequest addToCartRequest1 = new AddToCartRequest(
-                itemName,
-                15,
-                token
-
-        );
-        assertDoesNotThrow(()->controller.addToCart(addToCartRequest1));
-        assertFalse(cartRepository.findAllByBuyerEmail(email).isEmpty());
-
         DeleteFromCartRequest deleteFromCartRequest = new DeleteFromCartRequest(
                 token,
                 itemName,
-                25
+                10
+
 
         );
 
