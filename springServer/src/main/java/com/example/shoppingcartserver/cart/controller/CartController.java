@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.*;
 import javax.security.auth.login.CredentialException;
 
 /**
- * @author aiden
+ * @author aiden, vivek
  */
 @RestController
 @CrossOrigin
@@ -22,26 +22,25 @@ public class CartController {
     private CartService cartService;
 
     @GetMapping
-    public String getCart(@RequestBody GetCartRequest request)
-    {
+    public String getCart(@RequestBody GetCartRequest request) throws CredentialException {
         return cartService.getCart(request);
     }
 
     @PostMapping
-    public String addToCart(@RequestBody AddToCartRequest request) throws Exception {
+    public String addToCart(@RequestBody AddToCartRequest request) throws Exception
+    {
         return cartService.addToCart(request);
     }
 
-
-
     @DeleteMapping
-    public String deleteFromCart(@RequestBody DeleteFromCartRequest request) throws Exception {
+    public String deleteFromCart(@RequestBody DeleteFromCartRequest request) throws Exception
+    {
         return cartService.deleteFromCart(request);
     }
 
-
     @PutMapping
-    public String checkoutCart(@RequestBody GetCartRequest request) throws Exception { return cartService.checkout(request);}
-
-
+    public String checkoutCart(@RequestBody GetCartRequest request) throws Exception
+    {
+        return cartService.checkout(request);
+    }
 }

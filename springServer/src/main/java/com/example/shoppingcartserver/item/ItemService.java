@@ -8,9 +8,11 @@ import com.example.shoppingcartserver.item.request.AdminAddItemRequest;
 import com.example.shoppingcartserver.item.request.BuyItemRequest;
 import com.example.shoppingcartserver.item.request.DeleteItemRequest;
 import com.example.shoppingcartserver.login.LoginService;
+import com.example.shoppingcartserver.login.token.LoginToken;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 
+import javax.security.auth.login.CredentialException;
 import javax.security.auth.login.CredentialExpiredException;
 import java.util.List;
 import java.util.Optional;
@@ -61,9 +63,9 @@ public class ItemService {
     }
 
 
-    public String addItem(AdminAddItemRequest request) {
-
-        AppUser appUser = appUserService.getAppUserByEmail(request.getEmail());
+    public String addItem(AdminAddItemRequest request) throws CredentialException {
+        LoginToken loginToken = loginService.findTokenByTokenString(request.getToken());
+        AppUser appUser = appUserService.getAppUserByEmail(loginToken.getAppUser().getEmail());
 
         if(appUser.getAppUserRole()!=AppUserRole.ADMIN)
         {
@@ -90,19 +92,17 @@ public class ItemService {
         return "Failed, Invalid token";
     }
 
-    public String updateItem(AdminAddItemRequest request)
-    {
-        if(appUserService.userDoNotExist(request.getEmail()))
+    public String updateItem(AdminAddItemRequest request) throws CredentialException {
+        LoginToken loginToken = loginService.findTokenByTokenString(request.getToken());
+        AppUser appUser = loginToken.getAppUser();
+        if(appUserService.userDoNotExist(appUser.getEmail()))
         {
             return "User do no exist";
         }
-        if(!appUserService.isAdmin(request.getEmail()))
+        if(!appUserService.isAdmin(appUser.getEmail()))
         {
             return "Only admin can add new item";
         }
-
-        AppUser appUser = appUserService.getAppUserByEmail(request.getEmail());
-
         if(loginService.tokenValid(request.getToken(), appUser))
         {
             boolean itemExist = itemRepository.findByItemName(request.getItemName()).isPresent();
@@ -116,6 +116,17 @@ public class ItemService {
         return "Failed, Invalid token";
     }
 
+    public Item findItemByName(String itemName) throws Exception {
+        Optional<Item> optionalItem = itemRepository.findByItemName(itemName);
+        if(optionalItem.isPresent())
+        {
+            return optionalItem.get();
+        }
+        else
+        {
+            throw new Exception("item " + itemName + " not found");
+        }
+    }
 
     public String deleteItem(DeleteItemRequest request) throws CredentialExpiredException {
         AppUser appUser = loginService.findAppUserByToken(request.getToken());
@@ -140,19 +151,6 @@ public class ItemService {
     }
 
 
-    public Item findItemByName(String itemName) throws Exception {
-        Optional<Item> optionalItem = itemRepository.findByItemName(itemName);
-        if(optionalItem.isPresent())
-        {
-            return optionalItem.get();
-        }
-        else
-        {
-            throw new Exception("item " + itemName + " not found");
-        }
-    }
-
-
     /**
      * Only for cart checkout
      * @param item item instance
@@ -166,7 +164,7 @@ public class ItemService {
 
             if(dbItem.getQuantity() < quantity)
             {
-                //dont checkout
+                //don't checkout
                 throw new Exception("out of stock");
             }
 

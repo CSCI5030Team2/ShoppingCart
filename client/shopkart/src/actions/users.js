@@ -100,13 +100,17 @@ import {
     axios
       .post("http://localhost:8080/login", users)
       .then(res => {
-        console.log(res.data.token);
-        localStorage.setItem("token", res.data.data);
-        history.push("/");
+        //console.log(res.data[0]);
+
+        //Save the login token of that user to cache
+        localStorage.setItem("token", res.data[0]);
+
+        //Save the role of that user to cache
+        localStorage.setItem("role", res.data[1]);
         dispatch({
           type: LOGIN
         });
-        console.log(res.data);
+        //console.log(res.data);
         alert("Login successful");
         // history.push("/displayusers");
       })

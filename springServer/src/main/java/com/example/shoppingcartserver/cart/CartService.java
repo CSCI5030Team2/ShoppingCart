@@ -14,13 +14,11 @@ import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 
 import javax.security.auth.login.CredentialException;
-import javax.security.auth.login.CredentialExpiredException;
 import java.time.LocalDateTime;
 import java.util.List;
-import java.util.Optional;
 
 /**
- * @author aiden
+ * @author aiden, vivek
  */
 @Service
 @AllArgsConstructor
@@ -37,9 +35,9 @@ public class CartService {
      * @param request buyerEmail
      * @return JSON containing item
      */
-    public String getCart(GetCartRequest request)
-    {
-        List<CartItem> cartItemList  = cartRepository.findAllByBuyerEmail(request.getBuyerEmail());
+    public String getCart(GetCartRequest request) throws CredentialException {
+        LoginToken loginToken = loginService.findTokenByTokenString(request.getToken());
+        List<CartItem> cartItemList  = cartRepository.findAllByBuyerEmail(loginToken.getAppUser().getEmail());
         List<CartItem> cartItemListObj = cartItemList.stream().toList();
         return JSON.toJSONString(cartItemListObj);
     }
@@ -50,19 +48,30 @@ public class CartService {
      * @return msg String
      */
     public String checkout(GetCartRequest request) throws Exception {
-        if(validToken(request.getToken())) {
-            List<CartItem> cartItemList = cartRepository.findAllByBuyerEmail(request.getBuyerEmail());
-            if (!cartItemList.isEmpty()) {
-                for(CartItem cartItem : cartItemList)
-                {
-                    itemService.deleteByItem(cartItem.getItem() , cartItem.getQuantity());
-                }
-                cartRepository.deleteAll(cartItemList);
-            }
-            return "Checkout success";
+        LoginToken loginToken = loginService.findTokenByTokenString(request.getToken());
+        AppUser appUser = appUserService.getAppUserByEmail(loginToken.getAppUser().getEmail());
+
+        if(!loginService.tokenValid(request.getToken(),appUser))
+        {
+            throw new CredentialException("Invalid token");
         }
-        throw new CredentialExpiredException("Token expired");
+
+        List<CartItem> cartItemList = cartRepository.findAllByBuyerEmail(loginToken.getAppUser().getEmail());
+        if (!cartItemList.isEmpty()) {
+            for(CartItem cartItem : cartItemList)
+            {
+                itemService.deleteByItem(cartItem.getItem() , cartItem.getQuantity());
+            }
+            cartRepository.deleteAll(cartItemList);
+        }
+        return "Checkout success";
     }
+
+    /**
+     * validates the user token expiry, based on time
+     * @param token token string
+     * @return boolean based on token expiry
+     */
 
     private boolean validToken(String token) throws CredentialException {
         LoginToken loginToken = loginService.findTokenByTokenString(token);
@@ -70,8 +79,22 @@ public class CartService {
 
     }
 
+    /**
+     * Add available items to cart
+     * @param request buyerEmail, itemName, quantity
+     * @return msg String
+     */
+
     public String addToCart(AddToCartRequest request) throws Exception {
-        AppUser appUser = appUserService.getAppUserByEmail(request.getBuyerEmail());
+        LoginToken loginToken = loginService.findTokenByTokenString(request.getToken());
+        AppUser appUser = appUserService.getAppUserByEmail(loginToken.getAppUser().getEmail());
+
+        if(!loginService.tokenValid(request.getToken(),appUser))
+        {
+            throw new CredentialException("Invalid token");
+        }
+
+
         Item item = itemService.findItemByName(request.getItemName());
         if(item.getQuantity() <1)
         {
@@ -80,7 +103,7 @@ public class CartService {
 
         String itemName = item.getItemName();
 
-        List<CartItem> cartItems = cartRepository.findAllByBuyerEmail(request.getBuyerEmail());
+        List<CartItem> cartItems = cartRepository.findAllByBuyerEmail(loginToken.getAppUser().getEmail());
         if(!cartItems.isEmpty())
         {
             for(CartItem cartItem : cartItems)
@@ -90,7 +113,7 @@ public class CartService {
                     //increase number and save
                     cartItem.setQuantity(cartItem.getQuantity() + request.getQuantity());
                     cartRepository.save(cartItem);
-                    return "Increased number of " + cartItem.getItem().getItemName()+ " for " + request.getBuyerEmail();
+                    return "Increased number of " + cartItem.getItem().getItemName()+ " for " + loginToken.getAppUser().getEmail();
                 }
             }
 
@@ -104,12 +127,26 @@ public class CartService {
 
     }
 
+    /**
+     * Delete cart items
+     * @param request buyerEmail, itemName, quantity
+     * @return msg String
+     */
+
     public String deleteFromCart(DeleteFromCartRequest request) throws Exception {
+        LoginToken loginToken = loginService.findTokenByTokenString(request.getToken());
         //delete one
-        AppUser appUser = appUserService.getAppUserByEmail(request.getBuyerEmail());
+        AppUser appUser = appUserService.getAppUserByEmail(loginToken.getAppUser().getEmail());
+
+        if(!loginService.tokenValid(request.getToken(),appUser))
+        {
+            throw new CredentialException("Invalid token");
+        }
+
+
         Item item = itemService.findItemByName(request.getItemName());
         String itemName = item.getItemName();
-        List<CartItem> cartItems = cartRepository.findAllByBuyerEmail(request.getBuyerEmail());
+        List<CartItem> cartItems = cartRepository.findAllByBuyerEmail(loginToken.getAppUser().getEmail());
         if(!cartItems.isEmpty())
         {
             for(CartItem cartItem : cartItems)
@@ -121,19 +158,19 @@ public class CartService {
                         cartRepository.delete(cartItem);
                         return "Deleted all " +
                                 cartItem.getItem().getItemName() +
-                                " for " + request.getBuyerEmail();
+                                " for " + loginToken.getAppUser().getEmail();
                     }
                     else {
                         cartRepository.save(cartItem);
                         return "Deleted " + request.getQuantity() + " " +
                                 cartItem.getItem().getItemName() +
-                                " for " + request.getBuyerEmail();
+                                " for " + loginToken.getAppUser().getEmail();
                     }
                 }
             }
 
         }
 
-       return "Item " + request.getItemName() + " not found in " + request.getBuyerEmail() + " cart";
+       return "Item " + request.getItemName() + " not found in " + loginToken.getAppUser().getEmail() + " cart";
     }
 }

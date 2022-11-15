@@ -8,6 +8,7 @@ import com.example.shoppingcartserver.item.request.DeleteItemRequest;
 import lombok.AllArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 
+import javax.security.auth.login.CredentialException;
 import javax.security.auth.login.CredentialExpiredException;
 
 /**
@@ -21,19 +22,18 @@ public class AdminItemController {
     private ItemService itemService;
 
     @PostMapping
-    public String addItem(@RequestBody AdminAddItemRequest request)
-    {
+    public String addItem(@RequestBody AdminAddItemRequest request) throws CredentialException {
         return itemService.addItem(request);
+    }
+
+    @PutMapping
+    public String updateItem(@RequestBody AdminAddItemRequest request) throws CredentialException {
+        return itemService.updateItem(request);
     }
 
     @DeleteMapping
     public String deleteItem(@RequestBody DeleteItemRequest request) throws CredentialExpiredException {
         return itemService.deleteItem(request);
-    }
-
-    @PutMapping
-    public String updateItem(@RequestBody AdminAddItemRequest request){
-        return itemService.updateItem(request);
     }
 
 }

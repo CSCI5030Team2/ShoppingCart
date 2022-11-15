@@ -2,12 +2,10 @@ package com.example.shoppingcartserver.login;
 
 import com.example.shoppingcartserver.appuser.AppUserRepository;
 import com.example.shoppingcartserver.login.controller.LoginController;
-import com.example.shoppingcartserver.login.controller.LogoutController;
 import com.example.shoppingcartserver.login.request.CheckStateRequest;
 import com.example.shoppingcartserver.login.request.LoginRequest;
 import com.example.shoppingcartserver.login.request.LogoutRequest;
 import org.junit.jupiter.api.Assertions;
-import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -34,9 +32,6 @@ class LoginServiceTest {
 
     @Autowired
     LoginController loginController;
-
-    @Autowired
-    LogoutController logoutController;
 
     @Autowired
     LoginTokenRepository loginTokenRepository;
@@ -74,7 +69,7 @@ class LoginServiceTest {
 
     @SuppressWarnings("OptionalGetWithoutIsPresent")
     @Test
-    void successLogoutTest() throws CredentialExpiredException {
+    void successLogoutTest() throws CredentialException {
         LoginRequest loginRequest = new LoginRequest(
                 EMAIL,
                 "a123456");
@@ -89,7 +84,7 @@ class LoginServiceTest {
                         appUserRepository.findByEmail(EMAIL).get()
                 ).get().getToken()
         );
-        assertEquals("Logout Success" , logoutController.logout(logoutRequest));
+        assertEquals("Logout Success" , loginController.logout(logoutRequest));
 
     }
 

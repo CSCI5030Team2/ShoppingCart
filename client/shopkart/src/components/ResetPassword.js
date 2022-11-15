@@ -1,35 +1,63 @@
 import React, { Component } from "react";
-import { login, getUsers } from "../actions/users";
+import { resetPassword, getUsers } from "../actions/users";
 import { Link } from "react-router-dom";
 import { connect } from "react-redux";
 import Navbar from "./Navbar";
+//
 
-export class Login extends Component {
+export class ResetPassword extends Component {
   constructor(props) {
     super(props);
-    this.onLogin = this.onLogin.bind(this);
+    this.onReset = this.onReset.bind(this);
   }
   state = {
     email: "",
-    password: ""
+    password: "",
+    confirmpassword:"",
+    emailError:"",
+    passwordError:"",
+    confirmpasswordError:""
   };
-
-  componentDidMount() {
-    if (localStorage.getItem("token")) {
-      this.props.history.push("/navigation");
-    }
-  }
 
   OnChange = event => {
     this.setState({ [event.target.name]: event.target.value });
   };
 
-  onLogin() {
+  validate = () => {
+    let emailError = "";
+    let passwordError = "";
+    let confirmpasswordError = "";
+    if(!this.state.password === !this.state.confirmpassword){
+      confirmpasswordError="Passwords do not match"
+    }
+    if (
+      !this.state.email ||
+      this.state.email.length <= 5 ||
+      !this.state.email.includes("@") ||
+      !this.state.email.includes(".")
+    ) {
+      emailError = "Email Field Incorrect";
+    }
+    if (!this.state.password || this.state.password.length <= 5) {
+      passwordError = "Password should be 5 characters long ";
+    }
+  
+    if (emailError || passwordError || confirmpasswordError) {
+      this.setState({confirmpasswordError:confirmpasswordError, emailError: emailError, passwordError: passwordError });
+  
+      return false;
+    }
+    return true;
+  };
+  
+
+  
+  onReset() {
     let user = {
       email: this.state.email,
       password: this.state.password
     };
-    this.props.login(user, this.props.history);
+    this.props.resetPassword(user);
     this.setState({
       email: "",
       password: ""
@@ -45,7 +73,7 @@ export class Login extends Component {
           align="center"
           style={{ width: 20 + "em", marginTop: 3 + "em", height: "auto" }}
         >
-          <h1>Login Form</h1>
+          <h1>Reset Password</h1>
           <input
             className="name"
             placeholder=" Enter Email"
@@ -58,7 +86,7 @@ export class Login extends Component {
           <br />
           <br />
           <input
-            placeholder=" Enter Password"
+            placeholder=" Enter New Password"
             type="password"
             name="password"
             onChange={this.OnChange}
@@ -67,15 +95,23 @@ export class Login extends Component {
           />
           <br />
           <br />
+          <input
+            placeholder=" Re-Enter New Password"
+            type="password"
+            name="confirmpassword"
+            onChange={this.OnChange}
+            value={this.state.confirmpassword}
+            required
+          />
+          <br />
+          <br />
           <br />
           {/* <Link to="/displayproducts"> */}
-          <button onChange={this.onChange} onClick={this.onLogin}>
-          <Link to = "/navigation">
-            Login
-            </Link>
+          <button onChange={this.onChange} onClick={this.onReset}>
+            Reset
           </button>
           {/* </Link> */}
-          <p>
+          {/* <p>
             <Link to="/reset">
               <p>Forgot Password ?</p>
             </Link>
@@ -85,7 +121,7 @@ export class Login extends Component {
             <u>
               <Link to="/register">CREATE AN ACCOUNT</Link>
             </u>
-          </p>
+          </p> */}
         </div>
       </div>
     );
@@ -98,5 +134,5 @@ const mapStateToProps = state => ({
 
 export default connect(
   mapStateToProps,
-  { login, getUsers }
-)(Login);
+  { resetPassword, getUsers }
+)(ResetPassword);

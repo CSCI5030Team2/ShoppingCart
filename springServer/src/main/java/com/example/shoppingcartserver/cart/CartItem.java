@@ -9,7 +9,7 @@ import lombok.Setter;
 import javax.persistence.*;
 
 /**
- * @author aiden
+ * @author aiden, vivek
  */
 @Getter
 @Setter
@@ -25,7 +25,7 @@ public class CartItem {
     private String buyerEmail;
 
     @ManyToOne
-    @JoinColumn( nullable = false)
+    @JoinColumn(nullable = false)
     private Item item;
 
     @Column(nullable = false)
