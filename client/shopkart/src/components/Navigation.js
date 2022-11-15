@@ -5,6 +5,7 @@ import { getProducts } from "../actions/products";
 import { connect } from "react-redux";
 // import logo from "../logo.PNG";
 import Navbar from "./Navbar";
+import AdsHolder from "./AdsHolder";
 
 export class Navigation extends Component {
   componentWillMount() {
@@ -20,6 +21,7 @@ export class Navigation extends Component {
         </div>
         <h2 style={{ textAlign: "center", marginTop: 2 + "em" }}>Products</h2>
         <div id="outerDiv">
+            <AdsHolder />
           {this.props.products.map(product => (
             <div>
               <div
