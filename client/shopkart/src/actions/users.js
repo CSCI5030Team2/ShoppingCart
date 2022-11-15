@@ -18,9 +18,9 @@ import {
       .then(res => {
         dispatch({
           type: GET_USERS,
-          payload: res.data
+          payload: res.data.data
         });
-        console.log(res.data);
+        console.log(res.data.data);
       })
       .catch(err => {
         console.log(err);
@@ -101,8 +101,8 @@ import {
       .post("http://localhost:8080/login", users)
       .then(res => {
         console.log(res.data.token);
-        localStorage.setItem("token", res.data.data);
-        history.push("/");
+        localStorage.setItem("token", res.data[0]);
+        history.push("/navigation")
         dispatch({
           type: LOGIN
         });

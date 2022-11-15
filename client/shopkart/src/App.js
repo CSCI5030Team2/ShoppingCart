@@ -18,7 +18,7 @@ function App() {
         <Route exact path="/createproducts" component={CreateProducts}></Route>
         <Route exact path="/register" component={Register}></Route>
         <Route exact path="/login" component={Login}></Route>
-        <Route exact path="/cart" component={Cart}></Route>
+        <Route exact path="/cart/:id" component={Cart}></Route>
         <Route exact path="/navigation" component={NavigationAfterLogin}></Route>
         <Route exact path="/reset" component={ResetPassword}></Route>
       </div>
