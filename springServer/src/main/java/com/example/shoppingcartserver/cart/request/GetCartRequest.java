@@ -8,6 +8,7 @@ import lombok.*;
 @AllArgsConstructor
 @ToString
 @Getter
+@NoArgsConstructor
 public class GetCartRequest {
     private String token;
 }
