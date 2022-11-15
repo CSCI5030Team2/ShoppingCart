@@ -9,10 +9,8 @@ export default class Navbar extends Component {
         <div className="navbar">
           <nav>
             <ul>
-              <li>
-                <Link to="/">
+              <li>             
                   <img src={logo} style={{ height: 3 + "em" }} />
-                </Link>
               </li>
               <Link to="/register">
                 <li

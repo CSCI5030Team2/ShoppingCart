@@ -1,32 +1,30 @@
 import React, { Component } from "react";
-// import DisplayProducts from "./DisplayProducts";
-import { getProducts,getCarts } from "../actions/products";
 import { connect } from "react-redux";
-import {Link} from "react-router-dom";
-// import logo from "../logo.PNG";
+import { getProducts, updateProducts } from "../actions/products";
+import { Link } from "react-router-dom";
 import LoginNavbar from "./LoginNavbar";
-import Navbar from "./Navbar";
-//
-export class Navigation extends Component {
-  componentWillMount() {
-    this.props.getCarts();
-  }
 
-  OnChange = event => {
-    this.setState({ [event.target.name]: event.target.value });
+export class Cart extends Component {
+  state = {
+    id: this.props.match.params.id,
+    itemName: this.props.location.state.product.itemName,
+    price: this.props.location.state.product.price,
+    quantity: this.props.location.state.product.quantity
   };
 
-  onPayment() {
-    let product = {
-      itemName: this.props.location.state.itemName,
-      quantity: this.props.location.state.quantity,
-      price:this.props.location.state.price
-    };
-    this.props.cart(product, this.props.history);
+
+
+  componentWillMount() {
+    if (!localStorage.getItem("token")) {
+      this.props.history.push("/");
+    }
   }
 
+  onChange = e => {
+    this.setState({ [e.target.name]: e.target.value });
+  };
+
   render() {
-    console.log(this.props.getCarts())
     return (
       <div>
         <div>
@@ -34,7 +32,7 @@ export class Navigation extends Component {
         </div>
         <h2 style={{ textAlign: "center", marginTop: 2 + "em" }}>Products</h2>
         <div id="outerDiv">
-          {this.props.products.map(product => (
+          {this.state.map(product => (
             <div>
               <div
                 className="AdminProductsdisplay"
@@ -49,14 +47,12 @@ export class Navigation extends Component {
                 <p>
                   <b>Price : </b> ${product.price}
                 </p>
-                <button
-                  onClick={this.onPayment()}
-                  id="editBtn"
-                >
-                <Link to = "/payment">
-                  View
-                  </Link>
-                </button>
+                 {/* <button
+                    onClick={() => {}}
+                    id="editBtn"
+                  >
+                  Add To Cart 
+                </button> */}
               </div>
             </div>
           ))}
@@ -67,10 +63,10 @@ export class Navigation extends Component {
 }
 
 const mapStateToProps = state => ({
-  products: state.productReducer.products
+  product: state.productReducer.product
 });
 
 export default connect(
   mapStateToProps,
-  { getProducts,getCarts }
-)(Navigation);
+  { getProducts, updateProducts }
+)(Cart);

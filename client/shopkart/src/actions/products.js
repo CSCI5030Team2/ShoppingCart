@@ -3,7 +3,8 @@ import {
     CREATE_PRODUCTS,
     UPDATE_PRODUCTS,
     DELETE_PRODUCTS,
-    GET_CARTS
+    GET_CARTS,
+    CART_PRODUCTS
   } from "./types";
   
   import axios from "axios";
@@ -91,7 +92,7 @@ import {
       )
       .then(res => {
         dispatch({
-          type: CREATE_PRODUCTS
+          type: CART_PRODUCTS
         });
         alert("Product Added to Cart");
         // dispatch(getProducts());
