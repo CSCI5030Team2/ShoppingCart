@@ -6,6 +6,7 @@ import { connect } from "react-redux";
 // import logo from "../logo.PNG";
 import LoginNavbar from "./LoginNavbar";
 import axios from "axios";
+import AdsHolder from "./AdsHolder";
 
 export class NavigationAfterLogin extends Component {
   componentWillMount() {
@@ -21,6 +22,7 @@ export class NavigationAfterLogin extends Component {
         </div>
         <h2 style={{ textAlign: "center", marginTop: 2 + "em" }}>Products</h2>
         <div id="outerDiv">
+            <AdsHolder/>
             {
                 this.props.products.map(product => (
                     <div>
