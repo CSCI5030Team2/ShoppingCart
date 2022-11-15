@@ -8,7 +8,10 @@ import com.example.shoppingcartserver.cart.request.DeleteFromCartRequest;
 import com.example.shoppingcartserver.cart.request.GetCartRequest;
 import com.example.shoppingcartserver.login.controller.LoginController;
 import com.example.shoppingcartserver.login.request.LoginRequest;
-import org.junit.jupiter.api.*;
+import org.junit.jupiter.api.AfterEach;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.RepeatedTest;
+import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.jdbc.AutoConfigureTestDatabase;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -18,7 +21,6 @@ import static org.junit.jupiter.api.Assertions.*;
 
 @SpringBootTest
 @AutoConfigureTestDatabase(replace= AutoConfigureTestDatabase.Replace.NONE)
-@TestMethodOrder(MethodOrderer.OrderAnnotation.class)
 class CartTest {
 
     @Autowired
@@ -33,13 +35,12 @@ class CartTest {
     @BeforeEach
     void setUp() {
     }
-
     @AfterEach
     void tearDown() {
     }
 
+
     @RepeatedTest(3)
-    @Order(1)
     public void testAddCartItem() throws Exception {
 
         String email = "user@shoppingcart.com";
@@ -65,7 +66,7 @@ class CartTest {
         assertDoesNotThrow(()->controller.deleteFromCart(new DeleteFromCartRequest(
                 token,
                 itemName,
-                10
+                1
 
         )));
         assertTrue(cartRepository.findAllByBuyerEmail(email).isEmpty());
@@ -97,19 +98,10 @@ class CartTest {
         assertDoesNotThrow(()->controller.addToCart(addToCartRequest));
         assertFalse(cartRepository.findAllByBuyerEmail(email).isEmpty());
 
-        AddToCartRequest addToCartRequest1 = new AddToCartRequest(
-                itemName,
-                15,
-                token
-
-        );
-        assertDoesNotThrow(()->controller.addToCart(addToCartRequest1));
-        assertFalse(cartRepository.findAllByBuyerEmail(email).isEmpty());
-
         DeleteFromCartRequest deleteFromCartRequest = new DeleteFromCartRequest(
                 token,
                 itemName,
-                25
+                10
 
         );
 
@@ -149,4 +141,5 @@ class CartTest {
         assertDoesNotThrow(() -> controller.checkoutCart(getCartRequest));
         assertTrue(cartRepository.findAllByBuyerEmail(email).isEmpty());
     }
+
 }
