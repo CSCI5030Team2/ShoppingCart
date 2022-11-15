@@ -12,8 +12,7 @@ import lombok.ToString;
 @ToString
 @Data
 public class DeleteFromCartRequest {
-    private final String buyerEmail;
-    private String token;
+    private final String token;
     private final String itemName;
     private final Integer quantity;
 }
