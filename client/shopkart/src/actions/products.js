@@ -9,7 +9,7 @@ import {
   import axios from "axios";
   
   export const getProducts = () => dispatch => {
-    console.log(localStorage.getItem("token"));
+    //console.log(localStorage.getItem("token"));
     return axios
       .get("http://localhost:8080/item")
       .then(res => {
@@ -17,7 +17,7 @@ import {
           type: GET_PRODUCTS,
           payload: res.data
         });
-        console.log(res.data);
+        //console.log(res.data);
       })
       .catch(err => {
         console.log(err);

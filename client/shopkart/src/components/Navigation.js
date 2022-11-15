@@ -12,7 +12,7 @@ export class Navigation extends Component {
   }
 
   render() {
-    console.log(this.props.getProducts())
+    //console.log(this.props.getProducts())
     return (
       <div>
         <div>

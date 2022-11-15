@@ -46,7 +46,6 @@ class CartTest {
 
 
         AddToCartRequest addToCartRequest = new AddToCartRequest(
-                email,
                 itemName,
                 1,
                 token
@@ -55,7 +54,6 @@ class CartTest {
         assertDoesNotThrow(()->controller.addToCart(addToCartRequest));
         assertFalse(cartRepository.findAllByBuyerEmail(email).isEmpty());
         assertDoesNotThrow(()->controller.deleteFromCart(new DeleteFromCartRequest(
-                email,
                 token,
                 itemName,
                 1

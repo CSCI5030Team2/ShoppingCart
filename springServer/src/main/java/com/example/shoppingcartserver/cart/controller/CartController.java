@@ -8,6 +8,8 @@ import com.example.shoppingcartserver.cart.request.GetCartRequest;
 import lombok.AllArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 
+import javax.security.auth.login.CredentialException;
+
 /**
  * @author aiden, vivek
  */
@@ -20,8 +22,7 @@ public class CartController {
     private CartService cartService;
 
     @GetMapping
-    public String getCart(@RequestBody GetCartRequest request)
-    {
+    public String getCart(@RequestBody GetCartRequest request) throws CredentialException {
         return cartService.getCart(request);
     }
 
