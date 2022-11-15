@@ -1,5 +1,7 @@
 package com.example.shoppingcartserver;
 
+import com.example.shoppingcartserver.ads.Ads;
+import com.example.shoppingcartserver.ads.AdsRepository;
 import com.example.shoppingcartserver.appuser.AppUser;
 import com.example.shoppingcartserver.appuser.AppUserRepository;
 import com.example.shoppingcartserver.appuser.AppUserRole;
@@ -22,6 +24,9 @@ public class CommandLineAppStartupRunner implements CommandLineRunner {
     @Autowired
     ItemRepository itemRepository;
 
+    @Autowired
+    AdsRepository adsRepository;
+
     @Override
     public void run(String... args)  {
         if(appUserRepository == null || itemRepository == null)
@@ -33,9 +38,24 @@ public class CommandLineAppStartupRunner implements CommandLineRunner {
             createAdmin();
             createTestUser();
             createItems();
+            createAds();
         } catch (Exception e) {
             System.err.println("Failed inserting default database items");
             e.printStackTrace();
+        }
+    }
+
+    private void createAds() {
+        if(adsRepository.findAll().isEmpty()) {
+            Ads ads = new Ads();
+            ads.setContent("iPhone 14 pro is so great, buy now");
+            adsRepository.save(ads);
+            ads = new Ads();
+            ads.setContent("Try our latest earphones: AirPods pro 2!");
+            adsRepository.save(ads);
+            ads = new Ads();
+            ads.setContent("Samsung phones suck, buy iPhones instead");
+            adsRepository.save(ads);
         }
     }
 

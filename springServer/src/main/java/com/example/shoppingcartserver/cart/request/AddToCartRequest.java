@@ -10,7 +10,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @ToString
 @Data
 public class AddToCartRequest {
-    private final String buyerEmail;
     private final String itemName;
     private final Integer quantity;
     private String token;
