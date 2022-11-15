@@ -84,8 +84,19 @@ class CartTest {
             assertDoesNotThrow(() -> cartRepository.deleteAllByBuyerEmail(email));
         }
 
-        JSONArray array = JSON.parseArray(loginController.login(new LoginRequest(email, pw)));
+        JSONArray array = JSON.parseArray(loginController.login(new LoginRequest(email,pw)));
         String token = (String) array.get(0);
+
+        AddToCartRequest addToCartRequest = new AddToCartRequest(
+                itemName,
+                10,
+                token
+
+        );
+
+        //populate cart first
+        assertDoesNotThrow(()->controller.addToCart(addToCartRequest));
+        assertFalse(cartRepository.findAllByBuyerEmail(email).isEmpty());
 
         DeleteFromCartRequest deleteFromCartRequest = new DeleteFromCartRequest(
                 token,
@@ -93,14 +104,9 @@ class CartTest {
                 10
 
         );
-        assertDoesNotThrow(() -> controller.deleteFromCart(deleteFromCartRequest));
-        assertFalse(cartRepository.findAllByBuyerEmail(email).isEmpty());
-        assertDoesNotThrow(() -> controller.deleteFromCart(new DeleteFromCartRequest(
-                token,
-                itemName,
-                1
 
-        )));
+        //test the delete api
+        assertDoesNotThrow(() -> controller.deleteFromCart(deleteFromCartRequest));
         assertTrue(cartRepository.findAllByBuyerEmail(email).isEmpty());
     }
 
@@ -109,22 +115,30 @@ class CartTest {
     public void testCheckout() throws Exception {
         String email = "user@shoppingcart.com";
         String pw = "a123456";
+        String itemName = "iPhone 14 pro";
+
+        JSONArray array = JSON.parseArray(loginController.login(new LoginRequest(email,pw)));
+        String token = (String) array.get(0);
 
         if (!cartRepository.findAllByBuyerEmail(email).isEmpty()) {
             assertDoesNotThrow(() -> cartRepository.deleteAllByBuyerEmail(email));
         }
 
-        JSONArray array = JSON.parseArray(loginController.login(new LoginRequest(email, pw)));
-        String token = (String) array.get(0);
+        AddToCartRequest addToCartRequest = new AddToCartRequest(
+                itemName,
+                10,
+                token
+
+        );
+        assertDoesNotThrow(()->controller.addToCart(addToCartRequest));
+        assertFalse(cartRepository.findAllByBuyerEmail(email).isEmpty());
+
 
         GetCartRequest getCartRequest = new GetCartRequest(
                 token
         );
-        assertDoesNotThrow(() -> controller.getCart(getCartRequest));
         assertFalse(cartRepository.findAllByBuyerEmail(email).isEmpty());
-        assertDoesNotThrow(() -> controller.checkoutCart(new GetCartRequest(
-                        token
-        )));
+        assertDoesNotThrow(() -> controller.checkoutCart(getCartRequest));
         assertTrue(cartRepository.findAllByBuyerEmail(email).isEmpty());
     }
 
