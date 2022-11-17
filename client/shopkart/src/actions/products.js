@@ -120,17 +120,16 @@ import {
 
   export const CheckoutCart = Checkout => dispatch => {
     axios
-      .post("http://localhost:8080/checkout", PRODUCTS,
+      .post("http://localhost:8080/checkout", CART,
        {
-        headers: { Authorization: `Bearer ${localStorage.getItem("token")}` }
+        headers: { Authorization: `Bearer ${localStorage.getCarts("token")}` }
       }
       )
       .then(res => {
         dispatch({
-          type: CREATE_PRODUCTS
+          type: CHECKOUT_CART
         });
-        alert("Product Added to Cart");
-        // dispatch(getProducts());
+        alert("Redirecting to payment gateway");
       })
       .catch(err => {
         console.log(err);
