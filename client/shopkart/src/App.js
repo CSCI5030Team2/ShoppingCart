@@ -9,7 +9,7 @@ import Cart from "./components/Cart";
 import NavigationAfterLogin from "./components/NavigationAfterLogin" ;
 
 import ResetPassword from "./components/ResetPassword";
-//
+
 function App() {
   return (
     <Router>
@@ -21,6 +21,7 @@ function App() {
         <Route exact path="/cart" component={Cart}></Route>
         <Route exact path="/navigation" component={NavigationAfterLogin}></Route>
         <Route exact path="/reset" component={ResetPassword}></Route>
+        <Route exact path="/checkout" component={Checkout}></Route>
       </div>
     </Router>
   );

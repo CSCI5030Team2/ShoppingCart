@@ -50,10 +50,10 @@ export class Navigation extends Component {
                   <b>Price : </b> ${product.price}
                 </p>
                 <button
-                  onClick={this.onPayment()}
+                  onClick={this.onCheckout()}
                   id="editBtn"
                 >
-                <Link to = "/payment">
+                <Link to = "/checkout">
                   View
                   </Link>
                 </button>
@@ -72,5 +72,5 @@ const mapStateToProps = state => ({
 
 export default connect(
   mapStateToProps,
-  { getProducts,getCarts }
+  { getProducts, getCarts }
 )(Navigation);

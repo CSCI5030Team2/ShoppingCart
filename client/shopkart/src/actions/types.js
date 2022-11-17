@@ -13,3 +13,4 @@ export const UPDATE_PRODUCTS = "UPDATE_PRODUCTS";
 export const DELETE_PRODUCTS = "DELETE_PRODUCTS";
 export const CART_PRODUCTS = "CART_PRODUCTS";
 export const GET_CARTS = "GET_CARTS";
+export const POST_CHECKOUT = "POST_CHECKOUT";

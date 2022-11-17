@@ -10,7 +10,6 @@ export class CreateProduct extends Component {
     this.onCreate = this.onCreate.bind(this);
   }
 
-
   state = {
     itemName: "",
     quantity: "",

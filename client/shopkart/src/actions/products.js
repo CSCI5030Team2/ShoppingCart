@@ -117,3 +117,23 @@ import {
         console.log(err);
       });
   };
+
+  export const CheckoutCart = Checkout => dispatch => {
+    axios
+      .post("http://localhost:8080/checkout", PRODUCTS,
+       {
+        headers: { Authorization: `Bearer ${localStorage.getItem("token")}` }
+      }
+      )
+      .then(res => {
+        dispatch({
+          type: CREATE_PRODUCTS
+        });
+        alert("Product Added to Cart");
+        // dispatch(getProducts());
+      })
+      .catch(err => {
+        console.log(err);
+        alert("Try Again");
+      });
+  };
