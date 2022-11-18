@@ -1,4 +1,4 @@
-package com.example.shoppingcartserver.registration.token;
+package com.example.shoppingcartserver.password.token;
 
 import com.example.shoppingcartserver.appuser.AppUser;
 import org.springframework.data.jpa.repository.JpaRepository;
@@ -11,17 +11,12 @@ import java.time.LocalDateTime;
 import java.util.Optional;
 
 /**
- * @author aiden
+ * @author vivek
  */
 
 @Repository
 public interface ConfirmationTokenRepository extends JpaRepository<ConfirmationToken, Long> {
 
-    /**
-     * find token
-     * @param token string
-     * @return ConfirmationToken object, or none
-     */
     Optional<ConfirmationToken> findByToken(String token);
 
     @Transactional
@@ -30,15 +25,14 @@ public interface ConfirmationTokenRepository extends JpaRepository<ConfirmationT
             "SET c.confirmTime = ?2 " +
             "WHERE c.token = ?1")
     void updateConfirmedAt(String token,
-                          LocalDateTime confirmTime);
-
+                           LocalDateTime confirmTime);
 
     @Transactional
     @Query("select i from ConfirmationToken i where i.appUser = ?1")
-    Optional<ConfirmationToken> findByAppUser(AppUser appUser);
+    Optional<ConfirmationToken> findByUser(AppUser appUser);
 
-    @Modifying
     @Transactional
+    @Modifying
     @Query("delete from ConfirmationToken i where i.appUser = ?1")
     void deleteByAppUser(AppUser appUser);
 }
