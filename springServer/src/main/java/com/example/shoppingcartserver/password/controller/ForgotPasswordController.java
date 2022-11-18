@@ -16,15 +16,16 @@ import org.springframework.web.bind.annotation.*;
 @AllArgsConstructor
 public class ForgotPasswordController {
 
-    ForgotPasswordService forgotPasswordService;
+    private ForgotPasswordService forgotPasswordService;
 
     /**
-     * @param forgotPasswordRequest email, token, password, confirm password
+     * @param request email, token, password, confirm password
+     * @return
      */
 
-    @GetMapping
-    public void forgotPassword(@RequestBody ForgotPasswordRequest forgotPasswordRequest)
+    @PostMapping
+    public String forgotPassword(@RequestBody ForgotPasswordRequest request)
     {
-        forgotPasswordService.forgotPassword(forgotPasswordRequest);
+        return forgotPasswordService.forgotPassword(request);
     }
 }

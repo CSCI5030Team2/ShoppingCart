@@ -3,7 +3,6 @@ package com.example.shoppingcartserver.password.token;
 import com.example.shoppingcartserver.appuser.AppUser;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import org.apache.tomcat.jni.Local;
 
 import javax.persistence.*;
 import java.time.LocalDateTime;
@@ -15,7 +14,7 @@ import java.time.LocalDateTime;
 @Data
 @NoArgsConstructor
 @Entity
-public class ConfirmationToken {
+public class ForgotToken {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
@@ -29,16 +28,16 @@ public class ConfirmationToken {
     @Column(nullable = false)
     private LocalDateTime expireTime;
 
-    private LocalDateTime confirmTime;
+    private LocalDateTime sentTime;
 
     @OneToOne
     @JoinColumn(nullable = false, unique = true)
     private AppUser appUser;
 
 
-    public ConfirmationToken(String token, LocalDateTime createTime, LocalDateTime expireTime, AppUser appUser) {
+    public ForgotToken(String token, LocalDateTime sentTime, LocalDateTime expireTime, AppUser appUser) {
         this.token = token;
-        this.createTime = createTime;
+        this.sentTime = sentTime;
         this.expireTime = expireTime;
         this.appUser = appUser;
     }

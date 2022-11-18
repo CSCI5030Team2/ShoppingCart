@@ -15,24 +15,15 @@ import java.util.Optional;
  */
 
 @Repository
-public interface ConfirmationTokenRepository extends JpaRepository<ConfirmationToken, Long> {
+public interface ForgotTokenRepository extends JpaRepository<ForgotToken, Long> {
 
-    Optional<ConfirmationToken> findByToken(String token);
+    Optional<ForgotToken> findByToken(String token);
 
     @Transactional
     @Modifying
-    @Query("UPDATE ConfirmationToken c " +
-            "SET c.confirmTime = ?2 " +
-            "WHERE c.token = ?1")
+    @Query("UPDATE ForgotToken f " +
+            "SET f.sentTime = ?2 " +
+            "WHERE f.token = ?1")
     void updateConfirmedAt(String token,
                            LocalDateTime confirmTime);
-
-    @Transactional
-    @Query("select i from ConfirmationToken i where i.appUser = ?1")
-    Optional<ConfirmationToken> findByUser(AppUser appUser);
-
-    @Transactional
-    @Modifying
-    @Query("delete from ConfirmationToken i where i.appUser = ?1")
-    void deleteByAppUser(AppUser appUser);
 }

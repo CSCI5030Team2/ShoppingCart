@@ -8,9 +8,9 @@ import com.example.shoppingcartserver.email.EmailValidator;
 import com.example.shoppingcartserver.password.request.ForgotPasswordRequest;
 import org.springframework.core.env.Environment;
 import com.example.shoppingcartserver.login.LoginTokenRepository;
-import com.example.shoppingcartserver.password.token.ConfirmationToken;
-import com.example.shoppingcartserver.password.token.ConfirmationTokenRepository;
-import com.example.shoppingcartserver.password.token.ConfirmationTokenService;
+import com.example.shoppingcartserver.password.token.ForgotToken;
+import com.example.shoppingcartserver.password.token.ForgotTokenRepository;
+import com.example.shoppingcartserver.password.token.ForgotTokenService;
 import lombok.AllArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
@@ -19,7 +19,6 @@ import org.springframework.stereotype.Service;
 import java.net.InetAddress;
 import java.net.UnknownHostException;
 import java.time.LocalDateTime;
-import java.util.Objects;
 import java.util.Optional;
 import java.util.UUID;
 
@@ -33,33 +32,30 @@ public class ForgotPasswordService {
 
     private final AppUserServiceImpl appUserService;
     private final AppUserRepository appUserRepository;
-    private final ConfirmationTokenService confirmationTokenService;
-    private final ConfirmationTokenRepository confirmationTokenRepository;
+    private final ForgotTokenService forgotTokenService;
+    private final ForgotTokenRepository forgotTokenRepository;
     private final EmailValidator emailValidator;
     private final LoginTokenRepository loginTokenRepository;
     private final BCryptPasswordEncoder bCryptPasswordEncoder;
     @Autowired
     Environment environment;
-    public void forgotPassword(ForgotPasswordRequest forgotPasswordRequest)  {
+    public String forgotPassword(ForgotPasswordRequest forgotPasswordRequest)  {
         AppUser appUser = appUserService.getAppUserByEmail(forgotPasswordRequest.getEmail());
         resetPasswordEmail(appUser);
-    }
-
-    protected void updatePassword(AppUser appUser, ForgotPasswordRequest forgotPasswordRequest) {
-
+        return "Email sent";
     }
 
     protected String resetPasswordEmail (AppUser appUser) {
         Optional<AppUser> optionalAppUser = appUserRepository.findByEmail(appUser.getEmail());
         if(optionalAppUser.isPresent()) {
             String token = UUID.randomUUID().toString();
-            ConfirmationToken confirmationToken = new ConfirmationToken(
+            ForgotToken forgotToken = new ForgotToken(
                     token,
                     LocalDateTime.now(),
                     LocalDateTime.now().plusMinutes(5),
                     appUser
             );
-            confirmationTokenService.saveConfirmationToken(confirmationToken);
+            forgotTokenService.saveForgotToken(forgotToken);
             if(!appUser.getEmail().equals("test@test.com")) {
                 EmailService emailService = new EmailService();
                 try {
