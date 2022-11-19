@@ -4,19 +4,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="561a9c22-b853-4ccb-8765-60cb644d1571" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/springServer/src/main/java/com/example/shoppingcartserver/password/request/ForgotResetRequest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_01-11-2022_16_04__Changes_.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_01-11-2022_16_04__Changes_.xml" afterDir="false" />
+    <list default="true" id="561a9c22-b853-4ccb-8765-60cb644d1571" name="Changes" comment="Forgot password backend completed.">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/springServer/src/main/java/com/example/shoppingcartserver/email/EmailService.java" beforeDir="false" afterPath="$PROJECT_DIR$/springServer/src/main/java/com/example/shoppingcartserver/email/EmailService.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/springServer/src/main/java/com/example/shoppingcartserver/password/ForgotPasswordService.java" beforeDir="false" afterPath="$PROJECT_DIR$/springServer/src/main/java/com/example/shoppingcartserver/password/ForgotPasswordService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/springServer/src/main/java/com/example/shoppingcartserver/password/controller/ForgotPasswordController.java" beforeDir="false" afterPath="$PROJECT_DIR$/springServer/src/main/java/com/example/shoppingcartserver/password/controller/ForgotPasswordController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/springServer/src/main/java/com/example/shoppingcartserver/password/request/ChangePasswordRequest.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/springServer/src/main/java/com/example/shoppingcartserver/password/request/ForgotPasswordRequest.java" beforeDir="false" afterPath="$PROJECT_DIR$/springServer/src/main/java/com/example/shoppingcartserver/password/request/ForgotPasswordRequest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/springServer/src/main/java/com/example/shoppingcartserver/password/token/ForgotToken.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/springServer/src/main/java/com/example/shoppingcartserver/password/token/ForgotTokenRepository.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/springServer/src/main/java/com/example/shoppingcartserver/password/token/ForgotTokenService.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/springServer/src/main/java/com/example/shoppingcartserver/password/token/controller/ForgotController.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/springServer/src/main/java/com/example/shoppingcartserver/password/token/request/ForgotRequest.java" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -285,7 +276,14 @@
       <option name="project" value="LOCAL" />
       <updated>1668714037231</updated>
     </task>
-    <option name="localTasksCounter" value="13" />
+    <task id="LOCAL-00013" summary="Forgot password backend completed.">
+      <created>1668818970682</created>
+      <option name="number" value="00013" />
+      <option name="presentableId" value="LOCAL-00013" />
+      <option name="project" value="LOCAL" />
+      <updated>1668818970682</updated>
+    </task>
+    <option name="localTasksCounter" value="14" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -336,7 +334,8 @@
     <MESSAGE value="CartModule integration test" />
     <MESSAGE value="Checkout payment both frontend and backend(progress)" />
     <MESSAGE value="Update for checkout payment (frontend)" />
-    <option name="LAST_COMMIT_MESSAGE" value="Update for checkout payment (frontend)" />
+    <MESSAGE value="Forgot password backend completed." />
+    <option name="LAST_COMMIT_MESSAGE" value="Forgot password backend completed." />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
     <SUITE FILE_PATH="coverage/ShoppingCart$ItemServiceTest.ic" NAME="ItemServiceTest Coverage Results" MODIFIED="1668487920441" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">

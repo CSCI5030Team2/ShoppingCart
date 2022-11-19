@@ -1,12 +1,11 @@
 package com.example.shoppingcartserver.password;
 
 import com.example.shoppingcartserver.appuser.AppUser;
-import com.example.shoppingcartserver.appuser.AppUserRepository;
 import com.example.shoppingcartserver.appuser.AppUserServiceImpl;
 import com.example.shoppingcartserver.email.EmailService;
-import com.example.shoppingcartserver.email.EmailValidator;
 import com.example.shoppingcartserver.password.request.ForgotPasswordRequest;
 import com.example.shoppingcartserver.password.request.ForgotResetRequest;
+import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 import org.springframework.core.env.Environment;
 import lombok.AllArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,10 +18,10 @@ import org.springframework.stereotype.Service;
 
 @AllArgsConstructor
 @Service
-public class ForgotPasswordService {
-
-    private final AppUserServiceImpl appUserService;
+public class
+ForgotPasswordService {
     private final EmailService emailService;
+    private final AppUserServiceImpl appUserService;
     private final BCryptPasswordEncoder bCryptPasswordEncoder;
 
     @Autowired
@@ -42,7 +41,8 @@ public class ForgotPasswordService {
                 if (request.getEmail() == appUser1.getEmail()) {
                     String encodedPassword = bCryptPasswordEncoder.encode(request.getPassword());
                     appUser1.setPassword(encodedPassword);
-                } else return "Details doesn't match";
+                }
+                else return "Details doesn't match";
             }
         }
         return "Password changed";
