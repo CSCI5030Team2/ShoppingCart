@@ -4,12 +4,16 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.ToString;
 
-@Data
-@ToString
+/**
+ * @author vivek
+ */
+
 @AllArgsConstructor
-public class ChangePasswordRequest {
+@ToString
+@Data
+public class ForgotResetRequest {
+    private final String firstName;
+    private final String lastName;
     private final String email;
-    private final String token;
     private final String password;
-    private final String confirmPassword;
 }

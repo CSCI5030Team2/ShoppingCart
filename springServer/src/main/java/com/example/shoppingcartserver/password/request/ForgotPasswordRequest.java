@@ -13,7 +13,5 @@ import lombok.ToString;
 @AllArgsConstructor
 public class ForgotPasswordRequest {
     private final String email;
-    private final String token;
-    private final String password;
-    private final String confirmPassword;
+    private final String url;
 }

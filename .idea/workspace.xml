@@ -5,18 +5,18 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="561a9c22-b853-4ccb-8765-60cb644d1571" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/springServer/src/main/java/com/example/shoppingcartserver/password/request/ChangePasswordRequest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/springServer/src/main/java/com/example/shoppingcartserver/password/request/ForgotResetRequest.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_01-11-2022_16_04__Changes_.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_01-11-2022_16_04__Changes_.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/springServer/src/main/java/com/example/shoppingcartserver/password/ForgotPasswordService.java" beforeDir="false" afterPath="$PROJECT_DIR$/springServer/src/main/java/com/example/shoppingcartserver/password/ForgotPasswordService.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/springServer/src/main/java/com/example/shoppingcartserver/password/controller/ForgotPasswordController.java" beforeDir="false" afterPath="$PROJECT_DIR$/springServer/src/main/java/com/example/shoppingcartserver/password/controller/ForgotPasswordController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/springServer/src/main/java/com/example/shoppingcartserver/password/token/ConfirmationToken.java" beforeDir="false" afterPath="$PROJECT_DIR$/springServer/src/main/java/com/example/shoppingcartserver/password/token/ForgotToken.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/springServer/src/main/java/com/example/shoppingcartserver/password/token/ConfirmationTokenRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/springServer/src/main/java/com/example/shoppingcartserver/password/token/ForgotTokenRepository.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/springServer/src/main/java/com/example/shoppingcartserver/password/token/ConfirmationTokenService.java" beforeDir="false" afterPath="$PROJECT_DIR$/springServer/src/main/java/com/example/shoppingcartserver/password/token/ForgotTokenService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/springServer/src/main/java/com/example/shoppingcartserver/password/token/controller/ConfirmationController.java" beforeDir="false" afterPath="$PROJECT_DIR$/springServer/src/main/java/com/example/shoppingcartserver/password/token/controller/ForgotController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/springServer/src/main/java/com/example/shoppingcartserver/password/token/request/ConfirmationRequest.java" beforeDir="false" afterPath="$PROJECT_DIR$/springServer/src/main/java/com/example/shoppingcartserver/password/token/request/ForgotRequest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/springServer/src/test/java/com/example/shoppingcartserver/registration/token/ConfirmationTokenRepositoryTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/springServer/src/test/java/com/example/shoppingcartserver/registration/token/ForgotTokenRepositoryTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/springServer/src/test/java/com/example/shoppingcartserver/registration/token/ConfirmationTokenTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/springServer/src/test/java/com/example/shoppingcartserver/registration/token/ForgotTokenTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/springServer/src/main/java/com/example/shoppingcartserver/password/request/ChangePasswordRequest.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/springServer/src/main/java/com/example/shoppingcartserver/password/request/ForgotPasswordRequest.java" beforeDir="false" afterPath="$PROJECT_DIR$/springServer/src/main/java/com/example/shoppingcartserver/password/request/ForgotPasswordRequest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/springServer/src/main/java/com/example/shoppingcartserver/password/token/ForgotToken.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/springServer/src/main/java/com/example/shoppingcartserver/password/token/ForgotTokenRepository.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/springServer/src/main/java/com/example/shoppingcartserver/password/token/ForgotTokenService.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/springServer/src/main/java/com/example/shoppingcartserver/password/token/controller/ForgotController.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/springServer/src/main/java/com/example/shoppingcartserver/password/token/request/ForgotRequest.java" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
