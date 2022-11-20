@@ -37,16 +37,6 @@ export class Navigation extends Component {
                 <p>
                   <b>Price : </b> ${product.price}
                 </p>
-                {/* <button
-                  onClick={() => {
-                    this.props.history.push("/productdetail/" + product.id, {
-                      product
-                    });
-                  }}
-                  id="editBtn"
-                >
-                  View
-                </button> */}
               </div>
             </div>
           ))}

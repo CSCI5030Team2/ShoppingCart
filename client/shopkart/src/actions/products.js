@@ -4,7 +4,7 @@ import {
     UPDATE_PRODUCTS,
     DELETE_PRODUCTS,
     GET_CARTS,
-    CART_PRODUCTS
+    CART_PRODUCTS,
   } from "./types";
   
   import axios from "axios";
@@ -110,11 +110,15 @@ import {
       .then(res => {
         dispatch({
           type: GET_CARTS,
-          payload: res.data
+          payload: res.body
         });
-        console.log(res.data);
+        console.log(res.body);
       })
       .catch(err => {
         console.log(err);
       });
   };
+
+
+
+  

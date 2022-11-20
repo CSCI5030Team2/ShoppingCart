@@ -1,16 +1,15 @@
 import React, { Component } from "react";
-import { connect } from "react-redux";
-import { getProducts, updateProducts } from "../actions/products";
 import { Link } from "react-router-dom";
+// import DisplayProducts from "./DisplayProducts";
+import {getCarts } from "../actions/products";
+import { connect } from "react-redux";
+// import logo from "../logo.PNG";
 import LoginNavbar from "./LoginNavbar";
 
-export class Cart extends Component {
-  state = {
-    id: this.props.match.params.id,
-    itemName: this.props.location.state.product.itemName,
-    price: this.props.location.state.product.price,
-    quantity: this.props.location.state.product.quantity
-  };
+export class NavigationAfterLogin extends Component {
+  componentDidMount() {
+    this.props.getCarts();
+  }
 
 
 
@@ -20,10 +19,12 @@ export class Cart extends Component {
     }
   }
 
+  
   onChange = e => {
     this.setState({ [e.target.name]: e.target.value });
   };
 
+    
   render() {
     return (
       <div>
@@ -32,29 +33,24 @@ export class Cart extends Component {
         </div>
         <h2 style={{ textAlign: "center", marginTop: 2 + "em" }}>Products</h2>
         <div id="outerDiv">
-          {this.state.map(product => (
-            <div>
-              <div
-                className="AdminProductsdisplay"
-                style={{ width: 15 + "em" }}
-              >
-                <p>
-                  <b>Product Name : </b> {product.itemName}
-                </p>
-                <p>
-                  <b> Quantity : </b> {product.quantity}
-                </p>
-                <p>
-                  <b>Price : </b> ${product.price}
-                </p>
-                 {/* <button
-                    onClick={() => {}}
-                    id="editBtn"
-                  >
-                  Add To Cart 
-                </button> */}
-              </div>
-            </div>
+            {
+                this.props.products.map(product => (
+                    <div>
+                      <div
+                        className="UserProductDisplay"
+                        style={{ width: 15 + "em" }}
+                      >
+                        <p>
+                          <b>Product Name : </b> {product.itemName}
+                        </p>
+                        <p>
+                          <b> Quantity : </b> {product.quantity}
+                        </p>
+                        <p>
+                          <b>Price : </b> ${product.price}
+                        </p>
+                      </div>
+                    </div>
           ))}
         </div>
       </div>
@@ -63,10 +59,10 @@ export class Cart extends Component {
 }
 
 const mapStateToProps = state => ({
-  product: state.productReducer.product
+  products: state.productReducer.products
 });
 
 export default connect(
   mapStateToProps,
-  { getProducts, updateProducts }
-)(Cart);
+  { getCarts }
+)(NavigationAfterLogin);
