@@ -36,15 +36,14 @@ ForgotPasswordService {
 
     public String forgotReset(ForgotResetRequest request) {
         AppUser appUser1 = appUserService.getAppUserByEmail(request.getEmail());
-        if (request.getFirstName() == appUser1.getFirstName()) {
-            if (request.getLastName() == appUser1.getLastName()) {
-                if (request.getEmail() == appUser1.getEmail()) {
-                    String encodedPassword = bCryptPasswordEncoder.encode(request.getPassword());
-                    appUser1.setPassword(encodedPassword);
-                }
-                else return "Details doesn't match";
-            }
+        if (request.getFirstName() == appUser1.getFirstName() &&
+                request.getLastName() == appUser1.getLastName() &&
+                request.getEmail() == appUser1.getEmail()) {
+            String encodedPassword = bCryptPasswordEncoder.encode(request.getPassword());
+            appUser1.setPassword(encodedPassword);
         }
+        else
+            return "Details doesn't match";
         return "Password changed";
     }
 }
