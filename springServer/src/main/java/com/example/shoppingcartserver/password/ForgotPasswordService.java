@@ -9,41 +9,63 @@ import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 import org.springframework.core.env.Environment;
 import lombok.AllArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
+import javax.security.auth.login.CredentialException;
+
 /**
- * @author vivek
+ * @author vivek, aiden
  */
 
 @AllArgsConstructor
 @Service
-public class
-ForgotPasswordService {
-    private final EmailService emailService;
-    private final AppUserServiceImpl appUserService;
-    private final BCryptPasswordEncoder bCryptPasswordEncoder;
+public class ForgotPasswordService {
 
-    @Autowired
-    Environment environment;
+    private EmailService emailService;
+    private AppUserServiceImpl appUserService;
+    private BCryptPasswordEncoder bCryptPasswordEncoder;
 
-    public String forgotPassword(ForgotPasswordRequest forgotPasswordRequest) {
-        AppUser appUser = appUserService.getAppUserByEmail(forgotPasswordRequest.getEmail());
-        appUser.setLocked(true);
-        emailService.send(appUser.getEmail(), "Reset password", forgotPasswordRequest.getUrl());
-        return "Email sent";
+    public String forgotPassword(ForgotPasswordRequest forgotPasswordRequest){
+        try {
+            AppUser appUser = appUserService.getAppUserByEmail(forgotPasswordRequest.getEmail());
+
+            if (forgotPasswordRequest.getFirstName().equals(appUser.getFirstName()) &&
+                    forgotPasswordRequest.getLastName().equals(appUser.getLastName()))
+            {
+                appUser.setLocked(true);
+                appUserService.saveUser(appUser);
+                emailService.send(appUser.getEmail(), "Reset password", forgotPasswordRequest.getUrl());
+                return "Email sent";
+            }
+            else
+            {
+                throw new CredentialException("Name do not match");
+            }
+        }catch (Exception e) {
+            throw new UsernameNotFoundException("Cannot find user with that email");
+        }
     }
 
     public String forgotReset(ForgotResetRequest request) {
-        AppUser appUser1 = appUserService.getAppUserByEmail(request.getEmail());
-        if (request.getFirstName() == appUser1.getFirstName() &&
-                request.getLastName() == appUser1.getLastName() &&
-                request.getEmail() == appUser1.getEmail()) {
-            String encodedPassword = bCryptPasswordEncoder.encode(request.getPassword());
-            appUser1.setPassword(encodedPassword);
+        try {
+            AppUser appUser = appUserService.getAppUserByEmail(request.getEmail());
+            if(appUser.getLocked()) {
+                appUser.setLocked(false);
+                appUser.setPassword(bCryptPasswordEncoder.encode(request.getPassword()));
+                appUserService.saveUser(appUser);
+                return "Password reset";
+            }
+            else
+            {
+                return "You should not use this";
+            }
+
         }
-        else
-            return "Details doesn't match";
-        return "Password changed";
+        catch (Exception e)
+        {
+            throw new UsernameNotFoundException("Cannot find user with that email");
+        }
     }
 }
