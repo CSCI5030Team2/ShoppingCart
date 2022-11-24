@@ -1,7 +1,7 @@
 import { GET_ADS } from "../actions/types";
 
 const initialstate = {
-    ads:" "
+    ads:""
 }
 
 export default function(state=initialstate,action){

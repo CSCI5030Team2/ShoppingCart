@@ -48,7 +48,7 @@ import {
   export const updateProducts = products => dispatch => {
     axios
       .put(
-        "http://localhost:7000/api/products/update/" + products._id,
+        "http://localhost:7000/api/products/update/" + products.id,
         products,
         {
           headers: { Authorization: `Bearer ${localStorage.getItem("token")}` }
@@ -103,16 +103,17 @@ import {
       });
   };
   
-  export const getCarts = () => dispatch => {
+  export const getCarts = token => dispatch => {
     console.log(localStorage.getItem("token"));
+    token = localStorage.getItem("token")
     return axios
-      .get("http://localhost:8080/cart")
+      .get("http://localhost:8080/cart",token)
       .then(res => {
         dispatch({
           type: GET_CARTS,
-          payload: res.body
+          payload: res.data
         });
-        console.log(res.body);
+        console.log(res.data);
       })
       .catch(err => {
         console.log(err);
