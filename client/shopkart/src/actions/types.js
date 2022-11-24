@@ -14,4 +14,5 @@ export const DELETE_PRODUCTS = "DELETE_PRODUCTS";
 export const CART_PRODUCTS = "CART_PRODUCTS";
 export const GET_CARTS = "GET_CARTS";
 export const GET_ADS="GET_ADS";
+export const SEND_INITIAL = "SEND_INITIAL";
 
