@@ -16,7 +16,7 @@ export class Navigation extends Component {
     this.setState({ [event.target.name]: event.target.value });
   };
 
-  onPayment() {
+  onCheckout() {
     let product = {
       itemName: this.props.location.state.itemName,
       quantity: this.props.location.state.quantity,
@@ -72,5 +72,5 @@ const mapStateToProps = state => ({
 
 export default connect(
   mapStateToProps,
-  { getProducts, getCarts }
+  { getProducts,getCarts }
 )(Navigation);

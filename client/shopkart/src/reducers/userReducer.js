@@ -6,7 +6,8 @@ import {
   DELETE_USERS,
   EMAIL_VERIFICATION,
   OTP_VERIFICATION,
-  LOGIN
+  LOGIN,
+  PUT_CHECKOUT
 } from "../actions/types";
 
 const initialstate = {

@@ -4,7 +4,18 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="561a9c22-b853-4ccb-8765-60cb644d1571" name="Changes" comment="Bug fixes(Working copy)" />
+    <list default="true" id="561a9c22-b853-4ccb-8765-60cb644d1571" name="Changes" comment="Bug fixes(Working copy)">
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_01-11-2022_16_04__Changes_.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_01-11-2022_16_04__Changes_.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/shopkart/src/App.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/shopkart/src/App.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/shopkart/src/actions/products.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/shopkart/src/actions/products.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/shopkart/src/actions/types.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/shopkart/src/actions/types.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/shopkart/src/components/Cart.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/shopkart/src/components/Cart.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/shopkart/src/components/Checkout.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/shopkart/src/components/Checkout.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/shopkart/src/components/Payment.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/shopkart/src/reducers/productReducer.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/shopkart/src/reducers/productReducer.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/shopkart/src/reducers/userReducer.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/shopkart/src/reducers/userReducer.js" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />

@@ -118,21 +118,18 @@ import {
       });
   };
 
-  export const CheckoutCart = Checkout => dispatch => {
-    axios
-      .post("http://localhost:8080/checkout", CART,
-       {
-        headers: { Authorization: `Bearer ${localStorage.getCarts("token")}` }
-      }
-      )
+  export const checkout = () => dispatch => {
+    console.log(localStorage.getItem("token"));
+    return axios
+      .put("http://localhost:8080/checkout")
       .then(res => {
         dispatch({
-          type: CHECKOUT_CART
+          type: GET_CARTS,
+          payload: res.data
         });
-        alert("Redirecting to payment gateway");
+        console.log(res.data);
       })
       .catch(err => {
         console.log(err);
-        alert("Try Again");
       });
   };

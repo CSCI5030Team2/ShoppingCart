@@ -5,6 +5,7 @@ import {
     DELETE_PRODUCTS,
     CART_PRODUCTS,
     GET_CARTS,
+    PUT_CHECKOUT,
   } from "../actions/types";
   
   const initialstate = {
