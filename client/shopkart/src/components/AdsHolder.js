@@ -1,44 +1,33 @@
 import React, { Component } from "react";
 import axios from "axios";
-import {connect} from "react-redux"
-import { getAds } from "../actions/ads";
 
 export default class AdsHolder extends Component {
-    // constructor(props) {
-    //     super(props);
+    constructor(props) {
+        super(props);
 
-    //     this.state = {
-    //         ads: "default ads",
-    //     };
-    // }
-    // componentWillMount() {
-    //     axios.get("http://localhost:8080/ads")
-    //         .then((response) => {
-    //             this.setState({ads: response.data})
-    //         })
-    //         .catch((error) => {
-    //                 console.log(error);
-    //             }
-    //         )
-    // }
-
-    componentWillMount(){
-        this.props.getAds()
+        this.state = {
+            ads: "default ads",
+        };
+    }
+    componentWillMount() {
+        axios.get("http://localhost:8080/ads")
+            .then((response) => {
+                this.setState({ads: response.data})
+            })
+            .catch((error) => {
+                    console.log(error);
+                }
+            )
     }
 
     render() {
         return (
             <div>
-                 
+                 <div className={"ads"}>
                      <p>
-                         {this.props.ads.map(ads =>(
-                            <div>
-                            <div className={"ads"}>
-                            {ads.content}
-                            </div>
-                            </div>
-                         ))}
+                         {this.state.ads}
                      </p>
+                 </div>
              </div>
         );
     }
