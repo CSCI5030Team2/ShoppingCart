@@ -22,6 +22,17 @@ public interface ItemRepository extends JpaRepository<Item,Long>{
      */
     Optional<Item> findByItemName(String itemName);
 
+    //Optional<Item> setQuantity(String quantity);
+
+    /**
+     * delete item by name itemName
+     * @param itemName name of the product
+     */
+    @Transactional
+    @Modifying
+    @Query("delete from Item i where i.itemName = ?1")
+    void deleteItemByName(String itemName);
+
     /**
      * update item with the name itemName
      * @param itemName name of the product
@@ -33,14 +44,5 @@ public interface ItemRepository extends JpaRepository<Item,Long>{
     @Query("UPDATE Item i SET i.price = ?2 ,i.quantity = ?3 WHERE i.itemName = ?1"
     )
     void updateItemByName(String itemName, Float price, Integer quantity);
-
-    /**
-     * delete item by name itemName
-     * @param itemName name of the product
-     */
-    @Transactional
-    @Modifying
-    @Query("delete from Item i where i.itemName=:itemName")
-    void deleteItemByName(String itemName);
 
 }

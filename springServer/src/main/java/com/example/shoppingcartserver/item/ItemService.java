@@ -1,14 +1,21 @@
 package com.example.shoppingcartserver.item;
 
 import com.alibaba.fastjson.JSON;
-import com.example.shoppingcartserver.item.request.AddItemRequest;
+import com.example.shoppingcartserver.appuser.AppUser;
+import com.example.shoppingcartserver.appuser.AppUserRole;
+import com.example.shoppingcartserver.appuser.AppUserServiceImpl;
 import com.example.shoppingcartserver.item.request.AdminAddItemRequest;
 import com.example.shoppingcartserver.item.request.BuyItemRequest;
 import com.example.shoppingcartserver.item.request.DeleteItemRequest;
+import com.example.shoppingcartserver.login.LoginService;
+import com.example.shoppingcartserver.login.token.LoginToken;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 
+import javax.security.auth.login.CredentialException;
+import javax.security.auth.login.CredentialExpiredException;
 import java.util.List;
+import java.util.Optional;
 
 /**
  * @author aiden
@@ -17,7 +24,9 @@ import java.util.List;
 @AllArgsConstructor
 public class ItemService {
 
+    private final AppUserServiceImpl appUserService;
     private final ItemRepository itemRepository;
+    private LoginService loginService;
 
     public String getItem()
     {
@@ -29,46 +38,105 @@ public class ItemService {
 
     public String buyItem(BuyItemRequest request)
     {
-        return "Works " + request.getItemName() + request.getQuantity();
+        Optional<Item> optionalItem = itemRepository.findByItemName(request.getItemName());
+        if(optionalItem.isPresent()) {
+            Item item = optionalItem.get();
+
+            if(item.getQuantity() >= request.getQuantity())
+            {
+                item.setQuantity(item.getQuantity() - request.getQuantity());
+                itemRepository.save(item);
+                return "You bought: " + request.getQuantity() +" of \""+ request.getItemName()+ "\" ";
+            }
+            else
+            {
+                if(item.getQuantity() > 0) {
+                    return "Only " + item.getQuantity() + " left";
+                }
+                else
+                {
+                    return "Out of stock";
+                }
+            }
+        }
+        return "item do not exist";
     }
 
 
-    public String addItem(AdminAddItemRequest request) {
+    public String addItem(AdminAddItemRequest request) throws CredentialException {
+        LoginToken loginToken = loginService.findTokenByTokenString(request.getToken());
+        AppUser appUser = appUserService.getAppUserByEmail(loginToken.getAppUser().getEmail());
 
-        //todo verify the email and token
-
-
-        //1 check if admin exist
-
-        //2 check if that admin is logged in
-            //1 not expired
-            //user refernece correct
-
-
-
-        Item item = new Item(
-                request.getItemName(),
-                request.getQuantity(),
-                request.getPrice()
-        );
-
-        boolean itemExist = itemRepository.findByItemName(request.getItemName()).isPresent();
-
-        if(itemExist) {
-            itemRepository.updateItemByName(request.getItemName(),request.getPrice(),request.getQuantity());
-            return request.getItemName() + " already exist, updated with new price and new quantity";
+        if(appUser.getAppUserRole()!=AppUserRole.ADMIN)
+        {
+            return "Only admin can add new item";
         }
 
-        itemRepository.save(item);
-        return "Saved " + item.getItemName();
+        if(loginService.tokenValid(request.getToken(), appUser))
+        {
+            boolean itemExist = itemRepository.findByItemName(request.getItemName()).isPresent();
+
+            if(itemExist) {
+                //itemRepository.updateItemByName(request.getItemName(),request.getPrice(),request.getQuantity());
+                return request.getItemName() + " already exist, did nothing";
+            }
+
+
+            Item newItem = new Item();
+            newItem.setItemName(request.getItemName());
+            newItem.setQuantity(request.getQuantity());
+            newItem.setPrice(request.getPrice());
+            itemRepository.save(newItem);
+            return "Saved " + newItem.getItemName();
+        }
+        return "Failed, Invalid token";
     }
 
-    public String deleteItem(DeleteItemRequest request) {
-        Item item = new Item(
-                request.getItemName(),
-                0,
-                (float) 0
-        );
+    public String updateItem(AdminAddItemRequest request) throws CredentialException {
+        LoginToken loginToken = loginService.findTokenByTokenString(request.getToken());
+        AppUser appUser = loginToken.getAppUser();
+        if(appUserService.userDoNotExist(appUser.getEmail()))
+        {
+            return "User do no exist";
+        }
+        if(!appUserService.isAdmin(appUser.getEmail()))
+        {
+            return "Only admin can add new item";
+        }
+        if(loginService.tokenValid(request.getToken(), appUser))
+        {
+            boolean itemExist = itemRepository.findByItemName(request.getItemName()).isPresent();
+
+            if(itemExist) {
+                itemRepository.updateItemByName(request.getItemName(),request.getPrice(),request.getQuantity());
+                return request.getItemName() + " already exist, updated " + request.getItemName();
+            }
+            return "Item do not exist";
+        }
+        return "Failed, Invalid token";
+    }
+
+    public Item findItemByName(String itemName) throws Exception {
+        Optional<Item> optionalItem = itemRepository.findByItemName(itemName);
+        if(optionalItem.isPresent())
+        {
+            return optionalItem.get();
+        }
+        else
+        {
+            throw new Exception("item " + itemName + " not found");
+        }
+    }
+
+    public String deleteItem(DeleteItemRequest request) throws CredentialExpiredException {
+        AppUser appUser = loginService.findAppUserByToken(request.getToken());
+
+
+        if(appUser.getAppUserRole()!=AppUserRole.ADMIN)
+        {
+            return "No permission";
+        }
+
         boolean itemExist = itemRepository.findByItemName(request.getItemName()).isPresent();
         if(itemExist)
         {
@@ -83,4 +151,27 @@ public class ItemService {
     }
 
 
+    /**
+     * Only for cart checkout
+     * @param item item instance
+     * @param quantity integer, number of item to delete
+     */
+    public void deleteByItem(Item item, Integer quantity) throws Exception {
+
+        Optional<Item> optionalItem = itemRepository.findByItemName(item.getItemName());
+        if(optionalItem.isPresent()) {
+            Item dbItem = optionalItem.get();
+
+            if(dbItem.getQuantity() < quantity)
+            {
+                //don't checkout
+                throw new Exception("out of stock");
+            }
+
+            itemRepository.updateItemByName(item.getItemName(),
+                    item.getPrice(),
+                    item.getQuantity() - quantity
+            );
+        }
+    }
 }

@@ -14,6 +14,12 @@ export class Login extends Component {
     password: ""
   };
 
+  componentDidMount() {
+    if (localStorage.getItem("token")) {
+      this.props.history.push("/NavigationAfterLogin");
+    }
+  }
+
   OnChange = event => {
     this.setState({ [event.target.name]: event.target.value });
   };
@@ -64,7 +70,9 @@ export class Login extends Component {
           <br />
           {/* <Link to="/displayproducts"> */}
           <button onChange={this.onChange} onClick={this.onLogin}>
+          <Link to = "/navigation">
             Login
+            </Link>
           </button>
           {/* </Link> */}
           <p>

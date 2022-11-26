@@ -1,16 +1,14 @@
 package com.example.shoppingcartserver.item.request;
 
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.ToString;
+import lombok.*;
 
 /**
  * @author aiden
  */
 @NoArgsConstructor
 @ToString
-@Getter
+@Data
 public class DeleteItemRequest {
     private String itemName;
+    private String token;
 }

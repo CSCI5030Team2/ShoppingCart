@@ -1,6 +1,6 @@
 import React from "react";
 import { mount } from "enzyme";
-import Login from "../login";
+import Login from "../Login";
 import { Provider } from "react-redux";
 import store from "../../../src/store";
 import { BrowserRouter } from "react-router-dom";

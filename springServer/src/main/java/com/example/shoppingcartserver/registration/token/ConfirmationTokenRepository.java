@@ -1,5 +1,6 @@
 package com.example.shoppingcartserver.registration.token;
 
+import com.example.shoppingcartserver.appuser.AppUser;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
@@ -28,8 +29,16 @@ public interface ConfirmationTokenRepository extends JpaRepository<ConfirmationT
     @Query("UPDATE ConfirmationToken c " +
             "SET c.confirmTime = ?2 " +
             "WHERE c.token = ?1")
-    int updateConfirmedAt(String token,
+    void updateConfirmedAt(String token,
                           LocalDateTime comfirmTime);
 
 
+    @Transactional
+    @Query("select i from ConfirmationToken i where i.appUser = ?1")
+    Optional<ConfirmationToken> findByAppUser(AppUser appUser);
+
+    @Modifying
+    @Transactional
+    @Query("delete from ConfirmationToken i where i.appUser = ?1")
+    void deleteByAppUser(AppUser appUser);
 }
