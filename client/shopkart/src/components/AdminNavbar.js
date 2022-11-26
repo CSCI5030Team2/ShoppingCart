@@ -21,12 +21,10 @@ export class AdminNavbar extends Component {
     return (
       <div>
         <nav>
-          <ul>
-            <Link to="/">
+          <ul>       
               <li>
                 <img src={logo} style={{ height: 4 + "em" }} />
               </li>
-            </Link>
             <Link to="/login">
               <li
                 style={{
@@ -38,7 +36,7 @@ export class AdminNavbar extends Component {
                 <a onClick={this.removeToken} href="/">Logout</a>
               </li>
             </Link>
-            <Link to="/displayproducts">
+            <Link to="/AdminNavigationAfterLogin">
               <li
                 style={{
                   float: "right",

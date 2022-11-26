@@ -22,7 +22,7 @@ export class NavigationAfterLogin extends Component {
         </div>
         <h2 style={{ textAlign: "center", marginTop: 2 + "em" }}>Products</h2>
         <div id="outerDiv">
-          <marqee>  <AdsHolder/></marqee>
+           <AdsHolder/>
             {
                 this.props.products.map(product => (
                     <div>

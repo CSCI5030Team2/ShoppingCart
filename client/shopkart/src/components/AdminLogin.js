@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import { loginAdmin, getAdmin } from "../actions/admin";
 import { Link } from "react-router-dom";
 import { connect } from "react-redux";
-import Navbar from "./Navbar";
+import AdminLoginNavbar from "./AdminLoginNavbar";
 
 export class AdminLogin extends Component {
   constructor(props) {
@@ -39,7 +39,7 @@ export class AdminLogin extends Component {
   render() {
     return (
       <div>
-        <AdminNavbar />
+        <AdminLoginNavbar />
         <div
           className="container"
           align="center"
@@ -69,7 +69,7 @@ export class AdminLogin extends Component {
           <br />
           <br />
           <button onChange={this.onChange} onClick={this.onLogin}>
-          <Link to = "/navigation">
+          <Link to = "/AdminNavigationAfterLogin">
             Login
             </Link>
           </button>    
