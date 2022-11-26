@@ -4,7 +4,7 @@ import {
   } from "../actions/types";
   
   const initialstate = {
-    users: []
+    admin: []
   };
   
   export default function(state = initialstate, action) {
