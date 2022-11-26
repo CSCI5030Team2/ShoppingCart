@@ -106,7 +106,11 @@ import {
   export const getCarts = () => dispatch => {
     console.log(localStorage.getItem("token"));
     return axios
-      .get("http://localhost:8080/cart")
+      .get("http://localhost:8080/cart",
+      {
+        headers: { Authorization: `Bearer ${localStorage.getItem("token")}` }
+      }
+      )
       .then(res => {
         dispatch({
           type: GET_CARTS,
