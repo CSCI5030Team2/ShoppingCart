@@ -48,7 +48,7 @@ import {
   export const updateProducts = products => dispatch => {
     axios
       .put(
-        "http://localhost:7000/api/products/update/" + products._id,
+        "http://localhost:8080/cart/" + products.id,
         products,
         {
           headers: { Authorization: `Bearer ${localStorage.getItem("token")}` }
@@ -68,7 +68,7 @@ import {
   
   export const deleteProducts = id => dispatch => {
     axios
-      .delete("http://localhost:7000/api/products/delete/" + id, {
+      .delete("http://localhost:8080/cart/" + id, {
         headers: { Authorization: `Bearer ${localStorage.getItem("token")}` }
       })
       .then(res => {
