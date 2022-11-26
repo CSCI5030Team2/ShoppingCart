@@ -7,7 +7,9 @@ import Register from "./components/register"
 import Login from "./components/Login"
 import Cart from "./components/Cart";
 import NavigationAfterLogin from "./components/NavigationAfterLogin" ;
-
+import AdminLogin from "./components/AdminLogin";
+import AdminNavigation from "./components/AdminNavigation";
+import AdminNavigationAfterLogin from "./components/AdminNavigationAfterLogin";
 import ResetPassword from "./components/ResetPassword";
 //
 function App() {
@@ -21,6 +23,9 @@ function App() {
         <Route exact path="/cart" component={Cart}></Route>
         <Route exact path="/navigation" component={NavigationAfterLogin}></Route>
         <Route exact path="/reset" component={ResetPassword}></Route>
+        <Route exact path="/AdminLogin" component={AdminLogin}></Route>
+        <Route exact path="/AdminNavigation" component={AdminNavigation}></Route>
+        <Route exact path="/AdminNavigationAfterLogin" component={AdminNavigationAfterLogin}></Route>
       </div>
     </Router>
   );
