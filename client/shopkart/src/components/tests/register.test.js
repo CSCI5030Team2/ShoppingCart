@@ -15,6 +15,15 @@ const wrapper = mount(
 );
 
 describe("Test Register Component", () => {
+  beforeAll(() => {
+    jest.spyOn(console, 'log').mockImplementation(() => {});
+  });
+afterAll(() => { 
+    console.log.mockRestore();
+  });
+afterEach(() => {
+    console.log.mockClear();
+  });
   it("should render the component", () => {
     expect(wrapper).toMatchSnapshot();
   });
