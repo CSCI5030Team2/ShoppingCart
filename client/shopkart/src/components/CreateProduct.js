@@ -10,11 +10,11 @@ export class CreateProduct extends Component {
     this.onCreate = this.onCreate.bind(this);
   }
 
-  componentWillMount() {
-    if (!localStorage.getItem("token")) {
-      this.props.history.push("/");
-    }
-  }
+  // componentWillMount() {
+  //   if (!localStorage.getItem("token")) {
+  //     this.props.history.push("/");
+  //   }
+  // }
   
   state = {
     itemName: "",
