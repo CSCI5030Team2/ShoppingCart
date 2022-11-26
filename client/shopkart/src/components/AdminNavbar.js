@@ -38,17 +38,6 @@ export class AdminNavbar extends Component {
                 <a onClick={this.removeToken} href="/">Logout</a>
               </li>
             </Link>
-            <Link to="/displayusers">
-              <li
-                style={{
-                  float: "right",
-                  marginTop: 1 + "em",
-                  marginLeft: 2 + "em"
-                }}
-              >
-                <a href="#contact">Users</a>
-              </li>
-            </Link>
             <Link to="/displayproducts">
               <li
                 style={{
@@ -57,7 +46,7 @@ export class AdminNavbar extends Component {
                   marginLeft: 2 + "em"
                 }}
               >
-                <a href="#contact">Products</a>
+               <b>Products</b> 
               </li>
             </Link>
           </ul>

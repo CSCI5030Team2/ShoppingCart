@@ -1,10 +1,10 @@
 import React, { Component } from "react";
-import { login, getUsers } from "../actions/users";
+import { loginAdmin, getAdmin } from "../actions/admin";
 import { Link } from "react-router-dom";
 import { connect } from "react-redux";
 import Navbar from "./Navbar";
 
-export class Login extends Component {
+export class AdminLogin extends Component {
   constructor(props) {
     super(props);
     this.onLogin = this.onLogin.bind(this);
@@ -16,7 +16,7 @@ export class Login extends Component {
 
   componentDidMount() {
     if (localStorage.getItem("token")) {
-      this.props.history.push("/NavigationAfterLogin");
+      this.props.history.push("/AdminNavigation");
     }
   }
 
@@ -25,11 +25,11 @@ export class Login extends Component {
   };
 
   onLogin() {
-    let user = {
+    let admin = {
       email: this.state.email,
       password: this.state.password
     };
-    this.props.login(user, this.props.history);
+    this.props.loginAdmin(admin, this.props.history);
     this.setState({
       email: "",
       password: ""
@@ -39,7 +39,7 @@ export class Login extends Component {
   render() {
     return (
       <div>
-        <Navbar />
+        <AdminNavbar />
         <div
           className="container"
           align="center"
@@ -68,24 +68,11 @@ export class Login extends Component {
           <br />
           <br />
           <br />
-          {/* <Link to="/displayproducts"> */}
           <button onChange={this.onChange} onClick={this.onLogin}>
           <Link to = "/navigation">
             Login
             </Link>
-          </button>
-          {/* </Link> */}
-          <p>
-            <Link to="/reset">
-              <p>Forgot Password ?</p>
-            </Link>
-          </p>
-          <p>
-            Not Registered ?{" "}
-            <u>
-              <Link to="/register">CREATE AN ACCOUNT</Link>
-            </u>
-          </p>
+          </button>    
         </div>
       </div>
     );
@@ -93,10 +80,10 @@ export class Login extends Component {
 }
 
 const mapStateToProps = state => ({
-  users: state.userReducer.users
+  admin: state.adminReducer.admin
 });
 
 export default connect(
   mapStateToProps,
-  { login, getUsers }
-)(Login);
+  { loginAdmin, getAdmin }
+)(AdminLogin);
