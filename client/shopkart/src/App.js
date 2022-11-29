@@ -6,6 +6,7 @@ import CreateProducts from "./components/CreateProduct";
 import Register from "./components/register"
 import Login from "./components/Login"
 import Cart from "./components/Cart";
+import Checkout from "./components/Checkout"
 import NavigationAfterLogin from "./components/NavigationAfterLogin" ;
 
 import ResetPassword from "./components/ResetPassword";
@@ -21,6 +22,7 @@ function App() {
         <Route exact path="/cart" component={Cart}></Route>
         <Route exact path="/navigation" component={NavigationAfterLogin}></Route>
         <Route exact path="/reset" component={ResetPassword}></Route>
+        <Route exact path="/checkout" component={Checkout}></Route>
       </div>
     </Router>
   );

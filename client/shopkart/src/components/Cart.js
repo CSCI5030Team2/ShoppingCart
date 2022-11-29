@@ -16,7 +16,7 @@ export class Navigation extends Component {
     this.setState({ [event.target.name]: event.target.value });
   };
 
-  onPayment() {
+  onCheckout() {
     let product = {
       itemName: this.props.location.state.itemName,
       quantity: this.props.location.state.quantity,
@@ -50,7 +50,7 @@ export class Navigation extends Component {
                   <b>Price : </b> ${product.price}
                 </p>
                 <button
-                  onClick={this.onPayment()}
+                  onClick={this.onCheckout()}
                   id="editBtn"
                 >
                 <Link to = "/payment">

@@ -118,7 +118,7 @@ import {
       });
   };
 
-  export const checkout = () => dispatch => {
+  export const putCheckout = () => dispatch => {
     console.log(localStorage.getCarts("token"));
     return axios
     .put("http://localhost:8080/checkout")
