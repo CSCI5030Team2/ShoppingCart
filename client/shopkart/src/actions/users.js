@@ -115,6 +115,13 @@ import {
         alert("Invalid Credentials");
       });
   };
+
+
+  export const forgotPassword = users => dispatch => {
+    axios
+      .put("http://localhost:7000/api/users/forgot_password", users)
+      
+  };  
   
 
   

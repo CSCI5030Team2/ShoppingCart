@@ -7,8 +7,8 @@ import Register from "./components/register"
 import Login from "./components/Login"
 import Cart from "./components/Cart";
 import NavigationAfterLogin from "./components/NavigationAfterLogin" ;
-
 import ResetPassword from "./components/ResetPassword";
+import Forgotpassword from "./components/Forgotpassword";
 //
 function App() {
   return (
@@ -21,6 +21,7 @@ function App() {
         <Route exact path="/cart" component={Cart}></Route>
         <Route exact path="/navigation" component={NavigationAfterLogin}></Route>
         <Route exact path="/reset" component={ResetPassword}></Route>
+        <Route exact path="/forgot" component={Forgotpassword}></Route>
       </div>
     </Router>
   );
