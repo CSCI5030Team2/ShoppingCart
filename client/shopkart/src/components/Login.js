@@ -76,7 +76,7 @@ export class Login extends Component {
           </button>
           {/* </Link> */}
           <p>
-            <Link to="/reset">
+            <Link to="/Forgot">
               <p>Forgot Password ?</p>
             </Link>
           </p>
