@@ -63,7 +63,7 @@ export class Forgotpassword extends Component {
           style={{ width: 20 + "em", marginTop: 3 + "em", height: "auto" }}
         >
            <h1>FORGOT PASSWORD</h1> 
-{/* enter the email id where you want to send the link for reseting the password */}
+{/* enter the email id,first name, last name to confirm and send the link for reseting the password */}
           <input
             className="name"
             placeholder=" Enter Email"
