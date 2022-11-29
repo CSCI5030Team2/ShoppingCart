@@ -36,7 +36,7 @@ public class ForgotPasswordService {
             {
                 appUser.setLocked(true);
                 appUserService.saveUser(appUser);
-                emailService.send(appUser.getEmail(), "Reset password", forgotPasswordRequest.getUrl());
+                emailService.send(appUser.getEmail(), "Reset password", "localhost:3000/reset");
                 return "Email sent";
             }
             else
