@@ -3,13 +3,14 @@ import {
     CREATE_PRODUCTS,
     UPDATE_PRODUCTS,
     DELETE_PRODUCTS,
-    GET_CARTS
+    GET_CARTS,
+    CART_PRODUCTS,
   } from "./types";
   
   import axios from "axios";
   
   export const getProducts = () => dispatch => {
-    console.log(localStorage.getItem("token"));
+    //console.log(localStorage.getItem("token"));
     return axios
       .get("http://localhost:8080/item")
       .then(res => {
@@ -17,7 +18,7 @@ import {
           type: GET_PRODUCTS,
           payload: res.data
         });
-        console.log(res.data);
+        //console.log(res.data);
       })
       .catch(err => {
         console.log(err);
@@ -47,7 +48,7 @@ import {
   export const updateProducts = products => dispatch => {
     axios
       .put(
-        "http://localhost:7000/api/products/update/" + products._id,
+        "http://localhost:7000/api/products/update/" + products.id,
         products,
         {
           headers: { Authorization: `Bearer ${localStorage.getItem("token")}` }
@@ -91,7 +92,7 @@ import {
       )
       .then(res => {
         dispatch({
-          type: CREATE_PRODUCTS
+          type: CART_PRODUCTS
         });
         alert("Product Added to Cart");
         // dispatch(getProducts());
@@ -102,10 +103,11 @@ import {
       });
   };
   
-  export const getCarts = () => dispatch => {
+  export const getCarts = token => dispatch => {
     console.log(localStorage.getItem("token"));
+    token = localStorage.getItem("token")
     return axios
-      .get("http://localhost:8080/cart")
+      .get("http://localhost:8080/cart",token)
       .then(res => {
         dispatch({
           type: GET_CARTS,
@@ -117,3 +119,7 @@ import {
         console.log(err);
       });
   };
+
+
+
+  

@@ -37,6 +37,8 @@ export class Navigation extends Component {
                 <p>
                   <b>Price : </b> ${product.price}
                 </p>
+                {/* insert edit button here 
+                insert delete button here  */}
               </div>
             </div>
           ))}
