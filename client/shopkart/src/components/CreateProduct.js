@@ -10,15 +10,12 @@ export class CreateProduct extends Component {
     this.onCreate = this.onCreate.bind(this);
   }
 
-<<<<<<< HEAD
-=======
   // componentWillMount() {
   //   if (!localStorage.getItem("token")) {
   //     this.props.history.push("/");
   //   }
   // }
   
->>>>>>> origin/bohan
   state = {
     itemName: "",
     quantity: "",

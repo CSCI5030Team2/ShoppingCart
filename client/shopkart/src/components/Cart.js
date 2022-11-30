@@ -12,21 +12,11 @@ export class NavigationAfterLogin extends Component {
   }
 
 
-<<<<<<< HEAD
-  onCheckout() {
-    let product = {
-      itemName: this.props.location.state.itemName,
-      quantity: this.props.location.state.quantity,
-      price:this.props.location.state.price
-    };
-    this.props.cart(product, this.props.history);
-=======
 
   componentWillMount() {
     if (!localStorage.getItem("token")) {
       this.props.history.push("/");
     }
->>>>>>> origin/bohan
   }
 
   
@@ -43,33 +33,6 @@ export class NavigationAfterLogin extends Component {
         </div>
         <h2 style={{ textAlign: "center", marginTop: 2 + "em" }}>Cart</h2>
         <div id="outerDiv">
-<<<<<<< HEAD
-          {this.props.products.map(product => (
-            <div>
-              <div
-                className="AdminProductsdisplay"
-                style={{ width: 15 + "em" }}
-              >
-                <p>
-                  <b>Product Name : </b> {product.itemName}
-                </p>
-                <p>
-                  <b> Quantity : </b> {product.quantity}
-                </p>
-                <p>
-                  <b>Price : </b> ${product.price}
-                </p>
-                <button
-                  onClick={this.onCheckout()}
-                  id="editBtn"
-                >
-                <Link to = "/checkout">
-                  View
-                  </Link>
-                </button>
-              </div>
-            </div>
-=======
             {
                 this.props.products.map(product => (
                     <div>
@@ -88,7 +51,6 @@ export class NavigationAfterLogin extends Component {
                         </p>
                       </div>
                     </div>
->>>>>>> origin/bohan
           ))}
         </div>
       </div>

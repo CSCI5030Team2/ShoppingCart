@@ -6,19 +6,11 @@ import CreateProducts from "./components/CreateProduct";
 import Register from "./components/register"
 import Login from "./components/Login"
 import Cart from "./components/Cart";
-<<<<<<< HEAD
-import Checkout from "./components/Checkout";
-=======
 import Checkout from "./components/Checkout"
->>>>>>> vivek
 import NavigationAfterLogin from "./components/NavigationAfterLogin" ;
 import ResetPassword from "./components/ResetPassword";
-<<<<<<< HEAD
-
-=======
 import Forgotpassword from "./components/Forgotpassword";
 //
->>>>>>> origin/bohan
 function App() {
   return (
     <Router>
@@ -30,11 +22,8 @@ function App() {
         <Route exact path="/cart" component={Cart}></Route>
         <Route exact path="/navigation" component={NavigationAfterLogin}></Route>
         <Route exact path="/reset" component={ResetPassword}></Route>
-<<<<<<< HEAD
-        <Route exact path="/checkout" component={Checkout}></Route>
-=======
         <Route exact path="/forgot" component={Forgotpassword}></Route>
->>>>>>> origin/bohan
+        <Route exact path="/Checkout" component={Checkout}></Route>
       </div>
     </Router>
   );

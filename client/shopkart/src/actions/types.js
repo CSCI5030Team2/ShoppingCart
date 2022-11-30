@@ -10,14 +10,7 @@ export const CREATE_PRODUCTS = "CREATE_PRODUCTS";
 export const UPDATE_PRODUCTS = "UPDATE_PRODUCTS";
 export const DELETE_PRODUCTS = "DELETE_PRODUCTS";
 export const CART_PRODUCTS = "CART_PRODUCTS";
-<<<<<<< HEAD
-<<<<<<< HEAD
-export const GET_CARTS = "GET_CARTS";
-=======
-export const GET_CARTS = "GET_CARTS";
 export const PUT_CHECKOUT = "PUT_CHECKOUT";
->>>>>>> vivek
-=======
 
 export const GET_CARTS = "GET_CARTS";
 
@@ -26,4 +19,3 @@ export const GET_ADS="GET_ADS";
 export const GET_ADMIN = "GET_ADMIN";
 export const UPDATE_ADMIN = "UPDATE_ADMIN";
 export const DELETE_ADMIN = "DELETE_ADMIN";
->>>>>>> origin/bohan

@@ -125,24 +125,6 @@ import {
       });
   };
 
-<<<<<<< HEAD
-<<<<<<< HEAD
-  export const checkout = () => dispatch => {
-    console.log(localStorage.getItem("token"));
-    return axios
-      .put("http://localhost:8080/checkout")
-      .then(res => {
-        dispatch({
-          type: GET_CARTS,
-          payload: res.data
-        });
-        console.log(res.data);
-      })
-      .catch(err => {
-        console.log(err);
-      });
-  };
-=======
   export const putCheckout = () => dispatch => {
     console.log(localStorage.getCarts("token"));
     return axios
@@ -158,9 +140,3 @@ import {
       console.log(err);
     })
   }
->>>>>>> vivek
-=======
-
-
-  
->>>>>>> origin/bohan
