@@ -31,7 +31,7 @@ export class NavigationAfterLogin extends Component {
         <div>
           <LoginNavbar />
         </div>
-        <h2 style={{ textAlign: "center", marginTop: 2 + "em" }}>Products</h2>
+        <h2 style={{ textAlign: "center", marginTop: 2 + "em" }}>Cart</h2>
         <div id="outerDiv">
             {
                 this.props.products.map(product => (
