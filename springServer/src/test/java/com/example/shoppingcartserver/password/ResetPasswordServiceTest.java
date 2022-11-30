@@ -34,7 +34,7 @@ class ResetPasswordServiceTest {
     @Autowired
     private LoginController loginController;
 
-    private final String email = "vivekanandareddy.ponugoti@gmail.com";
+    private final String email = "user@shoppingcart.com";
     private final String password = "1q2w3e4r";
 
     @Order(1)
