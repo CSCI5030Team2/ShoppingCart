@@ -41,13 +41,13 @@ export class NavigationAfterLogin extends Component {
                         style={{ width: 15 + "em" }}
                       >
                         <p>
-                          <b>Product Name : </b> {product.itemName}
+                          <b>Product Name : </b> {product.item.itemName}
                         </p>
                         <p>
                           <b> Quantity : </b> {product.quantity}
                         </p>
                         <p>
-                          <b>Price : </b> ${product.price}
+                          <b>Price : </b> ${product.item.price}
                         </p>
                       </div>
                     </div>
