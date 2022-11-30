@@ -11,6 +11,7 @@ import AdminLogin from "./components/AdminLogin";
 import AdminNavigation from "./components/AdminNavigation";
 import AdminNavigationAfterLogin from "./components/AdminNavigationAfterLogin";
 import ResetPassword from "./components/ResetPassword";
+import UpdateProduct from "./components/UpdateProduct";
 //
 function App() {
   return (
@@ -26,6 +27,7 @@ function App() {
         <Route exact path="/AdminLogin" component={AdminLogin}></Route>
         <Route exact path="/AdminNavigation" component={AdminNavigation}></Route>
         <Route exact path="/AdminNavigationAfterLogin" component={AdminNavigationAfterLogin}></Route>
+        <Route exact path="/UpdateProduct/:itemName" component={UpdateProduct}></Route>
       </div>
     </Router>
   );

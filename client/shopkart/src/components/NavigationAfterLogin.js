@@ -15,11 +15,11 @@ export class NavigationAfterLogin extends Component {
 
 
 
-  // componentWillMount() {
-  //   if (!localStorage.getItem("token")) {
-  //     this.props.history.push("/");
-  //   }
-  // }
+  componentWillMount() {
+    if (!localStorage.getItem("token")) {
+      this.props.history.push("/");
+    }
+  }
 
   
   onChange = e => {

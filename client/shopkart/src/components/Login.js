@@ -16,7 +16,7 @@ export class Login extends Component {
 
   componentDidMount() {
     if (localStorage.getItem("token")) {
-      this.props.history.push("/NavigationAfterLogin");
+      this.props.history.push("/navigation");
     }
   }
 

@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
 // import DisplayProducts from "./DisplayProducts";
-import { getProducts } from "../actions/products";
+import { getProducts,deleteProducts } from "../actions/products";
 import { connect } from "react-redux";
 // import logo from "../logo.PNG";
 import AdminNavbar from "./AdminNavbar";
@@ -38,7 +38,7 @@ export class Navigation extends Component {
                 <button
                     onClick={() => {
                       this.props.history.push(
-                        "/UpdateProduct/" + product.id,
+                        "/UpdateProduct/" + product.itemName,
                         {
                           product
                         }
@@ -50,7 +50,7 @@ export class Navigation extends Component {
                   </button>
                   <button
                     id="delBtn"
-                    onClick={() => this.props.deleteProducts(product.id)}
+                    onClick={() => this.props.deleteProducts(product.itemName)}
                   >
                     Delete
                   </button>
@@ -69,5 +69,5 @@ const mapStateToProps = state => ({
 
 export default connect(
   mapStateToProps,
-  { getProducts }
+  { getProducts,deleteProducts }
 )(Navigation);

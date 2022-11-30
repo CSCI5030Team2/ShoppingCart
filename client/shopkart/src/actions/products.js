@@ -66,9 +66,9 @@ import {
       });
   };
   
-  export const deleteProducts = id => dispatch => {
+  export const deleteProducts = itemName => dispatch => {
     axios
-      .delete("http://localhost:8080/cart/" + id, {
+      .delete("http://localhost:8080/cart/" + itemName, {
         headers: { Authorization: `Bearer ${localStorage.getItem("token")}` }
       })
       .then(res => {
