@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import { Link } from "react-router-dom";
 import logo from "../logo.PNG";
 
-export default class Navbar extends Component {
+export default class AdminLoginNavbar extends Component {
   render() {
     return (
       <div>
@@ -12,19 +12,7 @@ export default class Navbar extends Component {
               <li>             
                   <img src={logo} style={{ height: 3 + "em" }} />
               </li>
-              <Link to="/register">
-                <li
-                  style={{
-                    float: "right",
-                    marginTop: 1.5 + "em",
-                    marginLeft: 2 + "em",
-                    marginRight: 2 + "em"
-                  }}
-                >
-                  <b> Register</b>
-                </li>
-              </Link>
-              <Link to="/login">
+              <Link to="/AdminLogin">
                 <li
                   style={{
                     float: "right",

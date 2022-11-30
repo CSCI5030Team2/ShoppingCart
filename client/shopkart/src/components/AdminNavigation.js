@@ -4,8 +4,7 @@ import { Link } from "react-router-dom";
 import { getProducts } from "../actions/products";
 import { connect } from "react-redux";
 // import logo from "../logo.PNG";
-import Navbar from "./Navbar";
-import AdsHolder from "./AdsHolder";
+import AdminLoginNavbar from "./AdminLoginNavbar";
 
 export class Navigation extends Component {
   componentWillMount() {
@@ -17,11 +16,10 @@ export class Navigation extends Component {
     return (
       <div>
         <div>
-          <Navbar />
+          <AdminLoginNavbar />
         </div>
         <h2 style={{ textAlign: "center", marginTop: 2 + "em" }}>Products</h2>
         <div id="outerDiv">
-            <AdsHolder />
           {this.props.products.map(product => (
             <div>
               <div
@@ -37,6 +35,8 @@ export class Navigation extends Component {
                 <p>
                   <b>Price : </b> ${product.price}
                 </p>
+                {/* insert edit button here 
+                insert delete button here  */}
               </div>
             </div>
           ))}

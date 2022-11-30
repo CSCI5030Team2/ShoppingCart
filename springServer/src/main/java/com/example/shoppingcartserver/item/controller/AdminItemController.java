@@ -26,14 +26,15 @@ public class AdminItemController {
         return itemService.addItem(request);
     }
 
-    @DeleteMapping
-    public String deleteItem(@RequestBody DeleteItemRequest request) throws CredentialExpiredException {
-        return itemService.deleteItem(request);
-    }
-
     @PutMapping
     public String updateItem(@RequestBody AdminAddItemRequest request) throws CredentialException {
         return itemService.updateItem(request);
+    }
+
+    @DeleteMapping
+    public String deleteItem(@RequestBody DeleteItemRequest request) throws CredentialException {
+        System.out.println("DeleteItem Got: " + request.toString() );
+        return itemService.deleteItem(request);
     }
 
 }

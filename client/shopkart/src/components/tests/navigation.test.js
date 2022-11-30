@@ -15,6 +15,15 @@ const wrapper = mount(
 );
 
 describe("Test Navigation Component", () => {
+  beforeAll(() => {
+    jest.spyOn(console, 'log').mockImplementation(() => {});
+  });
+afterAll(() => { 
+    console.log.mockRestore();
+  });
+afterEach(() => {
+    console.log.mockClear();
+  });
   it("should render the component", () => {
     expect(wrapper).toMatchSnapshot();
   });
@@ -28,6 +37,6 @@ describe("Test Navigation Component", () => {
   });
 
   it("should have exactly four div tags", () => {
-    expect(wrapper.find("div").length).toBe(5);
+    expect(wrapper.find("div").length).toBe(7);
   });
 });

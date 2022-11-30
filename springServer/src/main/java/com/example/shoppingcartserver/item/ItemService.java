@@ -116,14 +116,29 @@ public class ItemService {
         return "Failed, Invalid token";
     }
 
-
-    public String deleteItem(DeleteItemRequest request) throws CredentialExpiredException {
-        AppUser appUser = loginService.findAppUserByToken(request.getToken());
-
-
-        if(appUser.getAppUserRole()!=AppUserRole.ADMIN)
+    public Item findItemByName(String itemName) throws Exception {
+        Optional<Item> optionalItem = itemRepository.findByItemName(itemName);
+        if(optionalItem.isPresent())
         {
-            return "No permission";
+            return optionalItem.get();
+        }
+        else
+        {
+            throw new Exception("item " + itemName + " not found");
+        }
+    }
+
+    public String deleteItem(DeleteItemRequest request) throws CredentialException {
+        LoginToken loginToken = loginService.findTokenByTokenString(request.getToken());
+        AppUser appUser = loginToken.getAppUser();
+
+        if(appUserService.userDoNotExist(appUser.getEmail()))
+        {
+            return "User do no exist";
+        }
+        if(!appUserService.isAdmin(appUser.getEmail()))
+        {
+            return "Only admin can add new item";
         }
 
         boolean itemExist = itemRepository.findByItemName(request.getItemName()).isPresent();
@@ -140,19 +155,6 @@ public class ItemService {
     }
 
 
-    public Item findItemByName(String itemName) throws Exception {
-        Optional<Item> optionalItem = itemRepository.findByItemName(itemName);
-        if(optionalItem.isPresent())
-        {
-            return optionalItem.get();
-        }
-        else
-        {
-            throw new Exception("item " + itemName + " not found");
-        }
-    }
-
-
     /**
      * Only for cart checkout
      * @param item item instance
@@ -166,7 +168,7 @@ public class ItemService {
 
             if(dbItem.getQuantity() < quantity)
             {
-                //dont checkout
+                //don't checkout
                 throw new Exception("out of stock");
             }
 
