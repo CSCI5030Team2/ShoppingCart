@@ -5,6 +5,7 @@ import { getProducts,deleteProducts } from "../actions/products";
 import { connect } from "react-redux";
 // import logo from "../logo.PNG";
 import AdminNavbar from "./AdminNavbar";
+import axios from "axios";
 
 export class Navigation extends Component {
   componentWillMount() {
@@ -48,11 +49,24 @@ export class Navigation extends Component {
                   >
                     Edit
                   </button>
+                  {/*<button*/}
+                  {/*  id="delBtn"*/}
+                  {/*  onClick={() =>  axios.delete("http://localhost:8080/admin/item", {*/}
+                  {/*      data:{*/}
+                  {/*                    itemName: product.itemName,*/}
+                  {/*                    token: localStorage.getItem("token")*/}
+                  {/*          }}*/}
+
+                  {/*                //returned msg is logged for dev confirmation purpose*/}
+                  {/*            ).then(r => console.log(r.data))}*/}
+                  {/*>*/}
+                  {/*  Delete*/}
+                  {/*</button>*/}
                   <button
-                    id="delBtn"
-                    onClick={() => this.props.deleteProducts(product.itemName)}
+                      id="delBtn"
+                      onClick={() => this.props.deleteProducts(product.itemName)}
                   >
-                    Delete
+                      Delete
                   </button>
               </div>
             </div>
