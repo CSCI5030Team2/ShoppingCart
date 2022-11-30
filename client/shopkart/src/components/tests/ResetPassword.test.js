@@ -9,7 +9,7 @@ const Resetpassword = jest.fn();
 const wrapper = mount(
   <Provider store={store}>
   <BrowserRouter>
-    <ResetPassword ResetPassword={Resetpassword} />
+    <ResetPassword resetpassword={Resetpassword} />
     </BrowserRouter>
   </Provider>
 );

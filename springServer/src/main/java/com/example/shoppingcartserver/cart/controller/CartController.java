@@ -21,8 +21,9 @@ public class CartController {
 
     private CartService cartService;
 
-    @GetMapping
-    public String getCart(@RequestBody GetCartRequest request) throws CredentialException {
+    @PostMapping(path = "/state")
+    public String getCart(@RequestBody GetCartRequest request)
+    {
         return cartService.getCart(request);
     }
 
