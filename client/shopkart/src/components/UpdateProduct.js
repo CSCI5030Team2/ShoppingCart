@@ -6,8 +6,7 @@ import AdminNavbar from "./AdminNavbar";
 
 export class UpdateProducts extends Component {
   state = {
-    id: this.props.match.params.id,
-    itemName: this.props.location.state.product.itemName,
+    itemName: this.props.match.params.itemName,
     price: this.props.location.state.product.price,
     quantity: this.props.location.state.product.quantity
   };
@@ -34,13 +33,6 @@ export class UpdateProducts extends Component {
         >
           {/* <form> */}
           <h1>Update Product</h1>
-          <input
-            type="text"
-            name="name"
-            placeholder=" Product Name"
-            onChange={this.onChange}
-            value={this.state.itemName}
-          />
           <p>
             <input
               type="text"
@@ -60,14 +52,13 @@ export class UpdateProducts extends Component {
             />
           </p>
           <p>
-            <Link to="/displayproducts">
+            <Link to="/AdminNavigationAfterLogin">
               <button
                 onClick={() =>
                   this.props.updateProducts({
                     itemName: this.state.itemName,
                     price: this.state.price,
                     quantity: this.state.quantity,
-                    id: this.state.id
                   })
                 }
                 onChange={this.onChange}

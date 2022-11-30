@@ -12,7 +12,7 @@ export default class AdminLoginNavbar extends Component {
               <li>             
                   <img src={logo} style={{ height: 3 + "em" }} />
               </li>
-              <Link to="/login">
+              <Link to="/AdminLogin">
                 <li
                   style={{
                     float: "right",

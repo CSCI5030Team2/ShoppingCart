@@ -16,7 +16,7 @@ export class AdminLogin extends Component {
 
   componentDidMount() {
     if (localStorage.getItem("token")) {
-      this.props.history.push("/AdminNavigation");
+      this.props.history.push("/AdminNavigationAfterLogin");
     }
   }
 
