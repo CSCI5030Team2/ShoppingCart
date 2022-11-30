@@ -116,9 +116,9 @@ import {
       .then(res => {
         dispatch({
           type: GET_CARTS,
-          payload: res.body
+          payload: res.data
         });
-        console.log(res.body);
+        console.log(res.data);
       })
       .catch(err => {
         console.log(err);
