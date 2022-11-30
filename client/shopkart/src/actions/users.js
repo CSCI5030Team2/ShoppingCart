@@ -18,9 +18,9 @@ import {
       .then(res => {
         dispatch({
           type: GET_USERS,
-          payload: res.data
+          payload: res.data.data
         });
-        console.log(res.data);
+        console.log(res.data.data);
       })
       .catch(err => {
         console.log(err);
@@ -43,7 +43,7 @@ import {
   
   export const resetPassword = users => dispatch => {
     axios
-      .put("http://localhost:7000/api/users/reset_password", users)
+      .put("http://localhost:8080/reset-password", users)
       .then(res => {
         dispatch({
           type: RESET_PASSWORD
@@ -60,7 +60,7 @@ import {
   export const updateUsers = users => dispatch => {
     axios
       .put(
-        "http://localhost:7000/api/users/update/" + users._id,
+        "http://localhost:8080/admin/item" + users.itemName,
         {
           headers: { Authorization: `Bearer ${localStorage.getItem("token")}` }
         },
@@ -78,9 +78,9 @@ import {
       });
   };
   
-  export const deleteUsers = id => dispatch => {
+  export const deleteUsers = itemName => dispatch => {
     axios
-      .delete("http://localhost:7000/api/users/delete/" + id, {
+      .delete("http://localhost:8080/admin/item" + itemName, {
         headers: { Authorization: `Bearer ${localStorage.getItem("token")}` }
       })
       .then(res => {
@@ -107,6 +107,7 @@ import {
 
         //Save the role of that user to cache
         localStorage.setItem("role", res.data[1]);
+        history.push("/navigation")
         dispatch({
           type: LOGIN
         });
@@ -119,6 +120,13 @@ import {
         alert("Invalid Credentials");
       });
   };
+
+
+  export const forgotPassword = users => dispatch => {
+    axios
+      .put("http://localhost:7000/api/users/forgot_password", users)
+      
+  };  
   
 
   

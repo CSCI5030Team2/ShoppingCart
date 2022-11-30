@@ -3,7 +3,8 @@ import {
     CREATE_PRODUCTS,
     UPDATE_PRODUCTS,
     DELETE_PRODUCTS,
-    GET_CARTS
+    GET_CARTS,
+    CART_PRODUCTS,
   } from "./types";
   
   import axios from "axios";
@@ -47,7 +48,7 @@ import {
   export const updateProducts = products => dispatch => {
     axios
       .put(
-        "http://localhost:7000/api/products/update/" + products._id,
+        "http://localhost:8080/admin/item/" + products.itemName,
         products,
         {
           headers: { Authorization: `Bearer ${localStorage.getItem("token")}` }
@@ -65,10 +66,12 @@ import {
       });
   };
   
-  export const deleteProducts = id => dispatch => {
+  export const deleteProducts = itemName => dispatch => {
     axios
-      .delete("http://localhost:7000/api/products/delete/" + id, {
-        headers: { Authorization: `Bearer ${localStorage.getItem("token")}` }
+      .delete("http://localhost:8080/admin/item",
+       {
+         data:{"itemName":itemName,
+          "token": localStorage.getItem("token")}
       })
       .then(res => {
         dispatch({
@@ -91,7 +94,7 @@ import {
       )
       .then(res => {
         dispatch({
-          type: CREATE_PRODUCTS
+          type: CART_PRODUCTS
         });
         alert("Product Added to Cart");
         // dispatch(getProducts());
@@ -105,7 +108,11 @@ import {
   export const getCarts = () => dispatch => {
     console.log(localStorage.getItem("token"));
     return axios
-      .get("http://localhost:8080/cart")
+      .post("http://localhost:8080/cart/state",
+      {
+        "token": localStorage.getItem("token")
+      }
+      )
       .then(res => {
         dispatch({
           type: GET_CARTS,
@@ -118,6 +125,7 @@ import {
       });
   };
 
+<<<<<<< HEAD
 <<<<<<< HEAD
   export const checkout = () => dispatch => {
     console.log(localStorage.getItem("token"));
@@ -151,3 +159,8 @@ import {
     })
   }
 >>>>>>> vivek
+=======
+
+
+  
+>>>>>>> origin/bohan

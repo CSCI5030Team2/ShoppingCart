@@ -1,17 +1,32 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
 // import DisplayProducts from "./DisplayProducts";
-import { getProducts } from "../actions/products";
+import { getProducts,AddtoCart } from "../actions/products";
 import { connect } from "react-redux";
 // import logo from "../logo.PNG";
 import LoginNavbar from "./LoginNavbar";
 import axios from "axios";
+import AdsHolder from "./AdsHolder";
 
 export class NavigationAfterLogin extends Component {
-  componentWillMount() {
+  componentDidMount() {
     this.props.getProducts();
   }
 
+
+
+  componentWillMount() {
+    if (!localStorage.getItem("token")) {
+      this.props.history.push("/");
+    }
+  }
+
+  
+  onChange = e => {
+    this.setState({ [e.target.name]: e.target.value });
+  };
+
+    
   render() {
     //console.log("NavigationAfterLogin "+this.props.getProducts())
     return (
@@ -21,6 +36,7 @@ export class NavigationAfterLogin extends Component {
         </div>
         <h2 style={{ textAlign: "center", marginTop: 2 + "em" }}>Products</h2>
         <div id="outerDiv">
+           <AdsHolder/>
             {
                 this.props.products.map(product => (
                     <div>
@@ -66,10 +82,6 @@ export class NavigationAfterLogin extends Component {
                     </div>
           ))}
         </div>
-        {/* <div id="mybutton">
-         <button class="AddCart">
-         <a href="/cart">Add to Cart </a>{alert="Product Added to Cart"}</button>
-        </div> */}
       </div>
     );
   }
@@ -81,5 +93,5 @@ const mapStateToProps = state => ({
 
 export default connect(
   mapStateToProps,
-  { getProducts }
+  { getProducts,AddtoCart }
 )(NavigationAfterLogin);

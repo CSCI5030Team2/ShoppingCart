@@ -5,7 +5,7 @@ import lombok.*;
 /**
  * @author aiden
  */
-@NoArgsConstructor
+@AllArgsConstructor
 @ToString
 @Data
 public class DeleteItemRequest {

@@ -1,21 +1,18 @@
 import React, { Component } from "react";
+import { Link } from "react-router-dom";
 // import DisplayProducts from "./DisplayProducts";
-import { getProducts,getCarts } from "../actions/products";
+import {getCarts } from "../actions/products";
 import { connect } from "react-redux";
-import {Link} from "react-router-dom";
 // import logo from "../logo.PNG";
 import LoginNavbar from "./LoginNavbar";
-import Navbar from "./Navbar";
-//
-export class Navigation extends Component {
-  componentWillMount() {
+
+export class NavigationAfterLogin extends Component {
+  componentDidMount() {
     this.props.getCarts();
   }
 
-  OnChange = event => {
-    this.setState({ [event.target.name]: event.target.value });
-  };
 
+<<<<<<< HEAD
   onCheckout() {
     let product = {
       itemName: this.props.location.state.itemName,
@@ -23,17 +20,30 @@ export class Navigation extends Component {
       price:this.props.location.state.price
     };
     this.props.cart(product, this.props.history);
+=======
+
+  componentWillMount() {
+    if (!localStorage.getItem("token")) {
+      this.props.history.push("/");
+    }
+>>>>>>> origin/bohan
   }
 
+  
+  onChange = e => {
+    this.setState({ [e.target.name]: e.target.value });
+  };
+
+    
   render() {
-    console.log(this.props.getCarts())
     return (
       <div>
         <div>
           <LoginNavbar />
         </div>
-        <h2 style={{ textAlign: "center", marginTop: 2 + "em" }}>Products</h2>
+        <h2 style={{ textAlign: "center", marginTop: 2 + "em" }}>Cart</h2>
         <div id="outerDiv">
+<<<<<<< HEAD
           {this.props.products.map(product => (
             <div>
               <div
@@ -59,6 +69,26 @@ export class Navigation extends Component {
                 </button>
               </div>
             </div>
+=======
+            {
+                this.props.products.map(product => (
+                    <div>
+                      <div
+                        className="UserProductDisplay"
+                        style={{ width: 15 + "em" }}
+                      >
+                        <p>
+                          <b>Product Name : </b> {product.item.itemName}
+                        </p>
+                        <p>
+                          <b> Quantity : </b> {product.quantity}
+                        </p>
+                        <p>
+                          <b>Price : </b> ${product.item.price}
+                        </p>
+                      </div>
+                    </div>
+>>>>>>> origin/bohan
           ))}
         </div>
       </div>
@@ -72,5 +102,5 @@ const mapStateToProps = state => ({
 
 export default connect(
   mapStateToProps,
-  { getProducts,getCarts }
-)(Navigation);
+  { getCarts }
+)(NavigationAfterLogin);

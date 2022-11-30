@@ -4,10 +4,14 @@ import {
   RESET_PASSWORD,
   UPDATE_USERS,
   DELETE_USERS,
+<<<<<<< HEAD
   EMAIL_VERIFICATION,
   OTP_VERIFICATION,
   LOGIN,
   PUT_CHECKOUT
+=======
+  LOGIN
+>>>>>>> origin/bohan
 } from "../actions/types";
 
 const initialstate = {
@@ -26,11 +30,7 @@ export default function(state = initialstate, action) {
       return state;
     case DELETE_USERS:
       return state;
-    case EMAIL_VERIFICATION:
-      return state;
     case LOGIN:
-      return state;
-    case OTP_VERIFICATION:
       return state;
     default:
       return state;

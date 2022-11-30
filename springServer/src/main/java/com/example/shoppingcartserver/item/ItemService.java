@@ -119,6 +119,7 @@ public class ItemService {
     public Item findItemByName(String itemName) throws Exception {
         Optional<Item> optionalItem = itemRepository.findByItemName(itemName);
         if(optionalItem.isPresent())
+<<<<<<< HEAD
         {
             return optionalItem.get();
         }
@@ -133,8 +134,28 @@ public class ItemService {
 
 
         if(appUser.getAppUserRole()!=AppUserRole.ADMIN)
+=======
+>>>>>>> origin/bohan
         {
-            return "No permission";
+            return optionalItem.get();
+        }
+        else
+        {
+            throw new Exception("item " + itemName + " not found");
+        }
+    }
+
+    public String deleteItem(DeleteItemRequest request) throws CredentialException {
+        LoginToken loginToken = loginService.findTokenByTokenString(request.getToken());
+        AppUser appUser = loginToken.getAppUser();
+
+        if(appUserService.userDoNotExist(appUser.getEmail()))
+        {
+            return "User do no exist";
+        }
+        if(!appUserService.isAdmin(appUser.getEmail()))
+        {
+            return "Only admin can add new item";
         }
 
         boolean itemExist = itemRepository.findByItemName(request.getItemName()).isPresent();

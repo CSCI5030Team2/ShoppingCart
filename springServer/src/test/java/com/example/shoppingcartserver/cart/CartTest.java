@@ -8,7 +8,14 @@ import com.example.shoppingcartserver.cart.request.DeleteFromCartRequest;
 import com.example.shoppingcartserver.cart.request.GetCartRequest;
 import com.example.shoppingcartserver.login.controller.LoginController;
 import com.example.shoppingcartserver.login.request.LoginRequest;
+<<<<<<< HEAD
 import org.junit.jupiter.api.*;
+=======
+import org.junit.jupiter.api.AfterEach;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.RepeatedTest;
+import org.junit.jupiter.api.Test;
+>>>>>>> origin/bohan
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.jdbc.AutoConfigureTestDatabase;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -32,6 +39,7 @@ class CartTest {
 
     @BeforeEach
     void setUp() {
+<<<<<<< HEAD
 
     }
 
@@ -40,6 +48,14 @@ class CartTest {
 
     }
 
+=======
+    }
+    @AfterEach
+    void tearDown() {
+    }
+
+
+>>>>>>> origin/bohan
     @RepeatedTest(3)
     @Order(1)
     public void testAddCartItem() throws Exception {
@@ -78,7 +94,11 @@ class CartTest {
     public void testDeleteCartItem() throws Exception {
 
         String email = "user@shoppingcart.com";
+<<<<<<< HEAD
         String pw = "1q2w3e4r";
+=======
+        String pw = "a123456";
+>>>>>>> origin/bohan
         String itemName = "iPhone 14 pro";
 
         if (!cartRepository.findAllByBuyerEmail(email).isEmpty()) {
@@ -99,6 +119,7 @@ class CartTest {
         assertDoesNotThrow(()->controller.addToCart(addToCartRequest));
         assertFalse(cartRepository.findAllByBuyerEmail(email).isEmpty());
 
+<<<<<<< HEAD
         AddToCartRequest addToCartRequest1 = new AddToCartRequest(
                 itemName,
                 15,
@@ -112,6 +133,12 @@ class CartTest {
                 token,
                 itemName,
                 25
+=======
+        DeleteFromCartRequest deleteFromCartRequest = new DeleteFromCartRequest(
+                token,
+                itemName,
+                10
+>>>>>>> origin/bohan
 
         );
 
@@ -124,7 +151,11 @@ class CartTest {
     @Test
     public void testCheckout() throws Exception {
         String email = "user@shoppingcart.com";
+<<<<<<< HEAD
         String pw = "1q2w3e4r";
+=======
+        String pw = "a123456";
+>>>>>>> origin/bohan
         String itemName = "iPhone 14 pro";
 
         JSONArray array = JSON.parseArray(loginController.login(new LoginRequest(email,pw)));
@@ -151,4 +182,5 @@ class CartTest {
         assertDoesNotThrow(() -> controller.checkoutCart(getCartRequest));
         assertTrue(cartRepository.findAllByBuyerEmail(email).isEmpty());
     }
+
 }

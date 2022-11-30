@@ -1,12 +1,8 @@
 package com.example.shoppingcartserver.password.request;
 
-<<<<<<< HEAD
-import lombok.*;
-=======
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.ToString;
->>>>>>> vivek
 
 /**
  * @author vivek
@@ -14,12 +10,7 @@ import lombok.ToString;
 
 @ToString
 @AllArgsConstructor
-<<<<<<< HEAD
-@Getter
-@Setter
-=======
 @Data
->>>>>>> vivek
 public class ForgotPasswordRequest {
     private final String email;
     private final String firstName;
