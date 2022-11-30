@@ -1,20 +1,20 @@
 import React from "react";
 import { mount } from "enzyme";
-import Login from "../Login";
+import AdminLogin from "../AdminLogin";
 import { Provider } from "react-redux";
 import store from "../../../src/store";
 import { BrowserRouter } from "react-router-dom";
 
-const login = jest.fn();
+const Adminlogin = jest.fn();
 const wrapper = mount(
   <Provider store={store}>
   <BrowserRouter>
-    <Login login={login} />
+    <AdminLogin Adminlogin={Adminlogin} />
     </BrowserRouter>
   </Provider>
 );
 
-describe("Test Login Component", () => {
+describe("Test Admin Login Component", () => {
 
   it("should render the component", () => {
     expect(wrapper).toMatchSnapshot();

@@ -9,21 +9,12 @@ const Resetpassword = jest.fn();
 const wrapper = mount(
   <Provider store={store}>
   <BrowserRouter>
-    <ResetPassword resetpassword={Resetpassword} />
+    <ResetPassword Resetpassword={Resetpassword} />
     </BrowserRouter>
   </Provider>
 );
 
 describe("Test ResetPassword Component", () => {
-  beforeAll(() => {
-    jest.spyOn(console, 'log').mockImplementation(() => {});
-  });
-afterAll(() => { 
-    console.log.mockRestore();
-  });
-afterEach(() => {
-    console.log.mockClear();
-  });
     it("should render the component", () => {
       expect(wrapper).toMatchSnapshot();
     });
