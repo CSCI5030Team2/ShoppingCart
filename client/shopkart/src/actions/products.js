@@ -66,11 +66,12 @@ import {
       });
   };
   
-  export const deleteProducts = products => dispatch => {
+  export const deleteProducts = itemName => dispatch => {
     axios
-      .delete("http://localhost:8080/admin/item", products.itemName,
+      .delete("http://localhost:8080/admin/item",
        {
-        headers: { Authorization: `Bearer ${localStorage.getItem("token")}` },
+         data:{"itemName":itemName,
+          "token": localStorage.getItem("token")}
       })
       .then(res => {
         dispatch({
@@ -107,9 +108,9 @@ import {
   export const getCarts = () => dispatch => {
     console.log(localStorage.getItem("token"));
     return axios
-      .get("http://localhost:8080/cart",
+      .post("http://localhost:8080/cart/state",
       {
-        headers: { Authorization: `Bearer ${localStorage.getItem("token")}` }
+        "token": localStorage.getItem("token")
       }
       )
       .then(res => {

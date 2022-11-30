@@ -49,18 +49,24 @@ export class Navigation extends Component {
                   >
                     Edit
                   </button>
-                  <button
-                    id="delBtn"
-                    onClick={() =>  axios.delete("http://localhost:8080/admin/item",
-                                  {
-                                      itemName: product.itemName,
-                                      token: localStorage.getItem("token")
-                                  }
+                  {/*<button*/}
+                  {/*  id="delBtn"*/}
+                  {/*  onClick={() =>  axios.delete("http://localhost:8080/admin/item", {*/}
+                  {/*      data:{*/}
+                  {/*                    itemName: product.itemName,*/}
+                  {/*                    token: localStorage.getItem("token")*/}
+                  {/*          }}*/}
 
-                                  //returned msg is logged for dev confirmation purpose
-                              ).then(r => console.log(r.data))}
+                  {/*                //returned msg is logged for dev confirmation purpose*/}
+                  {/*            ).then(r => console.log(r.data))}*/}
+                  {/*>*/}
+                  {/*  Delete*/}
+                  {/*</button>*/}
+                  <button
+                      id="delBtn"
+                      onClick={() => this.props.deleteProducts(product.itemName)}
                   >
-                    Delete
+                      Delete
                   </button>
               </div>
             </div>
