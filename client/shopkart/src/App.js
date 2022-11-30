@@ -7,6 +7,8 @@ import Register from "./components/register"
 import Login from "./components/Login"
 import Cart from "./components/Cart";
 import NavigationAfterLogin from "./components/NavigationAfterLogin" ;
+import AdminNavigation from "./components/AdminNavigation" ;
+// import Products from "./components/Products" ;
 
 import ResetPassword from "./components/ResetPassword";
 //
@@ -20,6 +22,8 @@ function App() {
         <Route exact path="/login" component={Login}></Route>
         <Route exact path="/cart" component={Cart}></Route>
         <Route exact path="/navigation" component={NavigationAfterLogin}></Route>
+        <Route exact path="/adminNavigation" component={AdminNavigation}></Route>
+        {/* <Route exact path="/products" component={Products}></Route> */}
         <Route exact path="/reset" component={ResetPassword}></Route>
       </div>
     </Router>
