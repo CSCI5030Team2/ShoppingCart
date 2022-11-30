@@ -35,7 +35,7 @@ class ResetPasswordServiceTest {
     private LoginController loginController;
 
     private final String email = "user@shoppingcart.com";
-    private final String password = "1q2w3e4r";
+    private final String password = "a123456";
 
     @Order(1)
     @Test
@@ -51,7 +51,7 @@ class ResetPasswordServiceTest {
         ResetPasswordRequest resetPasswordRequest = new ResetPasswordRequest(
                 email,
                 password,
-                "a1234567"
+                "1q2w3e4r"
         );
 
         assertDoesNotThrow(()-> resetPasswordController.resetPassword(resetPasswordRequest));
@@ -63,7 +63,7 @@ class ResetPasswordServiceTest {
     void testLogin() throws CredentialExpiredException {
         LoginRequest loginRequest = new LoginRequest(
                 email,
-                "a1234567"
+                "1q2w3e4r"
         );
         assertDoesNotThrow(() -> loginController.login(loginRequest));
         CheckStateRequest checkStateRequest = new CheckStateRequest();
