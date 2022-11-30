@@ -6,7 +6,11 @@ import CreateProducts from "./components/CreateProduct";
 import Register from "./components/register"
 import Login from "./components/Login"
 import Cart from "./components/Cart";
+<<<<<<< HEAD
 import Checkout from "./components/Checkout";
+=======
+import Checkout from "./components/Checkout"
+>>>>>>> vivek
 import NavigationAfterLogin from "./components/NavigationAfterLogin" ;
 
 import ResetPassword from "./components/ResetPassword";

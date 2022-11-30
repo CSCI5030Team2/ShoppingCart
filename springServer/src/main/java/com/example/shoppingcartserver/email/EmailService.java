@@ -1,8 +1,11 @@
 package com.example.shoppingcartserver.email;
 
 import lombok.AllArgsConstructor;
+<<<<<<< HEAD
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
+=======
+>>>>>>> vivek
 import org.springframework.mail.javamail.JavaMailSenderImpl;
 import org.springframework.mail.javamail.MimeMessageHelper;
 import org.springframework.scheduling.annotation.Async;
@@ -16,7 +19,10 @@ import java.util.Properties;
  * Email service implementation
  * @author aiden
  */
+<<<<<<< HEAD
 
+=======
+>>>>>>> vivek
 @AllArgsConstructor
 @Service
 public class EmailService implements EmailSender {

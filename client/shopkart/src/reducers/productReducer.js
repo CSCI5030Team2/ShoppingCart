@@ -26,6 +26,8 @@ import {
         return state;
       case CART_PRODUCTS:
         return state;
+      case PUT_CHECKOUT:
+        return state;
       default:
         return state;
     }

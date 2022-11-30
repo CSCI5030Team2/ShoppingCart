@@ -45,7 +45,7 @@ class CartTest {
     public void testAddCartItem() throws Exception {
 
         String email = "user@shoppingcart.com";
-        String pw = "a123456";
+        String pw = "1q2w3e4r";
         String itemName = "iPhone 14 pro";
 
         if(!cartRepository.findAllByBuyerEmail(email).isEmpty())
@@ -78,7 +78,7 @@ class CartTest {
     public void testDeleteCartItem() throws Exception {
 
         String email = "user@shoppingcart.com";
-        String pw = "a123456";
+        String pw = "1q2w3e4r";
         String itemName = "iPhone 14 pro";
 
         if (!cartRepository.findAllByBuyerEmail(email).isEmpty()) {
@@ -124,7 +124,7 @@ class CartTest {
     @Test
     public void testCheckout() throws Exception {
         String email = "user@shoppingcart.com";
-        String pw = "a123456";
+        String pw = "1q2w3e4r";
         String itemName = "iPhone 14 pro";
 
         JSONArray array = JSON.parseArray(loginController.login(new LoginRequest(email,pw)));

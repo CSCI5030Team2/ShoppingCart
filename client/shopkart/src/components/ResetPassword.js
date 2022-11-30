@@ -134,5 +134,5 @@ const mapStateToProps = state => ({
 
 export default connect(
   mapStateToProps,
-  { resetPassword, getUsers }
+  { getUsers }
 )(ResetPassword);
