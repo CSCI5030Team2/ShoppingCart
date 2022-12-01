@@ -51,7 +51,14 @@ export class NavigationAfterLogin extends Component {
                         </p>
                       </div>
                     </div>
+
+
           ))}
+          <button>
+            <Link to ="/checkout">
+              Checkout
+            </Link>
+          </button>
         </div>
       </div>
     );

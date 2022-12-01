@@ -1,62 +1,84 @@
 import React, {Component} from "react";
 import { connect } from "react-redux";
-import { Link } from "react-router-dom";
-import { getCarts } from "../actions/products";
-import { getProducts } from "../actions/products";
-import {putCheckout} from "../actions/products";
-import Navbar from "./Navbar";
+import {putCheckout} from "../actions/products"
 import LoginNavbar from "./LoginNavbar"
+import axios from "axios"
 
 const initialState = {
     cardNumber: "",
-    expiry:"",
+    expiryMonth:"",
+    expiryYear:"",
     cvv:"",
     cardHolder:"",
     cardNumberError: "",
-    expiryError: "",
-    cvvError:""
+    expiryMonthError: "",
+    expiryYearError: "",
+    cvvError:"",
+    cardHolderError:""
 };
 
 export class Checkout extends Component {
     constructor(props) {
         super(props);
-        this.handleSubmit = this.handleSubmit.bind(this);
         this.onPayment = this.onPayment.bind(this);
     }
     state = {
         initialState
     };
 
+    //Will push token of the used to backend(actions)
+    componentWillMount() {
+        if (!localStorage.getItem("token")) {
+          this.props.history.push("/");
+        }
+      }
+
+
     onChange = event => {
-        this.setState({ [event.target.name]: event.target.value });
+        this.setState({ [event.target.name]: event.target.value }); 
     };
 
+    //validation of each input in card details
     validate = () => {
         let cardNumberError = "";
-        let expiryError = "";
+        let expiryMonthError = "";
+        let expiryYearError = "";
         let cvvError = "";
+        let cardHolderError = "";
         if(this.state.cardNumber) {
             cardNumberError = "Card number required"
         }
         if(!this.state.expiry) {
-            expiryError = "Expiry required"
+            expiryMonthError = "Expiry required"
+        }
+        if(!this.state.expiry) {
+            expiryYearError = "Expiry required"
         }
         if(!this.state.cvv) {
-            cvvError = "CVV Required"
+            cvvError = "CVV required"
+        }
+        if(!this.state.cardHolder) {
+            cardHolderError = "Card Holder Name required"
+        }
+        if (cardNumberError || expiryMonthError || expiryYearError || cvvError || cardHolderError ) {
+            this.setState({cardHolderError:cardHolderError, expiryMonthError:expiryMonthError, expiryYearError:expiryYearError, cvvError:cvvError, cardHolderError:cardHolderError});
+
+            return false;
         }
         return true;
     };
 
+    //function to handle changes during submit
     handleSubmit = event => {
         event.preventDefault();
-        const isValid = this.validate();
+        const isValid = this.componentDidCatch.validate();
         if(isValid){
-          console.log(this.state)
-          this.setState(initialState)
+            console.log(this.state)
+            this.setState(initialState)
         }
-       }
+    }
 
-
+    //funtion containing logic of payment
     onPayment = e => {
         e.preventDefault();
         const isValid = this.validate();
@@ -78,6 +100,7 @@ export class Checkout extends Component {
         }
     }
 
+    //BootStrap code for input boxes and submit button
     render() {
         console.log(this.props);
             return(
@@ -89,15 +112,12 @@ export class Checkout extends Component {
                         style={{
                             width: 20 + "em",
                             marginTop: 3 + "em",
-                            height: "auto",
-                            marginBottom: 3 + "em"
+                            height: "auto"
                         }}
                     >
-                        <div className="card" align="center">
-                            <form>
                                 <h1>Payment Page</h1>
-
                                 <p>
+{/* enter card number, expiry month, expiry year, cvv, card holder name to make payment using credit card */}
                                     <input
                                         type="text"
                                         name="cardNumber"
@@ -106,15 +126,27 @@ export class Checkout extends Component {
                                         value={this.state.cardNumber}
                                         onChange= {this.onChange}
                                         required
+                                    />
+                                </p>
+                                <p>
+                                    <input
+                                        type="text"
+                                        name="exipryMonth"
+                                        placeholder="Month MM"
+                                        maxLength={2}
+                                        value={this.state.expiryMonth}
+                                        onChange= {this.onChange}
+                                        required
                                     
                                     />
                                 </p>
                                 <p>
                                     <input
                                         type="text"
-                                        name="expiry"
-                                        placeholder="Enter Expire"
-                                        value={this.state.expiry}
+                                        name="expiryYear"
+                                        placeholder="Year YYYY"
+                                        maxLength={4}
+                                        value={this.state.expiryYear}
                                         onChange= {this.onChange}
                                         required
                                     
@@ -151,24 +183,31 @@ export class Checkout extends Component {
                                         <p>{this.props.error}</p>
                                         </>
                                     ) : (
-                                        <p>{this.state.cardNumberError||this.state.expiryError||this.state.cvvError}</p>
+                                        <p>{this.state.cardNumberError||this.state.expiryonthError||this.state.expiryYearError||this.state.cvvError||this.state.cardHolderError}</p>
                                     )}
                                     </div>
                                 </p>
-                                <button 
-                                style={{marginTop: 2 + "em"}}
-                                onChange={this.handleChange}
-                                onClick={this.onPayment}
-                                >
-                                    <Link to = "/navigation">
-                                        Payment
-                                    </Link>
 
+                                <button
+                                    onChange={this.handleChange}
+                                    onClick={() => {
+
+                                        //sending token to backend route. The token is stored in localStorage
+                                        axios.put("http://localhost:8080/cart",
+                                            {
+                                                token: localStorage.getItem("token")
+                                            }
+
+                                        ).then(r => console.log(r.data))
+
+                                        //alert message after success
+                                        alert("PAYMENT SUCCESS")
+                                    }}
+                                    >
+                                    Payment
                                 </button>
-                            </form>
                         </div>
                         </div>
-                    </div>
             )
     }
 }
