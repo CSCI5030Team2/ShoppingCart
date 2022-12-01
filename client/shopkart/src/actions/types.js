@@ -13,9 +13,9 @@ export const DELETE_PRODUCTS = "DELETE_PRODUCTS";
 export const CART_PRODUCTS = "CART_PRODUCTS";
 
 export const GET_CARTS = "GET_CARTS";
-
 export const GET_ADS="GET_ADS";
 
 export const GET_ADMIN = "GET_ADMIN";
 export const UPDATE_ADMIN = "UPDATE_ADMIN";
 export const DELETE_ADMIN = "DELETE_ADMIN";
+
