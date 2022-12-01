@@ -15,7 +15,6 @@ const wrapper = mount(
 );
 
 describe("Test Login Component", () => {
-
   it("should render the component", () => {
     expect(wrapper).toMatchSnapshot();
   });

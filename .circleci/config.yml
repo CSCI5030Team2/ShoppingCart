@@ -6,18 +6,19 @@ version: 2.1
 # See: https://circleci.com/docs/2.0/configuration-reference/#jobs
 jobs:
   build-and-test-javascript:
-    working_directory: ~/ShoppingCart
     docker:
        - image: cimg/node:14.20.0
     steps:
        - checkout
        - run:
            name: install dependencies
-           command: cd client/shopkart && npm install --force 
+           command: cd client/shopkart && yarn install --force
       
-      #  - run:
-      #      name: run tests
-      #      command: cd client/shopkart && npm run test --silent
+
+       - run:
+           name: run tests
+           command: cd client/shopkart npm run test
+
   
   # Below is the definition of your job to build and test your app, you can rename and customize it as you want.
   build-and-compile-spring:
