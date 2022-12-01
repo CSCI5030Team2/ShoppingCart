@@ -24,6 +24,12 @@ public class ForgotPasswordService {
     private AppUserServiceImpl appUserService;
     private BCryptPasswordEncoder bCryptPasswordEncoder;
 
+
+    /**
+     * for forgot password(send reset email)
+     * @param forgotPasswordRequest
+     * @return String of exception with related information
+     */
     public String forgotPassword(ForgotPasswordRequest forgotPasswordRequest) {
         try {
             AppUser appUser = appUserService.getAppUserByEmail(forgotPasswordRequest.getEmail());
@@ -45,12 +51,17 @@ public class ForgotPasswordService {
         }
     }
 
+    /**
+     * for reset password(reset user password)
+     * @param forgotResetRequest
+     * @return String of exception with related information
+     */
     public String forgotReset(ForgotResetRequest forgotResetRequest) {
         try {
             AppUser appUser = appUserService.getAppUserByEmail(forgotResetRequest.getEmail());
             if (appUser.getLocked()) {
                 appUser.setLocked(false);
-                appUser.setPassword(bCryptPasswordEncoder.encode(forgotResetRequest.getEmail()));
+                appUser.setPassword(bCryptPasswordEncoder.encode(forgotResetRequest.getPassword()));
                 appUserService.saveUser(appUser);
                 return "Password reset";
             }

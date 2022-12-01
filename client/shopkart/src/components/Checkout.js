@@ -26,13 +26,6 @@ export class Checkout extends Component {
         initialState
     };
 
-    //Will push token of the used to backend(actions)
-    componentWillMount() {
-        if (!localStorage.getItem("token")) {
-          this.props.history.push("/");
-        }
-      }
-
 
     onChange = event => {
         this.setState({ [event.target.name]: event.target.value }); 
@@ -115,6 +108,7 @@ export class Checkout extends Component {
                             height: "auto"
                         }}
                     >
+                    <form>
                                 <h1>Payment Page</h1>
                                 <p>
 {/* enter card number, expiry month, expiry year, cvv, card holder name to make payment using credit card */}
@@ -206,6 +200,7 @@ export class Checkout extends Component {
                                     >
                                     Payment
                                 </button>
+                            </form>
                         </div>
                         </div>
             )

@@ -1,79 +1,93 @@
-//package com.example.shoppingcartserver.password;
-//
-//import com.example.shoppingcartserver.appuser.AppUser;
-//import com.example.shoppingcartserver.appuser.AppUserRepository;
-//import com.example.shoppingcartserver.login.LoginTokenRepository;
-//import com.example.shoppingcartserver.login.controller.LoginController;
-//import com.example.shoppingcartserver.password.controller.ForgotPasswordController;
-//import com.example.shoppingcartserver.password.request.ForgotPasswordRequest;
-//import lombok.AllArgsConstructor;
-//import org.junit.jupiter.api.*;
-//import org.springframework.beans.factory.annotation.Autowired;
-//import org.springframework.boot.test.autoconfigure.jdbc.AutoConfigureTestDatabase;
-//import org.springframework.boot.test.context.SpringBootTest;
-//
-//import static org.junit.jupiter.api.Assertions.*;
-//
-///**
-// * @author vivek
-// */
-//
-//@SpringBootTest
-//@AutoConfigureTestDatabase(replace = AutoConfigureTestDatabase.Replace.NONE)
-//@TestMethodOrder(MethodOrderer.OrderAnnotation.class)
-//class ForgotPasswordServiceTest {
-//
-//    @Autowired
-//    private ForgotPasswordController forgotPasswordController;
-//
-//    @Autowired
-//    private AppUser appUser;
-//    @Autowired
-//    private AppUserRepository appUserRepository;
-//
-//    @Autowired
-//    private LoginController loginController;
-//
-//    private final String firstName = "TEST";
-//    private final String lastName = "USER";
-//    private final String email = "user@shoppingcart.com";
-//
-//
-//    @Test
-//    @Order(1)
-//    void checkDB () {
-//        Assertions.assertNotNull(loginController);
-//        assertTrue(appUserRepository.findByEmail(email).isPresent());
-//    }
-//
-//    @Test
-//    @Order(2)
-//    public void testForgotPassword() {
-//
-//        ForgotPasswordRequest forgotPasswordRequest = new ForgotPasswordRequest(
-//            email,
-//            firstName,
-//            lastName,
-//                ""
-//        );
-//        if(forgotPasswordRequest.getFirstName() == appUser.getFirstName()
-//        && forgotPasswordRequest.getLastName() == appUser.getLastName())
-//        {
-//            assertDoesNotThrow(() -> forgotPasswordController.forgotPassword(forgotPasswordRequest));
-//            Assertions.assertTrue(appUser.getEnable().equals(true));
-//        }
-//
-//    }
-//
-//    @Test
-//    @Order(3)
-//    public void testForgotReset() {
-//
-//    }
-//
-//    @Test
-//    @Order(4)
-//    void testLogin() {
-//
-//    }
-//}
+package com.example.shoppingcartserver.password;
+
+import com.example.shoppingcartserver.appuser.AppUserRepository;
+import com.example.shoppingcartserver.login.controller.LoginController;
+import com.example.shoppingcartserver.login.request.CheckStateRequest;
+import com.example.shoppingcartserver.login.request.LoginRequest;
+import com.example.shoppingcartserver.password.controller.ForgotPasswordController;
+import com.example.shoppingcartserver.password.controller.ResetPasswordController;
+import com.example.shoppingcartserver.password.request.ForgotPasswordRequest;
+import com.example.shoppingcartserver.password.request.ForgotResetRequest;
+import com.example.shoppingcartserver.password.request.ResetPasswordRequest;
+import org.junit.jupiter.api.*;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.test.autoconfigure.jdbc.AutoConfigureTestDatabase;
+import org.springframework.boot.test.context.SpringBootTest;
+
+import javax.security.auth.login.CredentialException;
+import javax.security.auth.login.CredentialExpiredException;
+
+import static org.junit.jupiter.api.Assertions.*;
+
+/**
+ * @author vivek
+ */
+
+@SpringBootTest
+@AutoConfigureTestDatabase(replace= AutoConfigureTestDatabase.Replace.NONE)
+@TestMethodOrder(MethodOrderer.OrderAnnotation.class)
+class ForgotPasswordServiceTest {
+
+    @Autowired
+    private ForgotPasswordController forgotPasswordController;
+
+    @Autowired
+    private AppUserRepository appUserRepository;
+
+    @Autowired
+    private LoginController loginController;
+
+    private final String email = "user@shoppingcart.com";
+    private final String firstName = "TEST";
+    private final String lastName = "USER";
+    private final String url = "http://localhost:3000/reset";
+
+    @Order(1)
+    @Test
+    void checkDB () {
+        Assertions.assertNotNull(loginController);
+        assertTrue(appUserRepository.findByEmail(email).isPresent());
+    }
+
+    @Order(2)
+    @Test
+    public void testForgotPassword() throws CredentialException {
+
+        ForgotPasswordRequest forgotPasswordRequest = new ForgotPasswordRequest(
+                email,
+                firstName,
+                lastName,
+                url
+        );
+
+        assertDoesNotThrow(()-> forgotPasswordController.forgotPassword(forgotPasswordRequest));
+        assertTrue(appUserRepository.findByEmail(email).isPresent());
+    }
+
+    @Order(3)
+    @Test
+    public void testForgotReset() throws Exception {
+
+        ForgotResetRequest forgotResetRequest = new ForgotResetRequest(
+                email,
+                "a123456"
+        );
+
+        assertDoesNotThrow(()-> forgotPasswordController.forgotReset(forgotResetRequest));
+        assertTrue(appUserRepository.findByEmail(email).isPresent());
+    }
+
+    @Order(4)
+    @Test
+    void testLogin() throws CredentialExpiredException {
+        LoginRequest loginRequest = new LoginRequest(
+                email,
+                "a123456"
+        );
+        assertDoesNotThrow(() -> loginController.login(loginRequest));
+        CheckStateRequest checkStateRequest = new CheckStateRequest();
+        checkStateRequest.setEmail(email);
+        assertEquals("OK", loginController.checkState(checkStateRequest));
+
+    }
+}
