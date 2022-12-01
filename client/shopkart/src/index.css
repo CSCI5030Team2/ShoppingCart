@@ -17,6 +17,11 @@ button {
   margin-bottom: 10px;
 }
 
+.ads{
+  text-align: center;
+  color: black;
+}
+
 .navbar {
   background-color: #192a51;
   width: 100%;

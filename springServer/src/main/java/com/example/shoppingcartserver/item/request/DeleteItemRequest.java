@@ -5,9 +5,9 @@ import lombok.*;
 /**
  * @author aiden
  */
-@NoArgsConstructor
+@AllArgsConstructor
 @ToString
-@Data
+@Getter
 public class DeleteItemRequest {
     private String itemName;
     private String token;

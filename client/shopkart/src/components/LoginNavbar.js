@@ -49,7 +49,7 @@ export class LoginNavbar extends Component {
                 <a href="/cart">Cart</a>
               </li>
             </Link>
-            <Link to="/displayproducts">
+            <Link to="/navigation">
               <li
                 style={{
                   float: "right",

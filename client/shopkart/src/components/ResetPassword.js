@@ -106,22 +106,9 @@ export class ResetPassword extends Component {
           <br />
           <br />
           <br />
-          {/* <Link to="/displayproducts"> */}
           <button onChange={this.onChange} onClick={this.onReset}>
             Reset
           </button>
-          {/* </Link> */}
-          {/* <p>
-            <Link to="/reset">
-              <p>Forgot Password ?</p>
-            </Link>
-          </p>
-          <p>
-            Not Registered ?{" "}
-            <u>
-              <Link to="/register">CREATE AN ACCOUNT</Link>
-            </u>
-          </p> */}
         </div>
       </div>
     );

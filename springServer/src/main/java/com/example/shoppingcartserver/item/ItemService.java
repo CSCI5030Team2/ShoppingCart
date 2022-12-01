@@ -128,13 +128,17 @@ public class ItemService {
         }
     }
 
-    public String deleteItem(DeleteItemRequest request) throws CredentialExpiredException {
-        AppUser appUser = loginService.findAppUserByToken(request.getToken());
+    public String deleteItem(DeleteItemRequest request) throws CredentialException {
+        LoginToken loginToken = loginService.findTokenByTokenString(request.getToken());
+        AppUser appUser = loginToken.getAppUser();
 
-
-        if(appUser.getAppUserRole()!=AppUserRole.ADMIN)
+        if(appUserService.userDoNotExist(appUser.getEmail()))
         {
-            return "No permission";
+            return "User do no exist";
+        }
+        if(!appUserService.isAdmin(appUser.getEmail()))
+        {
+            return "Only admin can add new item";
         }
 
         boolean itemExist = itemRepository.findByItemName(request.getItemName()).isPresent();

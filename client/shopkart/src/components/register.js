@@ -103,33 +103,8 @@ export class register extends Component {
       })
       alert("Form submitted");
   }
-}
-
-  // onVerify() {
-  //   let user = {
-  //     email: this.state.fields.email
-  //   };
-  //   this.props.emailVerify(user);
-  //   // this.setState({
-  //   //   show_otp_field: true
-  //   // });
-  // }
-
-  // userVerify() {
-  //   // let user = {
-  //   //   otp: this.state.fields.otp
-  //   // };
-  //   // if (this.props.userVerify(user)) {
-  //     this.submituserRegistrationForm();
-  //     this.setState({
-  //       firstName: "",
-  //       lastName: "",
-  //       email: "",
-  //       password: ""
-  //     });
-  //   }
-
-
+  }
+  
   render() {
     console.log(this.props);
     return (

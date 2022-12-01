@@ -21,13 +21,13 @@ export class AdminNavbar extends Component {
     return (
       <div>
         <nav>
-          <ul>
-            <Link to="/">
+          <ul>       
               <li>
                 <img src={logo} style={{ height: 4 + "em" }} />
               </li>
-            </Link>
-            <Link to="/login">
+            <Link to="/AdminLogin">
+
+
               <li
                 style={{
                   float: "right",
@@ -38,7 +38,7 @@ export class AdminNavbar extends Component {
                 <a onClick={this.removeToken} href="/">Logout</a>
               </li>
             </Link>
-            <Link to="/displayusers">
+            <Link to="/AdminNavigationAfterLogin">
               <li
                 style={{
                   float: "right",
@@ -46,18 +46,7 @@ export class AdminNavbar extends Component {
                   marginLeft: 2 + "em"
                 }}
               >
-                <a href="#contact">Users</a>
-              </li>
-            </Link>
-            <Link to="/displayproducts">
-              <li
-                style={{
-                  float: "right",
-                  marginTop: 1 + "em",
-                  marginLeft: 2 + "em"
-                }}
-              >
-                <a href="#contact">Products</a>
+               <b>Products</b> 
               </li>
             </Link>
           </ul>
