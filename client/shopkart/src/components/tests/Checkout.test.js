@@ -6,27 +6,16 @@ import store from "../../../src/store";
 import { BrowserRouter } from "react-router-dom";
 
 
-const checkout = jest.fn();
+const checkOut = jest.fn();
 const wrapper = mount(
   <Provider store={store}>
   <BrowserRouter>
-    <Checkout checkout={checkout} />
+    <Checkout checkOut={checkOut} />
     </BrowserRouter>
   </Provider>
 );
 
-describe("Test Checkout Component"), () => {
-    beforeAll(() => {
-        jest.spyOn(console, 'log').mockImplementation(() => {});
-    });
-
-afterAll(() => {
-    console.log.mockRestore();
-});
-
-afterEach(() => {
-    console.log.mockClear();
-});
+describe("Test Checkout Component", () => {
 
 it("should render the component", () => {
     expect(wrapper).toMatchSnapshot();
@@ -89,4 +78,4 @@ it("should have Enter Card Number placeholder on CardNumber input field", () => 
         .props().placeholder
     ).toBe("Enter Card Holder Name");
   });
-}
+});
