@@ -51,7 +51,7 @@ class ForgotPasswordServiceTest {
 
     @Order(2)
     @Test
-    public void testForgotPassword() throws CredentialException {
+    public void testForgotPassword() throws Exception {
 
         ForgotPasswordRequest forgotPasswordRequest = new ForgotPasswordRequest(
                 email,
