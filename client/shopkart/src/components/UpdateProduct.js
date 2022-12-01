@@ -3,6 +3,8 @@ import { connect } from "react-redux";
 import { getProducts, updateProducts } from "../actions/products";
 import { Link } from "react-router-dom";
 import AdminNavbar from "./AdminNavbar";
+import axios from "axios";
+
 
 export class UpdateProducts extends Component {
   state = {
@@ -55,11 +57,14 @@ export class UpdateProducts extends Component {
             <Link to="/AdminNavigationAfterLogin">
               <button
                 onClick={() =>
-                  this.props.updateProducts({
-                    itemName: this.state.itemName,
-                    price: this.state.price,
-                    quantity: this.state.quantity,
-                  })
+                  axios.put("http://localhost:8080/admin/item",
+                                  {
+                                      itemName: this.state.itemName,
+                                      quantity: this.state.quantity,
+                                      price:this.state.price,
+                                      token: localStorage.getItem("token")
+                                  }
+                                  ).then(r => console.log(r.data))
                 }
                 onChange={this.onChange}
               >

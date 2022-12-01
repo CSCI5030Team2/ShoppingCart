@@ -21,6 +21,7 @@ import static org.junit.jupiter.api.Assertions.*;
 
 @SpringBootTest
 @AutoConfigureTestDatabase(replace= AutoConfigureTestDatabase.Replace.NONE)
+@TestMethodOrder(MethodOrderer.OrderAnnotation.class)
 class CartTest {
 
     @Autowired
@@ -35,12 +36,15 @@ class CartTest {
     @BeforeEach
     void setUp() {
     }
+
     @AfterEach
     void tearDown() {
     }
 
 
+
     @RepeatedTest(3)
+    @Order(1)
     public void testAddCartItem() throws Exception {
 
         String email = "user@shoppingcart.com";
@@ -66,7 +70,7 @@ class CartTest {
         assertDoesNotThrow(()->controller.deleteFromCart(new DeleteFromCartRequest(
                 token,
                 itemName,
-                1
+                10
 
         )));
         assertTrue(cartRepository.findAllByBuyerEmail(email).isEmpty());
@@ -102,6 +106,7 @@ class CartTest {
                 token,
                 itemName,
                 10
+
 
         );
 
