@@ -119,23 +119,6 @@ public class ItemService {
     public Item findItemByName(String itemName) throws Exception {
         Optional<Item> optionalItem = itemRepository.findByItemName(itemName);
         if(optionalItem.isPresent())
-<<<<<<< HEAD
-        {
-            return optionalItem.get();
-        }
-        else
-        {
-            throw new Exception("item " + itemName + " not found");
-        }
-    }
-
-    public String deleteItem(DeleteItemRequest request) throws CredentialExpiredException {
-        AppUser appUser = loginService.findAppUserByToken(request.getToken());
-
-
-        if(appUser.getAppUserRole()!=AppUserRole.ADMIN)
-=======
->>>>>>> origin/bohan
         {
             return optionalItem.get();
         }

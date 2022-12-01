@@ -7,7 +7,7 @@ import lombok.*;
  */
 @AllArgsConstructor
 @ToString
-@Data
+@Getter
 public class DeleteItemRequest {
     private String itemName;
     private String token;
