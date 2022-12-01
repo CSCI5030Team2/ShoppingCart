@@ -136,10 +136,4 @@ import {
         console.log(err);
         alert("Username not found");
       });
-  };
-      
-  };  
-
-  
-
-  
+  }; 
