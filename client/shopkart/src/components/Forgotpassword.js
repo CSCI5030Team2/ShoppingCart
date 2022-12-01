@@ -66,7 +66,7 @@ export class Forgotpassword extends Component {
 {/* enter the email id,first name, last name to confirm and send the link for reseting the password */}
           <input
             className="name"
-            placeholder=" Enter Email"
+            placeholder="Enter Email"
             type="text "
             name="email"
             onChange={this.OnChange}
@@ -77,9 +77,9 @@ export class Forgotpassword extends Component {
                 {/* <br /> */}
                 <input
                   type="text"
-                  name="firstName"
+                  name="firstname"
                   placeholder="Enter First Name"
-                  value={this.state.firstName}
+                  value={this.state.firstname}
                   onChange= {this.OnChange}
                   required
                 />
@@ -88,9 +88,9 @@ export class Forgotpassword extends Component {
                 {/* <br /> */}
                 <input
                   type="text"
-                  name="lastName"
+                  name="lastname"
                   placeholder="Enter Last Name"
-                  value={this.state.lastName}
+                  value={this.state.lastname}
                   onChange={this.OnChange}
                   required
                 />
