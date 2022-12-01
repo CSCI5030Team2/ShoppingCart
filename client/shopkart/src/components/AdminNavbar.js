@@ -26,6 +26,8 @@ export class AdminNavbar extends Component {
                 <img src={logo} style={{ height: 4 + "em" }} />
               </li>
             <Link to="/AdminLogin">
+
+
               <li
                 style={{
                   float: "right",

@@ -8,8 +8,6 @@ import com.example.shoppingcartserver.cart.request.GetCartRequest;
 import lombok.AllArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 
-import javax.security.auth.login.CredentialException;
-
 /**
  * @author aiden, vivek
  */

@@ -5,11 +5,13 @@ import store from "../../../src/store";
 import { BrowserRouter } from "react-router-dom";
 import ResetPassword from "../ResetPassword";
 
+
 const Resetpassword = jest.fn();
 const wrapper = mount(
   <Provider store={store}>
   <BrowserRouter>
     <ResetPassword Resetpassword={Resetpassword} />
+
     </BrowserRouter>
   </Provider>
 );

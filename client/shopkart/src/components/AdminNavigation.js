@@ -16,6 +16,7 @@ componentDidMount(){
   }
 }
 
+
   render() {
     //console.log(this.props.getProducts())
     return (
