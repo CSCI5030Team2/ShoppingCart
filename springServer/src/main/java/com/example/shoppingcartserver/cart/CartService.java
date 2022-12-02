@@ -18,6 +18,7 @@ import java.time.LocalDateTime;
 import java.util.List;
 
 /**
+ * Cart service layer, handles cart related backend tasks
  * @author aiden, vivek
  */
 @Service

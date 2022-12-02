@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.*;
 import javax.security.auth.login.CredentialException;
 
 /**
+ * Admin login module controller layer, ONLY handle REST API calls related to admin login
  * @author aiden
  */
 @RestController
@@ -17,6 +18,12 @@ import javax.security.auth.login.CredentialException;
 public class AdminLoginController {
     private LoginService loginService;
 
+    /**
+     * Post /admin/login, for admin login
+     * @param loginRequest email, password
+     * @return token string
+     * @throws CredentialException when user DNE or password does not match
+     */
     @PostMapping
     public String login(@RequestBody LoginRequest loginRequest) throws CredentialException {
         return loginService.login(loginRequest);

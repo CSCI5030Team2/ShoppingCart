@@ -10,6 +10,7 @@ import javax.validation.constraints.Digits;
 import javax.validation.constraints.Min;
 
 /**
+ * Data entity for Item entry
  * @author aiden
  */
 @Getter

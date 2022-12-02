@@ -12,6 +12,7 @@ import java.util.Collection;
 import java.util.Collections;
 
 /**
+ *  Data entity for AppUser entry
  * @author aiden
  */
 @Getter

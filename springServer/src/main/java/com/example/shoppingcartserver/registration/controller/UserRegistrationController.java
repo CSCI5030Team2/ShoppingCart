@@ -18,6 +18,11 @@ public class UserRegistrationController {
 
     private RegistrationService registrationService;
 
+    /**
+     * Post /user/registration, for registering new user account
+     * @param request firstName, lastName, email, password
+     * @return token string
+     */
     @PostMapping
     public String registerUser(@RequestBody UserRegistrationRequest request)
     {
