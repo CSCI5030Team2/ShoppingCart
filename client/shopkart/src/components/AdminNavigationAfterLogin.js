@@ -12,11 +12,11 @@ export class Navigation extends Component {
   }
 
  // This function will check if the browser has token present or no if its not present then send the admin to the route mentioned below
-  componentDidMount(){
-    if (!localStorage.getItem("token")) {
-      this.props.history.push("/navigation");
-    }
-  }
+//   componentDidMount(){
+//     if (!localStorage.getItem("token")) {
+//       this.props.history.push("/navigation");
+//     }
+//   }
   
   render() {
     return (
