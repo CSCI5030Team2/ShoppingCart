@@ -13,7 +13,7 @@ export class CreateProduct extends Component {
   // This function will check if the browser has token present or no if its not present then send the admin to the route mentioned below
   componentWillMount() {
     if (!localStorage.getItem("token")) {
-      this.props.history.push("/");
+      this.props.history.push("/AdminNavigation");
     }
   }
   

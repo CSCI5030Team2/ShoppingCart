@@ -27,12 +27,15 @@ import {
   };
   
   //create the products and send them to the database 
-  export const createProducts = PRODUCTS => dispatch => {
+  export const createProducts = products => dispatch => {
     axios
-      .post("http://localhost:8080/admin/item", PRODUCTS,
-       {
-        headers: { Authorization: `Bearer ${localStorage.getItem("token")}` }
+      .post("http://localhost:8080/admin/item",{
+        "itemName":products.itemName,
+        "quantity":products.quantity,
+        "price":products.price,
+        "token":localStorage.getItem("token")
       }
+      
       )
       .then(res => {
         dispatch({
@@ -132,5 +135,3 @@ import {
   };
 
 
-
-  

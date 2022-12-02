@@ -4,6 +4,7 @@ import com.example.shoppingcartserver.appuser.AppUser;
 import com.example.shoppingcartserver.appuser.AppUserRepository;
 import com.example.shoppingcartserver.login.LoginTokenRepository;
 import com.example.shoppingcartserver.login.token.LoginToken;
+import com.example.shoppingcartserver.password.request.ForgotPasswordRequest;
 import com.example.shoppingcartserver.password.request.ResetPasswordRequest;
 import lombok.AllArgsConstructor;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;

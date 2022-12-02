@@ -36,6 +36,7 @@ import {
 
         //Save the role of that user to cache
         localStorage.setItem("role", res.data[1]);
+        history.push("/AdminNavigationAfterLogin")
         dispatch({
           type: LOGIN
         });

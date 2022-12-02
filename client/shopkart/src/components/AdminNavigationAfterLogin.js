@@ -67,11 +67,7 @@ export class Navigation extends Component {
               </div>
             </div>
           ))}
-          <button id="editBtn">
-          <Link to = "/createproducts">
-            CreateProduct
-          </Link>
-          </button>
+
         </div>
       </div>
     );

@@ -13,8 +13,8 @@ import AdminNavigationAfterLogin from "./components/AdminNavigationAfterLogin";
 import ResetPassword from "./components/ResetPassword";
 import Forgotpassword from "./components/Forgotpassword";
 import UpdateProduct from "./components/UpdateProduct";
-import ResetPassword from "./components/ResetPassword";
-import Forgotpassword from "./components/Forgotpassword";
+
+
 function App() {
   return (
     <Router>

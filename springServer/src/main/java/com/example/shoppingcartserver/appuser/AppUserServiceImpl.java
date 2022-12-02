@@ -119,4 +119,9 @@ public class AppUserServiceImpl {
             throw new UsernameNotFoundException("Could not find " + email);
         }
     }
+
+    public void saveUser(AppUser appUser)
+    {
+        appUserRepository.save(appUser);
+    }
 }

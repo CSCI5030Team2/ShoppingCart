@@ -53,6 +53,17 @@ export class AdminNavbar extends Component {
                <a href="/AdminNavigationAfterLogin">Products</a> 
               </li>
             </Link>
+            <Link to="/createproducts">
+              <li
+                style={{
+                  float: "right",
+                  marginTop: 1 + "em",
+                  marginLeft: 2 + "em"
+                }}
+              >
+               <a href="/createproducts">Create</a> 
+              </li>
+            </Link>
           </ul>
         </nav>
       </div>
