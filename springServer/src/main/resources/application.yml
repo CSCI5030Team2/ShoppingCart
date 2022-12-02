@@ -19,8 +19,8 @@ spring:
   jpa:
 
     hibernate:
-      ddl-auto: update
-      #ddl-auto: create-drop
+      #ddl-auto: update
+      ddl-auto: create-drop
       #this destroys the db everytime the app is run.
 
     properties:
