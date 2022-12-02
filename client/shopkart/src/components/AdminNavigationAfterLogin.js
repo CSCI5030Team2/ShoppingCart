@@ -1,26 +1,24 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
-// import DisplayProducts from "./DisplayProducts";
 import { getProducts,deleteProducts } from "../actions/products";
 import { connect } from "react-redux";
-// import logo from "../logo.PNG";
 import AdminNavbar from "./AdminNavbar";
 import axios from "axios";
 
 export class Navigation extends Component {
+    // This function will call the values from the database using getProducts mentioned in Actions 
   componentWillMount() {
     this.props.getProducts();
   }
 
-  componentDidMount(){
-    if (!localStorage.getItem("token")) {
-      this.props.history.push("/navigation");
-    }
-  }
+ // This function will check if the browser has token present or no if its not present then send the admin to the route mentioned below
+//   componentDidMount(){
+//     if (!localStorage.getItem("token")) {
+//       this.props.history.push("/navigation");
+//     }
+//   }
   
-
   render() {
-    //console.log(this.props.getProducts())
     return (
       <div>
         <div>
@@ -28,6 +26,7 @@ export class Navigation extends Component {
         </div>
         <h2 style={{ textAlign: "center", marginTop: 2 + "em" }}>Products</h2>
         <div id="outerDiv">
+            {/* this function is used to map the values that are called using the above componentWillMount and displaying it on the front end to the user */}
           {this.props.products.map(product => (
             <div>
               <div
@@ -43,6 +42,7 @@ export class Navigation extends Component {
                 <p>
                   <b>Price : </b> ${product.price}
                 </p>
+                {/* this function will push the values to the below mentioned route along with the itemName as in the database itemName is unique  */}
                 <button
                     onClick={() => {
                       this.props.history.push(
@@ -56,38 +56,30 @@ export class Navigation extends Component {
                   >
                     Edit
                   </button>
-                  {/*<button*/}
-                  {/*  id="delBtn"*/}
-                  {/*  onClick={() =>  axios.delete("http://localhost:8080/admin/item", {*/}
-                  {/*      data:{*/}
-                  {/*                    itemName: product.itemName,*/}
-                  {/*                    token: localStorage.getItem("token")*/}
-                  {/*          }}*/}
-
-                  {/*                //returned msg is logged for dev confirmation purpose*/}
-                  {/*            ).then(r => console.log(r.data))}*/}
-                  {/*>*/}
-                  {/*  Delete*/}
-                  {/*</button>*/}
+                  {/* this function will delete the item from the database based on the itemName */}
                   <button
                       id="delBtn"
                       onClick={() => this.props.deleteProducts(product.itemName)}
                   >
                       Delete
                   </button>
+
               </div>
             </div>
           ))}
+
         </div>
       </div>
     );
   }
 }
 
+// These functions are used to send the above values to the reducers where the values are stored and sent the their respective actions 
 const mapStateToProps = state => ({
   products: state.productReducer.products
 });
 
+// calling all the functions which are used on this page 
 export default connect(
   mapStateToProps,
   { getProducts,deleteProducts }

@@ -5,11 +5,11 @@ import {
     DELETE_PRODUCTS,
     GET_CARTS,
     CART_PRODUCTS,
-    PUT_CHECKOUT
   } from "./types";
   
   import axios from "axios";
   
+  // get the products in the database 
   export const getProducts = () => dispatch => {
     //console.log(localStorage.getItem("token"));
     return axios
@@ -26,12 +26,16 @@ import {
       });
   };
   
-  export const createProducts = PRODUCTS => dispatch => {
+  //create the products and send them to the database 
+  export const createProducts = products => dispatch => {
     axios
-      .post("http://localhost:8080/admin/item", PRODUCTS,
-       {
-        headers: { Authorization: `Bearer ${localStorage.getItem("token")}` }
+      .post("http://localhost:8080/admin/item",{
+        "itemName":products.itemName,
+        "quantity":products.quantity,
+        "price":products.price,
+        "token":localStorage.getItem("token")
       }
+      
       )
       .then(res => {
         dispatch({
@@ -46,13 +50,16 @@ import {
       });
   };
   
+  //update the products and send them to the database 
   export const updateProducts = products => dispatch => {
     axios
       .put(
-        "http://localhost:8080/admin/item/" + products.itemName,
-        products,
+        "http://localhost:8080/admin/item/" ,
         {
-          headers: { Authorization: `Bearer ${localStorage.getItem("token")}` }
+        "itemName":products.itemName,
+        "quantity":products.quantity,
+        "price":products.price,
+        "token":localStorage.getItem("token")
         }
       )
       .then(res => {
@@ -67,6 +74,7 @@ import {
       });
   };
   
+  //delete the product and send them to the database 
   export const deleteProducts = itemName => dispatch => {
     axios
       .delete("http://localhost:8080/admin/item",
@@ -86,6 +94,7 @@ import {
       });
   };
 
+  // add the items to the cart 
   export const AddtoCart = PRODUCTS => dispatch => {
     axios
       .post("http://localhost:8080/cart", PRODUCTS,
@@ -106,6 +115,7 @@ import {
       });
   };
   
+  //get the values from cart 
   export const getCarts = () => dispatch => {
     console.log(localStorage.getItem("token"));
     return axios
@@ -126,24 +136,4 @@ import {
       });
   };
 
-  export const putCheckout = () => dispatch => {
-    console.log(localStorage.getItem("token"));
-    return axios
-      .put("http://localhost:8080/cart",
-      {
-        "token": localStorage.getItem("token")
-      }
-      )
-      .then(res => {
-        dispatch({
-          type: PUT_CHECKOUT,
-          payload: res.data
-        });
-        console.log(res.data);
-      })
-      .catch(err => {
-        console.log(err);
-      });
-  };
 
-  

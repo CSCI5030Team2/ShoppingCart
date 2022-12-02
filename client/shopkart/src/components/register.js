@@ -2,12 +2,11 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 import { Link } from "react-router-dom";
 import Navbar from "./Navbar";
-
 import {
   createUsers,
 } from "../actions/users";
-// import "../register.css";
 
+// these initial state values contain all the values that are pushed to the database for registering a user and also validation parameters
 const initialState = {
   firstName:"",
   lastName:"",
@@ -35,6 +34,7 @@ export class register extends Component {
     this.setState({ [event.target.name]: event.target.value });
   };
 
+  //validation testing for the page so that certain parameters are met 
  validate = () => {
   let firstNameError ="";
   let lastNameError = "";
@@ -82,7 +82,7 @@ export class register extends Component {
   }
  }
 
-
+//this function sends the data which is stored in the variables to createUsers and then sets the state blank if that does not happen 
   onRegister = e => {
     e.preventDefault();
     const isValid = this.validate();
@@ -110,6 +110,7 @@ export class register extends Component {
     return (
       <div>
         <Navbar />
+         {/* aligning the component to the center so it looks more appealing */}
         <div
           className="container"
           align="center"
@@ -122,6 +123,7 @@ export class register extends Component {
         >
           <div className="card" align="center">
             <form>
+            {/* all the input text boxes and their values  */}
               <h1>Create Account</h1>
 
               <p>
@@ -178,7 +180,7 @@ export class register extends Component {
               </p>
               <p>
               <div className="registererror" style={{ fontSize: 15, color: "red" }}>
-              {/* dispatch error from node -yash */}
+              {/* dispatch error */}
               {this.props.error ? (
                 <>
                   <p>{this.props.error}</p>
@@ -189,7 +191,6 @@ export class register extends Component {
             </div>
               </p>
                 <button
-                  // style={{ width: 1 + "em"  className="otp"
                   style={{ marginTop: 2 + "em" }}
                   onChange={this.handleChange}
                   onClick={this.onRegister}
@@ -209,10 +210,12 @@ export class register extends Component {
 }
 
 const mapStateToProps = state => ({
+  // In order to send the data to the database Reducer is used using the variable users
   users: state.userReducer.users
 });
 
 export default connect(
+  // calling the functions that are used on this page 
   mapStateToProps,
   {createUsers}
 )(register);

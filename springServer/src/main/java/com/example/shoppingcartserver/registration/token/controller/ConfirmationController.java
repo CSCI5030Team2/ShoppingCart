@@ -15,6 +15,12 @@ public class ConfirmationController {
 
     private ConfirmationTokenService confirmationTokenService;
 
+    /**
+     * Get /user/confirm
+     * For user account confirmation, should only be access via email link
+     * @param token token string
+     * @return status string
+     */
     @GetMapping
     public String confirm (@RequestParam String token)
     {

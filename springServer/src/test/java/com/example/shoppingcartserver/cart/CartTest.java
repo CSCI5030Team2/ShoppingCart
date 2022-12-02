@@ -32,11 +32,15 @@ class CartTest {
 
     @BeforeEach
     void setUp() {
+
     }
 
     @AfterEach
     void tearDown() {
+
     }
+
+
 
     @RepeatedTest(3)
     @Order(1)
@@ -141,4 +145,5 @@ class CartTest {
         assertDoesNotThrow(() -> controller.checkoutCart(getCartRequest));
         assertTrue(cartRepository.findAllByBuyerEmail(email).isEmpty());
     }
+
 }

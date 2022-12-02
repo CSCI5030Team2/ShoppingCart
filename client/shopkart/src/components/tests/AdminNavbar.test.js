@@ -33,10 +33,10 @@ afterEach(() => {
   });
 
   it("should have exactly four Link tags", () => {
-    expect(wrapper.find("Link").length).toBe(2);
+    expect(wrapper.find("Link").length).toBe(3);
   });
 
   it("should have exactly four li tags", () => {
-    expect(wrapper.find("li").length).toBe(3);
+    expect(wrapper.find("li").length).toBe(4);
   });
 });

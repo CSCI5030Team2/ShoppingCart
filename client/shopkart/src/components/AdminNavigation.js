@@ -12,9 +12,10 @@ export class Navigation extends Component {
   }
 componentDidMount(){
   if (!localStorage.getItem("token")) {
-    this.props.history.push("/navigation");
+    this.props.history.push("/AdminNavigation");
   }
 }
+
 
   render() {
     //console.log(this.props.getProducts())
@@ -40,8 +41,6 @@ componentDidMount(){
                 <p>
                   <b>Price : </b> ${product.price}
                 </p>
-                {/* insert edit button here 
-                insert delete button here  */}
               </div>
             </div>
           ))}

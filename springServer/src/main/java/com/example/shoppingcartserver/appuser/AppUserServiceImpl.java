@@ -17,6 +17,7 @@ import java.util.Optional;
 import java.util.UUID;
 
 /**
+ * AppUser Service layer, handles AppUser related backend tasks
  * @author aiden
  */
 

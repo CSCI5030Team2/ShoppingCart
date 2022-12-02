@@ -11,7 +11,7 @@ import javax.mail.internet.MimeMessage;
 import java.util.Properties;
 
 /**
- * Email service implementation
+ * Email service implementation that uses Outlook email server
  * @author aiden
  */
 @AllArgsConstructor

@@ -9,6 +9,7 @@ import javax.persistence.*;
 import java.time.LocalDateTime;
 
 /**
+ * Data entity for ConfirmationToken entry
  * @author aiden
  */
 @Getter
