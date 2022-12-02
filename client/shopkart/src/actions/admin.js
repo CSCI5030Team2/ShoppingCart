@@ -6,6 +6,7 @@ import {
   
   import axios from "axios";
   
+  //get the admin values from the database 
   export const getAdmin = () => dispatch => {
     return axios
       .get("http://localhost:8080/admin", {
@@ -35,6 +36,7 @@ import {
 
         //Save the role of that user to cache
         localStorage.setItem("role", res.data[1]);
+        history.push("/AdminNavigationAfterLogin")
         dispatch({
           type: LOGIN
         });

@@ -9,6 +9,7 @@ export default class AdsHolder extends Component {
             ads: "default ads",
         };
     }
+    // This function is used to call the random ads stored in the database that are displayed on the screen 
     componentWillMount() {
         axios.get("http://localhost:8080/ads")
             .then((response) => {

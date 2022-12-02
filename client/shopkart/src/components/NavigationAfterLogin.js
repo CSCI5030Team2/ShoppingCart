@@ -1,25 +1,20 @@
 import React, { Component } from "react";
-import { Link } from "react-router-dom";
-// import DisplayProducts from "./DisplayProducts";
 import { getProducts,AddtoCart } from "../actions/products";
 import { connect } from "react-redux";
-// import logo from "../logo.PNG";
 import LoginNavbar from "./LoginNavbar";
 import axios from "axios";
 import AdsHolder from "./AdsHolder";
 
 export class NavigationAfterLogin extends Component {
+   // This function will check if the browser has token present or no if its not present then send the user to the route mentioned below
   componentDidMount() {
     this.props.getProducts();
-  }
-
-
-
-  componentWillMount() {
     if (!localStorage.getItem("token")) {
       this.props.history.push("/");
     }
   }
+
+
 
   
   onChange = e => {
@@ -28,7 +23,6 @@ export class NavigationAfterLogin extends Component {
 
     
   render() {
-    //console.log("NavigationAfterLogin "+this.props.getProducts())
     return (
       <div>
         <div>
@@ -37,6 +31,7 @@ export class NavigationAfterLogin extends Component {
         <h2 style={{ textAlign: "center", marginTop: 2 + "em" }}>Products</h2>
         <div id="outerDiv">
            <AdsHolder/>
+            {/* this function is used to map the values that are called using the above componentWillMount and displaying it on the front end to the user */}
             {
                 this.props.products.map(product => (
                     <div>
@@ -87,10 +82,12 @@ export class NavigationAfterLogin extends Component {
   }
 }
 
+// These functions are used to send the above values to the reducers where the values are stored and sent the their respective actions 
 const mapStateToProps = state => ({
   products: state.productReducer.products
 });
 
+// calling all the functions which are used on this page
 export default connect(
   mapStateToProps,
   { getProducts,AddtoCart }

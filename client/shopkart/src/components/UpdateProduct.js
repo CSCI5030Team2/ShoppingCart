@@ -5,26 +5,24 @@ import { Link } from "react-router-dom";
 import AdminNavbar from "./AdminNavbar";
 import axios from "axios";
 
-//update product class
+
 export class UpdateProducts extends Component {
   state = {
     itemName: this.props.match.params.itemName,
     price: this.props.location.state.product.price,
     quantity: this.props.location.state.product.quantity
   };
-  //this will push token to local storage
+
   componentWillMount() {
     if (!localStorage.getItem("token")) {
       this.props.history.push("/");
     }
   }
 
-  //this will update values on change
   onChange = e => {
     this.setState({ [e.target.name]: e.target.value });
   };
 
-  //bootstrap code for input fields and button
   render() {
     console.log(this.props);
     return (
@@ -37,7 +35,6 @@ export class UpdateProducts extends Component {
         >
           {/* <form> */}
           <h1>Update Product</h1>
-          //input fields for update product
           <p>
             <input
               type="text"
@@ -58,7 +55,6 @@ export class UpdateProducts extends Component {
           </p>
           <p>
             <Link to="/AdminNavigationAfterLogin">
-              //button to update product from admin page
               <button
                 onClick={() =>
                   axios.put("http://localhost:8080/admin/item",
