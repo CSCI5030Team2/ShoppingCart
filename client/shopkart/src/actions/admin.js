@@ -6,6 +6,7 @@ import {
   
   import axios from "axios";
   
+  //get the admin values from the database 
   export const getAdmin = () => dispatch => {
     return axios
       .get("http://localhost:8080/admin", {

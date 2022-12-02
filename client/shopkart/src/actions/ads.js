@@ -1,3 +1,4 @@
+// get the value of ads from the database 
 import { GET_ADS } from "./types";
 import axios from "axios";
 export const getAds = () => dispatch => {
