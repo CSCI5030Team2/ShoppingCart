@@ -1,3 +1,4 @@
+// This page contains a simple Navigation bar before the User Logs In 
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
 import logo from "../logo.PNG";

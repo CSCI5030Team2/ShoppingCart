@@ -1,6 +1,7 @@
 package com.example.shoppingcartserver.appuser;
 
 /**
+ * User role definition. scalable approach
  * @author aiden
  */
 

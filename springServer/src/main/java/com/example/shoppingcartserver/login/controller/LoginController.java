@@ -11,6 +11,7 @@ import javax.security.auth.login.CredentialException;
 import javax.security.auth.login.CredentialExpiredException;
 
 /**
+ * User login module controller layer, handles REST API calls related to general user login
  * @author aiden
  */
 @RestController
@@ -22,6 +23,7 @@ public class LoginController {
     private LoginService loginService;
 
     /**
+     * Post /login, for user login
      * @param loginRequest email and password
      * @return login token, user role
      */
@@ -32,6 +34,8 @@ public class LoginController {
 
 
     /**
+     * Get login/ check if the user is logged in
+     * legacy API, not used by frontend
      * @param checkStateRequest email
      * @return status message
      */
@@ -40,6 +44,12 @@ public class LoginController {
         return loginService.checkState(checkStateRequest);
     }
 
+    /**
+     * Del /login, for logout user/admin
+     * @param logoutRequest email, token
+     * @return status string
+     * @throws CredentialException when email DNE, or token does not match
+     */
     @DeleteMapping
     public String logout(@RequestBody LogoutRequest logoutRequest) throws CredentialException {
         return loginService.logout(logoutRequest);

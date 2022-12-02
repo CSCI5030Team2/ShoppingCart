@@ -1,15 +1,16 @@
 import React, { Component } from "react";
 import { resetPassword, getUsers } from "../actions/users";
-import { Link } from "react-router-dom";
 import { connect } from "react-redux";
 import Navbar from "./Navbar";
-//
+
 
 export class ResetPassword extends Component {
   constructor(props) {
     super(props);
     this.onReset = this.onReset.bind(this);
   }
+
+  // these state values contain all the values that are pushed to the database for registering a user and also validation parameters
   state = {
     email: "",
     password: "",
@@ -23,6 +24,7 @@ export class ResetPassword extends Component {
     this.setState({ [event.target.name]: event.target.value });
   };
 
+  //validation testing for the page so that certain parameters are met 
   validate = () => {
     let emailError = "";
     let passwordError = "";
@@ -51,7 +53,7 @@ export class ResetPassword extends Component {
   };
   
 
-  
+ //this function sends the data which is stored in the variables to resetPassword and then sets the state blank if that does not happen 
   onReset() {
     let user = {
       email: this.state.email,
@@ -68,11 +70,13 @@ export class ResetPassword extends Component {
     return (
       <div>
         <Navbar />
+        {/* aligning the component to the center so it looks more appealing */}
         <div
           className="container"
           align="center"
           style={{ width: 20 + "em", marginTop: 3 + "em", height: "auto" }}
         >
+         {/* all the input text boxes and their values  */}
           <h1>Reset Password</h1>
           <input
             className="name"
@@ -106,22 +110,9 @@ export class ResetPassword extends Component {
           <br />
           <br />
           <br />
-          {/* <Link to="/displayproducts"> */}
           <button onChange={this.onChange} onClick={this.onReset}>
             Reset
           </button>
-          {/* </Link> */}
-          {/* <p>
-            <Link to="/reset">
-              <p>Forgot Password ?</p>
-            </Link>
-          </p>
-          <p>
-            Not Registered ?{" "}
-            <u>
-              <Link to="/register">CREATE AN ACCOUNT</Link>
-            </u>
-          </p> */}
         </div>
       </div>
     );
@@ -129,10 +120,12 @@ export class ResetPassword extends Component {
 }
 
 const mapStateToProps = state => ({
+   // In order to send the data to the database Reducer is used using the variable users
   users: state.userReducer.users
 });
 
 export default connect(
+    // calling the functions that are used on this page 
   mapStateToProps,
   { resetPassword, getUsers }
 )(ResetPassword);

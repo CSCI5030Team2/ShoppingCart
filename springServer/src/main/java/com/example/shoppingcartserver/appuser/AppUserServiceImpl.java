@@ -17,6 +17,7 @@ import java.util.Optional;
 import java.util.UUID;
 
 /**
+ * AppUser Service layer, handles AppUser related backend tasks
  * @author aiden
  */
 
@@ -118,5 +119,10 @@ public class AppUserServiceImpl {
         {
             throw new UsernameNotFoundException("Could not find " + email);
         }
+    }
+
+    public void saveUser(AppUser appUser)
+    {
+        appUserRepository.save(appUser);
     }
 }

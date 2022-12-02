@@ -10,11 +10,11 @@ export class CreateProduct extends Component {
     this.onCreate = this.onCreate.bind(this);
   }
 
-  componentWillMount() {
-    if (!localStorage.getItem("token")) {
-      this.props.history.push("/");
-    }
-  }
+  // componentWillMount() {
+  //   if (!localStorage.getItem("token")) {
+  //     this.props.history.push("/");
+  //   }
+  // }
   
   state = {
     itemName: "",
@@ -22,10 +22,12 @@ export class CreateProduct extends Component {
     price: "",
   };
 
+  //helps change the values of textboxes when someone indends to enter a text
   onChange = event => {
     this.setState({ [event.target.name]: event.target.value });
   };
 
+  //this function sends the data which is stored in the variables to createProducts and then sets the state blank if that does not happen 
   onCreate() {
     let product = {
       itemName: this.state.itemName,
@@ -50,6 +52,7 @@ export class CreateProduct extends Component {
           style={{ marginTop: 1 + "em", height: "auto" }}
           align="center"
         >
+         {/* aligning the component to the center so it looks more appealing */}
           {/* <form> */}
           <h1>Add Product</h1>
           <p>
@@ -79,6 +82,7 @@ export class CreateProduct extends Component {
               value={this.state.price}
             />
           </p>
+           {/* this button will send the values to the onLogin Function when it is pressed and then link to the below route if successful */}
           <p>          
               <button onChange={this.onChange} onClick={this.onCreate}>
                 Create
@@ -93,9 +97,11 @@ export class CreateProduct extends Component {
 }
 
 const mapStateToProps = state => ({
+  // In order to send the data to the database Reducer is used using the variable products
   products: state.productReducer.products
 });
 
+// calling all the functions which are used on this page 
 export default connect(
   mapStateToProps,
   {createProducts }

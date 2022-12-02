@@ -6,6 +6,10 @@ import lombok.Setter;
 
 import javax.persistence.*;
 
+/**
+ * Data entity for Ads entry
+ * @author aiden
+ */
 @Getter
 @Setter
 @NoArgsConstructor
@@ -16,6 +20,9 @@ public class Ads {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+    /**
+     * A string of ad text
+     */
     @Column(nullable = false)
     private String content;
 }
