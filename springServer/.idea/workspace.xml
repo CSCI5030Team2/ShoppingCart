@@ -5,11 +5,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="97907469-1950-40b7-8c8c-9dde80a96538" name="Changes" comment="Add: Registration feature, post api for storing user info to database">
-      <change beforePath="$PROJECT_DIR$/../client/shopkart/src/App.js" beforeDir="false" afterPath="$PROJECT_DIR$/../client/shopkart/src/App.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../client/shopkart/src/actions/users.js" beforeDir="false" afterPath="$PROJECT_DIR$/../client/shopkart/src/actions/users.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../.idea/shelf/Uncommitted_changes_before_Checkout_at_01-11-2022_16_04__Changes_.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../.idea/shelf/Uncommitted_changes_before_Checkout_at_01-11-2022_16_04__Changes_.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/application.yml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/application.yml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/example/shoppingcartserver/registration/RegistrationController.class" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -228,6 +226,8 @@
       <item itemvalue="JUnit.ShoppingCartServerTestsItem" />
       <item itemvalue="JUnit.ShoppingCartServerTestItem" />
       <item itemvalue="JUnit.ShoppingCartServerTests" />
+      <item itemvalue="Spring Boot.ShoppingCartServer" />
+      <item itemvalue="Spring Boot.ShoppingCartServer (1)" />
     </list>
     <recent_temporary>
       <list>
@@ -241,7 +241,7 @@
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
-      <changelist id="c7f2fea6-a65f-4fe1-826d-5e8c306d44ca" name="Changes" comment="" />
+      <changelist id="97907469-1950-40b7-8c8c-9dde80a96538" name="Changes" comment="Add: Registration feature, post api for storing user info to database" />
       <created>1664449670518</created>
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
@@ -253,6 +253,8 @@
       <workItem from="1665513456984" duration="3311000" />
       <workItem from="1665562691064" duration="182000" />
       <workItem from="1665562892057" duration="555000" />
+      <workItem from="1669851506651" duration="14000" />
+      <workItem from="1669851630196" duration="12000" />
     </task>
     <task id="LOCAL-00001" summary="Add: Backend initial state setup">
       <created>1664453115889</created>

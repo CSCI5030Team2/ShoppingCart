@@ -5,7 +5,8 @@ import {
     RESET_PASSWORD,
     UPDATE_USERS,
     DELETE_USERS,
-    LOGIN
+    LOGIN,
+    FORGOT_PASSWORD
   } from "./types";
   
   import axios from "axios";
@@ -60,11 +61,10 @@ import {
   export const updateUsers = users => dispatch => {
     axios
       .put(
-        "http://localhost:8080/admin/item" + users.itemName,
+        "http://localhost:8080/forgot-password",
         {
-          headers: { Authorization: `Bearer ${localStorage.getItem("token")}` }
+          users
         },
-        users
       )
       .then(res => {
         dispatch({
@@ -124,9 +124,20 @@ import {
 
   export const forgotPassword = users => dispatch => {
     axios
-      .put("http://localhost:7000/api/users/forgot_password", users)
-      
-  };  
+      .post("http://localhost:8080/reset-password", users)
+      .then(res => {
+        dispatch({
+          type: FORGOT_PASSWORD
+        });
+        console.log(res.data);
+        alert("Password updated Successfully");
+      })
+      .catch(err => {
+        console.log(err);
+        alert("Username not found");
+      });
+  }; 
+
   
 
   

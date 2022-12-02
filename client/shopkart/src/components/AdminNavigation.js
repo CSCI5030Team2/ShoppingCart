@@ -10,6 +10,12 @@ export class Navigation extends Component {
   componentWillMount() {
     this.props.getProducts();
   }
+componentDidMount(){
+  if (!localStorage.getItem("token")) {
+    this.props.history.push("/navigation");
+  }
+}
+
 
   render() {
     //console.log(this.props.getProducts())

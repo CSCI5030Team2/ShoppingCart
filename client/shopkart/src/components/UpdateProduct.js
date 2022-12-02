@@ -5,6 +5,7 @@ import { Link } from "react-router-dom";
 import AdminNavbar from "./AdminNavbar";
 import axios from "axios";
 
+
 export class UpdateProducts extends Component {
   state = {
     itemName: this.props.match.params.itemName,
@@ -65,9 +66,6 @@ export class UpdateProducts extends Component {
                                   }
                                   ).then(r => console.log(r.data))
                 }
-
-                
-
                 onChange={this.onChange}
               >
                 Update

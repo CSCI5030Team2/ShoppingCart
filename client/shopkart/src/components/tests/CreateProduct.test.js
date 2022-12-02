@@ -13,7 +13,7 @@ const wrapper = mount(
     </BrowserRouter>
   </Provider>
 );
-
+//testcases for createproducts input fields ie. product name, quantity and price
 describe("Test Add Product Component", () => {
   beforeAll(() => {
     jest.spyOn(console, 'log').mockImplementation(() => {});
