@@ -27,6 +27,7 @@ export class ResetPassword extends Component {
     let emailError = "";
     let passwordError = "";
     let confirmpasswordError = "";
+    // if the new password and confirm passwords are not same this error will popup
     if(!this.state.password === !this.state.confirmpassword){
       confirmpasswordError="Passwords do not match"
     }
@@ -35,7 +36,9 @@ export class ResetPassword extends Component {
       this.state.email.length <= 5 ||
       !this.state.email.includes("@") ||
       !this.state.email.includes(".")
-    ) {
+    ) 
+    //if email given is incorrect this error will popup
+    {
       emailError = "Email Field Incorrect";
     }
     if (!this.state.password || this.state.password.length <= 5) {
@@ -106,6 +109,7 @@ export class ResetPassword extends Component {
           <br />
           <br />
           <br />
+          {/* clicking this button will reset the password if the inputs are correct */}
           <button onChange={this.onChange} onClick={this.onReset}>
             Reset
           </button>

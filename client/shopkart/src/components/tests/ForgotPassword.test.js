@@ -15,7 +15,7 @@ const wrapper = mount(
     </BrowserRouter>
   </Provider>
 );
-
+//testcases for forgot password inputs ie. email, firstname and lastname
 describe("Test ForgotPassword Component", () => {
     it("should render the component", () => {
       expect(wrapper).toMatchSnapshot();

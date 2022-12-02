@@ -15,7 +15,7 @@ const wrapper = mount(
     </BrowserRouter>
   </Provider>
 );
-
+// testcases for resetpassword inputs ie. email, new password and confirm password
 describe("Test ResetPassword Component", () => {
     it("should render the component", () => {
       expect(wrapper).toMatchSnapshot();
