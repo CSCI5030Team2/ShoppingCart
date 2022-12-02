@@ -13,7 +13,8 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Component;
 
 /**
- * create default db items after server reboot
+ * CommandLineAppStartupRunner class for creating default db items after server reboot
+ * Will not create duplicate entity
  * @author aiden
  */
 @Component

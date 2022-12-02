@@ -9,6 +9,7 @@ import lombok.Setter;
 import javax.persistence.*;
 
 /**
+ * Data entity for CartItem entry
  * @author aiden, vivek
  */
 @Getter
