@@ -23,6 +23,11 @@ public class ResetPasswordService {
     private final LoginTokenRepository loginTokenRepository;
     private final BCryptPasswordEncoder bCryptPasswordEncoder;
 
+    /**
+     * for password reset after login
+     * @param resetPasswordRequest
+     * @return String with information
+     */
     public String resetPassword(ResetPasswordRequest resetPasswordRequest) {
 
         Optional<AppUser> optionalAppUser = appUserRepository.findByEmail(resetPasswordRequest.getEmail());
