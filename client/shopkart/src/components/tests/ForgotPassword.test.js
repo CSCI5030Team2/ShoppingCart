@@ -3,20 +3,20 @@ import { mount } from "enzyme";
 import { Provider } from "react-redux";
 import store from "../../../src/store";
 import { BrowserRouter } from "react-router-dom";
-import ResetPassword from "../ResetPassword";
+import ForgotPassword from "../ForgotPassword";
 
 
-const Resetpassword = jest.fn();
+const Forgotpassword = jest.fn();
 const wrapper = mount(
   <Provider store={store}>
   <BrowserRouter>
-    <ResetPassword Resetpassword={Resetpassword} />
+    <ForgotPassword Forgotpassword={Forgotpassword} />
 
     </BrowserRouter>
   </Provider>
 );
-// testcases for resetpassword inputs ie. email, new password and confirm password
-describe("Test ResetPassword Component", () => {
+//testcases for forgot password inputs ie. email, firstname and lastname
+describe("Test ForgotPassword Component", () => {
     it("should render the component", () => {
       expect(wrapper).toMatchSnapshot();
     });
@@ -35,30 +35,27 @@ describe("Test ResetPassword Component", () => {
             .find("input")
             .at(0)
             .props().placeholder
-        ).toBe(" Enter Email");
+        ).toBe("Enter Email");
     });
     
-    it("should have Enter New Password placeholder on password input field", () => {
+    it("should have Enter First Name placeholder on Name input field", () => {
       expect(
           wrapper
             .find("input")
             .at(1)
             .props().placeholder
-        ).toBe(" Enter New Password");
+        ).toBe("Enter First Name");
     });
 
-    it("should have Re-Enter New Password placeholder on password input field", () => {
+    it("should have Enter Last Name placeholder on Name input field", () => {
         expect(
           wrapper
             .find("input")
             .at(2)
             .props().placeholder
-        ).toBe(" Re-Enter New Password");
+        ).toBe("Enter Last Name");
     });
 
     
  });
       
-    
-    
-  

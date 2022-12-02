@@ -6,16 +6,9 @@
   <component name="ChangeListManager">
 
     <list default="true" id="561a9c22-b853-4ccb-8765-60cb644d1571" name="Changes" comment="SHOP-10: Update to Cart service(Add item request)">
-      <change afterPath="$PROJECT_DIR$/client/shopkart/src/components/Forgotpassword.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_01-11-2022_16_04__Changes_.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_01-11-2022_16_04__Changes_.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/shopkart/src/App.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/shopkart/src/App.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/shopkart/src/actions/products.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/shopkart/src/actions/products.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/shopkart/src/actions/users.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/shopkart/src/actions/users.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/shopkart/src/components/AdminNavbar.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/shopkart/src/components/AdminNavbar.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/shopkart/src/components/Login.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/shopkart/src/components/Login.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/shopkart/src/components/tests/ResetPassword.test.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/shopkart/src/components/tests/ResetPassword.test.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/springServer/src/main/java/com/example/shoppingcartserver/cart/controller/CartController.java" beforeDir="false" afterPath="$PROJECT_DIR$/springServer/src/main/java/com/example/shoppingcartserver/cart/controller/CartController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/springServer/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/springServer/.idea/workspace.xml" afterDir="false" />
     </list>
 
     <option name="SHOW_DIALOG" value="false" />
@@ -36,7 +29,7 @@
   <component name="Git.Settings">
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
-        <entry key="$PROJECT_DIR$" value="master" />
+        <entry key="$PROJECT_DIR$" value="sonalika" />
       </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -81,17 +74,17 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "Git.Branch.Popup.ShowAllRemotes": "true",
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
-    "com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrary": "JUnit5",
-    "com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.JUnit5": "",
-    "last_opened_file_path": "D:/shopping_backup/ShoppingCart"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;Git.Branch.Popup.ShowAllRemotes&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
+    &quot;com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrary&quot;: &quot;JUnit5&quot;,
+    &quot;com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.JUnit5&quot;: &quot;&quot;,
+    &quot;last_opened_file_path&quot;: &quot;D:/shopping_backup/ShoppingCart&quot;
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
       <recent name="C:\Users\vivek\OneDrive\Desktop\PSD\ShoppingCart\springServer\src\main\java\com\example\shoppingcartserver\password" />
@@ -360,6 +353,17 @@
     </SUITE>
     <SUITE FILE_PATH="coverage/ShoppingCart$CartTest.ic" NAME="CartTest Coverage Results" MODIFIED="1668526746198" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
       <FILTER>com.example.shoppingcartserver.cart.*</FILTER>
+    </SUITE>
+  </component>
+  <component name="com.intellij.coverage.CoverageDataManagerImpl">
+    <SUITE FILE_PATH="coverage/ShoppingCart$CartTest.ic" NAME="CartTest Coverage Results" MODIFIED="1668526746198" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
+      <FILTER>com.example.shoppingcartserver.cart.*</FILTER>
+    </SUITE>
+    <SUITE FILE_PATH="coverage/ShoppingCart$CartTest_testCheckout.ic" NAME="CartTest.testCheckout Coverage Results" MODIFIED="1668534055335" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
+      <FILTER>com.example.shoppingcartserver.cart.*</FILTER>
+    </SUITE>
+    <SUITE FILE_PATH="coverage/ShoppingCart$ItemServiceTest.ic" NAME="ItemServiceTest Coverage Results" MODIFIED="1668487920441" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
+      <FILTER>com.example.shoppingcartserver.item.*</FILTER>
     </SUITE>
   </component>
 </project>

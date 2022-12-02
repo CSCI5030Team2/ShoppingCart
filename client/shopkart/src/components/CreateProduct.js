@@ -80,7 +80,8 @@ export class CreateProduct extends Component {
               value={this.state.price}
             />
           </p>
-          <p>          
+          <p>      
+            {/* clicking this button will create a product with above entered inputs     */}
               <button onChange={this.onChange} onClick={this.onCreate}>
                 Create
               </button>
