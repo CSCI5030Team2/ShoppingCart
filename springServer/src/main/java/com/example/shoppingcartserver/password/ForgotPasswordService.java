@@ -26,7 +26,12 @@ public class ForgotPasswordService {
     private EmailService emailService;
     private AppUserServiceImpl appUserService;
     private BCryptPasswordEncoder bCryptPasswordEncoder;
-
+    
+    /**
+     * for forgot password(send reset email)
+     * @param forgotPasswordRequest
+     * @return String of exception with related information
+     */
     public String forgotPassword(ForgotPasswordRequest forgotPasswordRequest){
         try {
             AppUser appUser = appUserService.getAppUserByEmail(forgotPasswordRequest.getEmail());
@@ -48,6 +53,11 @@ public class ForgotPasswordService {
         }
     }
 
+    /**
+     * for reset password(reset user password)
+     * @param forgotResetRequest
+     * @return String of exception with related information
+     */
     public String forgotReset(ForgotResetRequest request) {
         try {
             AppUser appUser = appUserService.getAppUserByEmail(request.getEmail());
