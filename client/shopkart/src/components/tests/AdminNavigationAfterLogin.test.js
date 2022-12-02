@@ -24,6 +24,6 @@ describe("Test NavigationAfterLogin Component", () => {
   });
 
   it("should have exactly four div tags", () => {
-    expect(wrapper.find("div").length).toBe(6);
+    expect(wrapper.find("div").length).toBe(4);
   });
 });
