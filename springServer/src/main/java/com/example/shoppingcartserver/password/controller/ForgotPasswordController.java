@@ -26,16 +26,20 @@ public class ForgotPasswordController {
 
     private ForgotPasswordService forgotPasswordService;
 
+
     /**
      * @param request email, firstName, lastName, frontend url
      * @return status string
      */
-
     @PostMapping
     public String forgotPassword(@RequestBody ForgotPasswordRequest request) {
         return forgotPasswordService.forgotPassword(request);
     }
 
+    /**
+     * @param request email, (new)password
+     * @return status string
+     */
     @PutMapping
     public String forgetReset(@RequestBody ForgotResetRequest request)
     {
