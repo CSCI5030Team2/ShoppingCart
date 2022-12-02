@@ -37,9 +37,9 @@ class ForgotPasswordServiceTest {
     @Autowired
     private LoginController loginController;
 
-    private final String email = "user@shoppingcart.com";
-    private final String firstName = "TEST";
-    private final String lastName = "USER";
+    private final String email = "admin@shoppingcart.com";
+    private final String firstName = "MASTER";
+    private final String lastName = "ADMIN";
     private final String url = "http://localhost:3000/reset";
 
     @Order(1)
@@ -70,7 +70,7 @@ class ForgotPasswordServiceTest {
 
         ForgotResetRequest forgotResetRequest = new ForgotResetRequest(
                 email,
-                "a123456"
+                "a1234567"
         );
 
         assertDoesNotThrow(()-> forgotPasswordController.forgotReset(forgotResetRequest));
@@ -82,7 +82,7 @@ class ForgotPasswordServiceTest {
     void testLogin() throws CredentialExpiredException {
         LoginRequest loginRequest = new LoginRequest(
                 email,
-                "a123456"
+                "a1234567"
         );
         assertDoesNotThrow(() -> loginController.login(loginRequest));
         CheckStateRequest checkStateRequest = new CheckStateRequest();
