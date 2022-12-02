@@ -13,7 +13,7 @@ import static org.junit.jupiter.api.Assertions.*;
  * ConfirmationToken instance test
  * @author aiden
  */
-class ConfirmationTokenTest {
+class ForgotTokenTest {
 
     ConfirmationToken confirmationToken;
 

@@ -1,15 +1,15 @@
 import React, { Component } from "react";
-import { login, getUsers } from "../actions/users";
+import { loginAdmin, getAdmin } from "../actions/admin";
 import { Link } from "react-router-dom";
 import { connect } from "react-redux";
-import Navbar from "./Navbar";
+import AdminLoginNavbar from "./AdminLoginNavbar";
 
-export class Login extends Component {
+export class AdminLogin extends Component {
   constructor(props) {
     super(props);
     this.onLogin = this.onLogin.bind(this);
   }
-   //it stores the values which are mentioned in the text boxes below 
+  //it stores the values which are mentioned in the text boxes below 
   state = {
     email: "",
     password: ""
@@ -18,7 +18,7 @@ export class Login extends Component {
   // if the token is present in the browser push to the route mentioned below 
   componentDidMount() {
     if (localStorage.getItem("token")) {
-      this.props.history.push("/navigation");
+      this.props.history.push("/AdminNavigationAfterLogin");
     }
   }
 
@@ -27,13 +27,13 @@ export class Login extends Component {
     this.setState({ [event.target.name]: event.target.value });
   };
 
-  //this function sends the data which is stored in the variables to login and then sets the state blank if that does not happen 
+  //this function sends the data which is stored in the variables to LoginAdmin and then sets the state blank if that does not happen 
   onLogin() {
-    let user = {
+    let admin = {
       email: this.state.email,
       password: this.state.password
     };
-    this.props.login(user, this.props.history);
+    this.props.loginAdmin(admin, this.props.history);
     this.setState({
       email: "",
       password: ""
@@ -43,14 +43,14 @@ export class Login extends Component {
   render() {
     return (
       <div>
-        <Navbar />
-         {/* aligning the component to the center so it looks more appealing */}
+        <AdminLoginNavbar />
+        {/* aligning the component to the center so it looks more appealing */}
         <div
           className="container"
           align="center"
           style={{ width: 20 + "em", marginTop: 3 + "em", height: "auto" }}
         >
-         {/* all the input text boxes and their values  */}
+        {/* all the input text boxes and their values  */}
           <h1>Login Form</h1>
           <input
             className="name"
@@ -74,24 +74,12 @@ export class Login extends Component {
           <br />
           <br />
           <br />
-           {/* this button will send the values to the onLogin Function when it is pressed and then link to the below route if successful */}
+          {/* this button will send the values to the onLogin Function when it is pressed and then link to the below route if successful */}
           <button onChange={this.onChange} onClick={this.onLogin}>
-          <Link to = "/navigation">
+          <Link to = "/AdminNavigationAfterLogin">
             Login
             </Link>
-          </button>
-          {/* </Link> */}
-          <p>
-            <Link to="/Forgot">
-              <p>Forgot Password ?</p>
-            </Link>
-          </p>
-          <p>
-            Not Registered ?{" "}
-            <u>
-              <Link to="/register">CREATE AN ACCOUNT</Link>
-            </u>
-          </p>
+          </button>    
         </div>
       </div>
     );
@@ -99,12 +87,12 @@ export class Login extends Component {
 }
 
 const mapStateToProps = state => ({
-   // In order to send the data to the database Reducer is used using the variable users
-  users: state.userReducer.users
+  // In order to send the data to the database Reducer is used using the variable admin
+  admin: state.adminReducer.admin
 });
 
 export default connect(
   // calling the functions that are used on this page 
   mapStateToProps,
-  { login, getUsers }
-)(Login);
+  { loginAdmin, getAdmin }
+)(AdminLogin);

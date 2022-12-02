@@ -32,7 +32,8 @@ public class AdminItemController {
     }
 
     @DeleteMapping
-    public String deleteItem(@RequestBody DeleteItemRequest request) throws CredentialExpiredException {
+    public String deleteItem(@RequestBody DeleteItemRequest request) throws CredentialException {
+        System.out.println("DeleteItem Got: " + request.toString() );
         return itemService.deleteItem(request);
     }
 

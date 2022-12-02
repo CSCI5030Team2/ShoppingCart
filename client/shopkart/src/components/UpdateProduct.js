@@ -3,11 +3,12 @@ import { connect } from "react-redux";
 import { getProducts, updateProducts } from "../actions/products";
 import { Link } from "react-router-dom";
 import AdminNavbar from "./AdminNavbar";
+import axios from "axios";
+
 
 export class UpdateProducts extends Component {
   state = {
-    id: this.props.match.params.productid,
-    item_name: this.props.location.state.product.item_name,
+    itemName: this.props.match.params.itemName,
     price: this.props.location.state.product.price,
     quantity: this.props.location.state.product.quantity
   };
@@ -34,13 +35,6 @@ export class UpdateProducts extends Component {
         >
           {/* <form> */}
           <h1>Update Product</h1>
-          <input
-            type="text"
-            name="name"
-            placeholder=" Product Name"
-            onChange={this.onChange}
-            value={this.state.item_name}
-          />
           <p>
             <input
               type="text"
@@ -60,15 +54,17 @@ export class UpdateProducts extends Component {
             />
           </p>
           <p>
-            <Link to="/displayproducts">
+            <Link to="/AdminNavigationAfterLogin">
               <button
                 onClick={() =>
-                  this.props.updateProducts({
-                    name: this.state.name,
-                    price: this.state.price,
-                    quantity: this.state.quantity,
-                    id: this.state.id
-                  })
+                  axios.put("http://localhost:8080/admin/item",
+                                  {
+                                      itemName: this.state.itemName,
+                                      quantity: this.state.quantity,
+                                      price:this.state.price,
+                                      token: localStorage.getItem("token")
+                                  }
+                                  ).then(r => console.log(r.data))
                 }
                 onChange={this.onChange}
               >

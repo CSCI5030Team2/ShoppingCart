@@ -1,17 +1,20 @@
 /* eslint-disable jsx-a11y/alt-text */
 /* eslint-disable jsx-a11y/anchor-is-valid */
+
+// disabling eslint adjustment errors 
 import React, { Component } from "react";
 import { connect } from "react-redux";
+// importing all the values necessary on this page 
 import {
   getProducts,
   deleteProducts,
   updateProducts
 } from "../actions/products";
-// import UpdateProduct from "./UpdateProducts";
 import { Link } from "react-router-dom";
 import logo from "../logo.PNG";
 
 export class AdminNavbar extends Component {
+  // This function on the navbar ensures whenever the person presses logout it signs out the user and sends them to the default page 
   removeToken = () => {
     localStorage.removeItem("token");
     alert("Logged out");
@@ -21,13 +24,13 @@ export class AdminNavbar extends Component {
     return (
       <div>
         <nav>
-          <ul>
-            <Link to="/">
+          <ul>       
               <li>
                 <img src={logo} style={{ height: 4 + "em" }} />
               </li>
-            </Link>
-            <Link to="/login">
+            <Link to="/AdminLogin">
+
+
               <li
                 style={{
                   float: "right",
@@ -35,10 +38,11 @@ export class AdminNavbar extends Component {
                   marginLeft: 2 + "em"
                 }}
               >
-                <a onClick={this.removeToken} href="/">Logout</a>
+              {/* function used to remove the token from the browser */}
+                <a onClick={this.removeToken} href="/navigation">Logout</a>
               </li>
             </Link>
-            <Link to="/displayusers">
+            <Link to="/AdminNavigationAfterLogin">
               <li
                 style={{
                   float: "right",
@@ -46,10 +50,10 @@ export class AdminNavbar extends Component {
                   marginLeft: 2 + "em"
                 }}
               >
-                <a href="#contact">Users</a>
+               <a href="/AdminNavigationAfterLogin">Products</a> 
               </li>
             </Link>
-            <Link to="/displayproducts">
+            <Link to="/createproducts">
               <li
                 style={{
                   float: "right",
@@ -57,7 +61,7 @@ export class AdminNavbar extends Component {
                   marginLeft: 2 + "em"
                 }}
               >
-                <a href="#contact">Products</a>
+               <a href="/createproducts">Create</a> 
               </li>
             </Link>
           </ul>
@@ -67,10 +71,12 @@ export class AdminNavbar extends Component {
   }
 }
 
+// These functions are used to send the above values to the reducers where the values are stored and sent the their respective actions 
 const mapStateToProps = state => ({
   products: state.productReducer.products
 });
 
+// calling all the functions which are used on this page 
 export default connect(
   mapStateToProps,
   { getProducts, deleteProducts, updateProducts }

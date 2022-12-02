@@ -21,7 +21,7 @@ import java.time.LocalDateTime;
  */
 @SpringBootTest
 @AutoConfigureTestDatabase(replace= AutoConfigureTestDatabase.Replace.NONE)
-class ConfirmationTokenRepositoryTest {
+class ForgotTokenRepositoryTest {
     @Autowired
     private ConfirmationTokenRepository confirmationTokenRepository;
 
