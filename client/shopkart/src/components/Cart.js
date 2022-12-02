@@ -52,6 +52,11 @@ export class NavigationAfterLogin extends Component {
                       </div>
                     </div>
           ))}
+          <button id ="editBtn">
+            <Link to ="/checkout">
+              Checkout
+            </Link>
+          </button>
         </div>
       </div>
     );

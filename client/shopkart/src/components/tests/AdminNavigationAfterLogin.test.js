@@ -1,11 +1,11 @@
 import React from "react";
 import { mount } from "enzyme";
-import NavigationAfterLogin from "../NavigationAfterLogin";
+import AdminNavigationAfterLogin from "../AdminNavigationAfterLogin";
 import { Provider } from "react-redux";
 import store from "../../store";
 import { BrowserRouter } from "react-router-dom";
 
-const Navigationafterlogin =  {
+const adminNavigationafterlogin =  {
   log:jest.fn(),
   error: console.error,
   warn: console.warn,
@@ -15,7 +15,7 @@ const Navigationafterlogin =  {
 const wrapper = mount(
   <Provider store={store}>
   <BrowserRouter>
-    <NavigationAfterLogin Navigationafterlogin={Navigationafterlogin} />
+    <AdminNavigationAfterLogin adminNavigationafterlogin={adminNavigationafterlogin} />
     </BrowserRouter>
   </Provider>
 );
@@ -30,6 +30,6 @@ describe("Test NavigationAfterLogin Component", () => {
   });
 
   it("should have exactly four div tags", () => {
-    expect(wrapper.find("div").length).toBe(6);
+    expect(wrapper.find("div").length).toBe(4);
   });
 });

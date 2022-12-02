@@ -19,4 +19,5 @@ export const SEND_INITIAL = "SEND_INITIAL";
 export const GET_ADMIN = "GET_ADMIN";
 export const UPDATE_ADMIN = "UPDATE_ADMIN";
 export const DELETE_ADMIN = "DELETE_ADMIN";
+export const PUT_CHECKOUT = "PUT_CHECKOUT";
 
