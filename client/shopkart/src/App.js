@@ -13,6 +13,7 @@ import AdminNavigationAfterLogin from "./components/AdminNavigationAfterLogin";
 import ResetPassword from "./components/ResetPassword";
 import Forgotpassword from "./components/Forgotpassword";
 import UpdateProduct from "./components/UpdateProduct";
+import Checkout from "./components/Checkout";
 
 
 function App() {
@@ -31,6 +32,7 @@ function App() {
         <Route exact path="/AdminNavigation" component={AdminNavigation}></Route>
         <Route exact path="/AdminNavigationAfterLogin" component={AdminNavigationAfterLogin}></Route>
         <Route exact path="/UpdateProduct/:itemName" component={UpdateProduct}></Route>
+        <Route exact path="/Checkout" component={Checkout}></Route>
       </div>
     </Router>
   );

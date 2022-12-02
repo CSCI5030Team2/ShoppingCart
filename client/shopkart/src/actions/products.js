@@ -5,6 +5,7 @@ import {
     DELETE_PRODUCTS,
     GET_CARTS,
     CART_PRODUCTS,
+    PUT_CHECKOUT
   } from "./types";
   
   import axios from "axios";
@@ -136,4 +137,23 @@ import {
       });
   };
 
-
+  //empty the cart
+  export const putCheckout = () => dispatch => {
+    console.log(localStorage.getItem("token"));
+    return axios
+      .put("http://localhost:8080/cart",
+      {
+        "token": localStorage.getItem("token")
+      }
+      )
+      .then(res => {
+        dispatch({
+          type: PUT_CHECKOUT,
+          payload: res.data
+        });
+        console.log(res.data);
+      })
+      .catch(err => {
+        console.log(err);
+      });
+  };

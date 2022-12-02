@@ -52,6 +52,11 @@ export class NavigationAfterLogin extends Component {
                       </div>
                     </div>
           ))}
+          <button>
+            <Link to ="/checkout">
+              Checkout
+            </Link>
+          </button>
         </div>
       </div>
     );
@@ -67,4 +72,3 @@ export default connect(
   mapStateToProps,
   { getCarts }
 )(NavigationAfterLogin);
-
