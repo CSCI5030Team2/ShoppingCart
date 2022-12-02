@@ -6,7 +6,13 @@ import { BrowserRouter } from "react-router-dom";
 import ResetPassword from "../ResetPassword";
 
 
-const Resetpassword = jest.fn();
+const Resetpassword =  {
+  log:jest.fn(),
+  error: console.error,
+  warn: console.warn,
+  info: console.info,
+  debug: console.debug,
+};
 const wrapper = mount(
   <Provider store={store}>
   <BrowserRouter>

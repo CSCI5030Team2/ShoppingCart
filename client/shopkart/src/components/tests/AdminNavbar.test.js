@@ -5,7 +5,13 @@ import { Provider } from "react-redux";
 import store from "../../store";
 import { BrowserRouter } from "react-router-dom";
 
-const adminnavbar = jest.fn();
+const adminnavbar =  {
+  log:jest.fn(),
+  error: console.error,
+  warn: console.warn,
+  info: console.info,
+  debug: console.debug,
+};
 const wrapper = mount(
   <Provider store={store}>
   <BrowserRouter>
@@ -33,10 +39,10 @@ afterEach(() => {
   });
 
   it("should have exactly four Link tags", () => {
-    expect(wrapper.find("Link").length).toBe(2);
+    expect(wrapper.find("Link").length).toBe(3);
   });
 
   it("should have exactly four li tags", () => {
-    expect(wrapper.find("li").length).toBe(3);
+    expect(wrapper.find("li").length).toBe(4);
   });
 });

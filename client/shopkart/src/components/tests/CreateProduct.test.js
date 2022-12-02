@@ -5,7 +5,13 @@ import store from "../../../src/store";
 import { BrowserRouter } from "react-router-dom";
 import CreateProduct from "../CreateProduct";
 
-const createproduct = jest.fn();
+const createproduct =  {
+  log:jest.fn(),
+  error: console.error,
+  warn: console.warn,
+  info: console.info,
+  debug: console.debug,
+};
 const wrapper = mount(
   <Provider store={store}>
   <BrowserRouter>
