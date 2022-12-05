@@ -46,10 +46,14 @@ export class Forgotpassword extends Component {
   onforgot() {
     let user = {
       email: this.state.email,
+      firstName: this.state.firstName,
+      lastName: this.state.lastName
     };
     this.props.forgotPassword(user);
     this.setState({
-      email: ""
+      email: "",
+      firstName: "",
+      lastName: ""
     });
   }
 

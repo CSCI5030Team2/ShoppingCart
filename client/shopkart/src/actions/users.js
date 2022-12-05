@@ -44,7 +44,7 @@ import {
   
   export const resetPassword = users => dispatch => {
     axios
-      .put("http://localhost:8080/reset-password", users)
+      .put("http://localhost:8080/forgot-password", users)
       .then(res => {
         dispatch({
           type: RESET_PASSWORD
@@ -124,7 +124,7 @@ import {
 
   export const forgotPassword = users => dispatch => {
     axios
-      .post("http://localhost:8080/reset-password", users)
+      .post("http://localhost:8080/forgot-password", users)
       .then(res => {
         dispatch({
           type: FORGOT_PASSWORD

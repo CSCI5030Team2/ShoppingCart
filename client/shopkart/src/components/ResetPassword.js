@@ -62,7 +62,8 @@ export class ResetPassword extends Component {
     this.props.resetPassword(user);
     this.setState({
       email: "",
-      password: ""
+      password: "",
+      confirmpassword: ""
     });
   }
 

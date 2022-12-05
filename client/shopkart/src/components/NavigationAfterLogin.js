@@ -9,9 +9,9 @@ export class NavigationAfterLogin extends Component {
    // This function will check if the browser has token present or no if its not present then send the user to the route mentioned below
   componentDidMount() {
     this.props.getProducts();
-//     if (!localStorage.getItem("token")) {
-//       this.props.history.push("/");
-//     }
+    if (!localStorage.getItem("token")) {
+      this.props.history.push("/");
+    }
   }
 
 
